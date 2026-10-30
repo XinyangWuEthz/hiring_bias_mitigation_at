@@ -1,0 +1,75 @@
+# One authorized 75-update pilot. See docs/GRPO_LOW_LR_PILOT_RETRY1.md.
+stage: grpo
+objective: grpo
+data_kind: grpo
+base_model: Qwen/Qwen3.5-9B
+sft_checkpoint: outputs/sft/qwen3.5-9b_en_only_sft_v3_additional
+data_config: configs/data/en_only_grpo_v3_all.yaml
+output_dir: outputs/grpo/qwen3.5-9b_en_only_grpo_v3_all_lr3e6_from425_75step_retry1
+chat_template_kwargs:
+  enable_thinking: false
+use_lora: true
+lora_r: 32
+lora_alpha: 64
+lora_dropout: 0.0
+disable_dropout: true
+beta: 0.04
+num_generations: 16
+temperature: 1.0
+top_p: 1.0
+max_completion_length: 96
+use_vllm: true
+vllm_mode: colocate
+vllm_gpu_memory_utilization: 0.30
+vllm_max_model_length: 4096
+vllm_engine_kwargs:
+  gdn_prefill_backend: triton
+  language_model_only: true
+log_completions: false
+num_train_epochs: 1
+max_steps: 500
+learning_rate: 3.0e-06
+lr_scheduler_type: constant_with_warmup
+warmup_steps: 5
+per_device_train_batch_size: 8
+gradient_accumulation_steps: 8
+gradient_checkpointing: true
+weight_decay: 0.0
+dtype: bfloat16
+seed: 42
+logging_steps: 1
+memory_floor_gb: 12
+wandb_project: hiring-bias-mitigation
+wandb_run_name: grpo-v3-all-lr3e6-from425-75step-retry1
+sync_validate_rows: 256
+sync_validate_steps: 50
+resume: true
+save_steps: 5
+save_total_limit: 20
+ddp_find_unused_parameters: false
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+continuation:
+  source_checkpoint: /ritom/scratch/cscs/zhang/xw/outputs/grpo/qwen3.5-9b_en_only_grpo_v3_all/checkpoint-425
+  source_step: 425
+  target_learning_rate: 0.00000300
+  source_learning_rate: 0.00003000
+  max_steps: 500
+  world_size: 4
+  source_files_sha256:
+    adapter_model.safetensors: "c33b647ae5bc6348c8638f6957e5598720023d06ab9c713531ac072adf88f1ec"
+    adapter_config.json: "51e10f549c7b0a7c79852c0a6accf0a9bb5e4dc66bad7de138d639ad41334591"
+    optimizer.pt: "8feb977de27ef7caa8d07b51b97b9be1e10992ee8b46963d6884a95e0341e5f1"
+    scheduler.pt: "57ad90717a1aa4ba139385ce5cd3014cf93ec70bb6a72ff6c2005ad2ac11dde6"
+    trainer_state.json: "79b3a907852ec93fada229fcef45193eb43bbe51b02ca0c22f649d8c78d8ee52"
+    training_args.bin: "8db4a9e621a60f7c8d52003cb9145441cbe5eb7063b001e00171543bd2394701"
+    rng_state_0.pth: "1de5f30f5ec8a8f6a609d6c842c60bd4671f364712b17b863fc74174bf263f66"
+    rng_state_1.pth: "5eb29a8c2ee196ee2ea6da1e4c1393f18a7d9db043113b7458467bfd1ad824c8"
+    rng_state_2.pth: "0d2202062901f2ebe8f66346b74f47d2f84741793633a6ef812cf81cae0e5283"
+    rng_state_3.pth: "33e205d4778c930ec276f3c3d6666894059721060aac7d4b670bdcd6194dc557"
+full_benchmark_monitor:
+  manifest_file: outputs/grpo_low_lr_pilot/grpo_v3_all_lr3e6_from425_retry1_20261023/monitor_bank/manifest.json
+  manifest_sha256: a021b6cd14f24652deb85ce7e58b6d5b7c1ac0a7a3292485ba31595074227899
+pilot_results:
+  experiment_dir: outputs/grpo_low_lr_pilot/grpo_v3_all_lr3e6_from425_retry1_20261023
+  chunk_size: 512

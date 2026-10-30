@@ -1,0 +1,51 @@
+{
+  "check": "invariant",
+  "inputs_sha256": {
+    "artifacts/semisynthetic-v1/raw/en_invariant.parquet": "88b4dd0fd78a2a5aabb091e8ac9472a8a492a595851ee7c81e06fc9e4de7fcc0"
+  },
+  "n_perm": 10,
+  "min_plausibility": 3,
+  "hedges": [
+    "however",
+    "although",
+    "but",
+    "though",
+    "despite",
+    "while",
+    "yet",
+    "may",
+    "might",
+    "could",
+    "somewhat",
+    "partially",
+    "potential",
+    "potentially"
+  ],
+  "intensity": [
+    "strong",
+    "strongly",
+    "excellent",
+    "extensive",
+    "proven",
+    "perfectly",
+    "exceeds",
+    "solid",
+    "robust",
+    "outstanding",
+    "highly",
+    "deep",
+    "impressive"
+  ],
+  "address": [
+    "you",
+    "your",
+    "yours",
+    "we",
+    "our",
+    "us"
+  ],
+  "code": {
+    "commit": "cee043391f00fd9b7a84cd422986d39bbf0ff4cf",
+    "uncommitted": []
+  }
+}

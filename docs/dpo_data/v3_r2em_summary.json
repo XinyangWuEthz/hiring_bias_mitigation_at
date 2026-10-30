@@ -1,0 +1,91 @@
+{
+  "train": {
+    "preference_pairs": 2271,
+    "cv_job_pairs": 553,
+    "candidates": 481,
+    "jobs": 549,
+    "reference_decision": {
+      "hire": 1139,
+      "reject": 1132
+    },
+    "chosen_hire_share": 0.5015,
+    "by_group": {
+      "religion": 798,
+      "military_status": 786,
+      "gender": 687
+    },
+    "by_condition": {
+      "implicit": 1146,
+      "explicit": 1125
+    },
+    "by_source": {
+      "djinni": {
+        "hire": 1139,
+        "reject": 1132
+      }
+    },
+    "chosen_words": {
+      "mean": 19.88,
+      "min": 12.0,
+      "p25": 18.0,
+      "median": 20.0,
+      "p75": 22.0,
+      "max": 26.0
+    },
+    "rejected_words": {
+      "mean": 20.41,
+      "min": 9.0,
+      "p25": 19.0,
+      "median": 20.0,
+      "p75": 22.0,
+      "max": 32.0
+    },
+    "rejected_minus_chosen_words": {
+      "mean": 0.52,
+      "min": -10.0,
+      "p25": -2.0,
+      "median": 1.0,
+      "p75": 3.0,
+      "max": 10.0
+    },
+    "student_margin": {},
+    "p_wrong": {},
+    "columns": [
+      "prompt",
+      "chosen",
+      "rejected",
+      "decision",
+      "rejected_decision",
+      "lang",
+      "protected_group",
+      "protected_attr",
+      "condition",
+      "candidate_id",
+      "job_id",
+      "pair_id",
+      "r2em_pool",
+      "split",
+      "prompt_sha1",
+      "pair_sha1",
+      "sft_v1_margin",
+      "sft_v1_p_wrong",
+      "reference_decision",
+      "anchor_hire_votes",
+      "anchor_decided",
+      "anchor_unstable",
+      "anchor_changed",
+      "anchor_source",
+      "pool_source",
+      "source",
+      "dpo_v3_part",
+      "student_margin",
+      "p_wrong"
+    ]
+  },
+  "source_files": {
+    "train": {
+      "file": "pairs.parquet",
+      "sha256": "822fe7fc3442a8b16b8b6145fb0b9c5955e73887405ad63a713f89cd9f3a0727"
+    }
+  }
+}

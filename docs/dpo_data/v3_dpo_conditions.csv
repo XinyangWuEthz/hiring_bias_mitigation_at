@@ -1,0 +1,7 @@
+group,explicit,implicit,split
+military_status,620,685,train
+gender,596,606,train
+religion,656,676,train
+military_status,84,79,validation
+gender,78,69,validation
+religion,66,66,validation

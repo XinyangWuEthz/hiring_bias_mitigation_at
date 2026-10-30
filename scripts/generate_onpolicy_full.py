@@ -5,7 +5,7 @@
     # then scripts/sample_student.py once per GPU (scripts/cscs/onpolicy_full.sbatch does both)
     python scripts/generate_onpolicy_full.py --config $CFG --stage collect
     python scripts/generate_onpolicy_full.py --config $CFG --stage judge
-    python scripts/generate_onpolicy_full.py --config $CFG --stage balance
+    python scripts/generate_onpolicy_full.py --config $CFG --stage balance   # or merge (V3)
 
   prepare  every pool row with v1's chosen side (v1's own filter), one attribute-free prompt per
            pair and one attribute-bearing prompt per row in prompts.parquet, and the merged
@@ -18,16 +18,30 @@
   balance  equal hire and reject reference verdicts per protected group inside each split,
            written to balanced/ with balance.json (the pool is 86% reject; spec D6). The DPO
            data config reads balanced/
+  merge    a top-up run, or a run with `merge_with`: its pairs merged into the base run's (or
+           `merge_with`'s) inside each split, not balanced, written to merged/ with
+           merge.json. V3 balances them by error mass per pool source afterwards
+           (scripts/build_balanced_dpo.py), which is r2em's candidate set: the count balance
+           above would drop pairs that balance should choose from
 
 A top-up run (`row_filter` + `topup_of` in its config) samples one slice of the pool again
 with more samples per prompt, e.g. the hire rows at k=32 because the pool is 86% reject. Its
 train/validation split comes from the base run's rows, so a candidate is on the same side in
 both runs, and its balance stage merges the base run's pairs with its own before balancing.
 
+A run on new pairs of the same pool (`merge_with` in its config, V3's round 3) samples rows no
+earlier run has, from its own source directory, and its merge joins its pairs to the merged
+pairs `merge_with` names. Both must come from the same merged student, and no candidate may
+end up on both sides of the split.
+
 An attribute-coverage run (`add_attributes: {group, k, seed}`) samples only new rows: `k` more
 attributes of one group per pair, with the pair's own chosen text reused
 (onpolicy.add_attribute_rows). Its `split_of` names the run whose rows.parquet (the whole pool)
 sets the train/validation split, so its candidates sit on the same side as in that run.
+
+`val_fraction: 0` holds out exactly the candidates of the source's validation files, with no
+seeded draw on top (`validation_ids`). On v1's pool the draw is v1's own split and adds nothing;
+a pool split some other way, such as V3's new pairs, needs the 0.
 
 Only `judge_strategies` (default: student_tipped) are judged and kept. Rows the student also
 gets wrong without the attribute are counted in sample_report.json but are not
@@ -71,6 +85,23 @@ def _source(cfg: dict) -> Path:
 
 def _topup_base(cfg: dict) -> Path | None:
     return Path(resolve_output_path(cfg["topup_of"])) if cfg.get("topup_of") else None
+
+
+def _merge_base(cfg: dict) -> Path | None:
+    """The pairs this run's are merged into: its top-up base run's, or `merge_with`'s."""
+    if cfg.get("topup_of") and cfg.get("merge_with"):
+        raise SystemExit("merge: a config takes `topup_of` or `merge_with`, not both")
+    if cfg.get("merge_with"):
+        return Path(resolve_output_path(cfg["merge_with"]))
+    return _topup_base(cfg)
+
+
+def _student_of(run: Path) -> str | None:
+    """The merged student a run sampled, from its prepare.json or its parent run's."""
+    for path in (run / "prepare.json", run.parent / "prepare.json"):
+        if path.exists():
+            return json.loads(path.read_text()).get("merged_checkpoint")
+    return None
 
 
 def _source_label(cfg: dict) -> str:
@@ -135,8 +166,13 @@ def stage_collect(cfg: dict, out: Path) -> None:
     report = {"student": f"{cfg['student_base']} + {cfg['student_adapter']} (merged)",
               "merged_checkpoint": info["merged_checkpoint"], "samples_per_prompt": k,
               "student_generation": cfg.get("student_generation", {}), "selection": selection}
+    if "pool_source" in rows.columns:   # V3: each pool source is balanced and checked alone
+        report["by_pool_source"] = OP.selection_by(rows, attributed, free_by_pair, selected,
+                                                   "pool_source", str(cfg.get("lang", "en")))
     (out / "sample_report.json").write_text(_json(report), encoding="utf-8")
     print(_json(selection))
+    if "by_pool_source" in report:
+        print(_json(report["by_pool_source"]))
 
 
 def v1_validation_candidates(source: Path) -> set[str]:
@@ -146,6 +182,59 @@ def v1_validation_candidates(source: Path) -> set[str]:
         if path.exists():
             ids |= set(pd.read_parquet(path, columns=["candidate_id"])["candidate_id"].astype(str))
     return ids
+
+
+#: Row columns a judged pair keeps beside build_pairs' own: the sampler's counts, the attribute
+#: an attribute-coverage row's chosen text was written for, and V3's pool source, by which V3's
+#: pairs are balanced and checked (docs/V3_NEW_DATA.md).
+CARRIED_COLUMNS = ("free_right_rate", "sample_index", "n_wrong_samples", "source_attr",
+                   "pool_source")
+
+
+def carry_row_columns(pairs: pd.DataFrame, kept: pd.DataFrame) -> pd.DataFrame:
+    """Copies CARRIED_COLUMNS from the judged rows onto their pairs, row for row."""
+    for column in CARRIED_COLUMNS:
+        if column in kept.columns:
+            pairs[column] = kept[column].values
+    return pairs
+
+
+def judged_by(selected: pd.DataFrame, candidates: pd.DataFrame, is_val: pd.Series,
+              by: str) -> dict:
+    """Per value of `by`: negatives sent to the judge, pairs it kept, their reference hire
+    share and their split. V3 reads each pool source's judge stage on its own (D7)."""
+    out = {}
+    for value, sent in selected.groupby(by, sort=True):
+        mine = (candidates[by] == value).to_numpy()
+        kept, val = candidates[mine], is_val.to_numpy()[mine]
+        out[str(value)] = {
+            "selected": len(sent), "kept": len(kept),
+            "keep_rate": round(len(kept) / len(sent), 4),
+            "kept_reference_hire_share": (round(float((kept["reference_decision"] == "hire")
+                                                      .mean()), 4) if len(kept) else None),
+            "train": int((~val).sum()), "validation": int(val.sum())}
+    return out
+
+
+def validation_ids(cfg: dict, rows: pd.DataFrame) -> set[str]:
+    """The candidates the judged pairs hold out.
+
+    Every candidate the source's validation files hold out, plus a seeded `val_fraction` of
+    the split rows' candidates. On v1's pool that draw is v1's own split (the same function,
+    seed and rows), so it adds nothing. V3's new pairs were split per pool source, so the same
+    draw would add about 5% of the candidates SFT-v3 trained on and take them out of DPO's
+    training split. `val_fraction: 0` skips the draw: DPO then holds out exactly the
+    candidates SFT held out.
+    """
+    pinned = v1_validation_candidates(_source(cfg))
+    fraction = float(cfg.get("val_fraction", 0.05))
+    if fraction <= 0:
+        if not pinned:
+            raise ValueError(f"val_fraction 0 but {_source(cfg)} has none of "
+                             f"{V1_VALIDATION_FILES}: no candidate would be held out")
+        return pinned
+    return N.validation_candidates(_split_rows(cfg, rows), pinned, fraction,
+                                   int(cfg.get("seed", 42)))
 
 
 def stage_judge(cfg: dict, out: Path) -> None:
@@ -191,10 +280,7 @@ def stage_judge(cfg: dict, out: Path) -> None:
         pairs = N.build_pairs(kept, cfg["teacher_model"], _source_label(cfg))
         if len(pairs):
             pairs["rejected_generator"] = sample_report["student"]
-            # source_attr: an attribute-coverage row's chosen text was written for this attribute
-            for column in ("free_right_rate", "sample_index", "n_wrong_samples", "source_attr"):
-                if column in kept.columns:
-                    pairs[column] = kept[column].values
+            carry_row_columns(pairs, kept)
         pairs.to_parquet(out / f"candidates_{strategy}.parquet", index=False)
         entry.update({"n_kept": len(pairs), "yield": len(pairs) / len(rows) if len(rows) else 0.0,
                       "separability": N.separability(pairs), "pairs": N._pair_summary(pairs)})
@@ -203,22 +289,23 @@ def stage_judge(cfg: dict, out: Path) -> None:
 
     candidates = pd.concat(all_pairs, ignore_index=True)
     candidates.to_parquet(out / "dpo_v2_candidates.parquet", index=False)
-    split_rows = _split_rows(cfg, rows)
-    val_ids = N.validation_candidates(split_rows, v1_validation_candidates(_source(cfg)),
-                                      float(cfg.get("val_fraction", 0.05)),
-                                      int(cfg.get("seed", 42)))
+    val_ids = validation_ids(cfg, rows)
     is_val = candidates["candidate_id"].astype(str).isin(val_ids)
     candidates[~is_val].to_parquet(out / "dpo_v2_train.parquet", index=False)
     candidates[is_val].to_parquet(out / "dpo_v2_validation.parquet", index=False)
     report["splits"] = {"dpo_v2_train": int((~is_val).sum()),
                         "dpo_v2_validation": int(is_val.sum()),
                         "validation_candidates": len(val_ids)}
+    if "pool_source" in candidates.columns:
+        report["by_pool_source"] = judged_by(selected, candidates, is_val, "pool_source")
     (out / "report.json").write_text(_json(report), encoding="utf-8")
     N.write_samples(out / "samples.md", candidates, int(cfg.get("n_samples", 20)))
     for strategy, entry in report["strategies"].items():
         print(f"  {strategy:15s} kept {entry['n_kept']:5d} of {entry['n_selected']} selected | "
               f"balanced AUC {entry['separability']['auc_balanced']}")
     print(f"  splits: {report['splits']}")
+    for source, entry in report.get("by_pool_source", {}).items():
+        print(f"  {source:15s} {entry}")
 
 
 def stage_balance(cfg: dict, out: Path) -> None:
@@ -246,11 +333,54 @@ def stage_balance(cfg: dict, out: Path) -> None:
     print(_json(info))
 
 
+def stage_merge(cfg: dict, out: Path) -> None:
+    """The top-up's pairs merged into its base run's inside each split, not balanced.
+
+    r2em balanced by error mass over r1 and the surplus r1's count balance dropped, which
+    together are every merged pair; V3 hands the merged pairs to scripts/build_balanced_dpo.py
+    directly (docs/V3_NEW_DATA.md, round 2). Where both runs have a pair for a row, the base
+    run's stays (`onpolicy.merge_topup`). With `merge_with` (round 3) the rows differ, so the
+    merge is the union; it refuses pairs of another student and a candidate on both sides.
+    """
+    base = _merge_base(cfg)
+    if base is None:
+        raise SystemExit("merge: this config has neither `topup_of` nor `merge_with`; there is "
+                         "nothing to merge")
+    if cfg.get("merge_with"):
+        mine, theirs = _student_of(out), _student_of(base)
+        if not mine or mine != theirs:
+            raise SystemExit(f"merge: {base} was sampled from {theirs}, this run from {mine}; "
+                             "pairs of two students are not merged")
+    target = out / "merged"
+    target.mkdir(exist_ok=True)
+    info: dict = {"base": str(base), "topup": str(out)}
+    merged_splits = {}
+    for split in ("train", "validation"):
+        merged, info[split] = OP.merge_topup(pd.read_parquet(base / f"dpo_v2_{split}.parquet"),
+                                             pd.read_parquet(out / f"dpo_v2_{split}.parquet"))
+        merged_splits[split] = merged
+        info[split]["n_merged"] = len(merged)
+        if "pool_source" in merged.columns:
+            info[split]["by_pool_source_and_reference"] = {
+                f"{s} {d}": int(n) for (s, d), n in
+                merged.groupby(["pool_source", "reference_decision"]).size().items()}
+    if all("candidate_id" in m.columns for m in merged_splits.values()):
+        both = set(merged_splits["train"]["candidate_id"]) & set(
+            merged_splits["validation"]["candidate_id"])
+        if both:
+            raise SystemExit(f"merge: {len(both)} candidate(s) on both sides of the split, "
+                             f"e.g. {sorted(both)[:3]}")
+    for split, merged in merged_splits.items():
+        merged.to_parquet(target / f"dpo_v2_{split}.parquet", index=False)
+    (target / "merge.json").write_text(_json(info), encoding="utf-8")
+    print(_json(info))
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--config", required=True)
-    parser.add_argument("--stage", choices=("prepare", "collect", "judge", "balance"),
+    parser.add_argument("--stage", choices=("prepare", "collect", "judge", "balance", "merge"),
                         required=True)
     args = parser.parse_args()
     cfg = load_config(args.config)
@@ -258,7 +388,7 @@ def main() -> None:
     out = Path(resolve_output_path(cfg["artifacts_dir"]))
     (out / "raw").mkdir(parents=True, exist_ok=True)
     stages = {"prepare": stage_prepare, "collect": stage_collect, "judge": stage_judge,
-              "balance": stage_balance}
+              "balance": stage_balance, "merge": stage_merge}
     stages[args.stage](cfg, out)
 
 

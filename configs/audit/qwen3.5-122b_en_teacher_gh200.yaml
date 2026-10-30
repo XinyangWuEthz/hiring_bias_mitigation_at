@@ -1,0 +1,37 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# The 122B teacher -- the source of every training anchor, invariant target and judge verdict --
+# audited as a screener on the benchmark with the students' exact prompt and greedy decoding:
+# its attribute-free agreement with the GPT-4o reference, its reject share and its own
+# counterfactual instability. The anchor prompt's counterpart is scripts/teacher_anchor_check.py.
+# Evaluation only: these are benchmark outputs and never training data.
+# CSCS Daint, one config on all four GPUs (tensor parallel 4):
+#   CONFIGS=configs/audit/qwen3.5-122b_en_teacher_gh200.yaml GPUS_PER_CONFIG=4 \
+#     scripts/cscs/submit.sh -p debug -t 00:30:00 scripts/cscs/run_audits.sbatch
+backend: vllm
+max_model_len: 8192
+tensor_parallel_size: 4
+gpu_memory_utilization: 0.8       # of 95.6 GiB per GPU; as the teacher's judge runs
+max_num_seqs: 128
+seed: 42
+engine_kwargs:
+  gdn_prefill_backend: triton     # no CUDA toolkit on Daint for FlashInfer's JIT
+raw_dir: outputs/raw
+conditions:
+- explicit
+- implicit
+- attr_free
+chat_template_kwargs:
+  enable_thinking: false
+max_intersection_cells: null
+generation:
+  max_new_tokens: 512
+  temperature: 0.0
+  top_p: 1.0
+  seed: 42
+model: Qwen/Qwen3.5-122B-A10B-GPTQ-Int4
+lang: en
+protected_groups:
+- military_status
+- gender
+- religion
+run_suffix: cscs

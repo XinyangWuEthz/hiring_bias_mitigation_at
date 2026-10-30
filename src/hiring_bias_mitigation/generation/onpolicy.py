@@ -140,18 +140,73 @@ def select_negatives(
     return kept.drop(columns=["_row"]), report
 
 
-def filter_rows(rows: pd.DataFrame, row_filter: dict | None) -> pd.DataFrame:
-    """The rows matching every `column: value` of `row_filter`, re-indexed; None keeps all.
+def _share(flags: list[bool]) -> float | None:
+    return round(sum(flags) / len(flags), 4) if flags else None
 
-    A top-up run samples one slice of the pool harder (the hire rows at k=32). Its prompt keys
-    are positions in the filtered rows, which is why the index is reset.
+
+def selection_by(rows: pd.DataFrame, attributed: list[list[str]],
+                 free_by_pair: dict[str, list[str]], selected: pd.DataFrame, by: str,
+                 lang: str = "en") -> dict:
+    """The student's decisions and the negatives selected from them, per value of `by`.
+
+    V3 balances and checks each pool source on its own (docs/V3_NEW_DATA.md, round 2). Which
+    side a student errs on follows from its operating point, so each source's attribute-free
+    hire rate is read beside its negatives; a source whose tipped negatives fall under 2% of
+    its rows is reported before the judge runs. `attributed` lines up with `rows`, and
+    `free_by_pair` holds each pair's attribute-free samples under its `pair_id` as a string.
+    """
+    rows = rows.reset_index(drop=True)
+    out = {}
+    for value, part in rows.groupby(by, sort=True):
+        references = part["reference_decision"].tolist()
+        with_attr = [(d, ref) for i, ref in zip(part.index, references)
+                     for d in _decisions(attributed[i], lang)]
+        pair_ref = part.drop_duplicates("pair_id").set_index("pair_id")["reference_decision"]
+        free = [(d, ref) for pair, ref in pair_ref.items()
+                for d in _decisions(free_by_pair[str(pair)], lang)]
+        picked = selected[selected[by] == value] if len(selected) else selected
+        strategies = picked["rejected_strategy"].value_counts() if len(picked) else {}
+        tipped = picked[picked["rejected_strategy"] == TIPPED] if len(picked) else picked
+        out[str(value)] = {
+            "rows": len(part), "pairs": len(pair_ref),
+            "reference_hire_share": _share([r == "hire" for r in references]),
+            "student_hire_rate_attr_free": _share([d == "hire" for d, _ in free]),
+            "student_right_rate_attr_free": _share([d == r for d, r in free]),
+            "student_hire_rate_with_attribute": _share([d == "hire" for d, _ in with_attr]),
+            "student_right_rate_with_attribute": _share([d == r for d, r in with_attr]),
+            "student_right_rate_with_attribute_by_reference": {
+                side: _share([d == r for d, r in with_attr if r == side])
+                for side in ("hire", "reject")},
+            "selected": {str(k): int(v) for k, v in dict(strategies).items()},
+            "tipped_per_row": round(int(dict(strategies).get(TIPPED, 0)) / len(part), 4),
+            # The side each source's error-mass balance will be short of.
+            "tipped_by_reference": {side: int((tipped["reference_decision"] == side).sum())
+                                    if len(tipped) else 0 for side in ("hire", "reject")},
+        }
+    return out
+
+
+def filter_rows(rows: pd.DataFrame, row_filter: dict | list[dict] | None) -> pd.DataFrame:
+    """The rows `row_filter` keeps, re-indexed; None keeps all.
+
+    A dict keeps the rows matching every `column: value` of it, and a list value matches any of
+    its items. A list of dicts keeps the rows matching any one of them: V3's top-up takes the
+    hire rows of djinni_new and kaggle_linkedin and the reject rows of RJDB, each source's short
+    side. A top-up run samples one slice of the pool harder (k=32); its prompt keys are positions
+    in the filtered rows, which is why the index is reset.
     """
     if not row_filter:
         return rows
-    mask = pd.Series(True, index=rows.index)
-    for column, value in row_filter.items():
-        mask &= rows[column] == value
-    return rows[mask].reset_index(drop=True)
+    keep = pd.Series(False, index=rows.index)
+    for one in (row_filter if isinstance(row_filter, list) else [row_filter]):
+        mask = pd.Series(True, index=rows.index)
+        for column, value in one.items():
+            if isinstance(value, (list, tuple)):
+                mask &= rows[column].isin(list(value))
+            else:
+                mask &= rows[column] == value
+        keep |= mask
+    return rows[keep].reset_index(drop=True)
 
 
 #: A rationale with one of these addresses one gender. Reused under another attribute it

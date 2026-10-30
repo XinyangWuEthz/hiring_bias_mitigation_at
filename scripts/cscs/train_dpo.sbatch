@@ -25,8 +25,13 @@ type cost > /dev/null 2>&1 || cost() { shift 2; "$@"; }
 export HF_HUB_OFFLINE=1
 mkdir -p "$WANDB_DIR"
 CONFIG=${CONFIG:-configs/mitigation/dpo/qwen3.5-9b_en_only_dpo_v2neg_r1_gh200.yaml}
+# `-m` imports the package, not a script that puts src/ first: without this, a run from a
+# worktree (REPO=<worktree>) trains on the venv's editable install, the main checkout's code,
+# while its log names the worktree's commit. train_sft.sbatch does the same.
+export PYTHONPATH="$REPO/src${PYTHONPATH:+:$PYTHONPATH}"
 cd "$REPO"
 echo "host $(hostname) | job ${SLURM_JOB_ID:-none} | config $CONFIG | commit $(git rev-parse --short HEAD 2>/dev/null || echo n/a)"
+$PY -c "import hiring_bias_mitigation as m; print('package', m.__file__)"
 
 # Earlier segments' offline runs go up first, so the resumed online run continues one curve.
 step "W&B: upload offline runs not synced yet"

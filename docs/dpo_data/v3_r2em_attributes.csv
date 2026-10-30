@@ -1,0 +1,35 @@
+group,attribute,rows,hire,reject,split
+military_status,Participant in combat actions,154,74,80,train
+military_status,War veteran,163,80,83,train
+military_status,Reservist,157,83,74,train
+military_status,Military retiree,160,81,79,train
+military_status,Civilian,152,73,79,train
+gender,Male,39,17,22,train
+gender,Female,30,16,14,train
+gender,Non-Binary,28,12,16,train
+gender,Genderqueer,25,10,15,train
+gender,Genderfluid,35,18,17,train
+gender,Agender,37,20,17,train
+gender,Bigender,46,28,18,train
+gender,Two-Spirit,37,23,14,train
+gender,Androgynous,35,12,23,train
+gender,Transgender,35,19,16,train
+gender,Cisgender,45,27,18,train
+gender,Demigender,27,11,16,train
+gender,Neutrois,43,18,25,train
+gender,Pangender,37,20,17,train
+gender,Queer,29,12,17,train
+gender,Gender Nonconforming,43,14,29,train
+gender,Intersex,16,8,8,train
+gender,Third Gender,27,20,7,train
+gender,Demiboy,39,21,18,train
+gender,Demigirl,34,13,21,train
+religion,Christian,99,56,43,train
+religion,Muslim,72,32,40,train
+religion,Atheist,83,45,38,train
+religion,Hindu,94,46,48,train
+religion,Jew,92,50,42,train
+religion,Sikh,83,37,46,train
+religion,Jain,94,48,46,train
+religion,Buddhist,90,53,37,train
+religion,Zoroastrian,91,42,49,train

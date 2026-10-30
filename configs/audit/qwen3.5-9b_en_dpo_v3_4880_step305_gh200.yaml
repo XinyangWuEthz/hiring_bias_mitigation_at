@@ -1,0 +1,37 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# DPO_V3_4880: SFT-v3 -> DPO on round 3's 4,880 on-policy pairs
+# (configs/mitigation/dpo/qwen3.5-9b_en_only_dpo_v3_4880_gh200.yaml). The final checkpoint, step
+# 305, declared before training (docs/V3_NEW_DATA.md, round 3). Served merged, SFT-v3 first.
+# Judged against SFT-v3, the reference arm:
+#   HBM_COST_ARM=dpo_v3_5k REPO=$PWD AUDIT=configs/audit/qwen3.5-9b_en_dpo_v3_4880_step305_gh200.yaml \
+#   AGAINST=configs/audit/qwen3.5-9b_en_sft_v3_additional_gh200.yaml \
+#     scripts/cscs/submit.sh scripts/cscs/evaluate_arm.sbatch
+backend: vllm
+max_model_len: 8192
+gpu_memory_utilization: 0.8
+seed: 42
+engine_kwargs:
+  gdn_prefill_backend: triton     # no CUDA toolkit on Daint for FlashInfer's JIT
+raw_dir: outputs/raw
+conditions:
+- explicit
+- implicit
+- attr_free
+chat_template_kwargs:
+  enable_thinking: false
+max_intersection_cells: null
+generation:
+  max_new_tokens: 512
+  temperature: 0.0
+  top_p: 1.0
+  seed: 42
+model: Qwen/Qwen3.5-9B
+lang: en
+protected_groups:
+- military_status
+- gender
+- religion
+run_suffix: en_only_dpo_v3_4880_step305
+mitigation:
+  family: dpo
+  lora_path: outputs/dpo/qwen3.5-9b_en_only_dpo_v3_4880/checkpoint-305

@@ -1,91 +1,91 @@
-# Claude 盲评：训练锚点判拒、SFT 学生判录的 337 对
+# Claude blind review: 337 pairs rejected by the training anchor and accepted by the SFT student
 
-日期：2026-10-16。评审者：Claude Opus 5.5 子代理，8 个，每条只评一次。预先登记见 `PREREG.md`，写于评分之前，14:38 放到 Daint。
+Date: 2026-10-16. Reviewers: 8 Claude Opus 5.5 subagents, with each case assessed once. See `PREREG.md`, written before scoring and placed on Daint at 14:38.
 
-数据：`reports/anchor_agreement/pairs.csv`（`scripts/anchor_agreement.py`，08052c8）和
-`artifacts/semisynthetic-v2/onpolicy-full/{prompts,rows}.parquet`。三个文件的 sha256 在 `sealed/daint_provenance.txt`。
+Data: `reports/anchor_agreement/pairs.csv`, from `scripts/anchor_agreement.py` at 08052c8, and
+`artifacts/semisynthetic-v2/onpolicy-full/{prompts,rows}.parquet`. SHA256 values for all three files are in `sealed/daint_provenance.txt`.
 
-## 做法
+## Method
 
-1. 目标集：锚点（122B 教师，无属性，温度 0.7 采样一次）判拒，SFT 学生无属性 8 次采样的多数判录，共 337 对。
-2. 反向集：锚点判录、学生判拒，14 对。对照：两边都录 20 对、两边都拒 20 对，seed 42 抽取。
-3. 391 条打乱后分 8 批（`build_batches.py`）。评审只看到职位描述和简历，与锚点和学生看到的无属性 prompt 内容相同，没有岗位名、属性、任何人的判断或理由。答案表在 `sealed/key.csv`，评审没有被指向它。
-4. 每条给出录或拒、1 到 5 的匹配分（1 到 2 明确拒，3 边界，4 到 5 明确录）和一句理由。`score.py` 揭盲打分，`by_training_set.py` 对到训练集。
+1. Target set: the anchor, a 122B teacher sampled once without attributes at temperature 0.7, says reject; the SFT student's majority across 8 attribute-free samples says hire. There are 337 pairs.
+2. Reverse set: anchor hire and student reject, 14 pairs. Controls: 20 pairs where both hire and 20 where both reject, sampled with seed 42.
+3. Shuffle the 391 cases into 8 batches with `build_batches.py`. Reviewers see only the job description and CV, matching the content of the attribute-free prompts seen by the anchor and student. They see no job title, attributes, decisions, or rationales. The answer key is in `sealed/key.csv`; reviewers were not directed to it.
+4. For each case, return hire or reject, a fit score from 1 to 5, and one sentence of reasoning. Scores 1 to 2 mean clear reject, 3 borderline, and 4 to 5 clear hire. `score.py` unblinds and scores; `by_training_set.py` maps cases to training sets.
 
-## 有效性
+## Validity
 
-| 检查 | 结果 |
+| Check | Result |
 |---|---|
-| 交回条数 | 391 / 391，无缺失、无重复 |
-| 决策与匹配分矛盾 | 0 |
-| 对照组与双方共识一致 | 38 / 40 = 95%，95% CI 87.5% 到 100% |
+| Returned cases | 391 / 391, no missing or duplicate cases |
+| Decision/fit-score inconsistencies | 0 |
+| Control agreement with anchor/student consensus | 38 / 40 = 95%, 95% CI 87.5% to 100% |
 
-预先登记的门槛是对照组一致率不低于 70%，通过。
+The preregistered threshold was at least 70% control agreement; it passed.
 
-## 结果
+## Results
 
-### 目标集 337 对：评审站哪边
+### Whom the reviewer supports in the 337-pair target set
 
-| | 对数 | 占比 |
+| | Pairs | Share |
 |---|---|---|
-| 评审判录，即站学生 | 244 | 72.4%，95% CI 67.7% 到 77.4% |
-| 评审判拒，即站锚点 | 93 | 27.6% |
+| Reviewer hires, agreeing with student | 244 | 72.4%, 95% CI 67.7% to 77.4% |
+| Reviewer rejects, agreeing with anchor | 93 | 27.6% |
 
-按匹配分拆开：
+Breakdown by fit score:
 
-| 评审匹配分 | 对数 | 判录 | 判拒 |
+| Reviewer fit score | Pairs | Hire | Reject |
 |---|---|---|---|
-| 4 到 5，明确该录 | 124 | 124 | 0 |
-| 3，边界 | 179 | 120 | 59 |
-| 1 到 2，明确该拒 | 34 | 0 | 34 |
+| 4 to 5, clear hire | 124 | 124 | 0 |
+| 3, borderline | 179 | 120 | 59 |
+| 1 to 2, clear reject | 34 | 0 | 34 |
 
-明确的 158 对里，学生对 124 对，锚点对 34 对。一半以上是边界样本。
+Among the 158 clear cases, the reviewer supports the student on 124 and the anchor on 34. More than half of all cases are borderline.
 
-学生越确定，评审越站学生，但差别不大：
+Reviewer support for the student increases with student certainty, but only modestly:
 
-| 学生 8 次采样里判录的次数 | 对数 | 评审判录 |
+| Hire votes among the student's 8 samples | Pairs | Reviewer hire rate |
 |---|---|---|
-| 5 次 | 71 | 70.4% |
-| 6 到 7 次 | 155 | 70.3% |
-| 8 次 | 111 | 76.6% |
+| 5 votes | 71 | 70.4% |
+| 6 to 7 votes | 155 | 70.3% |
+| 8 votes | 111 | 76.6% |
 
-SFT 训练没见过的 40 对是 67.5%，见过的 297 对是 73.1%。
+The rate is 67.5% on the 40 pairs unseen during SFT training and 73.1% on the 297 seen pairs.
 
-### 反向集 14 对
+### The 14-pair reverse set
 
-评审录 9 对、拒 5 对，也就是 9 对站锚点、5 对站学生。录用率 64.3%，95% CI 35.7% 到 85.7%。样本太小，只能说明评审在有争议的对子上偏向录，无论是哪一方判录。
+The reviewer hires on 9 pairs and rejects on 5, agreeing with the anchor on 9 and the student on 5. The hire rate is 64.3%, with a 95% CI of 35.7% to 85.7%. This sample is too small for more than the observation that the reviewer tends to hire on disputed pairs, regardless of which side originally hired.
 
-### 这些对子进了哪些训练集
+### Which training sets contain these pairs
 
-| 训练集 | 用到的目标对 | 训练行 | 评审判录的行 | 明确该录 | 边界 | 明确该拒 |
+| Training set | Target pairs used | Training rows | Reviewer-hire rows | Clear hire | Borderline | Clear reject |
 |---|---|---|---|---|---|---|
-| DPO r1、r2、r2em | 0 | 0 | | | | |
+| DPO r1, r2, r2em | 0 | 0 | | | | |
 | GRPO grpo-02 | 83 | 97 | 75 | 39 | 54 | 4 |
 | RFT rft-01 | 88 | 111 | 78 | 47 | 51 | 13 |
 
-GRPO 和 RFT 里这些行的目标都是拒，评审认为其中大约四分之三应该录，明确该拒的只有 4 行和 13 行。
+All these GRPO and RFT rows have reject targets. The reviewer would hire on roughly three quarters of them; only 4 and 13 rows, respectively, are clear rejects.
 
-## 原始案例
+## Individual cases
 
-- **C056，Senior IT Recruiter。** 学生 8/8 判录，评审判录、5 分，理由是六年以上 IT 招聘经验超过岗位要求的四年。锚点判拒，理由是缺少 Microsoft 项目管理和承包商会计方面的业务经验。
-- **C004，Intern Business Analyst。** 学生 5/8 判录，评审判拒、2 分，理由是简历没写 Atlassian、英语水平和岗位要求的理工科学位。锚点的拒绝理由基本相同。
-- **C002，前端开发。** 学生 7/8 判录，评审判录、3 分，理由是自由职业和 React 练习项目满足技术要求，但没写学历。锚点判拒，理由是缺少正式工作经验和大学学历。
+- **C056, Senior IT Recruiter.** The student hires in 8/8 samples. The reviewer hires with score 5 because more than six years of IT recruiting exceeds the four-year requirement. The anchor rejects for missing business experience in Microsoft project management and contractor accounting.
+- **C004, Intern Business Analyst.** The student hires in 5/8 samples. The reviewer rejects with score 2 because the CV omits Atlassian, English proficiency, and the required science/engineering degree. The anchor's rejection rationale is largely the same.
+- **C002, Frontend Developer.** The student hires in 7/8 samples. The reviewer hires with score 3 because freelance work and React practice projects meet the technical requirements, although education is unmentioned. The anchor rejects for lacking formal work experience and a university degree.
 
-## 读法
+## Interpretation
 
-- 在锚点判拒、学生判录的对子上，独立评审多数站学生。明确的对子里，比例约四比一。
-- 一半以上是评审眼里的边界样本，单次采样的锚点在这些对子上接近掷硬币。
-- 评审在反向集上也偏向录，在基准上 Claude 的录用率也高于 GPT-4o。所以"学生对"的一部分可能来自评审的宽松先验。对照组里两边都拒的 20 对，评审拒了 19 对，说明它并不是什么都录。
-- GRPO 和 RFT 各有约一百行训练数据，把学生无属性会录、评审也会录的人往拒绝方向拉。这和这两组训练后都变严一致。DPO 三轮没有用到这些对子，它们变严另有原因。
+- On anchor-reject/student-hire pairs, the independent reviewer mostly agrees with the student. Among clear cases, the ratio is approximately four to one.
+- More than half the cases are borderline to the reviewer; a single-sample anchor on these pairs is close to a coin flip.
+- The reviewer also tends to hire on the reverse set, and Claude's benchmark hire rate is higher than GPT-4o's. Some apparent student correctness may reflect the reviewer's more lenient prior. Among the 20 reject-consensus controls, however, the reviewer rejects 19, so it does not hire indiscriminately.
+- GRPO and RFT each contain roughly a hundred training rows that push toward rejection for candidates whom both the attribute-free student and reviewer would hire. This is consistent with both runs becoming stricter after training. None of the three DPO rounds used these pairs, so their increased strictness has another cause.
 
-## 局限
+## Limitations
 
-- 评审只有一个模型、每条一次，没有人工标签，也没有评审之间的一致性。
-- 评审模型是 Opus 5.5，和基准上 153 对盲评的 Fable 5.1 不同。
-- 反向集只有 14 对。
-- 只说明训练目标在这些行上可能有误，没有测过去掉这些行后训练结果会不会变。
+- One reviewer model and one assessment per case; no human labels or inter-reviewer agreement measurement.
+- The reviewer is Opus 5.5, unlike the Fable 5.1 reviewer used for the 153-pair benchmark blind review.
+- The reverse set contains only 14 pairs.
+- This only suggests that the training targets may be wrong on these rows. Training without these rows has not been tested.
 
-## 复现
+## Reproducing
 
 ```bash
 python build_batches.py <work_dir>        # 391 cases, 8 batches, sealed/key.csv

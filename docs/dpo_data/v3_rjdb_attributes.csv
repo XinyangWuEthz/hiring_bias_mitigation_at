@@ -1,0 +1,34 @@
+group,attribute,rows,hire,reject,split
+military_status,Participant in combat actions,20,8,12,train
+military_status,War veteran,17,8,9,train
+military_status,Reservist,19,10,9,train
+military_status,Military retiree,16,9,7,train
+military_status,Civilian,19,13,6,train
+gender,Male,4,2,2,train
+gender,Female,2,1,1,train
+gender,Non-Binary,8,1,7,train
+gender,Genderqueer,5,3,2,train
+gender,Genderfluid,2,1,1,train
+gender,Agender,3,2,1,train
+gender,Bigender,4,2,2,train
+gender,Two-Spirit,8,7,1,train
+gender,Androgynous,2,2,0,train
+gender,Transgender,8,3,5,train
+gender,Cisgender,4,2,2,train
+gender,Demigender,4,2,2,train
+gender,Neutrois,9,4,5,train
+gender,Pangender,4,2,2,train
+gender,Queer,3,1,2,train
+gender,Intersex,3,2,1,train
+gender,Third Gender,4,3,1,train
+gender,Demiboy,7,4,3,train
+gender,Demigirl,4,3,1,train
+religion,Christian,8,4,4,train
+religion,Muslim,13,7,6,train
+religion,Atheist,10,5,5,train
+religion,Hindu,13,3,10,train
+religion,Jew,7,3,4,train
+religion,Sikh,13,10,3,train
+religion,Jain,13,3,10,train
+religion,Buddhist,12,4,8,train
+religion,Zoroastrian,4,2,2,train

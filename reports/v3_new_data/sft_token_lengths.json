@@ -1,0 +1,117 @@
+{
+  "config": "configs/mitigation/sft/qwen3.5-9b_en_only_sft_v3_additional_gh200.yaml",
+  "base_model": "Qwen/Qwen3.5-9B",
+  "data_config": "configs/data/en_only_sft_v3_additional.yaml",
+  "max_seq_len": 3072,
+  "by": "pool_source",
+  "splits": {
+    "train": {
+      "all": {
+        "rows": 62761,
+        "tokens": 46997031,
+        "mean": 748.8,
+        "p50": 632,
+        "p99": 2049,
+        "max": 2543,
+        "over_2048": 629,
+        "over_3072": 0
+      },
+      "by": {
+        "djinni_new": {
+          "rows": 21705,
+          "tokens": 16627239,
+          "mean": 766.1,
+          "p50": 725,
+          "p99": 1431,
+          "max": 2104,
+          "over_2048": 5,
+          "over_3072": 0
+        },
+        "djinni_v1": {
+          "rows": 8419,
+          "tokens": 6383720,
+          "mean": 758.3,
+          "p50": 723,
+          "p99": 1383,
+          "max": 1940,
+          "over_2048": 0,
+          "over_3072": 0
+        },
+        "kaggle_linkedin": {
+          "rows": 5017,
+          "tokens": 8016763,
+          "mean": 1597.9,
+          "p50": 1606,
+          "p99": 2354,
+          "max": 2543,
+          "over_2048": 624,
+          "over_3072": 0
+        },
+        "rjdb": {
+          "rows": 27620,
+          "tokens": 15969309,
+          "mean": 578.2,
+          "p50": 571,
+          "p99": 778,
+          "max": 899,
+          "over_2048": 0,
+          "over_3072": 0
+        }
+      }
+    },
+    "validation": {
+      "all": {
+        "rows": 3527,
+        "tokens": 2689820,
+        "mean": 762.6,
+        "p50": 628,
+        "p99": 2064,
+        "max": 2261,
+        "over_2048": 39,
+        "over_3072": 0
+      },
+      "by": {
+        "djinni_new": {
+          "rows": 1283,
+          "tokens": 983485,
+          "mean": 766.6,
+          "p50": 722,
+          "p99": 1506,
+          "max": 1585,
+          "over_2048": 0,
+          "over_3072": 0
+        },
+        "djinni_v1": {
+          "rows": 455,
+          "tokens": 337544,
+          "mean": 741.9,
+          "p50": 722,
+          "p99": 1235,
+          "max": 1403,
+          "over_2048": 0,
+          "over_3072": 0
+        },
+        "kaggle_linkedin": {
+          "rows": 311,
+          "tokens": 497164,
+          "mean": 1598.6,
+          "p50": 1584,
+          "p99": 2243,
+          "max": 2261,
+          "over_2048": 39,
+          "over_3072": 0
+        },
+        "rjdb": {
+          "rows": 1478,
+          "tokens": 871627,
+          "mean": 589.7,
+          "p50": 577,
+          "p99": 864,
+          "max": 1141,
+          "over_2048": 0,
+          "over_3072": 0
+        }
+      }
+    }
+  }
+}

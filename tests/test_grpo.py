@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import copy
 import json
+from types import SimpleNamespace
 
+import numpy as np
 import pandas as pd
 import pytest
 
@@ -129,6 +131,43 @@ def test_signal_balance_gives_both_halves_the_same_pull():
     assert abs(pulls["hire"] - pulls["reject"]) <= 0.5  # one reject row's pull
     assert plan["hire"]["pull"] == pytest.approx(pulls["hire"], abs=0.01)
     assert not train.duplicated(G.ROW_KEY).any()
+
+
+def _mixed_pull(rows: pd.DataFrame, informative_untipped: dict) -> pd.DataFrame:
+    """Tipped rows err 3 of 8 times; the first `informative_untipped[side]` untipped rows of a
+    side 1 of 8 times; every other row never."""
+    rate = []
+    for side, group in rows.groupby("reference_decision", sort=False):
+        seen = 0
+        for tipped in group["tipped"]:
+            wrong = 3 / 8 if tipped else (1 / 8 if seen < informative_untipped[side] else 0.0)
+            seen += not tipped
+            rate.append(1 - wrong if side == "hire" else wrong)
+    counts = {p: (round(r * 8), 8) for p, r in zip(rows["prompt"], rate)}
+    return G.attach_sft_rates(rows, counts)
+
+
+def test_pull_fill_takes_rows_with_signal_before_rows_without():
+    rows = _mixed_pull(_rows(200, 200, 20, 20), {"hire": 30, "reject": 30})
+    random, _ = G.signal_balanced_train(rows, 100, seed=4)
+    pulled, plan = G.signal_balanced_train(rows, 100, seed=4, fill="pull")
+    assert pulled["reference_decision"].value_counts().to_dict() == {"hire": 50, "reject": 50}
+    for side in ("hire", "reject"):
+        assert plan[side]["drawn_tipped"] == 20  # attribute-tipped rows still go first
+        assert plan[side]["drawn_informative"] == 50
+        assert plan[side]["available_informative"] == 50
+    assert (pulled["pull"] > 0).sum() == 100 > (random["pull"] > 0).sum()
+    assert pulled["pull"].sum() > random["pull"].sum()
+    with pytest.raises(ValueError, match="fill"):
+        G.signal_balanced_train(rows, 100, fill="best")
+
+
+def test_informative_half_is_the_smaller_side_with_a_sampled_error():
+    rows = _mixed_pull(_rows(200, 200, 20, 20), {"hire": 30, "reject": 70})
+    assert G.informative_half(rows) == 50
+    train, plan = G.signal_balanced_train(rows, 2 * G.informative_half(rows), fill="pull")
+    assert plan["hire"]["drawn_informative"] == 50  # the short side uses every one
+    assert (train["pull"] > 0).all()
 
 
 def test_signal_balance_refuses_a_side_too_small_and_is_seeded():
@@ -294,6 +333,21 @@ def test_projected_hire_rate_carries_relative_changes_onto_sfts_benchmark_rates(
         pytest.approx(0.191, abs=0.002)
 
 
+def test_the_monitor_projects_onto_its_own_sft_parents_benchmark_rates():
+    pytest.importorskip("transformers")
+    rows = pd.DataFrame({"reference_decision": ["hire", "reject"]})
+    default = grpo._decision_monitor_class()(rows, None, ".", 25, (0.2, 0.4), None)
+    assert default.sft_benchmark == grpo.SFT_BENCHMARK
+    # SFT-v3 (reports/reference_metrics.csv): 57.73% where GPT-4o hires, 5.266% where it rejects
+    v3 = {"hire_rate_ref_hire": 0.5773, "hire_rate_ref_reject": 0.05266}
+    monitor = grpo._decision_monitor_class()(rows, None, ".", 25, (0.15, 0.35), None,
+                                             sft_benchmark=v3)
+    assert monitor.sft_benchmark["reference_hire_share"] == 0.333
+    same = {"hire_rate_ref_hire": 1.0, "hire_rate_ref_reject": 0.2}
+    out = grpo.projected_hire_rate(same, same, 128, monitor.sft_benchmark)
+    assert out["hire_rate_projected"] == pytest.approx(0.333 * 0.5773 + 0.667 * 0.05266)
+
+
 def test_merged_into_base_runs_the_pushed_weights_and_restores_the_base_bit_for_bit():
     torch = pytest.importorskip("torch")
     model = _tiny_peft()
@@ -322,3 +376,90 @@ def test_merge_retention_sees_a_delta_too_small_for_bf16():
             if "lora_B" in name:
                 param.zero_()
     assert grpo.merge_retention(model) == {"kept_fraction": 1.0, "unchanged": 1.0}
+
+
+# ---- margin monitor -----------------------------------------------------------------------
+
+def test_margin_bins_are_left_closed_like_pandas_cut():
+    edges = grpo.MARGIN_EDGES
+    margins = [-9.0, edges[0], -1.0, 0.0, 0.5, edges[-1], 12.0]
+    expected = pd.cut(margins, [-np.inf, *edges, np.inf], right=False, labels=False).tolist()
+    assert grpo.margin_bins(margins).tolist() == expected == [0, 1, 2, 4, 4, 7, 7]
+
+
+def test_the_projection_weights_each_bins_change_by_the_benchmarks_share():
+    edges = (-1.0, 1.0)                       # three bins: confident reject, borderline, hire
+    share_hire, share_reject = [0.2, 0.3, 0.5], [0.9, 0.1, 0.0]
+    parent = np.array([-3.0, -2.0, 0.5, 0.5, 0.2, -0.5, 4.0, 5.0])
+    current = parent.copy()
+    current[[2, 3]] = -0.1                    # borderline: hires go from 3 of 4 to 1 of 4
+    current[6] = -1.0                         # confident hires: 1 of 2 lost
+    sft = {"hire_rate_ref_hire": 0.6, "hire_rate_ref_reject": 0.05, "reference_hire_share": 0.25}
+    out = grpo.project_from_margins(parent, current, edges, share_hire, share_reject, sft)
+    assert [b["n"] for b in out["bins"]] == [2, 4, 2]
+    assert [b["delta_hire_share"] for b in out["bins"]] == [0.0, -0.5, -0.5]
+    assert out["delta_tpr"] == pytest.approx(0.3 * -0.5 + 0.5 * -0.5)
+    assert out["delta_fpr"] == pytest.approx(0.1 * -0.5)
+    assert out["projected_tpr"] == pytest.approx(0.6 - 0.4)
+    assert out["hire_rate_projected"] == pytest.approx(0.25 * 0.2 + 0.75 * 0.0)
+    # A bin no monitor row falls in moves nothing and says how much weight went unseen.
+    out = grpo.project_from_margins(parent[:2], current[:2], edges, share_hire, share_reject, sft)
+    assert out["delta_tpr"] == 0.0 and out["unseen_ref_hire"] == pytest.approx(0.8)
+
+
+def test_monitor_rows_cover_every_level_of_the_parents_confidence():
+    rates = [0.0] * 50 + [0.05] * 3 + [0.4] * 10 + [0.6] * 10 + [0.95] * 10 + [1.0] * 40
+    rows = pd.DataFrame({"sft_hire_rate": rates, "candidate_id": [f"c{i}" for i in range(123)],
+                         "reference_decision": ["hire", "reject"] * 61 + ["hire"]})
+    picked, plan = G.monitor_rows(rows, per_bin=8, seed=3)
+    assert [v["drawn"] for v in plan.values()] == [8, 3, 0, 8, 8, 0, 8, 8]
+    assert [v["available"] for v in plan.values()] == [50, 3, 0, 10, 10, 0, 10, 40]
+    assert list(plan)[-1] == "[0.99, 1]" and (picked["sft_hire_rate"] == 1.0).sum() == 8
+    again, _ = G.monitor_rows(rows, per_bin=8, seed=3)
+    assert picked.equals(again) and not picked.equals(G.monitor_rows(rows, 8, seed=4)[0])
+
+
+class _State:
+    def __init__(self, step: int = 0, zero: bool = True):
+        self.global_step, self.is_world_process_zero = step, zero
+
+
+def _margin_monitor(tmp_path, score, stop=0.08):
+    pytest.importorskip("transformers")
+    settings = {"edges": [-1.0, 1.0], "share_ref_hire": [0.2, 0.3, 0.5],
+                "share_ref_reject": [0.9, 0.1, 0.0], "reference_hire_share": 0.25,
+                "tpr_drop_stop": stop}
+    return grpo._margin_monitor_class()(["p1", "p2", "p3", "p4"], score, tmp_path, 25, settings,
+                                        {"hire_rate_ref_hire": 0.6, "hire_rate_ref_reject": 0.05})
+
+
+def test_the_margin_monitor_scores_the_parent_once_and_a_resumed_run_reads_it(tmp_path):
+    calls = []
+    monitor = _margin_monitor(tmp_path, lambda p: calls.append(p) or [-2.0, 0.5, 0.5, 3.0])
+    monitor.on_train_begin(None, _State(0), None)
+    assert calls == [["p1", "p2", "p3", "p4"]]
+    assert monitor.sft_benchmark["reference_hire_share"] == 0.25
+    saved = json.loads((tmp_path / "margin_monitor_parent.json").read_text())["margins"]
+    resumed = _margin_monitor(tmp_path, lambda p: pytest.fail("the parent is not rescored"))
+    resumed.on_train_begin(None, _State(200), None)
+    assert resumed.parent.tolist() == saved
+    other = tmp_path / "fresh"
+    other.mkdir()
+    with pytest.raises(RuntimeError, match="before any update"):
+        _margin_monitor(other, lambda p: [0.0] * 4).on_train_begin(None, _State(200), None)
+
+
+def test_the_margin_monitor_stops_when_the_projected_tpr_falls_past_its_limit(tmp_path):
+    readings = iter([[-2.0, 0.5, 0.5, 3.0], [-2.0, 0.5, 0.3, 3.0], [-2.0, -0.5, 0.5, 3.0]])
+    monitor = _margin_monitor(tmp_path, lambda p: next(readings), stop=0.10)
+    monitor.on_train_begin(None, _State(0), None)
+    control = SimpleNamespace(should_save=False, should_training_stop=False)
+    monitor.on_step_end(None, _State(10), control)          # not a reading step
+    monitor.on_step_end(None, _State(25), control)          # unchanged decisions
+    assert not monitor.aborted and not control.should_training_stop
+    monitor.on_step_end(None, _State(50), control)          # one of two borderline hires lost
+    lines = [json.loads(x) for x in (tmp_path / "margin_monitor.jsonl").read_text().splitlines()]
+    assert [x["step"] for x in lines] == [25, 50]
+    assert lines[1]["delta_tpr"] == pytest.approx(0.3 * -0.5) and lines[1]["stop"]
+    assert monitor.aborted and control.should_save and control.should_training_stop
+    assert monitor.reason == "aborted: projected TPR fell more than 10 pp"

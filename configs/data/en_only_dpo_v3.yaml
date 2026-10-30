@@ -1,0 +1,16 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# V3's DPO set (docs/V3_NEW_DATA.md, round 2): r2em_v3 (configs/data/en_only_dpo_v3_r2em.yaml),
+# V1's pairs, followed by the on-policy pairs drawn from SFT-v3 on the new pairs, balanced by
+# error mass within each pool source. Read with `data_kind: dpo_v3` (dpo_v3_{train,validation}
+# .parquet). Built by scripts/v3_additional_data.py --stage dpo_v3; `dpo_v3_part` names each
+# row's part and `pool_source` its source. r2em_v3's negatives were sampled from SFT v1, so for
+# a DPO run from SFT-v3 that part is off-policy.
+name: en_only_dpo_v3
+artifacts_dir: artifacts/semisynthetic-v3/additional
+seed: 42
+protected_groups:
+- military_status
+- gender
+- religion
+languages:
+- en

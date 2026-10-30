@@ -1,0 +1,319 @@
+{
+  "chosen": null,
+  "candidates": {
+    "audit": {
+      "c1": {
+        "pairs": 124,
+        "hired": 83,
+        "share": 0.6693548387096774,
+        "min": 0.6,
+        "pass": true
+      },
+      "c2": {
+        "pairs": 54,
+        "rejected": 44,
+        "share": 0.8148148148148148,
+        "min": 0.9,
+        "pass": false
+      },
+      "passes": false,
+      "score": 0.48416965352449215,
+      "hire_share": 0.5396419437340153,
+      "sources": {
+        "vote": 356,
+        "tie": 35
+      },
+      "c2_on_reviewer_fit_1_2_only": {
+        "pairs": 50,
+        "rejected": 42
+      },
+      "by_set_and_fit": [
+        {
+          "set": "control_hire",
+          "fit_bucket": "3",
+          "pairs": 4,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "control_hire",
+          "fit_bucket": "4-5",
+          "pairs": 16,
+          "new_anchor_hire_share": 0.9375
+        },
+        {
+          "set": "control_reject",
+          "fit_bucket": "1-2",
+          "pairs": 16,
+          "new_anchor_hire_share": 0.0
+        },
+        {
+          "set": "control_reject",
+          "fit_bucket": "3",
+          "pairs": 3,
+          "new_anchor_hire_share": 0.3333333333333333
+        },
+        {
+          "set": "control_reject",
+          "fit_bucket": "4-5",
+          "pairs": 1,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "reverse",
+          "fit_bucket": "1-2",
+          "pairs": 1,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "reverse",
+          "fit_bucket": "3",
+          "pairs": 6,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "reverse",
+          "fit_bucket": "4-5",
+          "pairs": 7,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "target",
+          "fit_bucket": "1-2",
+          "pairs": 34,
+          "new_anchor_hire_share": 0.23529411764705882
+        },
+        {
+          "set": "target",
+          "fit_bucket": "3",
+          "pairs": 179,
+          "new_anchor_hire_share": 0.4748603351955307
+        },
+        {
+          "set": "target",
+          "fit_bucket": "4-5",
+          "pairs": 124,
+          "new_anchor_hire_share": 0.6693548387096774
+        }
+      ],
+      "hire_votes": {
+        "C1 clear-hire targets": {
+          "0 of 8": 12,
+          "1 of 8": 8,
+          "2 of 8": 1,
+          "3 of 8": 7,
+          "4 of 8": 13,
+          "5 of 8": 9,
+          "6 of 8": 18,
+          "7 of 8": 19,
+          "8 of 8": 37
+        },
+        "C2 clear-reject targets": {
+          "0 of 8": 13,
+          "1 of 8": 3,
+          "2 of 8": 2,
+          "3 of 8": 3,
+          "4 of 8": 5,
+          "5 of 8": 2,
+          "7 of 8": 1,
+          "8 of 8": 5
+        },
+        "C2 both-reject controls": {
+          "0 of 8": 18,
+          "6 of 8": 1,
+          "7 of 8": 1
+        }
+      },
+      "undecided_draw_share": 0.00031969309462915604
+    },
+    "reference_no_decisive": {
+      "c1": {
+        "pairs": 124,
+        "hired": 75,
+        "share": 0.6048387096774194,
+        "min": 0.6,
+        "pass": true
+      },
+      "c2": {
+        "pairs": 54,
+        "rejected": 48,
+        "share": 0.8888888888888888,
+        "min": 0.9,
+        "pass": false
+      },
+      "passes": false,
+      "score": 0.4937275985663083,
+      "hire_share": 0.5191815856777494,
+      "sources": {
+        "vote": 364,
+        "tie": 27
+      },
+      "c2_on_reviewer_fit_1_2_only": {
+        "pairs": 50,
+        "rejected": 44
+      },
+      "by_set_and_fit": [
+        {
+          "set": "control_hire",
+          "fit_bucket": "3",
+          "pairs": 4,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "control_hire",
+          "fit_bucket": "4-5",
+          "pairs": 16,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "control_reject",
+          "fit_bucket": "1-2",
+          "pairs": 16,
+          "new_anchor_hire_share": 0.0
+        },
+        {
+          "set": "control_reject",
+          "fit_bucket": "3",
+          "pairs": 3,
+          "new_anchor_hire_share": 0.0
+        },
+        {
+          "set": "control_reject",
+          "fit_bucket": "4-5",
+          "pairs": 1,
+          "new_anchor_hire_share": 0.0
+        },
+        {
+          "set": "reverse",
+          "fit_bucket": "1-2",
+          "pairs": 1,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "reverse",
+          "fit_bucket": "3",
+          "pairs": 6,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "reverse",
+          "fit_bucket": "4-5",
+          "pairs": 7,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "target",
+          "fit_bucket": "1-2",
+          "pairs": 34,
+          "new_anchor_hire_share": 0.17647058823529413
+        },
+        {
+          "set": "target",
+          "fit_bucket": "3",
+          "pairs": 179,
+          "new_anchor_hire_share": 0.49162011173184356
+        },
+        {
+          "set": "target",
+          "fit_bucket": "4-5",
+          "pairs": 124,
+          "new_anchor_hire_share": 0.6048387096774194
+        }
+      ],
+      "hire_votes": {
+        "C1 clear-hire targets": {
+          "0 of 8": 14,
+          "1 of 8": 7,
+          "2 of 8": 9,
+          "3 of 8": 12,
+          "4 of 8": 7,
+          "5 of 8": 17,
+          "6 of 8": 15,
+          "7 of 8": 28,
+          "8 of 8": 15
+        },
+        "C2 clear-reject targets": {
+          "0 of 8": 16,
+          "1 of 8": 3,
+          "2 of 8": 3,
+          "3 of 8": 1,
+          "4 of 8": 5,
+          "5 of 8": 2,
+          "6 of 8": 3,
+          "7 of 8": 1
+        },
+        "C2 both-reject controls": {
+          "0 of 8": 17,
+          "2 of 8": 3
+        }
+      },
+      "undecided_draw_share": 0.0
+    }
+  },
+  "hired_by_both": {
+    "C1 clear-hire targets": 64,
+    "C2 clear-reject targets": 4,
+    "C2 both-reject controls": 0
+  },
+  "v1_hire_share": 0.08695652173913043,
+  "rule": {
+    "c1_min": 0.6,
+    "c2_min": 0.9,
+    "tie_margin": 0.02,
+    "smaller_edit": "reference_no_decisive"
+  },
+  "draws_meta": {
+    "stage": "select",
+    "model": "Qwen/Qwen3.5-122B-A10B-GPTQ-Int4",
+    "pairs": 391,
+    "k": 8,
+    "decoding": {
+      "max_new_tokens": 320,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "seed": 42
+    },
+    "serving": {
+      "backend": "vllm",
+      "tensor_parallel_size": 4,
+      "gpu_memory_utilization": 0.8,
+      "max_model_len": 8192,
+      "max_num_seqs": 128,
+      "dtype": "auto",
+      "engine_kwargs": {
+        "gdn_prefill_backend": "triton"
+      }
+    },
+    "prompts_sha256": {
+      "audit": "a86c626710345bba478f77e8179999b4108b83f01280977a265f6fbdf432f370",
+      "reference_no_decisive": "82bb271dca8458f51e24252ec648a90b317219d420bc7571549751f72953ce2f"
+    },
+    "generation_seconds": {
+      "audit": 444.2,
+      "reference_no_decisive": 125.4
+    },
+    "written": "2026-10-16T18:06:44+00:00",
+    "prereg_sha256": "edc86ae972cb28a39fe25c838ff6f20a8f869d8dc3f4e6c694ea4da7370c4348",
+    "code": {
+      "commit": "67f4bb1b290a2eaf72307e623655787ad02843a0",
+      "uncommitted": [],
+      "untracked": [
+        "docs/SFT_V3_ANCHORS.md",
+        "scripts/cscs/sft_v3_anchors.sbatch",
+        "scripts/sft_v3_anchors.py"
+      ],
+      "script_sha256": "3c8c10110d5a9726d130b9d06b8ff3f42408819539f861dea920187955ee3527"
+    }
+  },
+  "written": "2026-10-16T18:10:17+00:00",
+  "prereg_sha256": "edc86ae972cb28a39fe25c838ff6f20a8f869d8dc3f4e6c694ea4da7370c4348",
+  "code": {
+    "commit": "cc38e2e7d481080e21178d09a1f7534b85ba9373",
+    "uncommitted": [],
+    "untracked": [
+      "docs/SFT_V3_ANCHORS.md",
+      "scripts/cscs/sft_v3_anchors.sbatch",
+      "scripts/sft_v3_anchors.py"
+    ],
+    "script_sha256": "b2ae92d40b191992259a6ea94205932eda5cf3da717dd27410400c7d873b06b1"
+  }
+}

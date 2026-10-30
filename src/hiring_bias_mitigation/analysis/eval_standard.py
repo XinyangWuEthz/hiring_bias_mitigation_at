@@ -37,20 +37,46 @@ class Thresholds:
     second_seed_within_pp: float = 1.0
 
 
+_SFT_V1 = "Qwen3.5-9B--en--sft--adapter--en_only_cscs"
+_SFT_V3 = "Qwen3.5-9B--en--sft--adapter--en_only_sft_v3_additional"
+
 #: The reference arm of each (model, language, serving stack) cell: the SFT run every later
-#: method is compared with. The SFT run itself is compared with its base.
+#: method is compared with. The SFT run itself is compared with its base. In the 9B English
+#: cell SFT-v3 replaced SFT v1 on 2026-10-20 (user: "V3 as new SFT comparison"), after it beat
+#: SFT v1 under this standard (docs/V3_NEW_DATA.md, round 2).
 REFERENCE_ARMS: dict[tuple[str, str, str], str] = {
-    ("Qwen/Qwen3.5-9B", "en", "gh200"): "Qwen3.5-9B--en--sft--adapter--en_only_cscs",
+    ("Qwen/Qwen3.5-9B", "en", "gh200"): _SFT_V3,
+}
+
+#: Runs that keep the comparison they were judged by when their cell's reference arm changed.
+#: An arm trained from SFT v1 is an ablation against SFT v1, so it is still judged against it;
+#: SFT v1 against its base; SFT-v3 against SFT v1, the comparison by which it became the
+#: reference. Without this, refreshing their rows would look for a comparison with SFT-v3.
+JUDGED_BEFORE: dict[tuple[str, str, str], dict[str, str]] = {
+    ("Qwen/Qwen3.5-9B", "en", "gh200"): {
+        _SFT_V1: "base",
+        _SFT_V3: _SFT_V1,
+        **{f"Qwen3.5-9B--en--dpo--adapter--en_only_v2neg_{arm}": _SFT_V1 for arm in (
+            "r1_step100", "r1_step300", "r2_step50", "r2_step102",
+            "r2em_step50", "r2em_step100", "r2em_step148")},
+        "Qwen3.5-9B--en--grpo--adapter--en_only_grpo_pilot": _SFT_V1,
+        "Qwen3.5-9B--en--sft--adapter--en_only_rft": _SFT_V1,
+    },
 }
 
 
 def declared_reference(run_name: str, model: str | None, lang: str | None,
                        stack: str | None) -> str | None:
-    """The comparison the standard reads for this run: "base" for the cell's reference arm, the
-    reference arm for any other run of the cell, None outside a declared cell."""
-    arm = REFERENCE_ARMS.get((model, lang, stack))
+    """The comparison the standard reads for this run: what `JUDGED_BEFORE` keeps for it, else
+    "base" for the cell's reference arm and the reference arm for any other run of the cell;
+    None outside a declared cell."""
+    cell = (model, lang, stack)
+    arm = REFERENCE_ARMS.get(cell)
     if arm is None:
         return None
+    kept = JUDGED_BEFORE.get(cell, {})
+    if run_name in kept:
+        return kept[run_name]
     return "base" if run_name == arm else arm
 
 

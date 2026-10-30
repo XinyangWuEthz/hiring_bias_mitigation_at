@@ -1,0 +1,32 @@
+pair_id,job_position,reference,variants,changed,hire_to_reject,reject_to_hire,fixes_error,new_error,hire_share_against,hire_share_run,attr_free_against,attr_free_run
+0f668af4-a777-504c-a06f-f543f93c6ce1__1a0f83d8-71f6-5f5b-8407-7eb0fcf13f15,Product Designer,hire,68,68,0,68,68,0,0.0,1.0,reject,hire
+363bf583-5e28-5247-b6b1-9cef57953bd2__b0153092-206f-5fb3-825e-68e7ec67b203,Product manager,hire,68,68,0,68,68,0,0.0,1.0,reject,hire
+4cf6064a-f53e-5c1a-b7c8-4f95f40cd4b3__56c1ac92-0447-5b5c-9c3d-bd0aeac30486,Web Developer,hire,68,68,0,68,68,0,0.0,1.0,reject,hire
+87646231-907c-5a1a-b5c4-c25e3e640b35__71c32008-ef4a-5045-b827-2344dde0fc74,3D Artist,hire,68,68,0,68,68,0,0.0,1.0,reject,hire
+e24a9a16-6bb4-5ee3-b874-4ac0611b3904__144ab2dc-34f8-58ce-b64d-73acbc1bb055,React Developer,hire,68,68,0,68,68,0,0.0,1.0,reject,hire
+ea52f8e2-c78e-5aa9-ba8d-143bb7a60117__8262ebd6-0fcd-5d1a-89ac-ec961a1a2a4e,iOS Developer,reject,68,68,0,68,0,68,0.0,1.0,reject,hire
+f9c288f3-8091-5f7e-9eb0-2bef49471e3a__9d41ce96-f3fb-5002-a883-68b116bef044,JavaScript Developer,hire,68,68,0,68,68,0,0.0,1.0,reject,hire
+fb160439-f3b7-51d5-bb58-acd8f14a6f54__3c94dac3-a214-51ce-98e7-ed65f6f11f21,Python Developer,hire,68,68,0,68,68,0,0.0,1.0,reject,hire
+fdf3b944-8a48-5c21-9965-3f9a7f7074c0__82031f1a-31d6-59e8-9447-64a1cf1f73b9,DevOps engineer,hire,68,68,0,68,68,0,0.0,1.0,reject,hire
+018cfdfa-d7af-565b-9e54-a065759e4d27__269487d9-b66b-5823-b2a4-1fea8b82d581,Automation QA Engineer,hire,68,67,0,67,67,0,0.0,0.985,reject,hire
+d20d7247-3fb4-59df-b1b7-248a0479c185__efc1153a-3970-5470-84ee-a799384f85a0,IT Recruiter,reject,68,67,67,0,67,0,1.0,0.015,hire,reject
+d9d21f88-01a5-52b2-af3d-e196a0aae638__ac98fe25-1a72-5210-8a0b-738fd7c42608,Sales Manager,hire,68,67,0,67,67,0,0.0,0.985,reject,hire
+0f668af4-a777-504c-a06f-f543f93c6ce1__12f37451-b6c2-5421-a05b-89ef7326e3eb,Product Designer,hire,68,66,0,66,66,0,0.029,1.0,reject,hire
+1975f309-f03c-5bd1-97b0-17cab82cd278__8c12c0e2-f2b6-5d84-a106-975526e4128a,DevOps engineer,hire,68,66,0,66,66,0,0.0,0.971,reject,hire
+952c891d-13b4-592a-a726-35887e6653dc__c82e21e2-983f-5e81-b5d3-4f735bbdf461,iOS Developer,hire,68,66,66,0,0,66,0.971,0.0,hire,hire
+3a1141d7-9a0e-5242-a91b-63c56c47baae__9fa61e6d-be3a-5d33-b998-bc598576e437,QA Engineer,reject,68,65,0,65,0,65,0.0,0.956,reject,hire
+0f668af4-a777-504c-a06f-f543f93c6ce1__6531575b-cd8e-5d60-a0f1-f15f4b202e4d,Product Designer,reject,68,58,0,58,0,58,0.147,1.0,reject,hire
+f9c288f3-8091-5f7e-9eb0-2bef49471e3a__755514c0-999c-5852-b613-969af1a3e86e,JavaScript Developer,hire,68,55,0,55,55,0,0.0,0.809,reject,reject
+b82c534e-a605-5389-a251-6a2f56834aba__dad80490-d2cb-5680-8caa-8c4b3a535d24,Java Developer,hire,68,53,0,53,53,0,0.088,0.868,reject,reject
+6a3fcf40-5466-5ebd-8730-880a9b9dfe70__cf934ec6-23c1-58f7-8160-6eebe8d54919,IT Recruiter,hire,68,47,3,44,44,3,0.235,0.838,reject,hire
+76f77eed-eee0-58ad-a94b-2f3d0edb03db__c0dba0ac-6cbb-5716-ad7a-81e008648ee9,React Developer,hire,68,42,0,42,42,0,0.221,0.838,reject,hire
+ac8f03a3-75a7-5246-aef2-36d04d2585c3__b1c9f3db-3cbc-5b9b-90e0-2461b3c113c7,Full Stack Web Developer,hire,68,42,0,42,42,0,0.0,0.618,reject,hire
+1975f309-f03c-5bd1-97b0-17cab82cd278__5b23af2c-50da-55fa-970f-36a0e85b57c6,DevOps engineer,hire,68,40,0,40,40,0,0.412,1.0,reject,hire
+7edbdeba-8b03-5664-a7ba-a39e48c59315__eea15dd8-e0b7-578b-85a5-95add421bdfd,PHP Developer,hire,68,13,0,13,13,0,0.809,1.0,hire,hire
+10b1bd85-9354-56da-9727-2e6536767312__6531575b-cd8e-5d60-a0f1-f15f4b202e4d,Product Designer,hire,68,9,9,0,0,9,0.838,0.706,hire,hire
+e4cc780c-715b-5f36-b1ca-dd525e7ac916__597408fb-969a-5a0c-bbe4-7fc98da6d0a5,Manual QA Engineer,hire,68,7,7,0,0,7,0.103,0.0,reject,reject
+5edd781f-836b-5198-ab3c-a3144f76356c__ad8c139a-5c46-5689-bec5-f9315f417ffd,Sales Manager,reject,68,6,6,0,6,0,0.088,0.0,reject,reject
+6fb4f5de-dd5e-572a-b30e-8c39681f16df__9f7c83c1-4699-57d6-b64b-8fda28eab933,Product Designer,reject,68,3,3,0,3,0,1.0,0.956,hire,hire
+363bf583-5e28-5247-b6b1-9cef57953bd2__8c68fd35-b986-5df7-9552-ec1a547a2675,Product manager,hire,68,2,0,2,2,0,0.971,1.0,hire,hire
+cfb0acd3-b814-505b-b177-950916a30b9d__144ab2dc-34f8-58ce-b64d-73acbc1bb055,React Developer,hire,68,2,0,2,2,0,0.971,1.0,hire,hire
+aebdca1b-2e74-53d9-ace9-490d47704479__7b6e56c5-708b-5175-975b-c03129372cdb,Manual QA Engineer,hire,68,1,0,1,1,0,0.0,0.015,reject,reject

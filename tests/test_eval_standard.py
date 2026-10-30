@@ -77,8 +77,19 @@ def test_missing_prompts_count_against_the_undecided_guardrail():
 
 
 def test_the_declared_reference_of_the_9b_english_cell():
-    sft = "Qwen3.5-9B--en--sft--adapter--en_only_cscs"
-    assert S.declared_reference(sft, "Qwen/Qwen3.5-9B", "en", "gh200") == "base"
-    assert S.declared_reference("Qwen3.5-9B--en--dpo--x", "Qwen/Qwen3.5-9B", "en", "gh200") == sft
+    """SFT-v3 is the reference arm since 2026-10-20 (user); runs judged before keep theirs."""
+    v1 = "Qwen3.5-9B--en--sft--adapter--en_only_cscs"
+    v3 = "Qwen3.5-9B--en--sft--adapter--en_only_sft_v3_additional"
+    cell = ("Qwen/Qwen3.5-9B", "en", "gh200")
+    assert S.REFERENCE_ARMS[cell] == v3
+    # A new method, e.g. DPO from SFT-v3, is judged against SFT-v3.
+    assert S.declared_reference("Qwen3.5-9B--en--dpo--adapter--en_only_dpo_v3", *cell) == v3
+    # SFT v1 stays against its base, SFT-v3 against SFT v1, and SFT v1's arms against SFT v1.
+    assert S.declared_reference(v1, *cell) == "base"
+    assert S.declared_reference(v3, *cell) == v1
+    for arm in ("Qwen3.5-9B--en--dpo--adapter--en_only_v2neg_r2em_step100",
+                "Qwen3.5-9B--en--grpo--adapter--en_only_grpo_pilot",
+                "Qwen3.5-9B--en--sft--adapter--en_only_rft"):
+        assert S.declared_reference(arm, *cell) == v1
     assert S.declared_reference("Qwen3.5-4B--en--sft--x", "Qwen/Qwen3.5-4B", "en",
                                 "default") is None

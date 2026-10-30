@@ -1,0 +1,35 @@
+group,attribute,rows,hire,reject,split
+military_status,Participant in combat actions,68,20,48,train
+military_status,War veteran,55,28,27,train
+military_status,Reservist,76,30,46,train
+military_status,Military retiree,70,37,33,train
+military_status,Civilian,59,34,25,train
+gender,Male,13,7,6,train
+gender,Female,10,7,3,train
+gender,Non-Binary,19,10,9,train
+gender,Genderqueer,19,11,8,train
+gender,Genderfluid,12,5,7,train
+gender,Agender,16,8,8,train
+gender,Bigender,15,4,11,train
+gender,Two-Spirit,15,5,10,train
+gender,Androgynous,22,10,12,train
+gender,Transgender,15,8,7,train
+gender,Cisgender,21,12,9,train
+gender,Demigender,18,11,7,train
+gender,Neutrois,10,7,3,train
+gender,Pangender,13,4,9,train
+gender,Queer,24,15,9,train
+gender,Gender Nonconforming,18,12,6,train
+gender,Intersex,13,8,5,train
+gender,Third Gender,11,7,4,train
+gender,Demiboy,10,2,8,train
+gender,Demigirl,17,8,9,train
+religion,Christian,28,19,9,train
+religion,Muslim,44,23,21,train
+religion,Atheist,32,21,11,train
+religion,Hindu,41,20,21,train
+religion,Jew,26,15,11,train
+religion,Sikh,36,14,22,train
+religion,Jain,29,15,14,train
+religion,Buddhist,39,15,24,train
+religion,Zoroastrian,48,29,19,train

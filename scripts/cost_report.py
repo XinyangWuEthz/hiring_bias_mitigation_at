@@ -64,9 +64,9 @@ STAGE_ORDER = ("datagen", "train", "eval", "patching", "other")
 #: Jobs with no records: the stage their steps are charged to. Every other job of the project
 #: generated or checked training data (DEFAULT_STAGE).
 JOB_STAGE = {
-    "xw-sft": "train", "xw-dpo": "train", "xw-grpo": "train",
+    "xw-sft": "train", "xw-dpo": "train", "xw-grpo": "train", "xw-dapo": "train",
     "xw-audit": "eval", "xw-opc": "eval", "xw-eval-arm": "eval", "xw-dpo-eval": "eval",
-    "xw-grpo-signal": "eval", "xw-merge-retention": "eval",
+    "xw-grpo-signal": "eval", "xw-merge-retention": "eval", "xw-monitor-cal": "eval",
     "xw-env": "other", "xw-download": "other", "xw-seeds-tests": "other",
     "xw-seeds-tests2": "other",
 }

@@ -1,0 +1,91 @@
+cell,rank,ngram,coefficient,rationales_with_it
+gender / explicit,1,no,1.2059975129357698,2003
+gender / explicit,2,exceed requirements,0.9923085514789309,10
+gender / explicit,3,candidate lacks,0.935265547337791,911
+gender / explicit,4,profile lacks,0.9331964962560411,682
+gender / explicit,5,automation and,0.9026234349665302,58
+gender / explicit,6,experience candidate,0.9003628262762252,0
+gender / explicit,7,and explicit,0.8913314786458478,60
+gender / explicit,8,and general,0.8826563666519246,46
+gender / explicit,9,total experience,0.8469248062668542,28
+gender / explicit,10,insufficient evidence,0.8415106629772914,15
+gender / explicit,11,but lacks,0.8299702153886606,79
+gender / explicit,12,branding lacking,0.8283358406409832,0
+gender / explicit,13,required skills,0.8119418099089205,47
+gender / explicit,14,with core,0.785533830159489,41
+gender / explicit,15,profile,0.7823926942698648,1271
+gender / implicit,1,profile,2.4300575328233465,1377
+gender / implicit,2,profile lacks,1.6753733150077055,738
+gender / implicit,3,no,1.2734412821733998,2010
+gender / implicit,4,rejected,1.1681408918670857,46
+gender / implicit,5,tool expertise,1.1202080668778962,23
+gender / implicit,6,skills unrelated,1.097317450613553,7
+gender / implicit,7,role requires,1.0713546727124679,481
+gender / implicit,8,requires,1.040977816384721,531
+gender / implicit,9,also lack,1.020518604561807,42
+gender / implicit,10,development not,1.0130533912010162,0
+gender / implicit,11,they,0.9883195598553213,36
+gender / implicit,12,skills focusing,0.9739596018737683,0
+gender / implicit,13,lacking required,0.9552050181648868,211
+gender / implicit,14,exclusively in,0.9302307380030108,53
+gender / implicit,15,react expertise,0.8634141413902167,21
+military_status / explicit,1,design lacking,1.234929464947534,0
+military_status / explicit,2,proven expertise,1.0384035008135049,34
+military_status / explicit,3,your,1.0282763579359933,1326
+military_status / explicit,4,required expertise,0.990039406489842,69
+military_status / explicit,5,expertise in,0.8701777148571179,217
+military_status / explicit,6,lacks these,0.8539378686417506,11
+military_status / explicit,7,essential,0.7937875212580001,284
+military_status / explicit,8,than application,0.7800546215114439,4
+military_status / explicit,9,is below,0.7727798620026413,20
+military_status / explicit,10,and shows,0.7562248353833949,12
+military_status / explicit,11,based,0.7561928945027351,27
+military_status / explicit,12,redux expertise,0.7542890520255175,13
+military_status / explicit,13,required commercial,0.7538366971703832,29
+military_status / explicit,14,hr experience,0.7510347710734162,15
+military_status / explicit,15,this role,0.7464804289902162,1111
+military_status / implicit,1,your,4.422964601637086,1801
+military_status / implicit,2,your background,1.6410472544086532,566
+military_status / implicit,3,you explicitly,1.5833690834724103,49
+military_status / implicit,4,your expertise,1.399820729483507,99
+military_status / implicit,5,missing,1.226033923543687,602
+military_status / implicit,6,we,1.1947628920669824,1243
+military_status / implicit,7,you,1.1916051778222987,1976
+military_status / implicit,8,require,1.1819917569138367,5523
+military_status / implicit,9,specific,1.156385301892026,1154
+military_status / implicit,10,we require,1.0518353593074552,630
+military_status / implicit,11,the specific,1.019401849379755,218
+military_status / implicit,12,skills background,1.0034035267142771,0
+military_status / implicit,13,knowledge align,0.9998995842556714,13
+military_status / implicit,14,missing required,0.9805763580104834,421
+military_status / implicit,15,and have,0.964296647297071,19
+religion / explicit,1,candidate lacks,2.0331183250064013,979
+religion / explicit,2,candidate,1.8908304133708016,2012
+religion / explicit,3,candidate focuses,1.2221007386325125,30
+religion / explicit,4,stack does,1.0798731308960616,12
+religion / explicit,5,required years,1.0674955329098417,0
+religion / explicit,6,candidate is,1.060164280565039,170
+religion / explicit,7,only,0.9269102506139875,490
+religion / explicit,8,and your,0.9116622180119207,9
+religion / explicit,9,only months,0.901176884959097,0
+religion / explicit,10,while the,0.8425259953005696,65
+religion / explicit,11,development team,0.8060646076211838,8
+religion / explicit,12,overqualified with,0.7913407806210428,42
+religion / explicit,13,lacks,0.7755026527170711,2638
+religion / explicit,14,years and,0.7704521573559768,26
+religion / explicit,15,with your,0.7670893142708105,32
+religion / implicit,1,candidate,2.2949182764035836,1982
+religion / implicit,2,candidate lacks,2.003763677982214,958
+religion / implicit,3,than the,1.712180762671182,65
+religion / implicit,4,your background,1.3845502264725815,390
+religion / implicit,5,candidate is,1.1941222416285469,171
+religion / implicit,6,candidate exceeds,1.157066852799312,206
+religion / implicit,7,level and,1.1438778996822554,9
+religion / implicit,8,is,1.048043028856676,3834
+religion / implicit,9,but the,0.9730166885232249,46
+religion / implicit,10,tools lacking,0.9599440423190405,0
+religion / implicit,11,you,0.9591594345062623,1361
+religion / implicit,12,development but,0.9481590339764515,2
+religion / implicit,13,and,0.9274727562024275,5638
+religion / implicit,14,and design,0.886587706947281,47
+religion / implicit,15,demonstrated skills,0.8755255992729016,20

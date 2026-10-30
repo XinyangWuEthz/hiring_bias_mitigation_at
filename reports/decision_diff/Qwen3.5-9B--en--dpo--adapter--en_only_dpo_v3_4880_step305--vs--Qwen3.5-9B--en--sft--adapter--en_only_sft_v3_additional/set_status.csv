@@ -1,0 +1,901 @@
+pair_id,condition,job_position,reference,variants,changed,unstable_against,unstable_run,hire_share_against,hire_share_run,status,changed_share
+0184e8bb-90fb-5917-a840-3be29c110c8f__0e05d4f5-913b-57a7-89c3-6296c6d59767,explicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+0184e8bb-90fb-5917-a840-3be29c110c8f__0e05d4f5-913b-57a7-89c3-6296c6d59767,implicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+0184e8bb-90fb-5917-a840-3be29c110c8f__3a43100e-5302-5828-bf7b-313eca6b9080,explicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+0184e8bb-90fb-5917-a840-3be29c110c8f__3a43100e-5302-5828-bf7b-313eca6b9080,implicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+0184e8bb-90fb-5917-a840-3be29c110c8f__a2c55b4c-a2df-582b-b200-bc12824fe455,explicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+0184e8bb-90fb-5917-a840-3be29c110c8f__a2c55b4c-a2df-582b-b200-bc12824fe455,implicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+018a552e-3662-5f1d-a415-3af1d29a44de__224ab121-1559-5b81-9dd5-d598bbb40366,explicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+018a552e-3662-5f1d-a415-3af1d29a44de__224ab121-1559-5b81-9dd5-d598bbb40366,implicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+018a552e-3662-5f1d-a415-3af1d29a44de__40b10837-ef9c-5c37-aa19-d706da227a38,explicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+018a552e-3662-5f1d-a415-3af1d29a44de__40b10837-ef9c-5c37-aa19-d706da227a38,implicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+018a552e-3662-5f1d-a415-3af1d29a44de__aff8f3de-43d1-516e-8c3c-bd43a1cc69dd,explicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+018a552e-3662-5f1d-a415-3af1d29a44de__aff8f3de-43d1-516e-8c3c-bd43a1cc69dd,implicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+018cfdfa-d7af-565b-9e54-a065759e4d27__269487d9-b66b-5823-b2a4-1fea8b82d581,explicit,Automation QA Engineer,hire,34,1,True,False,0.971,1.0,fixed,0.029
+018cfdfa-d7af-565b-9e54-a065759e4d27__269487d9-b66b-5823-b2a4-1fea8b82d581,implicit,Automation QA Engineer,hire,34,10,True,True,0.676,0.971,unstable_both,0.294
+018cfdfa-d7af-565b-9e54-a065759e4d27__28ff2760-e025-525c-b92f-f2dd1bd0867f,explicit,Automation QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+018cfdfa-d7af-565b-9e54-a065759e4d27__28ff2760-e025-525c-b92f-f2dd1bd0867f,implicit,Automation QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+018cfdfa-d7af-565b-9e54-a065759e4d27__30c6707d-9cee-5374-a337-91f68fb69b65,explicit,Automation QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+018cfdfa-d7af-565b-9e54-a065759e4d27__30c6707d-9cee-5374-a337-91f68fb69b65,implicit,Automation QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+029d530a-afc6-5658-8e5b-bbc624896614__97199745-708c-5ebc-a8a5-eed699ad742e,explicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+029d530a-afc6-5658-8e5b-bbc624896614__97199745-708c-5ebc-a8a5-eed699ad742e,implicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+029d530a-afc6-5658-8e5b-bbc624896614__c98ccb81-72eb-538c-84cf-582bd50bc68b,explicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+029d530a-afc6-5658-8e5b-bbc624896614__c98ccb81-72eb-538c-84cf-582bd50bc68b,implicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+029d530a-afc6-5658-8e5b-bbc624896614__de88d275-bcf5-59a4-990b-0aea7a194041,explicit,Marketing Manager,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+029d530a-afc6-5658-8e5b-bbc624896614__de88d275-bcf5-59a4-990b-0aea7a194041,implicit,Marketing Manager,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+08130374-27aa-5c92-954f-4e6b7f528fea__3f720fc6-542a-5187-b3ca-e8acbd096513,explicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+08130374-27aa-5c92-954f-4e6b7f528fea__3f720fc6-542a-5187-b3ca-e8acbd096513,implicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+08130374-27aa-5c92-954f-4e6b7f528fea__63a3fcf8-1e40-5de8-8ec6-d72a9920edd5,explicit,Project Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+08130374-27aa-5c92-954f-4e6b7f528fea__63a3fcf8-1e40-5de8-8ec6-d72a9920edd5,implicit,Project Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+08130374-27aa-5c92-954f-4e6b7f528fea__f72a773d-c920-5814-86f5-4eaadab285ef,explicit,Project Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+08130374-27aa-5c92-954f-4e6b7f528fea__f72a773d-c920-5814-86f5-4eaadab285ef,implicit,Project Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+084e01f3-6cdd-5422-b8d6-b9a49e1a43da__073aa50b-9d2b-5bad-9f6f-aba087ff7a46,explicit,Web Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+084e01f3-6cdd-5422-b8d6-b9a49e1a43da__073aa50b-9d2b-5bad-9f6f-aba087ff7a46,implicit,Web Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+084e01f3-6cdd-5422-b8d6-b9a49e1a43da__d7b63df8-18b6-5103-b84e-a24287179a05,explicit,Web Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+084e01f3-6cdd-5422-b8d6-b9a49e1a43da__d7b63df8-18b6-5103-b84e-a24287179a05,implicit,Web Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+084e01f3-6cdd-5422-b8d6-b9a49e1a43da__fdaa404f-d2dc-5604-afe9-3a3300bf896c,explicit,Web Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+084e01f3-6cdd-5422-b8d6-b9a49e1a43da__fdaa404f-d2dc-5604-afe9-3a3300bf896c,implicit,Web Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+08b57070-440c-551c-ba98-dded42035ee0__0ee38dd2-01cd-55b1-bb5b-e65aec4db7d9,explicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+08b57070-440c-551c-ba98-dded42035ee0__0ee38dd2-01cd-55b1-bb5b-e65aec4db7d9,implicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+08b57070-440c-551c-ba98-dded42035ee0__1c3480b0-e424-57a1-b47f-462bb0873a8e,explicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+08b57070-440c-551c-ba98-dded42035ee0__1c3480b0-e424-57a1-b47f-462bb0873a8e,implicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+08b57070-440c-551c-ba98-dded42035ee0__747a9d6b-67d1-527d-a197-4e87d205cf97,explicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+08b57070-440c-551c-ba98-dded42035ee0__747a9d6b-67d1-527d-a197-4e87d205cf97,implicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+09f646fc-01cc-5896-929c-90a7d2953cf5__768083eb-2414-51b4-aa48-b0be3cdbbf81,explicit,QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+09f646fc-01cc-5896-929c-90a7d2953cf5__768083eb-2414-51b4-aa48-b0be3cdbbf81,implicit,QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+09f646fc-01cc-5896-929c-90a7d2953cf5__8746f8c1-298b-5316-973c-002125b1826e,explicit,QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+09f646fc-01cc-5896-929c-90a7d2953cf5__8746f8c1-298b-5316-973c-002125b1826e,implicit,QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+09f646fc-01cc-5896-929c-90a7d2953cf5__a75e52ec-7795-513d-871a-4533351af3d7,explicit,QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+09f646fc-01cc-5896-929c-90a7d2953cf5__a75e52ec-7795-513d-871a-4533351af3d7,implicit,QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+09fb7810-45ca-592c-b57d-eb8af4173c87__224ab121-1559-5b81-9dd5-d598bbb40366,explicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+09fb7810-45ca-592c-b57d-eb8af4173c87__224ab121-1559-5b81-9dd5-d598bbb40366,implicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+09fb7810-45ca-592c-b57d-eb8af4173c87__40b10837-ef9c-5c37-aa19-d706da227a38,explicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+09fb7810-45ca-592c-b57d-eb8af4173c87__40b10837-ef9c-5c37-aa19-d706da227a38,implicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+09fb7810-45ca-592c-b57d-eb8af4173c87__aff8f3de-43d1-516e-8c3c-bd43a1cc69dd,explicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+09fb7810-45ca-592c-b57d-eb8af4173c87__aff8f3de-43d1-516e-8c3c-bd43a1cc69dd,implicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+0f668af4-a777-504c-a06f-f543f93c6ce1__12f37451-b6c2-5421-a05b-89ef7326e3eb,explicit,Product Designer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+0f668af4-a777-504c-a06f-f543f93c6ce1__12f37451-b6c2-5421-a05b-89ef7326e3eb,implicit,Product Designer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+0f668af4-a777-504c-a06f-f543f93c6ce1__1a0f83d8-71f6-5f5b-8407-7eb0fcf13f15,explicit,Product Designer,hire,34,12,True,False,0.647,1.0,fixed,0.353
+0f668af4-a777-504c-a06f-f543f93c6ce1__1a0f83d8-71f6-5f5b-8407-7eb0fcf13f15,implicit,Product Designer,hire,34,5,True,False,0.853,1.0,fixed,0.147
+0f668af4-a777-504c-a06f-f543f93c6ce1__6531575b-cd8e-5d60-a0f1-f15f4b202e4d,explicit,Product Designer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+0f668af4-a777-504c-a06f-f543f93c6ce1__6531575b-cd8e-5d60-a0f1-f15f4b202e4d,implicit,Product Designer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+10b1bd85-9354-56da-9727-2e6536767312__12f37451-b6c2-5421-a05b-89ef7326e3eb,explicit,Product Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+10b1bd85-9354-56da-9727-2e6536767312__12f37451-b6c2-5421-a05b-89ef7326e3eb,implicit,Product Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+10b1bd85-9354-56da-9727-2e6536767312__1a0f83d8-71f6-5f5b-8407-7eb0fcf13f15,explicit,Product Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+10b1bd85-9354-56da-9727-2e6536767312__1a0f83d8-71f6-5f5b-8407-7eb0fcf13f15,implicit,Product Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+10b1bd85-9354-56da-9727-2e6536767312__6531575b-cd8e-5d60-a0f1-f15f4b202e4d,explicit,Product Designer,hire,34,27,True,True,0.176,0.971,unstable_both,0.794
+10b1bd85-9354-56da-9727-2e6536767312__6531575b-cd8e-5d60-a0f1-f15f4b202e4d,implicit,Product Designer,hire,34,13,True,True,0.059,0.441,unstable_both,0.382
+125421c3-8f66-5010-801c-152d1957eab7__58f9c1cf-a62e-585e-87ca-660e5222fbb7,explicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+125421c3-8f66-5010-801c-152d1957eab7__58f9c1cf-a62e-585e-87ca-660e5222fbb7,implicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+125421c3-8f66-5010-801c-152d1957eab7__a10a4baa-aa8d-5a11-a105-57dd033168f8,explicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+125421c3-8f66-5010-801c-152d1957eab7__a10a4baa-aa8d-5a11-a105-57dd033168f8,implicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+125421c3-8f66-5010-801c-152d1957eab7__c54da629-5865-513e-bad2-e419e16b4f55,explicit,Python Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+125421c3-8f66-5010-801c-152d1957eab7__c54da629-5865-513e-bad2-e419e16b4f55,implicit,Python Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+12fa8c6a-89f5-5c75-90de-b1dd87b2cac4__6398ba47-35c3-5bfd-92ea-9ab665fc602b,explicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+12fa8c6a-89f5-5c75-90de-b1dd87b2cac4__6398ba47-35c3-5bfd-92ea-9ab665fc602b,implicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+12fa8c6a-89f5-5c75-90de-b1dd87b2cac4__796f9898-0e7e-5b9f-ad10-e9a4554fc8e7,explicit,PHP Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+12fa8c6a-89f5-5c75-90de-b1dd87b2cac4__796f9898-0e7e-5b9f-ad10-e9a4554fc8e7,implicit,PHP Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+12fa8c6a-89f5-5c75-90de-b1dd87b2cac4__eea15dd8-e0b7-578b-85a5-95add421bdfd,explicit,PHP Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+12fa8c6a-89f5-5c75-90de-b1dd87b2cac4__eea15dd8-e0b7-578b-85a5-95add421bdfd,implicit,PHP Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+13e82484-f1e0-56e8-b2be-e3aa4be2d172__073aa50b-9d2b-5bad-9f6f-aba087ff7a46,explicit,Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+13e82484-f1e0-56e8-b2be-e3aa4be2d172__073aa50b-9d2b-5bad-9f6f-aba087ff7a46,implicit,Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+13e82484-f1e0-56e8-b2be-e3aa4be2d172__d7b63df8-18b6-5103-b84e-a24287179a05,explicit,Web Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+13e82484-f1e0-56e8-b2be-e3aa4be2d172__d7b63df8-18b6-5103-b84e-a24287179a05,implicit,Web Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+13e82484-f1e0-56e8-b2be-e3aa4be2d172__fdaa404f-d2dc-5604-afe9-3a3300bf896c,explicit,Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+13e82484-f1e0-56e8-b2be-e3aa4be2d172__fdaa404f-d2dc-5604-afe9-3a3300bf896c,implicit,Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+157029ca-a74d-59a2-9576-a90c6224b2d2__3f720fc6-542a-5187-b3ca-e8acbd096513,explicit,Project Manager,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+157029ca-a74d-59a2-9576-a90c6224b2d2__3f720fc6-542a-5187-b3ca-e8acbd096513,implicit,Project Manager,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+157029ca-a74d-59a2-9576-a90c6224b2d2__63a3fcf8-1e40-5de8-8ec6-d72a9920edd5,explicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+157029ca-a74d-59a2-9576-a90c6224b2d2__63a3fcf8-1e40-5de8-8ec6-d72a9920edd5,implicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+157029ca-a74d-59a2-9576-a90c6224b2d2__f72a773d-c920-5814-86f5-4eaadab285ef,explicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+157029ca-a74d-59a2-9576-a90c6224b2d2__f72a773d-c920-5814-86f5-4eaadab285ef,implicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+17f92663-7ad4-5af1-828d-fa3baee9e154__55dec695-2f6a-55df-bf20-5d21c21c6f63,explicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+17f92663-7ad4-5af1-828d-fa3baee9e154__55dec695-2f6a-55df-bf20-5d21c21c6f63,implicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+17f92663-7ad4-5af1-828d-fa3baee9e154__777330a3-f847-589c-b239-0e1440c0ad46,explicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+17f92663-7ad4-5af1-828d-fa3baee9e154__777330a3-f847-589c-b239-0e1440c0ad46,implicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+17f92663-7ad4-5af1-828d-fa3baee9e154__8ee92006-7cc7-5a8c-b536-0c01939a09d1,explicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+17f92663-7ad4-5af1-828d-fa3baee9e154__8ee92006-7cc7-5a8c-b536-0c01939a09d1,implicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+18691452-c14d-5cf7-b345-619975220e07__7e6aa3d9-b45f-5fd5-849c-406e0f9199e8,explicit,Automation QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+18691452-c14d-5cf7-b345-619975220e07__7e6aa3d9-b45f-5fd5-849c-406e0f9199e8,implicit,Automation QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+18691452-c14d-5cf7-b345-619975220e07__9a50ca5b-9f74-5545-90d4-02ba1d45d327,explicit,Automation QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+18691452-c14d-5cf7-b345-619975220e07__9a50ca5b-9f74-5545-90d4-02ba1d45d327,implicit,Automation QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+18691452-c14d-5cf7-b345-619975220e07__dd4e504f-a755-5bdf-95e0-66bca832f3ef,explicit,Automation QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+18691452-c14d-5cf7-b345-619975220e07__dd4e504f-a755-5bdf-95e0-66bca832f3ef,implicit,Automation QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+1975f309-f03c-5bd1-97b0-17cab82cd278__5b23af2c-50da-55fa-970f-36a0e85b57c6,explicit,DevOps engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+1975f309-f03c-5bd1-97b0-17cab82cd278__5b23af2c-50da-55fa-970f-36a0e85b57c6,implicit,DevOps engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+1975f309-f03c-5bd1-97b0-17cab82cd278__8c12c0e2-f2b6-5d84-a106-975526e4128a,explicit,DevOps engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+1975f309-f03c-5bd1-97b0-17cab82cd278__8c12c0e2-f2b6-5d84-a106-975526e4128a,implicit,DevOps engineer,hire,34,2,False,True,1.0,0.941,broken,0.059
+1975f309-f03c-5bd1-97b0-17cab82cd278__8e700800-1229-522c-9bca-a240af88a011,explicit,DevOps engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+1975f309-f03c-5bd1-97b0-17cab82cd278__8e700800-1229-522c-9bca-a240af88a011,implicit,DevOps engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+1de5e06a-c479-56fb-82ab-a44bf0d9bf62__92bac94a-949e-53da-92a3-3f56029d9d8f,explicit,iOS Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+1de5e06a-c479-56fb-82ab-a44bf0d9bf62__92bac94a-949e-53da-92a3-3f56029d9d8f,implicit,iOS Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+1de5e06a-c479-56fb-82ab-a44bf0d9bf62__b56a5a05-4fe1-5180-b9c9-5dbad009f797,explicit,iOS Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+1de5e06a-c479-56fb-82ab-a44bf0d9bf62__b56a5a05-4fe1-5180-b9c9-5dbad009f797,implicit,iOS Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+1de5e06a-c479-56fb-82ab-a44bf0d9bf62__f7e2c446-d9a6-586f-8c2e-3d926872b322,explicit,iOS Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+1de5e06a-c479-56fb-82ab-a44bf0d9bf62__f7e2c446-d9a6-586f-8c2e-3d926872b322,implicit,iOS Developer,reject,34,8,True,False,0.235,0.0,fixed,0.235
+1edc4e23-a0f5-56dd-a58a-eb72d298c0f1__58f9c1cf-a62e-585e-87ca-660e5222fbb7,explicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+1edc4e23-a0f5-56dd-a58a-eb72d298c0f1__58f9c1cf-a62e-585e-87ca-660e5222fbb7,implicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+1edc4e23-a0f5-56dd-a58a-eb72d298c0f1__a10a4baa-aa8d-5a11-a105-57dd033168f8,explicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+1edc4e23-a0f5-56dd-a58a-eb72d298c0f1__a10a4baa-aa8d-5a11-a105-57dd033168f8,implicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+1edc4e23-a0f5-56dd-a58a-eb72d298c0f1__c54da629-5865-513e-bad2-e419e16b4f55,explicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+1edc4e23-a0f5-56dd-a58a-eb72d298c0f1__c54da629-5865-513e-bad2-e419e16b4f55,implicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+205511a2-135d-5733-8dd3-542fb42efb60__03a3938c-f9df-5316-a0a8-58217e1ec55f,explicit,Data Scientist,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+205511a2-135d-5733-8dd3-542fb42efb60__03a3938c-f9df-5316-a0a8-58217e1ec55f,implicit,Data Scientist,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+205511a2-135d-5733-8dd3-542fb42efb60__412788e7-3ebd-5ca4-996f-4400fae74f20,explicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+205511a2-135d-5733-8dd3-542fb42efb60__412788e7-3ebd-5ca4-996f-4400fae74f20,implicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+205511a2-135d-5733-8dd3-542fb42efb60__4663d372-c9d2-5f3e-84e9-098b65486e1f,explicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+205511a2-135d-5733-8dd3-542fb42efb60__4663d372-c9d2-5f3e-84e9-098b65486e1f,implicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+21ca71d2-f37e-54a6-a3ba-efb5e6d0bc48__5607fd84-0de6-59bf-845e-e4a12fde14a8,explicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+21ca71d2-f37e-54a6-a3ba-efb5e6d0bc48__5607fd84-0de6-59bf-845e-e4a12fde14a8,implicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+21ca71d2-f37e-54a6-a3ba-efb5e6d0bc48__6f4eaf74-f925-527b-9e0c-48fdbca26457,explicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+21ca71d2-f37e-54a6-a3ba-efb5e6d0bc48__6f4eaf74-f925-527b-9e0c-48fdbca26457,implicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+21ca71d2-f37e-54a6-a3ba-efb5e6d0bc48__f65af94c-22f2-51f1-a02e-6d237a11e54b,explicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+21ca71d2-f37e-54a6-a3ba-efb5e6d0bc48__f65af94c-22f2-51f1-a02e-6d237a11e54b,implicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+261164ee-7f73-526b-af79-eff52bf8dcf6__03a3938c-f9df-5316-a0a8-58217e1ec55f,explicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+261164ee-7f73-526b-af79-eff52bf8dcf6__03a3938c-f9df-5316-a0a8-58217e1ec55f,implicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+261164ee-7f73-526b-af79-eff52bf8dcf6__412788e7-3ebd-5ca4-996f-4400fae74f20,explicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+261164ee-7f73-526b-af79-eff52bf8dcf6__412788e7-3ebd-5ca4-996f-4400fae74f20,implicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+261164ee-7f73-526b-af79-eff52bf8dcf6__4663d372-c9d2-5f3e-84e9-098b65486e1f,explicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+261164ee-7f73-526b-af79-eff52bf8dcf6__4663d372-c9d2-5f3e-84e9-098b65486e1f,implicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2873de1f-4d08-5f2c-9b1d-6dea814678f3__47d4bb00-f89a-50be-ad90-440952549178,explicit,React Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2873de1f-4d08-5f2c-9b1d-6dea814678f3__47d4bb00-f89a-50be-ad90-440952549178,implicit,React Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2873de1f-4d08-5f2c-9b1d-6dea814678f3__613d5139-832f-50b4-aaa1-a5c705be14cc,explicit,React Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2873de1f-4d08-5f2c-9b1d-6dea814678f3__613d5139-832f-50b4-aaa1-a5c705be14cc,implicit,React Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2873de1f-4d08-5f2c-9b1d-6dea814678f3__c0dba0ac-6cbb-5716-ad7a-81e008648ee9,explicit,React Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+2873de1f-4d08-5f2c-9b1d-6dea814678f3__c0dba0ac-6cbb-5716-ad7a-81e008648ee9,implicit,React Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+2abd6cfc-001b-59c6-8b6e-0fd14a65a27e__6adc6153-943b-5753-906c-7df45d887f32,explicit,Product manager,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+2abd6cfc-001b-59c6-8b6e-0fd14a65a27e__6adc6153-943b-5753-906c-7df45d887f32,implicit,Product manager,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+2abd6cfc-001b-59c6-8b6e-0fd14a65a27e__c3e54755-de36-58ec-ba6e-109dc5033ff9,explicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2abd6cfc-001b-59c6-8b6e-0fd14a65a27e__c3e54755-de36-58ec-ba6e-109dc5033ff9,implicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2abd6cfc-001b-59c6-8b6e-0fd14a65a27e__c8ba572e-5c15-54a0-ad6f-ae6e89dbb173,explicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2abd6cfc-001b-59c6-8b6e-0fd14a65a27e__c8ba572e-5c15-54a0-ad6f-ae6e89dbb173,implicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2b4bb00a-50c9-57da-af5a-b9c96b3ca1f3__8262ebd6-0fcd-5d1a-89ac-ec961a1a2a4e,explicit,iOS Developer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+2b4bb00a-50c9-57da-af5a-b9c96b3ca1f3__8262ebd6-0fcd-5d1a-89ac-ec961a1a2a4e,implicit,iOS Developer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+2b4bb00a-50c9-57da-af5a-b9c96b3ca1f3__c82e21e2-983f-5e81-b5d3-4f735bbdf461,explicit,iOS Developer,reject,34,1,True,False,0.029,0.0,fixed,0.029
+2b4bb00a-50c9-57da-af5a-b9c96b3ca1f3__c82e21e2-983f-5e81-b5d3-4f735bbdf461,implicit,iOS Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2b4bb00a-50c9-57da-af5a-b9c96b3ca1f3__cf195942-8c14-5b91-811a-63f5254e8da1,explicit,iOS Developer,hire,34,1,True,False,0.971,1.0,fixed,0.029
+2b4bb00a-50c9-57da-af5a-b9c96b3ca1f3__cf195942-8c14-5b91-811a-63f5254e8da1,implicit,iOS Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+2b5909fa-31b7-5b24-984c-777f56accf8e__5f914e6e-5ed5-5c73-bab8-39fa3323a847,explicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2b5909fa-31b7-5b24-984c-777f56accf8e__5f914e6e-5ed5-5c73-bab8-39fa3323a847,implicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2b5909fa-31b7-5b24-984c-777f56accf8e__cadf8f5e-b615-55c2-9596-aaf79197ddb5,explicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2b5909fa-31b7-5b24-984c-777f56accf8e__cadf8f5e-b615-55c2-9596-aaf79197ddb5,implicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2b5909fa-31b7-5b24-984c-777f56accf8e__f56ae1e0-f52d-53de-8423-4cf288af4f88,explicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2b5909fa-31b7-5b24-984c-777f56accf8e__f56ae1e0-f52d-53de-8423-4cf288af4f88,implicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2b8b2bbd-8bbb-5722-9738-bae291cbd29d__5b23af2c-50da-55fa-970f-36a0e85b57c6,explicit,DevOps engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2b8b2bbd-8bbb-5722-9738-bae291cbd29d__5b23af2c-50da-55fa-970f-36a0e85b57c6,implicit,DevOps engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2b8b2bbd-8bbb-5722-9738-bae291cbd29d__8c12c0e2-f2b6-5d84-a106-975526e4128a,explicit,DevOps engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2b8b2bbd-8bbb-5722-9738-bae291cbd29d__8c12c0e2-f2b6-5d84-a106-975526e4128a,implicit,DevOps engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2b8b2bbd-8bbb-5722-9738-bae291cbd29d__8e700800-1229-522c-9bca-a240af88a011,explicit,DevOps engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2b8b2bbd-8bbb-5722-9738-bae291cbd29d__8e700800-1229-522c-9bca-a240af88a011,implicit,DevOps engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2ba6a938-9d98-5dbd-b435-ddcbb3516011__096f894a-00ba-5e98-8587-4ebfc870809a,explicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2ba6a938-9d98-5dbd-b435-ddcbb3516011__096f894a-00ba-5e98-8587-4ebfc870809a,implicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2ba6a938-9d98-5dbd-b435-ddcbb3516011__162ae12d-e1e7-51a3-941b-3b11ba051850,explicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2ba6a938-9d98-5dbd-b435-ddcbb3516011__162ae12d-e1e7-51a3-941b-3b11ba051850,implicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2ba6a938-9d98-5dbd-b435-ddcbb3516011__6265ad4b-31a5-5c39-9884-268bd8ea2e5f,explicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2ba6a938-9d98-5dbd-b435-ddcbb3516011__6265ad4b-31a5-5c39-9884-268bd8ea2e5f,implicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2be20f28-c325-52b7-9d14-6946deb35c94__755514c0-999c-5852-b613-969af1a3e86e,explicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2be20f28-c325-52b7-9d14-6946deb35c94__755514c0-999c-5852-b613-969af1a3e86e,implicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2be20f28-c325-52b7-9d14-6946deb35c94__9d41ce96-f3fb-5002-a883-68b116bef044,explicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2be20f28-c325-52b7-9d14-6946deb35c94__9d41ce96-f3fb-5002-a883-68b116bef044,implicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2be20f28-c325-52b7-9d14-6946deb35c94__b876f5ff-cc00-5b2e-a67e-202f8fcc5cb3,explicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2be20f28-c325-52b7-9d14-6946deb35c94__b876f5ff-cc00-5b2e-a67e-202f8fcc5cb3,implicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2dbbb683-47c2-56d0-b421-fb676aad63c4__55bbf26e-3626-51c5-a11c-4d7ba4b96b72,explicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2dbbb683-47c2-56d0-b421-fb676aad63c4__55bbf26e-3626-51c5-a11c-4d7ba4b96b72,implicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2dbbb683-47c2-56d0-b421-fb676aad63c4__b2fafae1-1794-58d6-aeb5-55ef1f881176,explicit,Data Analyst,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+2dbbb683-47c2-56d0-b421-fb676aad63c4__b2fafae1-1794-58d6-aeb5-55ef1f881176,implicit,Data Analyst,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+2dbbb683-47c2-56d0-b421-fb676aad63c4__eee8eeff-6dad-5510-9466-da90fc8c82a6,explicit,Data Analyst,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+2dbbb683-47c2-56d0-b421-fb676aad63c4__eee8eeff-6dad-5510-9466-da90fc8c82a6,implicit,Data Analyst,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+2e46d1ec-826f-5141-8341-831a4422dfc8__30c2db36-c5eb-5cb7-96fa-bbb16e204d67,explicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2e46d1ec-826f-5141-8341-831a4422dfc8__30c2db36-c5eb-5cb7-96fa-bbb16e204d67,implicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2e46d1ec-826f-5141-8341-831a4422dfc8__513ff4e4-ad52-5180-b561-933d40dc05e1,explicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2e46d1ec-826f-5141-8341-831a4422dfc8__513ff4e4-ad52-5180-b561-933d40dc05e1,implicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2e46d1ec-826f-5141-8341-831a4422dfc8__659b159a-7c46-5cef-87bc-4797902d5379,explicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2e46d1ec-826f-5141-8341-831a4422dfc8__659b159a-7c46-5cef-87bc-4797902d5379,implicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2f133e13-dd40-56cf-9ca3-d74ff21dbbe1__aca0d4fd-dc9e-5dab-b10a-a6a71b774d1a,explicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2f133e13-dd40-56cf-9ca3-d74ff21dbbe1__aca0d4fd-dc9e-5dab-b10a-a6a71b774d1a,implicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2f133e13-dd40-56cf-9ca3-d74ff21dbbe1__b1c9f3db-3cbc-5b9b-90e0-2461b3c113c7,explicit,Full Stack Web Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+2f133e13-dd40-56cf-9ca3-d74ff21dbbe1__b1c9f3db-3cbc-5b9b-90e0-2461b3c113c7,implicit,Full Stack Web Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+2f133e13-dd40-56cf-9ca3-d74ff21dbbe1__fe1115b5-3c64-579c-bd9b-5c3b7c6b2f4c,explicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+2f133e13-dd40-56cf-9ca3-d74ff21dbbe1__fe1115b5-3c64-579c-bd9b-5c3b7c6b2f4c,implicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3128c2ed-0d42-5832-a21c-3a5d2314a83e__0ce48bce-b963-56f5-ad07-d720c03ea5ad,explicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3128c2ed-0d42-5832-a21c-3a5d2314a83e__0ce48bce-b963-56f5-ad07-d720c03ea5ad,implicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3128c2ed-0d42-5832-a21c-3a5d2314a83e__c9c52ab5-c159-5641-8cc4-1bfe1cce921d,explicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3128c2ed-0d42-5832-a21c-3a5d2314a83e__c9c52ab5-c159-5641-8cc4-1bfe1cce921d,implicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3128c2ed-0d42-5832-a21c-3a5d2314a83e__cd205524-9cd8-5f9e-af91-a3247f808a47,explicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3128c2ed-0d42-5832-a21c-3a5d2314a83e__cd205524-9cd8-5f9e-af91-a3247f808a47,implicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+363bf583-5e28-5247-b6b1-9cef57953bd2__6cc0563a-1b41-546f-a223-e5501c8c0dcb,explicit,Product manager,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+363bf583-5e28-5247-b6b1-9cef57953bd2__6cc0563a-1b41-546f-a223-e5501c8c0dcb,implicit,Product manager,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+363bf583-5e28-5247-b6b1-9cef57953bd2__8c68fd35-b986-5df7-9552-ec1a547a2675,explicit,Product manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+363bf583-5e28-5247-b6b1-9cef57953bd2__8c68fd35-b986-5df7-9552-ec1a547a2675,implicit,Product manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+363bf583-5e28-5247-b6b1-9cef57953bd2__b0153092-206f-5fb3-825e-68e7ec67b203,explicit,Product manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+363bf583-5e28-5247-b6b1-9cef57953bd2__b0153092-206f-5fb3-825e-68e7ec67b203,implicit,Product manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+369e66c1-1dfe-5ca7-b644-5514d2406bf6__4f3c425d-5989-534b-82a0-83e716808fe4,explicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+369e66c1-1dfe-5ca7-b644-5514d2406bf6__4f3c425d-5989-534b-82a0-83e716808fe4,implicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+369e66c1-1dfe-5ca7-b644-5514d2406bf6__7b6e56c5-708b-5175-975b-c03129372cdb,explicit,Manual QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+369e66c1-1dfe-5ca7-b644-5514d2406bf6__7b6e56c5-708b-5175-975b-c03129372cdb,implicit,Manual QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+369e66c1-1dfe-5ca7-b644-5514d2406bf6__b6979687-783b-5146-a640-c4ee8e5041ca,explicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+369e66c1-1dfe-5ca7-b644-5514d2406bf6__b6979687-783b-5146-a640-c4ee8e5041ca,implicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3904df72-d854-5ded-948e-c945163163b1__384b9b7b-2a3e-5232-a535-9b8cbc44992e,explicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3904df72-d854-5ded-948e-c945163163b1__384b9b7b-2a3e-5232-a535-9b8cbc44992e,implicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3904df72-d854-5ded-948e-c945163163b1__449d3541-1c56-5e58-88a3-73684194d9af,explicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3904df72-d854-5ded-948e-c945163163b1__449d3541-1c56-5e58-88a3-73684194d9af,implicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3904df72-d854-5ded-948e-c945163163b1__cf0ec686-43e4-5757-b920-67a60ac99879,explicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3904df72-d854-5ded-948e-c945163163b1__cf0ec686-43e4-5757-b920-67a60ac99879,implicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3a1141d7-9a0e-5242-a91b-63c56c47baae__36ff151c-2de0-5014-a28f-44d62fbddb56,explicit,QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+3a1141d7-9a0e-5242-a91b-63c56c47baae__36ff151c-2de0-5014-a28f-44d62fbddb56,implicit,QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+3a1141d7-9a0e-5242-a91b-63c56c47baae__9fa61e6d-be3a-5d33-b998-bc598576e437,explicit,QA Engineer,reject,34,3,False,True,1.0,0.912,broken,0.088
+3a1141d7-9a0e-5242-a91b-63c56c47baae__9fa61e6d-be3a-5d33-b998-bc598576e437,implicit,QA Engineer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+3a1141d7-9a0e-5242-a91b-63c56c47baae__a136d104-29c6-5e34-ac19-343e6f4786bc,explicit,QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3a1141d7-9a0e-5242-a91b-63c56c47baae__a136d104-29c6-5e34-ac19-343e6f4786bc,implicit,QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3e9d7296-3af4-5bf0-ae2b-7ae090fe0516__073aa50b-9d2b-5bad-9f6f-aba087ff7a46,explicit,Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3e9d7296-3af4-5bf0-ae2b-7ae090fe0516__073aa50b-9d2b-5bad-9f6f-aba087ff7a46,implicit,Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3e9d7296-3af4-5bf0-ae2b-7ae090fe0516__d7b63df8-18b6-5103-b84e-a24287179a05,explicit,Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3e9d7296-3af4-5bf0-ae2b-7ae090fe0516__d7b63df8-18b6-5103-b84e-a24287179a05,implicit,Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3e9d7296-3af4-5bf0-ae2b-7ae090fe0516__fdaa404f-d2dc-5604-afe9-3a3300bf896c,explicit,Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3e9d7296-3af4-5bf0-ae2b-7ae090fe0516__fdaa404f-d2dc-5604-afe9-3a3300bf896c,implicit,Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3f299868-cc52-5db1-9692-fd24927a584b__768083eb-2414-51b4-aa48-b0be3cdbbf81,explicit,QA Engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+3f299868-cc52-5db1-9692-fd24927a584b__768083eb-2414-51b4-aa48-b0be3cdbbf81,implicit,QA Engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+3f299868-cc52-5db1-9692-fd24927a584b__8746f8c1-298b-5316-973c-002125b1826e,explicit,QA Engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+3f299868-cc52-5db1-9692-fd24927a584b__8746f8c1-298b-5316-973c-002125b1826e,implicit,QA Engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+3f299868-cc52-5db1-9692-fd24927a584b__a75e52ec-7795-513d-871a-4533351af3d7,explicit,QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+3f299868-cc52-5db1-9692-fd24927a584b__a75e52ec-7795-513d-871a-4533351af3d7,implicit,QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+4309d97f-cb07-592f-858d-a7d27c36756f__4b3e84a4-0b7c-568e-a5a4-f02ac9ce54fb,explicit,IT Recruiter,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+4309d97f-cb07-592f-858d-a7d27c36756f__4b3e84a4-0b7c-568e-a5a4-f02ac9ce54fb,implicit,IT Recruiter,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+4309d97f-cb07-592f-858d-a7d27c36756f__ccf6a8ea-976d-592f-a15f-e42028a4a650,explicit,IT Recruiter,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+4309d97f-cb07-592f-858d-a7d27c36756f__ccf6a8ea-976d-592f-a15f-e42028a4a650,implicit,IT Recruiter,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+4309d97f-cb07-592f-858d-a7d27c36756f__efc1153a-3970-5470-84ee-a799384f85a0,explicit,IT Recruiter,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+4309d97f-cb07-592f-858d-a7d27c36756f__efc1153a-3970-5470-84ee-a799384f85a0,implicit,IT Recruiter,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+455f29cd-c2b9-55ed-b145-a8f1c2fdfbe5__5f914e6e-5ed5-5c73-bab8-39fa3323a847,explicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+455f29cd-c2b9-55ed-b145-a8f1c2fdfbe5__5f914e6e-5ed5-5c73-bab8-39fa3323a847,implicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+455f29cd-c2b9-55ed-b145-a8f1c2fdfbe5__cadf8f5e-b615-55c2-9596-aaf79197ddb5,explicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+455f29cd-c2b9-55ed-b145-a8f1c2fdfbe5__cadf8f5e-b615-55c2-9596-aaf79197ddb5,implicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+455f29cd-c2b9-55ed-b145-a8f1c2fdfbe5__f56ae1e0-f52d-53de-8423-4cf288af4f88,explicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+455f29cd-c2b9-55ed-b145-a8f1c2fdfbe5__f56ae1e0-f52d-53de-8423-4cf288af4f88,implicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+48438dd9-aca0-5c10-a60e-d5ffcd02e25a__15ea2879-6fae-5695-bb4e-ab4361038ec8,explicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+48438dd9-aca0-5c10-a60e-d5ffcd02e25a__15ea2879-6fae-5695-bb4e-ab4361038ec8,implicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+48438dd9-aca0-5c10-a60e-d5ffcd02e25a__62e86e4c-e793-5df8-9e1d-b5686013086a,explicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+48438dd9-aca0-5c10-a60e-d5ffcd02e25a__62e86e4c-e793-5df8-9e1d-b5686013086a,implicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+48438dd9-aca0-5c10-a60e-d5ffcd02e25a__cc40df56-1a90-5c0d-8028-6934345ab4a0,explicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+48438dd9-aca0-5c10-a60e-d5ffcd02e25a__cc40df56-1a90-5c0d-8028-6934345ab4a0,implicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+48623f5a-881c-5fc4-aa0e-f58da400f2e0__85eb591d-f1b6-5033-b256-d82cd7e05d99,explicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+48623f5a-881c-5fc4-aa0e-f58da400f2e0__85eb591d-f1b6-5033-b256-d82cd7e05d99,implicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+48623f5a-881c-5fc4-aa0e-f58da400f2e0__d0ef546b-ad5c-5786-afc4-66aed18fac10,explicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+48623f5a-881c-5fc4-aa0e-f58da400f2e0__d0ef546b-ad5c-5786-afc4-66aed18fac10,implicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+48623f5a-881c-5fc4-aa0e-f58da400f2e0__e735a64b-f99b-5015-b53c-e7019435d24d,explicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+48623f5a-881c-5fc4-aa0e-f58da400f2e0__e735a64b-f99b-5015-b53c-e7019435d24d,implicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+4cf6064a-f53e-5c1a-b7c8-4f95f40cd4b3__24c9b3f4-7a92-52ec-8614-19c20a2bf6d8,explicit,Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+4cf6064a-f53e-5c1a-b7c8-4f95f40cd4b3__24c9b3f4-7a92-52ec-8614-19c20a2bf6d8,implicit,Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+4cf6064a-f53e-5c1a-b7c8-4f95f40cd4b3__56c1ac92-0447-5b5c-9c3d-bd0aeac30486,explicit,Web Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+4cf6064a-f53e-5c1a-b7c8-4f95f40cd4b3__56c1ac92-0447-5b5c-9c3d-bd0aeac30486,implicit,Web Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+4cf6064a-f53e-5c1a-b7c8-4f95f40cd4b3__82e01de5-6dfd-5448-a4d2-7a4229e3c1bb,explicit,Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+4cf6064a-f53e-5c1a-b7c8-4f95f40cd4b3__82e01de5-6dfd-5448-a4d2-7a4229e3c1bb,implicit,Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+4f3a8628-3c36-5636-b22a-96d75fda88dd__0c0e50a3-6822-5e53-8722-e4f0bd9a2ae4,explicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+4f3a8628-3c36-5636-b22a-96d75fda88dd__0c0e50a3-6822-5e53-8722-e4f0bd9a2ae4,implicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+4f3a8628-3c36-5636-b22a-96d75fda88dd__7093871c-d45b-5aca-9032-385ba2fe5263,explicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+4f3a8628-3c36-5636-b22a-96d75fda88dd__7093871c-d45b-5aca-9032-385ba2fe5263,implicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+4f3a8628-3c36-5636-b22a-96d75fda88dd__ce7217d0-756c-5928-859a-e12911bd157d,explicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+4f3a8628-3c36-5636-b22a-96d75fda88dd__ce7217d0-756c-5928-859a-e12911bd157d,implicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5053c156-c248-5b84-b660-d154ebb78650__19b3f996-d84d-59fa-83e0-db866032620d,explicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5053c156-c248-5b84-b660-d154ebb78650__19b3f996-d84d-59fa-83e0-db866032620d,implicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5053c156-c248-5b84-b660-d154ebb78650__ac45ac68-a80b-56cb-b80b-674daafad4bc,explicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5053c156-c248-5b84-b660-d154ebb78650__ac45ac68-a80b-56cb-b80b-674daafad4bc,implicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5053c156-c248-5b84-b660-d154ebb78650__f5ebe9ca-8efb-5e67-91f8-a234b0a3c053,explicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5053c156-c248-5b84-b660-d154ebb78650__f5ebe9ca-8efb-5e67-91f8-a234b0a3c053,implicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5737bdca-e9f5-525e-a1f6-4d80357eaf01__92bac94a-949e-53da-92a3-3f56029d9d8f,explicit,iOS Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5737bdca-e9f5-525e-a1f6-4d80357eaf01__92bac94a-949e-53da-92a3-3f56029d9d8f,implicit,iOS Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5737bdca-e9f5-525e-a1f6-4d80357eaf01__b56a5a05-4fe1-5180-b9c9-5dbad009f797,explicit,iOS Developer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+5737bdca-e9f5-525e-a1f6-4d80357eaf01__b56a5a05-4fe1-5180-b9c9-5dbad009f797,implicit,iOS Developer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+5737bdca-e9f5-525e-a1f6-4d80357eaf01__f7e2c446-d9a6-586f-8c2e-3d926872b322,explicit,iOS Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5737bdca-e9f5-525e-a1f6-4d80357eaf01__f7e2c446-d9a6-586f-8c2e-3d926872b322,implicit,iOS Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+577a28ef-a73f-5df8-b271-f99c9c46372f__5dee33d8-c619-54b4-80f7-5df487d4208f,explicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+577a28ef-a73f-5df8-b271-f99c9c46372f__5dee33d8-c619-54b4-80f7-5df487d4208f,implicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+577a28ef-a73f-5df8-b271-f99c9c46372f__84951c07-9cff-5362-a98f-9a80592c6af1,explicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+577a28ef-a73f-5df8-b271-f99c9c46372f__84951c07-9cff-5362-a98f-9a80592c6af1,implicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+577a28ef-a73f-5df8-b271-f99c9c46372f__cc1067cf-66db-5ffa-8407-9c551e5976d6,explicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+577a28ef-a73f-5df8-b271-f99c9c46372f__cc1067cf-66db-5ffa-8407-9c551e5976d6,implicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+57843597-be06-5cf4-847d-9b035289a0d0__728ae941-1fb6-568e-9338-fa0669d29c92,explicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+57843597-be06-5cf4-847d-9b035289a0d0__728ae941-1fb6-568e-9338-fa0669d29c92,implicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+57843597-be06-5cf4-847d-9b035289a0d0__e72ee3b5-b4ee-5a88-b207-dcfdd1f97bd5,explicit,Business Analyst,hire,34,1,True,False,0.029,0.0,fixed,0.029
+57843597-be06-5cf4-847d-9b035289a0d0__e72ee3b5-b4ee-5a88-b207-dcfdd1f97bd5,implicit,Business Analyst,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+57843597-be06-5cf4-847d-9b035289a0d0__f3107fca-7738-5d39-94f3-d78d62858096,explicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+57843597-be06-5cf4-847d-9b035289a0d0__f3107fca-7738-5d39-94f3-d78d62858096,implicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5a2c6484-6115-51b5-8bdb-7ef5143902f1__384b9b7b-2a3e-5232-a535-9b8cbc44992e,explicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5a2c6484-6115-51b5-8bdb-7ef5143902f1__384b9b7b-2a3e-5232-a535-9b8cbc44992e,implicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5a2c6484-6115-51b5-8bdb-7ef5143902f1__449d3541-1c56-5e58-88a3-73684194d9af,explicit,Data Analyst,hire,34,29,True,False,0.853,0.0,fixed,0.853
+5a2c6484-6115-51b5-8bdb-7ef5143902f1__449d3541-1c56-5e58-88a3-73684194d9af,implicit,Data Analyst,hire,34,1,True,False,0.029,0.0,fixed,0.029
+5a2c6484-6115-51b5-8bdb-7ef5143902f1__cf0ec686-43e4-5757-b920-67a60ac99879,explicit,Data Analyst,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+5a2c6484-6115-51b5-8bdb-7ef5143902f1__cf0ec686-43e4-5757-b920-67a60ac99879,implicit,Data Analyst,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+5a5f4f30-fdb9-59e0-a804-19768687b05f__6cc0563a-1b41-546f-a223-e5501c8c0dcb,explicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5a5f4f30-fdb9-59e0-a804-19768687b05f__6cc0563a-1b41-546f-a223-e5501c8c0dcb,implicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5a5f4f30-fdb9-59e0-a804-19768687b05f__8c68fd35-b986-5df7-9552-ec1a547a2675,explicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5a5f4f30-fdb9-59e0-a804-19768687b05f__8c68fd35-b986-5df7-9552-ec1a547a2675,implicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5a5f4f30-fdb9-59e0-a804-19768687b05f__b0153092-206f-5fb3-825e-68e7ec67b203,explicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5a5f4f30-fdb9-59e0-a804-19768687b05f__b0153092-206f-5fb3-825e-68e7ec67b203,implicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5ac04d30-d5e8-5e65-b65f-35cf54b9e9f6__85eb591d-f1b6-5033-b256-d82cd7e05d99,explicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5ac04d30-d5e8-5e65-b65f-35cf54b9e9f6__85eb591d-f1b6-5033-b256-d82cd7e05d99,implicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5ac04d30-d5e8-5e65-b65f-35cf54b9e9f6__d0ef546b-ad5c-5786-afc4-66aed18fac10,explicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5ac04d30-d5e8-5e65-b65f-35cf54b9e9f6__d0ef546b-ad5c-5786-afc4-66aed18fac10,implicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5ac04d30-d5e8-5e65-b65f-35cf54b9e9f6__e735a64b-f99b-5015-b53c-e7019435d24d,explicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5ac04d30-d5e8-5e65-b65f-35cf54b9e9f6__e735a64b-f99b-5015-b53c-e7019435d24d,implicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5b43d420-fbec-5974-8333-a28ec30b17d4__05c9c2e2-23ad-5451-883a-5067058c3bc5,explicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5b43d420-fbec-5974-8333-a28ec30b17d4__05c9c2e2-23ad-5451-883a-5067058c3bc5,implicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5b43d420-fbec-5974-8333-a28ec30b17d4__26f863d3-d076-53f2-a6b1-5f000a576b14,explicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5b43d420-fbec-5974-8333-a28ec30b17d4__26f863d3-d076-53f2-a6b1-5f000a576b14,implicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5b43d420-fbec-5974-8333-a28ec30b17d4__9767ba0e-68c5-567f-ae91-a3f3552c5985,explicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5b43d420-fbec-5974-8333-a28ec30b17d4__9767ba0e-68c5-567f-ae91-a3f3552c5985,implicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5b896068-8e2a-53f8-96f0-f7fd08fdd7e7__6398ba47-35c3-5bfd-92ea-9ab665fc602b,explicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5b896068-8e2a-53f8-96f0-f7fd08fdd7e7__6398ba47-35c3-5bfd-92ea-9ab665fc602b,implicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5b896068-8e2a-53f8-96f0-f7fd08fdd7e7__796f9898-0e7e-5b9f-ad10-e9a4554fc8e7,explicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5b896068-8e2a-53f8-96f0-f7fd08fdd7e7__796f9898-0e7e-5b9f-ad10-e9a4554fc8e7,implicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5b896068-8e2a-53f8-96f0-f7fd08fdd7e7__eea15dd8-e0b7-578b-85a5-95add421bdfd,explicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5b896068-8e2a-53f8-96f0-f7fd08fdd7e7__eea15dd8-e0b7-578b-85a5-95add421bdfd,implicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5e8646b6-8f97-5250-a7be-d93af50c6e4a__19b3f996-d84d-59fa-83e0-db866032620d,explicit,Android Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+5e8646b6-8f97-5250-a7be-d93af50c6e4a__19b3f996-d84d-59fa-83e0-db866032620d,implicit,Android Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+5e8646b6-8f97-5250-a7be-d93af50c6e4a__ac45ac68-a80b-56cb-b80b-674daafad4bc,explicit,Android Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+5e8646b6-8f97-5250-a7be-d93af50c6e4a__ac45ac68-a80b-56cb-b80b-674daafad4bc,implicit,Android Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+5e8646b6-8f97-5250-a7be-d93af50c6e4a__f5ebe9ca-8efb-5e67-91f8-a234b0a3c053,explicit,Android Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+5e8646b6-8f97-5250-a7be-d93af50c6e4a__f5ebe9ca-8efb-5e67-91f8-a234b0a3c053,implicit,Android Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+5eb428e0-8398-5901-9125-649b1c8f6670__9fa7efe3-b350-55ca-a1bf-bfa8b7778aac,explicit,Graphic Designer,hire,34,1,True,False,0.029,0.0,fixed,0.029
+5eb428e0-8398-5901-9125-649b1c8f6670__9fa7efe3-b350-55ca-a1bf-bfa8b7778aac,implicit,Graphic Designer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+5eb428e0-8398-5901-9125-649b1c8f6670__ad695998-cf1e-53c5-b855-ea3ff6a64812,explicit,Graphic Designer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+5eb428e0-8398-5901-9125-649b1c8f6670__ad695998-cf1e-53c5-b855-ea3ff6a64812,implicit,Graphic Designer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+5eb428e0-8398-5901-9125-649b1c8f6670__b1ae7e13-cc61-581b-a763-466c5794ec5e,explicit,Graphic Designer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+5eb428e0-8398-5901-9125-649b1c8f6670__b1ae7e13-cc61-581b-a763-466c5794ec5e,implicit,Graphic Designer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+5edd781f-836b-5198-ab3c-a3144f76356c__397692d6-7cdc-527c-8e38-3221596de505,explicit,Sales Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+5edd781f-836b-5198-ab3c-a3144f76356c__397692d6-7cdc-527c-8e38-3221596de505,implicit,Sales Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+5edd781f-836b-5198-ab3c-a3144f76356c__ac98fe25-1a72-5210-8a0b-738fd7c42608,explicit,Sales Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5edd781f-836b-5198-ab3c-a3144f76356c__ac98fe25-1a72-5210-8a0b-738fd7c42608,implicit,Sales Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5edd781f-836b-5198-ab3c-a3144f76356c__ad8c139a-5c46-5689-bec5-f9315f417ffd,explicit,Sales Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+5edd781f-836b-5198-ab3c-a3144f76356c__ad8c139a-5c46-5689-bec5-f9315f417ffd,implicit,Sales Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+61b65774-578f-5930-9ff9-1c23da6c0a23__5b23af2c-50da-55fa-970f-36a0e85b57c6,explicit,DevOps engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+61b65774-578f-5930-9ff9-1c23da6c0a23__5b23af2c-50da-55fa-970f-36a0e85b57c6,implicit,DevOps engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+61b65774-578f-5930-9ff9-1c23da6c0a23__8c12c0e2-f2b6-5d84-a106-975526e4128a,explicit,DevOps engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+61b65774-578f-5930-9ff9-1c23da6c0a23__8c12c0e2-f2b6-5d84-a106-975526e4128a,implicit,DevOps engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+61b65774-578f-5930-9ff9-1c23da6c0a23__8e700800-1229-522c-9bca-a240af88a011,explicit,DevOps engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+61b65774-578f-5930-9ff9-1c23da6c0a23__8e700800-1229-522c-9bca-a240af88a011,implicit,DevOps engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6506ed9f-a1df-5835-8e27-da877ad0e6c0__755514c0-999c-5852-b613-969af1a3e86e,explicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6506ed9f-a1df-5835-8e27-da877ad0e6c0__755514c0-999c-5852-b613-969af1a3e86e,implicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6506ed9f-a1df-5835-8e27-da877ad0e6c0__9d41ce96-f3fb-5002-a883-68b116bef044,explicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6506ed9f-a1df-5835-8e27-da877ad0e6c0__9d41ce96-f3fb-5002-a883-68b116bef044,implicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6506ed9f-a1df-5835-8e27-da877ad0e6c0__b876f5ff-cc00-5b2e-a67e-202f8fcc5cb3,explicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6506ed9f-a1df-5835-8e27-da877ad0e6c0__b876f5ff-cc00-5b2e-a67e-202f8fcc5cb3,implicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+684430a3-8d8e-5318-9a1d-bded7d20cc0a__5607fd84-0de6-59bf-845e-e4a12fde14a8,explicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+684430a3-8d8e-5318-9a1d-bded7d20cc0a__5607fd84-0de6-59bf-845e-e4a12fde14a8,implicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+684430a3-8d8e-5318-9a1d-bded7d20cc0a__6f4eaf74-f925-527b-9e0c-48fdbca26457,explicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+684430a3-8d8e-5318-9a1d-bded7d20cc0a__6f4eaf74-f925-527b-9e0c-48fdbca26457,implicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+684430a3-8d8e-5318-9a1d-bded7d20cc0a__f65af94c-22f2-51f1-a02e-6d237a11e54b,explicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+684430a3-8d8e-5318-9a1d-bded7d20cc0a__f65af94c-22f2-51f1-a02e-6d237a11e54b,implicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+686e5aaf-9711-53be-b4a9-6d1f6bf949ba__728ae941-1fb6-568e-9338-fa0669d29c92,explicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+686e5aaf-9711-53be-b4a9-6d1f6bf949ba__728ae941-1fb6-568e-9338-fa0669d29c92,implicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+686e5aaf-9711-53be-b4a9-6d1f6bf949ba__e72ee3b5-b4ee-5a88-b207-dcfdd1f97bd5,explicit,Business Analyst,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+686e5aaf-9711-53be-b4a9-6d1f6bf949ba__e72ee3b5-b4ee-5a88-b207-dcfdd1f97bd5,implicit,Business Analyst,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+686e5aaf-9711-53be-b4a9-6d1f6bf949ba__f3107fca-7738-5d39-94f3-d78d62858096,explicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+686e5aaf-9711-53be-b4a9-6d1f6bf949ba__f3107fca-7738-5d39-94f3-d78d62858096,implicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6a3fcf40-5466-5ebd-8730-880a9b9dfe70__50a3ccfb-e9d9-546b-a6d9-de2f59a0f990,explicit,IT Recruiter,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+6a3fcf40-5466-5ebd-8730-880a9b9dfe70__50a3ccfb-e9d9-546b-a6d9-de2f59a0f990,implicit,IT Recruiter,hire,34,4,True,False,0.882,1.0,fixed,0.118
+6a3fcf40-5466-5ebd-8730-880a9b9dfe70__5a65f2f6-6633-5289-bccf-14e70f9dd9eb,explicit,IT Recruiter,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+6a3fcf40-5466-5ebd-8730-880a9b9dfe70__5a65f2f6-6633-5289-bccf-14e70f9dd9eb,implicit,IT Recruiter,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+6a3fcf40-5466-5ebd-8730-880a9b9dfe70__cf934ec6-23c1-58f7-8160-6eebe8d54919,explicit,IT Recruiter,hire,34,6,True,False,0.824,1.0,fixed,0.176
+6a3fcf40-5466-5ebd-8730-880a9b9dfe70__cf934ec6-23c1-58f7-8160-6eebe8d54919,implicit,IT Recruiter,hire,34,7,True,True,0.471,0.676,unstable_both,0.206
+6a4a211a-9e8a-53b7-8178-ae19f6c1b3e5__890d06c0-9b13-5cd8-a64b-a2fb65020cd5,explicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6a4a211a-9e8a-53b7-8178-ae19f6c1b3e5__890d06c0-9b13-5cd8-a64b-a2fb65020cd5,implicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6a4a211a-9e8a-53b7-8178-ae19f6c1b3e5__d4b97019-1d14-5f6b-a100-24b13f43cf6b,explicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6a4a211a-9e8a-53b7-8178-ae19f6c1b3e5__d4b97019-1d14-5f6b-a100-24b13f43cf6b,implicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6a4a211a-9e8a-53b7-8178-ae19f6c1b3e5__ff970f16-04a0-5606-82f7-a8184b324a56,explicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6a4a211a-9e8a-53b7-8178-ae19f6c1b3e5__ff970f16-04a0-5606-82f7-a8184b324a56,implicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6b2c7793-4ece-5042-9981-03ba90d1d65c__7e6aa3d9-b45f-5fd5-849c-406e0f9199e8,explicit,Automation QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6b2c7793-4ece-5042-9981-03ba90d1d65c__7e6aa3d9-b45f-5fd5-849c-406e0f9199e8,implicit,Automation QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6b2c7793-4ece-5042-9981-03ba90d1d65c__9a50ca5b-9f74-5545-90d4-02ba1d45d327,explicit,Automation QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+6b2c7793-4ece-5042-9981-03ba90d1d65c__9a50ca5b-9f74-5545-90d4-02ba1d45d327,implicit,Automation QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+6b2c7793-4ece-5042-9981-03ba90d1d65c__dd4e504f-a755-5bdf-95e0-66bca832f3ef,explicit,Automation QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6b2c7793-4ece-5042-9981-03ba90d1d65c__dd4e504f-a755-5bdf-95e0-66bca832f3ef,implicit,Automation QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6f1c82bb-4c7c-57a5-a0ce-7d348735cbe0__344af3d1-15df-50e1-9c99-cdb4662f3943,explicit,Sales Manager,hire,34,8,True,False,0.235,0.0,fixed,0.235
+6f1c82bb-4c7c-57a5-a0ce-7d348735cbe0__344af3d1-15df-50e1-9c99-cdb4662f3943,implicit,Sales Manager,hire,34,30,True,False,0.882,0.0,fixed,0.882
+6f1c82bb-4c7c-57a5-a0ce-7d348735cbe0__65a155e5-5498-5c46-8f59-14b3adf761bf,explicit,Sales Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+6f1c82bb-4c7c-57a5-a0ce-7d348735cbe0__65a155e5-5498-5c46-8f59-14b3adf761bf,implicit,Sales Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+6f1c82bb-4c7c-57a5-a0ce-7d348735cbe0__6a75fe14-e01e-50cc-8812-44ee515336e9,explicit,Sales Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6f1c82bb-4c7c-57a5-a0ce-7d348735cbe0__6a75fe14-e01e-50cc-8812-44ee515336e9,implicit,Sales Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+6fb4f5de-dd5e-572a-b30e-8c39681f16df__2c4e22f7-5095-5f3b-9587-e48066bc2ebe,explicit,Product Designer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+6fb4f5de-dd5e-572a-b30e-8c39681f16df__2c4e22f7-5095-5f3b-9587-e48066bc2ebe,implicit,Product Designer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+6fb4f5de-dd5e-572a-b30e-8c39681f16df__9f7c83c1-4699-57d6-b64b-8fda28eab933,explicit,Product Designer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+6fb4f5de-dd5e-572a-b30e-8c39681f16df__9f7c83c1-4699-57d6-b64b-8fda28eab933,implicit,Product Designer,reject,34,1,True,True,0.941,0.912,unstable_both,0.029
+6fb4f5de-dd5e-572a-b30e-8c39681f16df__be033d7b-9243-5deb-a0a7-4e3f023a90d8,explicit,Product Designer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+6fb4f5de-dd5e-572a-b30e-8c39681f16df__be033d7b-9243-5deb-a0a7-4e3f023a90d8,implicit,Product Designer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+73cd22d9-2d30-506d-81af-0eee8102e9dd__0ce48bce-b963-56f5-ad07-d720c03ea5ad,explicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+73cd22d9-2d30-506d-81af-0eee8102e9dd__0ce48bce-b963-56f5-ad07-d720c03ea5ad,implicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+73cd22d9-2d30-506d-81af-0eee8102e9dd__c9c52ab5-c159-5641-8cc4-1bfe1cce921d,explicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+73cd22d9-2d30-506d-81af-0eee8102e9dd__c9c52ab5-c159-5641-8cc4-1bfe1cce921d,implicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+73cd22d9-2d30-506d-81af-0eee8102e9dd__cd205524-9cd8-5f9e-af91-a3247f808a47,explicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+73cd22d9-2d30-506d-81af-0eee8102e9dd__cd205524-9cd8-5f9e-af91-a3247f808a47,implicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+741588a7-4a61-5aa3-bcae-4ea9a8585400__30c2db36-c5eb-5cb7-96fa-bbb16e204d67,explicit,.NET Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+741588a7-4a61-5aa3-bcae-4ea9a8585400__30c2db36-c5eb-5cb7-96fa-bbb16e204d67,implicit,.NET Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+741588a7-4a61-5aa3-bcae-4ea9a8585400__513ff4e4-ad52-5180-b561-933d40dc05e1,explicit,.NET Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+741588a7-4a61-5aa3-bcae-4ea9a8585400__513ff4e4-ad52-5180-b561-933d40dc05e1,implicit,.NET Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+741588a7-4a61-5aa3-bcae-4ea9a8585400__659b159a-7c46-5cef-87bc-4797902d5379,explicit,.NET Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+741588a7-4a61-5aa3-bcae-4ea9a8585400__659b159a-7c46-5cef-87bc-4797902d5379,implicit,.NET Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+75bde58e-d6f5-54c8-83d6-dfa48f32f76a__728ae941-1fb6-568e-9338-fa0669d29c92,explicit,Business Analyst,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+75bde58e-d6f5-54c8-83d6-dfa48f32f76a__728ae941-1fb6-568e-9338-fa0669d29c92,implicit,Business Analyst,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+75bde58e-d6f5-54c8-83d6-dfa48f32f76a__e72ee3b5-b4ee-5a88-b207-dcfdd1f97bd5,explicit,Business Analyst,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+75bde58e-d6f5-54c8-83d6-dfa48f32f76a__e72ee3b5-b4ee-5a88-b207-dcfdd1f97bd5,implicit,Business Analyst,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+75bde58e-d6f5-54c8-83d6-dfa48f32f76a__f3107fca-7738-5d39-94f3-d78d62858096,explicit,Business Analyst,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+75bde58e-d6f5-54c8-83d6-dfa48f32f76a__f3107fca-7738-5d39-94f3-d78d62858096,implicit,Business Analyst,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+76f77eed-eee0-58ad-a94b-2f3d0edb03db__47d4bb00-f89a-50be-ad90-440952549178,explicit,React Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+76f77eed-eee0-58ad-a94b-2f3d0edb03db__47d4bb00-f89a-50be-ad90-440952549178,implicit,React Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+76f77eed-eee0-58ad-a94b-2f3d0edb03db__613d5139-832f-50b4-aaa1-a5c705be14cc,explicit,React Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+76f77eed-eee0-58ad-a94b-2f3d0edb03db__613d5139-832f-50b4-aaa1-a5c705be14cc,implicit,React Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+76f77eed-eee0-58ad-a94b-2f3d0edb03db__c0dba0ac-6cbb-5716-ad7a-81e008648ee9,explicit,React Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+76f77eed-eee0-58ad-a94b-2f3d0edb03db__c0dba0ac-6cbb-5716-ad7a-81e008648ee9,implicit,React Developer,hire,34,17,True,True,0.176,0.676,unstable_both,0.5
+773992c5-77d4-596c-913d-51ec87951115__224ab121-1559-5b81-9dd5-d598bbb40366,explicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+773992c5-77d4-596c-913d-51ec87951115__224ab121-1559-5b81-9dd5-d598bbb40366,implicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+773992c5-77d4-596c-913d-51ec87951115__40b10837-ef9c-5c37-aa19-d706da227a38,explicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+773992c5-77d4-596c-913d-51ec87951115__40b10837-ef9c-5c37-aa19-d706da227a38,implicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+773992c5-77d4-596c-913d-51ec87951115__aff8f3de-43d1-516e-8c3c-bd43a1cc69dd,explicit,HR manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+773992c5-77d4-596c-913d-51ec87951115__aff8f3de-43d1-516e-8c3c-bd43a1cc69dd,implicit,HR manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+780711a1-7f0c-5bbb-a632-6d3f21356dbe__30c2db36-c5eb-5cb7-96fa-bbb16e204d67,explicit,.NET Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+780711a1-7f0c-5bbb-a632-6d3f21356dbe__30c2db36-c5eb-5cb7-96fa-bbb16e204d67,implicit,.NET Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+780711a1-7f0c-5bbb-a632-6d3f21356dbe__513ff4e4-ad52-5180-b561-933d40dc05e1,explicit,.NET Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+780711a1-7f0c-5bbb-a632-6d3f21356dbe__513ff4e4-ad52-5180-b561-933d40dc05e1,implicit,.NET Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+780711a1-7f0c-5bbb-a632-6d3f21356dbe__659b159a-7c46-5cef-87bc-4797902d5379,explicit,.NET Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+780711a1-7f0c-5bbb-a632-6d3f21356dbe__659b159a-7c46-5cef-87bc-4797902d5379,implicit,.NET Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+7896a3b2-f98b-57a0-9334-3a1202300801__0c0e50a3-6822-5e53-8722-e4f0bd9a2ae4,explicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7896a3b2-f98b-57a0-9334-3a1202300801__0c0e50a3-6822-5e53-8722-e4f0bd9a2ae4,implicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7896a3b2-f98b-57a0-9334-3a1202300801__7093871c-d45b-5aca-9032-385ba2fe5263,explicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7896a3b2-f98b-57a0-9334-3a1202300801__7093871c-d45b-5aca-9032-385ba2fe5263,implicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7896a3b2-f98b-57a0-9334-3a1202300801__ce7217d0-756c-5928-859a-e12911bd157d,explicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7896a3b2-f98b-57a0-9334-3a1202300801__ce7217d0-756c-5928-859a-e12911bd157d,implicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7b7d27c7-a1fb-59c7-a7af-fcdc6b7d1e4b__7e6aa3d9-b45f-5fd5-849c-406e0f9199e8,explicit,Automation QA Engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+7b7d27c7-a1fb-59c7-a7af-fcdc6b7d1e4b__7e6aa3d9-b45f-5fd5-849c-406e0f9199e8,implicit,Automation QA Engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+7b7d27c7-a1fb-59c7-a7af-fcdc6b7d1e4b__9a50ca5b-9f74-5545-90d4-02ba1d45d327,explicit,Automation QA Engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+7b7d27c7-a1fb-59c7-a7af-fcdc6b7d1e4b__9a50ca5b-9f74-5545-90d4-02ba1d45d327,implicit,Automation QA Engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+7b7d27c7-a1fb-59c7-a7af-fcdc6b7d1e4b__dd4e504f-a755-5bdf-95e0-66bca832f3ef,explicit,Automation QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7b7d27c7-a1fb-59c7-a7af-fcdc6b7d1e4b__dd4e504f-a755-5bdf-95e0-66bca832f3ef,implicit,Automation QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7baae848-23f9-587d-b6f1-88f3eb18b3a5__51320faf-4cd4-5bb5-90d1-5b33eee48847,explicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7baae848-23f9-587d-b6f1-88f3eb18b3a5__51320faf-4cd4-5bb5-90d1-5b33eee48847,implicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7baae848-23f9-587d-b6f1-88f3eb18b3a5__81c2a067-2f4c-55c3-8d8d-dbb7f270fc2c,explicit,Node.js developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+7baae848-23f9-587d-b6f1-88f3eb18b3a5__81c2a067-2f4c-55c3-8d8d-dbb7f270fc2c,implicit,Node.js developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+7baae848-23f9-587d-b6f1-88f3eb18b3a5__dde275a6-6f23-50bf-813c-d748fce86844,explicit,Node.js developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+7baae848-23f9-587d-b6f1-88f3eb18b3a5__dde275a6-6f23-50bf-813c-d748fce86844,implicit,Node.js developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+7edbdeba-8b03-5664-a7ba-a39e48c59315__6398ba47-35c3-5bfd-92ea-9ab665fc602b,explicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7edbdeba-8b03-5664-a7ba-a39e48c59315__6398ba47-35c3-5bfd-92ea-9ab665fc602b,implicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7edbdeba-8b03-5664-a7ba-a39e48c59315__796f9898-0e7e-5b9f-ad10-e9a4554fc8e7,explicit,PHP Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+7edbdeba-8b03-5664-a7ba-a39e48c59315__796f9898-0e7e-5b9f-ad10-e9a4554fc8e7,implicit,PHP Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+7edbdeba-8b03-5664-a7ba-a39e48c59315__eea15dd8-e0b7-578b-85a5-95add421bdfd,explicit,PHP Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+7edbdeba-8b03-5664-a7ba-a39e48c59315__eea15dd8-e0b7-578b-85a5-95add421bdfd,implicit,PHP Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+7fe1ffbd-675b-59bf-b187-d4f351a160cb__00cc36d8-10ef-5f92-b069-4234fa200247,explicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7fe1ffbd-675b-59bf-b187-d4f351a160cb__00cc36d8-10ef-5f92-b069-4234fa200247,implicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7fe1ffbd-675b-59bf-b187-d4f351a160cb__0a00ec3b-d0c5-5662-96cf-7022a25ee2ee,explicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7fe1ffbd-675b-59bf-b187-d4f351a160cb__0a00ec3b-d0c5-5662-96cf-7022a25ee2ee,implicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7fe1ffbd-675b-59bf-b187-d4f351a160cb__dad80490-d2cb-5680-8caa-8c4b3a535d24,explicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+7fe1ffbd-675b-59bf-b187-d4f351a160cb__dad80490-d2cb-5680-8caa-8c4b3a535d24,implicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+80761f78-c535-5d50-af7e-9fbc68002fd7__890d06c0-9b13-5cd8-a64b-a2fb65020cd5,explicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+80761f78-c535-5d50-af7e-9fbc68002fd7__890d06c0-9b13-5cd8-a64b-a2fb65020cd5,implicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+80761f78-c535-5d50-af7e-9fbc68002fd7__d4b97019-1d14-5f6b-a100-24b13f43cf6b,explicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+80761f78-c535-5d50-af7e-9fbc68002fd7__d4b97019-1d14-5f6b-a100-24b13f43cf6b,implicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+80761f78-c535-5d50-af7e-9fbc68002fd7__ff970f16-04a0-5606-82f7-a8184b324a56,explicit,Full Stack Web Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+80761f78-c535-5d50-af7e-9fbc68002fd7__ff970f16-04a0-5606-82f7-a8184b324a56,implicit,Full Stack Web Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+87646231-907c-5a1a-b5c4-c25e3e640b35__0244128d-6f66-5c2d-87b2-ee5ecb80aec8,explicit,3D Artist,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+87646231-907c-5a1a-b5c4-c25e3e640b35__0244128d-6f66-5c2d-87b2-ee5ecb80aec8,implicit,3D Artist,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+87646231-907c-5a1a-b5c4-c25e3e640b35__3ab81c18-3f91-5a3d-b83b-b387cbd706a0,explicit,3D Artist,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+87646231-907c-5a1a-b5c4-c25e3e640b35__3ab81c18-3f91-5a3d-b83b-b387cbd706a0,implicit,3D Artist,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+87646231-907c-5a1a-b5c4-c25e3e640b35__71c32008-ef4a-5045-b827-2344dde0fc74,explicit,3D Artist,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+87646231-907c-5a1a-b5c4-c25e3e640b35__71c32008-ef4a-5045-b827-2344dde0fc74,implicit,3D Artist,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+8c09d2b2-3632-5430-9f54-f2556ae8ddff__51320faf-4cd4-5bb5-90d1-5b33eee48847,explicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+8c09d2b2-3632-5430-9f54-f2556ae8ddff__51320faf-4cd4-5bb5-90d1-5b33eee48847,implicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+8c09d2b2-3632-5430-9f54-f2556ae8ddff__81c2a067-2f4c-55c3-8d8d-dbb7f270fc2c,explicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+8c09d2b2-3632-5430-9f54-f2556ae8ddff__81c2a067-2f4c-55c3-8d8d-dbb7f270fc2c,implicit,Node.js developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+8c09d2b2-3632-5430-9f54-f2556ae8ddff__dde275a6-6f23-50bf-813c-d748fce86844,explicit,Node.js developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+8c09d2b2-3632-5430-9f54-f2556ae8ddff__dde275a6-6f23-50bf-813c-d748fce86844,implicit,Node.js developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+8d579290-f3f9-5e20-b45f-93c7703b970d__55dec695-2f6a-55df-bf20-5d21c21c6f63,explicit,Software Engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+8d579290-f3f9-5e20-b45f-93c7703b970d__55dec695-2f6a-55df-bf20-5d21c21c6f63,implicit,Software Engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+8d579290-f3f9-5e20-b45f-93c7703b970d__777330a3-f847-589c-b239-0e1440c0ad46,explicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+8d579290-f3f9-5e20-b45f-93c7703b970d__777330a3-f847-589c-b239-0e1440c0ad46,implicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+8d579290-f3f9-5e20-b45f-93c7703b970d__8ee92006-7cc7-5a8c-b536-0c01939a09d1,explicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+8d579290-f3f9-5e20-b45f-93c7703b970d__8ee92006-7cc7-5a8c-b536-0c01939a09d1,implicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9334b105-980c-5aa0-9cbe-a3a3a7f28973__384b9b7b-2a3e-5232-a535-9b8cbc44992e,explicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9334b105-980c-5aa0-9cbe-a3a3a7f28973__384b9b7b-2a3e-5232-a535-9b8cbc44992e,implicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9334b105-980c-5aa0-9cbe-a3a3a7f28973__449d3541-1c56-5e58-88a3-73684194d9af,explicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9334b105-980c-5aa0-9cbe-a3a3a7f28973__449d3541-1c56-5e58-88a3-73684194d9af,implicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9334b105-980c-5aa0-9cbe-a3a3a7f28973__cf0ec686-43e4-5757-b920-67a60ac99879,explicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9334b105-980c-5aa0-9cbe-a3a3a7f28973__cf0ec686-43e4-5757-b920-67a60ac99879,implicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+940a3db2-0456-56f8-b6e3-6ca159a50684__0c0e50a3-6822-5e53-8722-e4f0bd9a2ae4,explicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+940a3db2-0456-56f8-b6e3-6ca159a50684__0c0e50a3-6822-5e53-8722-e4f0bd9a2ae4,implicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+940a3db2-0456-56f8-b6e3-6ca159a50684__7093871c-d45b-5aca-9032-385ba2fe5263,explicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+940a3db2-0456-56f8-b6e3-6ca159a50684__7093871c-d45b-5aca-9032-385ba2fe5263,implicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+940a3db2-0456-56f8-b6e3-6ca159a50684__ce7217d0-756c-5928-859a-e12911bd157d,explicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+940a3db2-0456-56f8-b6e3-6ca159a50684__ce7217d0-756c-5928-859a-e12911bd157d,implicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+952c891d-13b4-592a-a726-35887e6653dc__8262ebd6-0fcd-5d1a-89ac-ec961a1a2a4e,explicit,iOS Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+952c891d-13b4-592a-a726-35887e6653dc__8262ebd6-0fcd-5d1a-89ac-ec961a1a2a4e,implicit,iOS Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+952c891d-13b4-592a-a726-35887e6653dc__c82e21e2-983f-5e81-b5d3-4f735bbdf461,explicit,iOS Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+952c891d-13b4-592a-a726-35887e6653dc__c82e21e2-983f-5e81-b5d3-4f735bbdf461,implicit,iOS Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+952c891d-13b4-592a-a726-35887e6653dc__cf195942-8c14-5b91-811a-63f5254e8da1,explicit,iOS Developer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+952c891d-13b4-592a-a726-35887e6653dc__cf195942-8c14-5b91-811a-63f5254e8da1,implicit,iOS Developer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+97622f79-1dc1-5565-8d9c-c008436fa705__6398ba47-35c3-5bfd-92ea-9ab665fc602b,explicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+97622f79-1dc1-5565-8d9c-c008436fa705__6398ba47-35c3-5bfd-92ea-9ab665fc602b,implicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+97622f79-1dc1-5565-8d9c-c008436fa705__796f9898-0e7e-5b9f-ad10-e9a4554fc8e7,explicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+97622f79-1dc1-5565-8d9c-c008436fa705__796f9898-0e7e-5b9f-ad10-e9a4554fc8e7,implicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+97622f79-1dc1-5565-8d9c-c008436fa705__eea15dd8-e0b7-578b-85a5-95add421bdfd,explicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+97622f79-1dc1-5565-8d9c-c008436fa705__eea15dd8-e0b7-578b-85a5-95add421bdfd,implicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+97b2d096-c069-532d-8576-3f3711105d75__0244128d-6f66-5c2d-87b2-ee5ecb80aec8,explicit,3D Artist,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+97b2d096-c069-532d-8576-3f3711105d75__0244128d-6f66-5c2d-87b2-ee5ecb80aec8,implicit,3D Artist,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+97b2d096-c069-532d-8576-3f3711105d75__3ab81c18-3f91-5a3d-b83b-b387cbd706a0,explicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+97b2d096-c069-532d-8576-3f3711105d75__3ab81c18-3f91-5a3d-b83b-b387cbd706a0,implicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+97b2d096-c069-532d-8576-3f3711105d75__71c32008-ef4a-5045-b827-2344dde0fc74,explicit,3D Artist,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+97b2d096-c069-532d-8576-3f3711105d75__71c32008-ef4a-5045-b827-2344dde0fc74,implicit,3D Artist,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+99ccef6b-953c-5eca-8fd1-d2fbf78c897c__25db9df5-4e18-5265-b0ff-aadb65682237,explicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+99ccef6b-953c-5eca-8fd1-d2fbf78c897c__25db9df5-4e18-5265-b0ff-aadb65682237,implicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+99ccef6b-953c-5eca-8fd1-d2fbf78c897c__57518707-cad4-56f1-812d-d86240e524b1,explicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+99ccef6b-953c-5eca-8fd1-d2fbf78c897c__57518707-cad4-56f1-812d-d86240e524b1,implicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+99ccef6b-953c-5eca-8fd1-d2fbf78c897c__efc42529-b8c4-5182-b5c6-ed1fd6536941,explicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+99ccef6b-953c-5eca-8fd1-d2fbf78c897c__efc42529-b8c4-5182-b5c6-ed1fd6536941,implicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9a78ec7d-088d-5f8b-8947-43368c048cc6__0ce48bce-b963-56f5-ad07-d720c03ea5ad,explicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9a78ec7d-088d-5f8b-8947-43368c048cc6__0ce48bce-b963-56f5-ad07-d720c03ea5ad,implicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9a78ec7d-088d-5f8b-8947-43368c048cc6__c9c52ab5-c159-5641-8cc4-1bfe1cce921d,explicit,Software Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+9a78ec7d-088d-5f8b-8947-43368c048cc6__c9c52ab5-c159-5641-8cc4-1bfe1cce921d,implicit,Software Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+9a78ec7d-088d-5f8b-8947-43368c048cc6__cd205524-9cd8-5f9e-af91-a3247f808a47,explicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9a78ec7d-088d-5f8b-8947-43368c048cc6__cd205524-9cd8-5f9e-af91-a3247f808a47,implicit,Software Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9bd8b73f-05e5-5558-810f-6046ed9a96b9__6adc6153-943b-5753-906c-7df45d887f32,explicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9bd8b73f-05e5-5558-810f-6046ed9a96b9__6adc6153-943b-5753-906c-7df45d887f32,implicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9bd8b73f-05e5-5558-810f-6046ed9a96b9__c3e54755-de36-58ec-ba6e-109dc5033ff9,explicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9bd8b73f-05e5-5558-810f-6046ed9a96b9__c3e54755-de36-58ec-ba6e-109dc5033ff9,implicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9bd8b73f-05e5-5558-810f-6046ed9a96b9__c8ba572e-5c15-54a0-ad6f-ae6e89dbb173,explicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9bd8b73f-05e5-5558-810f-6046ed9a96b9__c8ba572e-5c15-54a0-ad6f-ae6e89dbb173,implicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9bef2a65-c774-562e-ac19-020d1fa69b9b__4f3c425d-5989-534b-82a0-83e716808fe4,explicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9bef2a65-c774-562e-ac19-020d1fa69b9b__4f3c425d-5989-534b-82a0-83e716808fe4,implicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9bef2a65-c774-562e-ac19-020d1fa69b9b__7b6e56c5-708b-5175-975b-c03129372cdb,explicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9bef2a65-c774-562e-ac19-020d1fa69b9b__7b6e56c5-708b-5175-975b-c03129372cdb,implicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9bef2a65-c774-562e-ac19-020d1fa69b9b__b6979687-783b-5146-a640-c4ee8e5041ca,explicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9bef2a65-c774-562e-ac19-020d1fa69b9b__b6979687-783b-5146-a640-c4ee8e5041ca,implicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9f20c39b-cdea-5612-9bb5-8f0de6fa2b88__384b9b7b-2a3e-5232-a535-9b8cbc44992e,explicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9f20c39b-cdea-5612-9bb5-8f0de6fa2b88__384b9b7b-2a3e-5232-a535-9b8cbc44992e,implicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9f20c39b-cdea-5612-9bb5-8f0de6fa2b88__449d3541-1c56-5e58-88a3-73684194d9af,explicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9f20c39b-cdea-5612-9bb5-8f0de6fa2b88__449d3541-1c56-5e58-88a3-73684194d9af,implicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9f20c39b-cdea-5612-9bb5-8f0de6fa2b88__cf0ec686-43e4-5757-b920-67a60ac99879,explicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+9f20c39b-cdea-5612-9bb5-8f0de6fa2b88__cf0ec686-43e4-5757-b920-67a60ac99879,implicit,Data Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+a455e89b-d468-5ad6-8ece-baa1457b0745__3f720fc6-542a-5187-b3ca-e8acbd096513,explicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+a455e89b-d468-5ad6-8ece-baa1457b0745__3f720fc6-542a-5187-b3ca-e8acbd096513,implicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+a455e89b-d468-5ad6-8ece-baa1457b0745__63a3fcf8-1e40-5de8-8ec6-d72a9920edd5,explicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+a455e89b-d468-5ad6-8ece-baa1457b0745__63a3fcf8-1e40-5de8-8ec6-d72a9920edd5,implicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+a455e89b-d468-5ad6-8ece-baa1457b0745__f72a773d-c920-5814-86f5-4eaadab285ef,explicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+a455e89b-d468-5ad6-8ece-baa1457b0745__f72a773d-c920-5814-86f5-4eaadab285ef,implicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+aaf0a951-a1cb-5380-819a-f3e5f8333a3e__47d4bb00-f89a-50be-ad90-440952549178,explicit,React Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+aaf0a951-a1cb-5380-819a-f3e5f8333a3e__47d4bb00-f89a-50be-ad90-440952549178,implicit,React Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+aaf0a951-a1cb-5380-819a-f3e5f8333a3e__613d5139-832f-50b4-aaa1-a5c705be14cc,explicit,React Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+aaf0a951-a1cb-5380-819a-f3e5f8333a3e__613d5139-832f-50b4-aaa1-a5c705be14cc,implicit,React Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+aaf0a951-a1cb-5380-819a-f3e5f8333a3e__c0dba0ac-6cbb-5716-ad7a-81e008648ee9,explicit,React Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+aaf0a951-a1cb-5380-819a-f3e5f8333a3e__c0dba0ac-6cbb-5716-ad7a-81e008648ee9,implicit,React Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ac6499cf-0b14-59da-8459-eca953fdc3a4__aca0d4fd-dc9e-5dab-b10a-a6a71b774d1a,explicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ac6499cf-0b14-59da-8459-eca953fdc3a4__aca0d4fd-dc9e-5dab-b10a-a6a71b774d1a,implicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ac6499cf-0b14-59da-8459-eca953fdc3a4__b1c9f3db-3cbc-5b9b-90e0-2461b3c113c7,explicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ac6499cf-0b14-59da-8459-eca953fdc3a4__b1c9f3db-3cbc-5b9b-90e0-2461b3c113c7,implicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ac6499cf-0b14-59da-8459-eca953fdc3a4__fe1115b5-3c64-579c-bd9b-5c3b7c6b2f4c,explicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ac6499cf-0b14-59da-8459-eca953fdc3a4__fe1115b5-3c64-579c-bd9b-5c3b7c6b2f4c,implicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ac8f03a3-75a7-5246-aef2-36d04d2585c3__aca0d4fd-dc9e-5dab-b10a-a6a71b774d1a,explicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ac8f03a3-75a7-5246-aef2-36d04d2585c3__aca0d4fd-dc9e-5dab-b10a-a6a71b774d1a,implicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ac8f03a3-75a7-5246-aef2-36d04d2585c3__b1c9f3db-3cbc-5b9b-90e0-2461b3c113c7,explicit,Full Stack Web Developer,hire,34,19,True,True,0.265,0.824,unstable_both,0.559
+ac8f03a3-75a7-5246-aef2-36d04d2585c3__b1c9f3db-3cbc-5b9b-90e0-2461b3c113c7,implicit,Full Stack Web Developer,hire,34,12,True,True,0.059,0.412,unstable_both,0.353
+ac8f03a3-75a7-5246-aef2-36d04d2585c3__fe1115b5-3c64-579c-bd9b-5c3b7c6b2f4c,explicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ac8f03a3-75a7-5246-aef2-36d04d2585c3__fe1115b5-3c64-579c-bd9b-5c3b7c6b2f4c,implicit,Full Stack Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+aebdca1b-2e74-53d9-ace9-490d47704479__4f3c425d-5989-534b-82a0-83e716808fe4,explicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+aebdca1b-2e74-53d9-ace9-490d47704479__4f3c425d-5989-534b-82a0-83e716808fe4,implicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+aebdca1b-2e74-53d9-ace9-490d47704479__7b6e56c5-708b-5175-975b-c03129372cdb,explicit,Manual QA Engineer,hire,34,1,False,True,0.0,0.029,broken,0.029
+aebdca1b-2e74-53d9-ace9-490d47704479__7b6e56c5-708b-5175-975b-c03129372cdb,implicit,Manual QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+aebdca1b-2e74-53d9-ace9-490d47704479__b6979687-783b-5146-a640-c4ee8e5041ca,explicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+aebdca1b-2e74-53d9-ace9-490d47704479__b6979687-783b-5146-a640-c4ee8e5041ca,implicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+afb824a0-8f65-59c0-bee9-b4e467d6f6f8__728ae941-1fb6-568e-9338-fa0669d29c92,explicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+afb824a0-8f65-59c0-bee9-b4e467d6f6f8__728ae941-1fb6-568e-9338-fa0669d29c92,implicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+afb824a0-8f65-59c0-bee9-b4e467d6f6f8__e72ee3b5-b4ee-5a88-b207-dcfdd1f97bd5,explicit,Business Analyst,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+afb824a0-8f65-59c0-bee9-b4e467d6f6f8__e72ee3b5-b4ee-5a88-b207-dcfdd1f97bd5,implicit,Business Analyst,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+afb824a0-8f65-59c0-bee9-b4e467d6f6f8__f3107fca-7738-5d39-94f3-d78d62858096,explicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+afb824a0-8f65-59c0-bee9-b4e467d6f6f8__f3107fca-7738-5d39-94f3-d78d62858096,implicit,Business Analyst,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+afcac84d-101a-51a4-b490-57cb52b8d17a__00cc36d8-10ef-5f92-b069-4234fa200247,explicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+afcac84d-101a-51a4-b490-57cb52b8d17a__00cc36d8-10ef-5f92-b069-4234fa200247,implicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+afcac84d-101a-51a4-b490-57cb52b8d17a__0a00ec3b-d0c5-5662-96cf-7022a25ee2ee,explicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+afcac84d-101a-51a4-b490-57cb52b8d17a__0a00ec3b-d0c5-5662-96cf-7022a25ee2ee,implicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+afcac84d-101a-51a4-b490-57cb52b8d17a__dad80490-d2cb-5680-8caa-8c4b3a535d24,explicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+afcac84d-101a-51a4-b490-57cb52b8d17a__dad80490-d2cb-5680-8caa-8c4b3a535d24,implicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b1b5d4ad-3fa2-5d9f-9358-5043dc068c46__0244128d-6f66-5c2d-87b2-ee5ecb80aec8,explicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b1b5d4ad-3fa2-5d9f-9358-5043dc068c46__0244128d-6f66-5c2d-87b2-ee5ecb80aec8,implicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b1b5d4ad-3fa2-5d9f-9358-5043dc068c46__3ab81c18-3f91-5a3d-b83b-b387cbd706a0,explicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b1b5d4ad-3fa2-5d9f-9358-5043dc068c46__3ab81c18-3f91-5a3d-b83b-b387cbd706a0,implicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b1b5d4ad-3fa2-5d9f-9358-5043dc068c46__71c32008-ef4a-5045-b827-2344dde0fc74,explicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b1b5d4ad-3fa2-5d9f-9358-5043dc068c46__71c32008-ef4a-5045-b827-2344dde0fc74,implicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b30c4586-93c2-52b5-a56c-9e696a711318__85eb591d-f1b6-5033-b256-d82cd7e05d99,explicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b30c4586-93c2-52b5-a56c-9e696a711318__85eb591d-f1b6-5033-b256-d82cd7e05d99,implicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b30c4586-93c2-52b5-a56c-9e696a711318__d0ef546b-ad5c-5786-afc4-66aed18fac10,explicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b30c4586-93c2-52b5-a56c-9e696a711318__d0ef546b-ad5c-5786-afc4-66aed18fac10,implicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b30c4586-93c2-52b5-a56c-9e696a711318__e735a64b-f99b-5015-b53c-e7019435d24d,explicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b30c4586-93c2-52b5-a56c-9e696a711318__e735a64b-f99b-5015-b53c-e7019435d24d,implicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b424d665-4cb4-58d5-996e-0d57f4c4e8f5__755514c0-999c-5852-b613-969af1a3e86e,explicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b424d665-4cb4-58d5-996e-0d57f4c4e8f5__755514c0-999c-5852-b613-969af1a3e86e,implicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b424d665-4cb4-58d5-996e-0d57f4c4e8f5__9d41ce96-f3fb-5002-a883-68b116bef044,explicit,JavaScript Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+b424d665-4cb4-58d5-996e-0d57f4c4e8f5__9d41ce96-f3fb-5002-a883-68b116bef044,implicit,JavaScript Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+b424d665-4cb4-58d5-996e-0d57f4c4e8f5__b876f5ff-cc00-5b2e-a67e-202f8fcc5cb3,explicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b424d665-4cb4-58d5-996e-0d57f4c4e8f5__b876f5ff-cc00-5b2e-a67e-202f8fcc5cb3,implicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b64e715b-047f-5bd1-a46e-55e2f2f333c3__5b23af2c-50da-55fa-970f-36a0e85b57c6,explicit,DevOps engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+b64e715b-047f-5bd1-a46e-55e2f2f333c3__5b23af2c-50da-55fa-970f-36a0e85b57c6,implicit,DevOps engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+b64e715b-047f-5bd1-a46e-55e2f2f333c3__8c12c0e2-f2b6-5d84-a106-975526e4128a,explicit,DevOps engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+b64e715b-047f-5bd1-a46e-55e2f2f333c3__8c12c0e2-f2b6-5d84-a106-975526e4128a,implicit,DevOps engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+b64e715b-047f-5bd1-a46e-55e2f2f333c3__8e700800-1229-522c-9bca-a240af88a011,explicit,DevOps engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+b64e715b-047f-5bd1-a46e-55e2f2f333c3__8e700800-1229-522c-9bca-a240af88a011,implicit,DevOps engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+b6a40951-a376-5068-8f08-9859d2a1c377__28d49c2e-e7d0-5604-b650-a71c5c1ef4eb,explicit,Project Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+b6a40951-a376-5068-8f08-9859d2a1c377__28d49c2e-e7d0-5604-b650-a71c5c1ef4eb,implicit,Project Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+b6a40951-a376-5068-8f08-9859d2a1c377__b71d8848-bca8-5972-aa9a-b87ab801f96e,explicit,Project Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+b6a40951-a376-5068-8f08-9859d2a1c377__b71d8848-bca8-5972-aa9a-b87ab801f96e,implicit,Project Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+b6a40951-a376-5068-8f08-9859d2a1c377__de48349d-c02f-541d-b9d0-f5b8435f3dd2,explicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b6a40951-a376-5068-8f08-9859d2a1c377__de48349d-c02f-541d-b9d0-f5b8435f3dd2,implicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b755b121-0e20-5551-8057-5a215ac572f4__096f894a-00ba-5e98-8587-4ebfc870809a,explicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b755b121-0e20-5551-8057-5a215ac572f4__096f894a-00ba-5e98-8587-4ebfc870809a,implicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b755b121-0e20-5551-8057-5a215ac572f4__162ae12d-e1e7-51a3-941b-3b11ba051850,explicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b755b121-0e20-5551-8057-5a215ac572f4__162ae12d-e1e7-51a3-941b-3b11ba051850,implicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b755b121-0e20-5551-8057-5a215ac572f4__6265ad4b-31a5-5c39-9884-268bd8ea2e5f,explicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b755b121-0e20-5551-8057-5a215ac572f4__6265ad4b-31a5-5c39-9884-268bd8ea2e5f,implicit,.NET Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b82c534e-a605-5389-a251-6a2f56834aba__00cc36d8-10ef-5f92-b069-4234fa200247,explicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b82c534e-a605-5389-a251-6a2f56834aba__00cc36d8-10ef-5f92-b069-4234fa200247,implicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b82c534e-a605-5389-a251-6a2f56834aba__0a00ec3b-d0c5-5662-96cf-7022a25ee2ee,explicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b82c534e-a605-5389-a251-6a2f56834aba__0a00ec3b-d0c5-5662-96cf-7022a25ee2ee,implicit,Java Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b82c534e-a605-5389-a251-6a2f56834aba__dad80490-d2cb-5680-8caa-8c4b3a535d24,explicit,Java Developer,hire,34,6,True,True,0.794,0.735,unstable_both,0.176
+b82c534e-a605-5389-a251-6a2f56834aba__dad80490-d2cb-5680-8caa-8c4b3a535d24,implicit,Java Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+b84032ca-1125-5825-bba1-3809ae06d506__0c0e50a3-6822-5e53-8722-e4f0bd9a2ae4,explicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b84032ca-1125-5825-bba1-3809ae06d506__0c0e50a3-6822-5e53-8722-e4f0bd9a2ae4,implicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b84032ca-1125-5825-bba1-3809ae06d506__7093871c-d45b-5aca-9032-385ba2fe5263,explicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b84032ca-1125-5825-bba1-3809ae06d506__7093871c-d45b-5aca-9032-385ba2fe5263,implicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b84032ca-1125-5825-bba1-3809ae06d506__ce7217d0-756c-5928-859a-e12911bd157d,explicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b84032ca-1125-5825-bba1-3809ae06d506__ce7217d0-756c-5928-859a-e12911bd157d,implicit,UI/UX Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b925a8e0-44fe-5b87-a7e8-2dc4d65ade86__12f37451-b6c2-5421-a05b-89ef7326e3eb,explicit,Product Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b925a8e0-44fe-5b87-a7e8-2dc4d65ade86__12f37451-b6c2-5421-a05b-89ef7326e3eb,implicit,Product Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+b925a8e0-44fe-5b87-a7e8-2dc4d65ade86__1a0f83d8-71f6-5f5b-8407-7eb0fcf13f15,explicit,Product Designer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+b925a8e0-44fe-5b87-a7e8-2dc4d65ade86__1a0f83d8-71f6-5f5b-8407-7eb0fcf13f15,implicit,Product Designer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+b925a8e0-44fe-5b87-a7e8-2dc4d65ade86__6531575b-cd8e-5d60-a0f1-f15f4b202e4d,explicit,Product Designer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+b925a8e0-44fe-5b87-a7e8-2dc4d65ade86__6531575b-cd8e-5d60-a0f1-f15f4b202e4d,implicit,Product Designer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+bc9a882f-690c-5881-a5b0-7b6d8daa204b__755514c0-999c-5852-b613-969af1a3e86e,explicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+bc9a882f-690c-5881-a5b0-7b6d8daa204b__755514c0-999c-5852-b613-969af1a3e86e,implicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+bc9a882f-690c-5881-a5b0-7b6d8daa204b__9d41ce96-f3fb-5002-a883-68b116bef044,explicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+bc9a882f-690c-5881-a5b0-7b6d8daa204b__9d41ce96-f3fb-5002-a883-68b116bef044,implicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+bc9a882f-690c-5881-a5b0-7b6d8daa204b__b876f5ff-cc00-5b2e-a67e-202f8fcc5cb3,explicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+bc9a882f-690c-5881-a5b0-7b6d8daa204b__b876f5ff-cc00-5b2e-a67e-202f8fcc5cb3,implicit,JavaScript Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c0a43901-cdf2-5df1-950e-04d7e3cc33c5__25db9df5-4e18-5265-b0ff-aadb65682237,explicit,Android Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+c0a43901-cdf2-5df1-950e-04d7e3cc33c5__25db9df5-4e18-5265-b0ff-aadb65682237,implicit,Android Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+c0a43901-cdf2-5df1-950e-04d7e3cc33c5__57518707-cad4-56f1-812d-d86240e524b1,explicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c0a43901-cdf2-5df1-950e-04d7e3cc33c5__57518707-cad4-56f1-812d-d86240e524b1,implicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c0a43901-cdf2-5df1-950e-04d7e3cc33c5__efc42529-b8c4-5182-b5c6-ed1fd6536941,explicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c0a43901-cdf2-5df1-950e-04d7e3cc33c5__efc42529-b8c4-5182-b5c6-ed1fd6536941,implicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c38489d2-fbdd-5d5c-82e2-64cfc390c13c__0e05d4f5-913b-57a7-89c3-6296c6d59767,explicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c38489d2-fbdd-5d5c-82e2-64cfc390c13c__0e05d4f5-913b-57a7-89c3-6296c6d59767,implicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c38489d2-fbdd-5d5c-82e2-64cfc390c13c__3a43100e-5302-5828-bf7b-313eca6b9080,explicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c38489d2-fbdd-5d5c-82e2-64cfc390c13c__3a43100e-5302-5828-bf7b-313eca6b9080,implicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c38489d2-fbdd-5d5c-82e2-64cfc390c13c__a2c55b4c-a2df-582b-b200-bc12824fe455,explicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c38489d2-fbdd-5d5c-82e2-64cfc390c13c__a2c55b4c-a2df-582b-b200-bc12824fe455,implicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c4edde0f-f86d-5e0e-8ee2-28efe7b1d237__50a3ccfb-e9d9-546b-a6d9-de2f59a0f990,explicit,IT Recruiter,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+c4edde0f-f86d-5e0e-8ee2-28efe7b1d237__50a3ccfb-e9d9-546b-a6d9-de2f59a0f990,implicit,IT Recruiter,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+c4edde0f-f86d-5e0e-8ee2-28efe7b1d237__5a65f2f6-6633-5289-bccf-14e70f9dd9eb,explicit,IT Recruiter,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+c4edde0f-f86d-5e0e-8ee2-28efe7b1d237__5a65f2f6-6633-5289-bccf-14e70f9dd9eb,implicit,IT Recruiter,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+c4edde0f-f86d-5e0e-8ee2-28efe7b1d237__cf934ec6-23c1-58f7-8160-6eebe8d54919,explicit,IT Recruiter,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+c4edde0f-f86d-5e0e-8ee2-28efe7b1d237__cf934ec6-23c1-58f7-8160-6eebe8d54919,implicit,IT Recruiter,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+c534011c-64ce-512e-813c-594e0a9e1628__194dd58b-d021-5c01-b299-eca6c5f0ad16,explicit,Graphic Designer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+c534011c-64ce-512e-813c-594e0a9e1628__194dd58b-d021-5c01-b299-eca6c5f0ad16,implicit,Graphic Designer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+c534011c-64ce-512e-813c-594e0a9e1628__67fd6440-192b-513c-b6e7-4a2bb18bf3f9,explicit,Graphic Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c534011c-64ce-512e-813c-594e0a9e1628__67fd6440-192b-513c-b6e7-4a2bb18bf3f9,implicit,Graphic Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c534011c-64ce-512e-813c-594e0a9e1628__6a812556-f861-509f-99b6-072156037171,explicit,Graphic Designer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+c534011c-64ce-512e-813c-594e0a9e1628__6a812556-f861-509f-99b6-072156037171,implicit,Graphic Designer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+c7981fa8-40cc-559e-bab6-dfcb426c8ec9__58f9c1cf-a62e-585e-87ca-660e5222fbb7,explicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c7981fa8-40cc-559e-bab6-dfcb426c8ec9__58f9c1cf-a62e-585e-87ca-660e5222fbb7,implicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c7981fa8-40cc-559e-bab6-dfcb426c8ec9__a10a4baa-aa8d-5a11-a105-57dd033168f8,explicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c7981fa8-40cc-559e-bab6-dfcb426c8ec9__a10a4baa-aa8d-5a11-a105-57dd033168f8,implicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c7981fa8-40cc-559e-bab6-dfcb426c8ec9__c54da629-5865-513e-bad2-e419e16b4f55,explicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c7981fa8-40cc-559e-bab6-dfcb426c8ec9__c54da629-5865-513e-bad2-e419e16b4f55,implicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c8a2ee52-cf0c-540a-8468-07cbb56097d5__9fa7efe3-b350-55ca-a1bf-bfa8b7778aac,explicit,Graphic Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c8a2ee52-cf0c-540a-8468-07cbb56097d5__9fa7efe3-b350-55ca-a1bf-bfa8b7778aac,implicit,Graphic Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c8a2ee52-cf0c-540a-8468-07cbb56097d5__ad695998-cf1e-53c5-b855-ea3ff6a64812,explicit,Graphic Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c8a2ee52-cf0c-540a-8468-07cbb56097d5__ad695998-cf1e-53c5-b855-ea3ff6a64812,implicit,Graphic Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c8a2ee52-cf0c-540a-8468-07cbb56097d5__b1ae7e13-cc61-581b-a763-466c5794ec5e,explicit,Graphic Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c8a2ee52-cf0c-540a-8468-07cbb56097d5__b1ae7e13-cc61-581b-a763-466c5794ec5e,implicit,Graphic Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c94d6269-e9ba-53ba-942f-037cc58c5f84__03a3938c-f9df-5316-a0a8-58217e1ec55f,explicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c94d6269-e9ba-53ba-942f-037cc58c5f84__03a3938c-f9df-5316-a0a8-58217e1ec55f,implicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c94d6269-e9ba-53ba-942f-037cc58c5f84__412788e7-3ebd-5ca4-996f-4400fae74f20,explicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c94d6269-e9ba-53ba-942f-037cc58c5f84__412788e7-3ebd-5ca4-996f-4400fae74f20,implicit,Data Scientist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+c94d6269-e9ba-53ba-942f-037cc58c5f84__4663d372-c9d2-5f3e-84e9-098b65486e1f,explicit,Data Scientist,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+c94d6269-e9ba-53ba-942f-037cc58c5f84__4663d372-c9d2-5f3e-84e9-098b65486e1f,implicit,Data Scientist,hire,34,2,True,False,0.059,0.0,fixed,0.059
+cba695f7-405f-5046-9a9a-deda555f5bd1__073aa50b-9d2b-5bad-9f6f-aba087ff7a46,explicit,Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+cba695f7-405f-5046-9a9a-deda555f5bd1__073aa50b-9d2b-5bad-9f6f-aba087ff7a46,implicit,Web Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+cba695f7-405f-5046-9a9a-deda555f5bd1__d7b63df8-18b6-5103-b84e-a24287179a05,explicit,Web Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+cba695f7-405f-5046-9a9a-deda555f5bd1__d7b63df8-18b6-5103-b84e-a24287179a05,implicit,Web Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+cba695f7-405f-5046-9a9a-deda555f5bd1__fdaa404f-d2dc-5604-afe9-3a3300bf896c,explicit,Web Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+cba695f7-405f-5046-9a9a-deda555f5bd1__fdaa404f-d2dc-5604-afe9-3a3300bf896c,implicit,Web Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+cf423c47-43b9-5642-9a69-d48a0c69c645__9fa7efe3-b350-55ca-a1bf-bfa8b7778aac,explicit,Graphic Designer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+cf423c47-43b9-5642-9a69-d48a0c69c645__9fa7efe3-b350-55ca-a1bf-bfa8b7778aac,implicit,Graphic Designer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+cf423c47-43b9-5642-9a69-d48a0c69c645__ad695998-cf1e-53c5-b855-ea3ff6a64812,explicit,Graphic Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+cf423c47-43b9-5642-9a69-d48a0c69c645__ad695998-cf1e-53c5-b855-ea3ff6a64812,implicit,Graphic Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+cf423c47-43b9-5642-9a69-d48a0c69c645__b1ae7e13-cc61-581b-a763-466c5794ec5e,explicit,Graphic Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+cf423c47-43b9-5642-9a69-d48a0c69c645__b1ae7e13-cc61-581b-a763-466c5794ec5e,implicit,Graphic Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+cfb0acd3-b814-505b-b177-950916a30b9d__0c12a53f-ce68-5b69-9042-10672458a3c8,explicit,React Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+cfb0acd3-b814-505b-b177-950916a30b9d__0c12a53f-ce68-5b69-9042-10672458a3c8,implicit,React Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+cfb0acd3-b814-505b-b177-950916a30b9d__144ab2dc-34f8-58ce-b64d-73acbc1bb055,explicit,React Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+cfb0acd3-b814-505b-b177-950916a30b9d__144ab2dc-34f8-58ce-b64d-73acbc1bb055,implicit,React Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+cfb0acd3-b814-505b-b177-950916a30b9d__6d1ec198-7fb2-5880-8033-4a637d68119b,explicit,React Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+cfb0acd3-b814-505b-b177-950916a30b9d__6d1ec198-7fb2-5880-8033-4a637d68119b,implicit,React Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+d0936f65-5584-5904-8573-f2fa6f47316a__194dd58b-d021-5c01-b299-eca6c5f0ad16,explicit,Graphic Designer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+d0936f65-5584-5904-8573-f2fa6f47316a__194dd58b-d021-5c01-b299-eca6c5f0ad16,implicit,Graphic Designer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+d0936f65-5584-5904-8573-f2fa6f47316a__67fd6440-192b-513c-b6e7-4a2bb18bf3f9,explicit,Graphic Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+d0936f65-5584-5904-8573-f2fa6f47316a__67fd6440-192b-513c-b6e7-4a2bb18bf3f9,implicit,Graphic Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+d0936f65-5584-5904-8573-f2fa6f47316a__6a812556-f861-509f-99b6-072156037171,explicit,Graphic Designer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+d0936f65-5584-5904-8573-f2fa6f47316a__6a812556-f861-509f-99b6-072156037171,implicit,Graphic Designer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+d20d7247-3fb4-59df-b1b7-248a0479c185__4b3e84a4-0b7c-568e-a5a4-f02ac9ce54fb,explicit,IT Recruiter,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+d20d7247-3fb4-59df-b1b7-248a0479c185__4b3e84a4-0b7c-568e-a5a4-f02ac9ce54fb,implicit,IT Recruiter,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+d20d7247-3fb4-59df-b1b7-248a0479c185__ccf6a8ea-976d-592f-a15f-e42028a4a650,explicit,IT Recruiter,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+d20d7247-3fb4-59df-b1b7-248a0479c185__ccf6a8ea-976d-592f-a15f-e42028a4a650,implicit,IT Recruiter,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+d20d7247-3fb4-59df-b1b7-248a0479c185__efc1153a-3970-5470-84ee-a799384f85a0,explicit,IT Recruiter,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+d20d7247-3fb4-59df-b1b7-248a0479c185__efc1153a-3970-5470-84ee-a799384f85a0,implicit,IT Recruiter,reject,34,7,True,True,0.176,0.029,unstable_both,0.206
+d6431d00-0756-5f57-98fc-2257e218292d__5dee33d8-c619-54b4-80f7-5df487d4208f,explicit,Java Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+d6431d00-0756-5f57-98fc-2257e218292d__5dee33d8-c619-54b4-80f7-5df487d4208f,implicit,Java Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+d6431d00-0756-5f57-98fc-2257e218292d__84951c07-9cff-5362-a98f-9a80592c6af1,explicit,Java Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+d6431d00-0756-5f57-98fc-2257e218292d__84951c07-9cff-5362-a98f-9a80592c6af1,implicit,Java Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+d6431d00-0756-5f57-98fc-2257e218292d__cc1067cf-66db-5ffa-8407-9c551e5976d6,explicit,Java Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+d6431d00-0756-5f57-98fc-2257e218292d__cc1067cf-66db-5ffa-8407-9c551e5976d6,implicit,Java Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+d9d21f88-01a5-52b2-af3d-e196a0aae638__397692d6-7cdc-527c-8e38-3221596de505,explicit,Sales Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+d9d21f88-01a5-52b2-af3d-e196a0aae638__397692d6-7cdc-527c-8e38-3221596de505,implicit,Sales Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+d9d21f88-01a5-52b2-af3d-e196a0aae638__ac98fe25-1a72-5210-8a0b-738fd7c42608,explicit,Sales Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+d9d21f88-01a5-52b2-af3d-e196a0aae638__ac98fe25-1a72-5210-8a0b-738fd7c42608,implicit,Sales Manager,hire,34,1,False,True,1.0,0.971,broken,0.029
+d9d21f88-01a5-52b2-af3d-e196a0aae638__ad8c139a-5c46-5689-bec5-f9315f417ffd,explicit,Sales Manager,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+d9d21f88-01a5-52b2-af3d-e196a0aae638__ad8c139a-5c46-5689-bec5-f9315f417ffd,implicit,Sales Manager,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+da1600b7-4319-5f7b-99f4-85cde9fe8e8e__36ff151c-2de0-5014-a28f-44d62fbddb56,explicit,QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+da1600b7-4319-5f7b-99f4-85cde9fe8e8e__36ff151c-2de0-5014-a28f-44d62fbddb56,implicit,QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+da1600b7-4319-5f7b-99f4-85cde9fe8e8e__9fa61e6d-be3a-5d33-b998-bc598576e437,explicit,QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+da1600b7-4319-5f7b-99f4-85cde9fe8e8e__9fa61e6d-be3a-5d33-b998-bc598576e437,implicit,QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+da1600b7-4319-5f7b-99f4-85cde9fe8e8e__a136d104-29c6-5e34-ac19-343e6f4786bc,explicit,QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+da1600b7-4319-5f7b-99f4-85cde9fe8e8e__a136d104-29c6-5e34-ac19-343e6f4786bc,implicit,QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+da6a6f5f-0374-565d-b7a2-6244ed6e0088__3f720fc6-542a-5187-b3ca-e8acbd096513,explicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+da6a6f5f-0374-565d-b7a2-6244ed6e0088__3f720fc6-542a-5187-b3ca-e8acbd096513,implicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+da6a6f5f-0374-565d-b7a2-6244ed6e0088__63a3fcf8-1e40-5de8-8ec6-d72a9920edd5,explicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+da6a6f5f-0374-565d-b7a2-6244ed6e0088__63a3fcf8-1e40-5de8-8ec6-d72a9920edd5,implicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+da6a6f5f-0374-565d-b7a2-6244ed6e0088__f72a773d-c920-5814-86f5-4eaadab285ef,explicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+da6a6f5f-0374-565d-b7a2-6244ed6e0088__f72a773d-c920-5814-86f5-4eaadab285ef,implicit,Project Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+db81dead-53b1-5125-a288-63b89e4d8264__5f914e6e-5ed5-5c73-bab8-39fa3323a847,explicit,Marketing Manager,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+db81dead-53b1-5125-a288-63b89e4d8264__5f914e6e-5ed5-5c73-bab8-39fa3323a847,implicit,Marketing Manager,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+db81dead-53b1-5125-a288-63b89e4d8264__cadf8f5e-b615-55c2-9596-aaf79197ddb5,explicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+db81dead-53b1-5125-a288-63b89e4d8264__cadf8f5e-b615-55c2-9596-aaf79197ddb5,implicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+db81dead-53b1-5125-a288-63b89e4d8264__f56ae1e0-f52d-53de-8423-4cf288af4f88,explicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+db81dead-53b1-5125-a288-63b89e4d8264__f56ae1e0-f52d-53de-8423-4cf288af4f88,implicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+dcd1541d-010b-5fbc-a0af-acc555d59b34__0ee38dd2-01cd-55b1-bb5b-e65aec4db7d9,explicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+dcd1541d-010b-5fbc-a0af-acc555d59b34__0ee38dd2-01cd-55b1-bb5b-e65aec4db7d9,implicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+dcd1541d-010b-5fbc-a0af-acc555d59b34__1c3480b0-e424-57a1-b47f-462bb0873a8e,explicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+dcd1541d-010b-5fbc-a0af-acc555d59b34__1c3480b0-e424-57a1-b47f-462bb0873a8e,implicit,3D Artist,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+dcd1541d-010b-5fbc-a0af-acc555d59b34__747a9d6b-67d1-527d-a197-4e87d205cf97,explicit,3D Artist,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+dcd1541d-010b-5fbc-a0af-acc555d59b34__747a9d6b-67d1-527d-a197-4e87d205cf97,implicit,3D Artist,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+dd28239e-65c4-57a2-91f1-55c283c3e5a6__05c9c2e2-23ad-5451-883a-5067058c3bc5,explicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+dd28239e-65c4-57a2-91f1-55c283c3e5a6__05c9c2e2-23ad-5451-883a-5067058c3bc5,implicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+dd28239e-65c4-57a2-91f1-55c283c3e5a6__26f863d3-d076-53f2-a6b1-5f000a576b14,explicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+dd28239e-65c4-57a2-91f1-55c283c3e5a6__26f863d3-d076-53f2-a6b1-5f000a576b14,implicit,Front-end developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+dd28239e-65c4-57a2-91f1-55c283c3e5a6__9767ba0e-68c5-567f-ae91-a3f3552c5985,explicit,Front-end developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+dd28239e-65c4-57a2-91f1-55c283c3e5a6__9767ba0e-68c5-567f-ae91-a3f3552c5985,implicit,Front-end developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+e24a9a16-6bb4-5ee3-b874-4ac0611b3904__0c12a53f-ce68-5b69-9042-10672458a3c8,explicit,React Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e24a9a16-6bb4-5ee3-b874-4ac0611b3904__0c12a53f-ce68-5b69-9042-10672458a3c8,implicit,React Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e24a9a16-6bb4-5ee3-b874-4ac0611b3904__144ab2dc-34f8-58ce-b64d-73acbc1bb055,explicit,React Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e24a9a16-6bb4-5ee3-b874-4ac0611b3904__144ab2dc-34f8-58ce-b64d-73acbc1bb055,implicit,React Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e24a9a16-6bb4-5ee3-b874-4ac0611b3904__6d1ec198-7fb2-5880-8033-4a637d68119b,explicit,React Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e24a9a16-6bb4-5ee3-b874-4ac0611b3904__6d1ec198-7fb2-5880-8033-4a637d68119b,implicit,React Developer,hire,34,20,True,False,0.412,1.0,fixed,0.588
+e3a04d58-9cf7-59e7-afd6-e951c034b627__0c0e50a3-6822-5e53-8722-e4f0bd9a2ae4,explicit,UI/UX Designer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+e3a04d58-9cf7-59e7-afd6-e951c034b627__0c0e50a3-6822-5e53-8722-e4f0bd9a2ae4,implicit,UI/UX Designer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+e3a04d58-9cf7-59e7-afd6-e951c034b627__7093871c-d45b-5aca-9032-385ba2fe5263,explicit,UI/UX Designer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+e3a04d58-9cf7-59e7-afd6-e951c034b627__7093871c-d45b-5aca-9032-385ba2fe5263,implicit,UI/UX Designer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+e3a04d58-9cf7-59e7-afd6-e951c034b627__ce7217d0-756c-5928-859a-e12911bd157d,explicit,UI/UX Designer,reject,34,4,True,False,0.118,0.0,fixed,0.118
+e3a04d58-9cf7-59e7-afd6-e951c034b627__ce7217d0-756c-5928-859a-e12911bd157d,implicit,UI/UX Designer,reject,34,5,True,False,0.147,0.0,fixed,0.147
+e43e65b6-9fdc-52a6-8e48-597b0c5c04d4__4b3e84a4-0b7c-568e-a5a4-f02ac9ce54fb,explicit,IT Recruiter,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e43e65b6-9fdc-52a6-8e48-597b0c5c04d4__4b3e84a4-0b7c-568e-a5a4-f02ac9ce54fb,implicit,IT Recruiter,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e43e65b6-9fdc-52a6-8e48-597b0c5c04d4__ccf6a8ea-976d-592f-a15f-e42028a4a650,explicit,IT Recruiter,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+e43e65b6-9fdc-52a6-8e48-597b0c5c04d4__ccf6a8ea-976d-592f-a15f-e42028a4a650,implicit,IT Recruiter,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+e43e65b6-9fdc-52a6-8e48-597b0c5c04d4__efc1153a-3970-5470-84ee-a799384f85a0,explicit,IT Recruiter,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e43e65b6-9fdc-52a6-8e48-597b0c5c04d4__efc1153a-3970-5470-84ee-a799384f85a0,implicit,IT Recruiter,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e4be5ee0-7760-52d1-a1a2-73a5f3a94d8f__58f9c1cf-a62e-585e-87ca-660e5222fbb7,explicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e4be5ee0-7760-52d1-a1a2-73a5f3a94d8f__58f9c1cf-a62e-585e-87ca-660e5222fbb7,implicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e4be5ee0-7760-52d1-a1a2-73a5f3a94d8f__a10a4baa-aa8d-5a11-a105-57dd033168f8,explicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e4be5ee0-7760-52d1-a1a2-73a5f3a94d8f__a10a4baa-aa8d-5a11-a105-57dd033168f8,implicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e4be5ee0-7760-52d1-a1a2-73a5f3a94d8f__c54da629-5865-513e-bad2-e419e16b4f55,explicit,Python Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+e4be5ee0-7760-52d1-a1a2-73a5f3a94d8f__c54da629-5865-513e-bad2-e419e16b4f55,implicit,Python Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+e4cc780c-715b-5f36-b1ca-dd525e7ac916__09feb260-b554-57be-a71b-a48d4d27414f,explicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e4cc780c-715b-5f36-b1ca-dd525e7ac916__09feb260-b554-57be-a71b-a48d4d27414f,implicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e4cc780c-715b-5f36-b1ca-dd525e7ac916__52e0fb22-f32e-5b41-b6f7-f03dbf329fad,explicit,Manual QA Engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e4cc780c-715b-5f36-b1ca-dd525e7ac916__52e0fb22-f32e-5b41-b6f7-f03dbf329fad,implicit,Manual QA Engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e4cc780c-715b-5f36-b1ca-dd525e7ac916__597408fb-969a-5a0c-bbe4-7fc98da6d0a5,explicit,Manual QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+e4cc780c-715b-5f36-b1ca-dd525e7ac916__597408fb-969a-5a0c-bbe4-7fc98da6d0a5,implicit,Manual QA Engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+e60b0971-daed-5a05-95a4-89046c4b25ed__51320faf-4cd4-5bb5-90d1-5b33eee48847,explicit,Node.js developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+e60b0971-daed-5a05-95a4-89046c4b25ed__51320faf-4cd4-5bb5-90d1-5b33eee48847,implicit,Node.js developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+e60b0971-daed-5a05-95a4-89046c4b25ed__81c2a067-2f4c-55c3-8d8d-dbb7f270fc2c,explicit,Node.js developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e60b0971-daed-5a05-95a4-89046c4b25ed__81c2a067-2f4c-55c3-8d8d-dbb7f270fc2c,implicit,Node.js developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e60b0971-daed-5a05-95a4-89046c4b25ed__dde275a6-6f23-50bf-813c-d748fce86844,explicit,Node.js developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e60b0971-daed-5a05-95a4-89046c4b25ed__dde275a6-6f23-50bf-813c-d748fce86844,implicit,Node.js developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e7e21da3-f5f6-52c0-ab8b-edabd271a9a4__6adc6153-943b-5753-906c-7df45d887f32,explicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e7e21da3-f5f6-52c0-ab8b-edabd271a9a4__6adc6153-943b-5753-906c-7df45d887f32,implicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e7e21da3-f5f6-52c0-ab8b-edabd271a9a4__c3e54755-de36-58ec-ba6e-109dc5033ff9,explicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e7e21da3-f5f6-52c0-ab8b-edabd271a9a4__c3e54755-de36-58ec-ba6e-109dc5033ff9,implicit,Product manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e7e21da3-f5f6-52c0-ab8b-edabd271a9a4__c8ba572e-5c15-54a0-ad6f-ae6e89dbb173,explicit,Product manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e7e21da3-f5f6-52c0-ab8b-edabd271a9a4__c8ba572e-5c15-54a0-ad6f-ae6e89dbb173,implicit,Product manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e7fd36f9-50d1-53a1-949d-d6315d5f38a1__768083eb-2414-51b4-aa48-b0be3cdbbf81,explicit,QA Engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e7fd36f9-50d1-53a1-949d-d6315d5f38a1__768083eb-2414-51b4-aa48-b0be3cdbbf81,implicit,QA Engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+e7fd36f9-50d1-53a1-949d-d6315d5f38a1__8746f8c1-298b-5316-973c-002125b1826e,explicit,QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e7fd36f9-50d1-53a1-949d-d6315d5f38a1__8746f8c1-298b-5316-973c-002125b1826e,implicit,QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e7fd36f9-50d1-53a1-949d-d6315d5f38a1__a75e52ec-7795-513d-871a-4533351af3d7,explicit,QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e7fd36f9-50d1-53a1-949d-d6315d5f38a1__a75e52ec-7795-513d-871a-4533351af3d7,implicit,QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e8969c12-208c-5192-bae7-f65ced32c9b6__224ab121-1559-5b81-9dd5-d598bbb40366,explicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e8969c12-208c-5192-bae7-f65ced32c9b6__224ab121-1559-5b81-9dd5-d598bbb40366,implicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e8969c12-208c-5192-bae7-f65ced32c9b6__40b10837-ef9c-5c37-aa19-d706da227a38,explicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e8969c12-208c-5192-bae7-f65ced32c9b6__40b10837-ef9c-5c37-aa19-d706da227a38,implicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e8969c12-208c-5192-bae7-f65ced32c9b6__aff8f3de-43d1-516e-8c3c-bd43a1cc69dd,explicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+e8969c12-208c-5192-bae7-f65ced32c9b6__aff8f3de-43d1-516e-8c3c-bd43a1cc69dd,implicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ea52f8e2-c78e-5aa9-ba8d-143bb7a60117__8262ebd6-0fcd-5d1a-89ac-ec961a1a2a4e,explicit,iOS Developer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+ea52f8e2-c78e-5aa9-ba8d-143bb7a60117__8262ebd6-0fcd-5d1a-89ac-ec961a1a2a4e,implicit,iOS Developer,reject,34,0,False,False,1.0,1.0,stable_both,0.0
+ea52f8e2-c78e-5aa9-ba8d-143bb7a60117__c82e21e2-983f-5e81-b5d3-4f735bbdf461,explicit,iOS Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ea52f8e2-c78e-5aa9-ba8d-143bb7a60117__c82e21e2-983f-5e81-b5d3-4f735bbdf461,implicit,iOS Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ea52f8e2-c78e-5aa9-ba8d-143bb7a60117__cf195942-8c14-5b91-811a-63f5254e8da1,explicit,iOS Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ea52f8e2-c78e-5aa9-ba8d-143bb7a60117__cf195942-8c14-5b91-811a-63f5254e8da1,implicit,iOS Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ec0d57dc-2074-5a1e-96d7-eea9d74db6e7__269487d9-b66b-5823-b2a4-1fea8b82d581,explicit,Automation QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ec0d57dc-2074-5a1e-96d7-eea9d74db6e7__269487d9-b66b-5823-b2a4-1fea8b82d581,implicit,Automation QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ec0d57dc-2074-5a1e-96d7-eea9d74db6e7__28ff2760-e025-525c-b92f-f2dd1bd0867f,explicit,Automation QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ec0d57dc-2074-5a1e-96d7-eea9d74db6e7__28ff2760-e025-525c-b92f-f2dd1bd0867f,implicit,Automation QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ec0d57dc-2074-5a1e-96d7-eea9d74db6e7__30c6707d-9cee-5374-a337-91f68fb69b65,explicit,Automation QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ec0d57dc-2074-5a1e-96d7-eea9d74db6e7__30c6707d-9cee-5374-a337-91f68fb69b65,implicit,Automation QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ee58931b-1d84-5190-a5a7-a3769fb0e2be__12f37451-b6c2-5421-a05b-89ef7326e3eb,explicit,Product Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ee58931b-1d84-5190-a5a7-a3769fb0e2be__12f37451-b6c2-5421-a05b-89ef7326e3eb,implicit,Product Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ee58931b-1d84-5190-a5a7-a3769fb0e2be__1a0f83d8-71f6-5f5b-8407-7eb0fcf13f15,explicit,Product Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ee58931b-1d84-5190-a5a7-a3769fb0e2be__1a0f83d8-71f6-5f5b-8407-7eb0fcf13f15,implicit,Product Designer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+ee58931b-1d84-5190-a5a7-a3769fb0e2be__6531575b-cd8e-5d60-a0f1-f15f4b202e4d,explicit,Product Designer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+ee58931b-1d84-5190-a5a7-a3769fb0e2be__6531575b-cd8e-5d60-a0f1-f15f4b202e4d,implicit,Product Designer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+f052b220-7c74-580e-aca3-18bd78b7e3da__25db9df5-4e18-5265-b0ff-aadb65682237,explicit,Android Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+f052b220-7c74-580e-aca3-18bd78b7e3da__25db9df5-4e18-5265-b0ff-aadb65682237,implicit,Android Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+f052b220-7c74-580e-aca3-18bd78b7e3da__57518707-cad4-56f1-812d-d86240e524b1,explicit,Android Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+f052b220-7c74-580e-aca3-18bd78b7e3da__57518707-cad4-56f1-812d-d86240e524b1,implicit,Android Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+f052b220-7c74-580e-aca3-18bd78b7e3da__efc42529-b8c4-5182-b5c6-ed1fd6536941,explicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f052b220-7c74-580e-aca3-18bd78b7e3da__efc42529-b8c4-5182-b5c6-ed1fd6536941,implicit,Android Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f48798dd-5e47-5163-83a7-5609c7531b6b__224ab121-1559-5b81-9dd5-d598bbb40366,explicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f48798dd-5e47-5163-83a7-5609c7531b6b__224ab121-1559-5b81-9dd5-d598bbb40366,implicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f48798dd-5e47-5163-83a7-5609c7531b6b__40b10837-ef9c-5c37-aa19-d706da227a38,explicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f48798dd-5e47-5163-83a7-5609c7531b6b__40b10837-ef9c-5c37-aa19-d706da227a38,implicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f48798dd-5e47-5163-83a7-5609c7531b6b__aff8f3de-43d1-516e-8c3c-bd43a1cc69dd,explicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f48798dd-5e47-5163-83a7-5609c7531b6b__aff8f3de-43d1-516e-8c3c-bd43a1cc69dd,implicit,HR manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f73a0461-362c-55f1-8144-a4664aa1db35__344af3d1-15df-50e1-9c99-cdb4662f3943,explicit,Sales Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f73a0461-362c-55f1-8144-a4664aa1db35__344af3d1-15df-50e1-9c99-cdb4662f3943,implicit,Sales Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f73a0461-362c-55f1-8144-a4664aa1db35__65a155e5-5498-5c46-8f59-14b3adf761bf,explicit,Sales Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f73a0461-362c-55f1-8144-a4664aa1db35__65a155e5-5498-5c46-8f59-14b3adf761bf,implicit,Sales Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f73a0461-362c-55f1-8144-a4664aa1db35__6a75fe14-e01e-50cc-8812-44ee515336e9,explicit,Sales Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f73a0461-362c-55f1-8144-a4664aa1db35__6a75fe14-e01e-50cc-8812-44ee515336e9,implicit,Sales Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f9afb608-8b23-5087-8a13-5d4675d78f72__5f914e6e-5ed5-5c73-bab8-39fa3323a847,explicit,Marketing Manager,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+f9afb608-8b23-5087-8a13-5d4675d78f72__5f914e6e-5ed5-5c73-bab8-39fa3323a847,implicit,Marketing Manager,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+f9afb608-8b23-5087-8a13-5d4675d78f72__cadf8f5e-b615-55c2-9596-aaf79197ddb5,explicit,Marketing Manager,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+f9afb608-8b23-5087-8a13-5d4675d78f72__cadf8f5e-b615-55c2-9596-aaf79197ddb5,implicit,Marketing Manager,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+f9afb608-8b23-5087-8a13-5d4675d78f72__f56ae1e0-f52d-53de-8423-4cf288af4f88,explicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f9afb608-8b23-5087-8a13-5d4675d78f72__f56ae1e0-f52d-53de-8423-4cf288af4f88,implicit,Marketing Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f9bf067d-b085-5360-9533-4a7568d6f985__1f35befe-c9aa-5af6-bb94-b64c5311ac8f,explicit,PHP Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+f9bf067d-b085-5360-9533-4a7568d6f985__1f35befe-c9aa-5af6-bb94-b64c5311ac8f,implicit,PHP Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+f9bf067d-b085-5360-9533-4a7568d6f985__4e78b4b8-4a46-546e-bd0b-2a7dec9ea780,explicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f9bf067d-b085-5360-9533-4a7568d6f985__4e78b4b8-4a46-546e-bd0b-2a7dec9ea780,implicit,PHP Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+f9bf067d-b085-5360-9533-4a7568d6f985__61177140-c1f2-57f4-a075-07a1fc9d43f5,explicit,PHP Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+f9bf067d-b085-5360-9533-4a7568d6f985__61177140-c1f2-57f4-a075-07a1fc9d43f5,implicit,PHP Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+f9c288f3-8091-5f7e-9eb0-2bef49471e3a__755514c0-999c-5852-b613-969af1a3e86e,explicit,JavaScript Developer,hire,34,6,True,True,0.794,0.676,unstable_both,0.176
+f9c288f3-8091-5f7e-9eb0-2bef49471e3a__755514c0-999c-5852-b613-969af1a3e86e,implicit,JavaScript Developer,hire,34,1,True,True,0.971,0.941,unstable_both,0.029
+f9c288f3-8091-5f7e-9eb0-2bef49471e3a__9d41ce96-f3fb-5002-a883-68b116bef044,explicit,JavaScript Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+f9c288f3-8091-5f7e-9eb0-2bef49471e3a__9d41ce96-f3fb-5002-a883-68b116bef044,implicit,JavaScript Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+f9c288f3-8091-5f7e-9eb0-2bef49471e3a__b876f5ff-cc00-5b2e-a67e-202f8fcc5cb3,explicit,JavaScript Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+f9c288f3-8091-5f7e-9eb0-2bef49471e3a__b876f5ff-cc00-5b2e-a67e-202f8fcc5cb3,implicit,JavaScript Developer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+fa1a3279-d2f3-5714-a6b3-238f2f1f667b__344af3d1-15df-50e1-9c99-cdb4662f3943,explicit,Sales Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+fa1a3279-d2f3-5714-a6b3-238f2f1f667b__344af3d1-15df-50e1-9c99-cdb4662f3943,implicit,Sales Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+fa1a3279-d2f3-5714-a6b3-238f2f1f667b__65a155e5-5498-5c46-8f59-14b3adf761bf,explicit,Sales Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+fa1a3279-d2f3-5714-a6b3-238f2f1f667b__65a155e5-5498-5c46-8f59-14b3adf761bf,implicit,Sales Manager,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+fa1a3279-d2f3-5714-a6b3-238f2f1f667b__6a75fe14-e01e-50cc-8812-44ee515336e9,explicit,Sales Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+fa1a3279-d2f3-5714-a6b3-238f2f1f667b__6a75fe14-e01e-50cc-8812-44ee515336e9,implicit,Sales Manager,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+fb160439-f3b7-51d5-bb58-acd8f14a6f54__3c94dac3-a214-51ce-98e7-ed65f6f11f21,explicit,Python Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+fb160439-f3b7-51d5-bb58-acd8f14a6f54__3c94dac3-a214-51ce-98e7-ed65f6f11f21,implicit,Python Developer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+fb160439-f3b7-51d5-bb58-acd8f14a6f54__aad01695-5fb4-5a86-9633-189b3446ba7e,explicit,Python Developer,reject,34,13,True,False,0.382,0.0,fixed,0.382
+fb160439-f3b7-51d5-bb58-acd8f14a6f54__aad01695-5fb4-5a86-9633-189b3446ba7e,implicit,Python Developer,reject,34,18,True,False,0.529,0.0,fixed,0.529
+fb160439-f3b7-51d5-bb58-acd8f14a6f54__e6d8e560-a04e-579c-9dd6-0cfff37f63a9,explicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+fb160439-f3b7-51d5-bb58-acd8f14a6f54__e6d8e560-a04e-579c-9dd6-0cfff37f63a9,implicit,Python Developer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+fb91788d-88a7-5b79-9015-88a23176995a__4f3c425d-5989-534b-82a0-83e716808fe4,explicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+fb91788d-88a7-5b79-9015-88a23176995a__4f3c425d-5989-534b-82a0-83e716808fe4,implicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+fb91788d-88a7-5b79-9015-88a23176995a__7b6e56c5-708b-5175-975b-c03129372cdb,explicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+fb91788d-88a7-5b79-9015-88a23176995a__7b6e56c5-708b-5175-975b-c03129372cdb,implicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+fb91788d-88a7-5b79-9015-88a23176995a__b6979687-783b-5146-a640-c4ee8e5041ca,explicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+fb91788d-88a7-5b79-9015-88a23176995a__b6979687-783b-5146-a640-c4ee8e5041ca,implicit,Manual QA Engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+fdf3b944-8a48-5c21-9965-3f9a7f7074c0__19b22008-5698-552c-82a2-eb9824e25b59,explicit,DevOps engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+fdf3b944-8a48-5c21-9965-3f9a7f7074c0__19b22008-5698-552c-82a2-eb9824e25b59,implicit,DevOps engineer,reject,34,0,False,False,0.0,0.0,stable_both,0.0
+fdf3b944-8a48-5c21-9965-3f9a7f7074c0__82031f1a-31d6-59e8-9447-64a1cf1f73b9,explicit,DevOps engineer,hire,34,0,False,False,1.0,1.0,stable_both,0.0
+fdf3b944-8a48-5c21-9965-3f9a7f7074c0__82031f1a-31d6-59e8-9447-64a1cf1f73b9,implicit,DevOps engineer,hire,34,1,True,False,0.971,1.0,fixed,0.029
+fdf3b944-8a48-5c21-9965-3f9a7f7074c0__b97eeca6-15a4-579e-9e57-ff10abe168dc,explicit,DevOps engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0
+fdf3b944-8a48-5c21-9965-3f9a7f7074c0__b97eeca6-15a4-579e-9e57-ff10abe168dc,implicit,DevOps engineer,hire,34,0,False,False,0.0,0.0,stable_both,0.0

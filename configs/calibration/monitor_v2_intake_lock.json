@@ -1,0 +1,89 @@
+{
+  "experiment_id": "monitor-v2-djinni-intake-20261023-v1",
+  "stage": "intake_frozen",
+  "config_sha256": "23788cf1d8d2a2d40cb22fc6f7252be260726c27347fcf746b9759a777b9a0a0",
+  "inputs": {
+    "inventory": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/inventory.json",
+      "sha256": "76798a09792a191ff3f66dae8aea933db9ef635237586de2d16fdd0a5bb58f50"
+    },
+    "eligible_registry": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/eligible_registry.jsonl",
+      "sha256": "dfc081ef057aff6850cd0633a80732f88aa64692900131ebd4583158acb2ae43"
+    },
+    "intake_batch": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/eligible_candidates.jsonl",
+      "sha256": "95e6eeec044f0f4309e7de9d23e8ba2692bfbbc07b1e8cea2aa1ab0608873132"
+    },
+    "excluded_candidates": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/excluded_candidates_union.json",
+      "sha256": "70d8b962f2f37e2e495531aabcac5b95df9222aff708c00a259fe4b2c0793d1c"
+    },
+    "source_evidence": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/source_evidence.json",
+      "sha256": "eb47c85bb3750e275c1620ee8653638360224684115d3f3bf3f7466931dc8eac"
+    },
+    "intake_verification": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/intake_verification.json",
+      "sha256": "de193256898c1c7574a9b5a9a3a61f1512aa4c08ee0132bf6a54eece8d7954fa"
+    },
+    "exposure_limitations": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/readiness_limitations.json",
+      "sha256": "54610d3988b8a61370cdf15f6974f2ab80018e414cfcf0d0f3c39ecda3d6785e"
+    },
+    "legacy_target_weights": {
+      "path": "monitor_v2_target_weights.json",
+      "sha256": "bb5294cae76f76a95e1a2eab51416c873a9e0dd4898276654279218599f368d3"
+    },
+    "annotation_policy": {
+      "path": "../hiring_decision_standard_v1.json",
+      "sha256": "af01c72b6d656b04156d6177aa862dc1e9dbda7c0ae285d6e3ecfb66ce95b44b"
+    },
+    "jd_prompt": {
+      "path": "../../docs/prompts/hiring_evidence_v1_jd.txt",
+      "sha256": "f345d17f5217f815bd06af38139c0745f3fefba78dc3b3a92b11b08ff52969fc"
+    },
+    "review_prompt": {
+      "path": "../../docs/prompts/hiring_evidence_v1_review.txt",
+      "sha256": "940881babf2440c40efbee2241111e2b99b01c2d9465f1ae857f793cc299b9dc"
+    },
+    "model_identity": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/model_identity.json",
+      "sha256": "343ad72b27a449c9db280951ac7abe9f4b0f0dfc37472d1d92b73918bf60a888"
+    },
+    "inventory_builder": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/build_inventory.py",
+      "sha256": "cc46fda8a54fe8cd725ad1623cb1f488159ab282df3618c1d940b07ef26d076f"
+    },
+    "model_identity_builder": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/inventory_models.py",
+      "sha256": "6666ff74e27c5070cc7d643ef8526d819aa9969f9bb6fbcde0eab28a51e9eceb"
+    }
+  },
+  "eligible_candidates": 127681,
+  "first_batch_candidates": 2000,
+  "first_batch_jobs": 1965,
+  "first_batch_by_bank": {
+    "monitor": 1003,
+    "validation": 997
+  },
+  "confirmed_hire_candidates": 0,
+  "confirmed_reject_candidates": 0,
+  "arm_scoring_allowed": false,
+  "training_allowed": false,
+  "pending_second_lock": [
+    "near-duplicate screen",
+    "reviewer identities",
+    "JD rubrics and two blinded valid ledgers per resolved label",
+    "label bridge and explicit resolution of remaining construct differences",
+    "fresh SFT-v3 margins on frozen rows",
+    "both-bank support gates",
+    "exact row weights/prompt manifests",
+    "new second-lock manifest committed before arm results"
+  ],
+  "outputs": {
+    "annotation_queue.jsonl": "64bb02f8051921314ba7590723c6eda1bd692eadf5bab84e0cf646fa4e98580d",
+    "candidate_partitions.jsonl": "49c29585a0aedb270bae5219fcf590b27353c0a37f1f962815c11e1354715245",
+    "jd_only_queue.jsonl": "3a507be083d34fb2a32768d43ed6f3021007b78c1a1da3c48ce9a8569bf21a0e"
+  }
+}

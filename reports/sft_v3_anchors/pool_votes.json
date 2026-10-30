@@ -1,0 +1,420 @@
+{
+  "pairs": 2992,
+  "platform": {
+    "pairs": 2992,
+    "decided_draws": 23936,
+    "v1_hire_share": 0.14171122994652408,
+    "per_draw_hire_share": 0.21732954545454544,
+    "gap": 0.07561831550802137,
+    "max_gap": 0.03,
+    "pass": false
+  },
+  "pool": {
+    "unstable_share": 0.11196524064171123,
+    "changed_share": 0.06417112299465241,
+    "v1_by_new": {
+      "v1 hire": {
+        "new hire": 424
+      },
+      "v1 reject": {
+        "new reject": 2376,
+        "new hire": 192
+      }
+    },
+    "unstable_by_v1": {
+      "hire": 0.009433962264150943,
+      "reject": 0.12889408099688474
+    },
+    "sources": {
+      "vote": 2920,
+      "tie": 72
+    },
+    "hire_votes_when_all_decided": {
+      "0 of 8": 2088,
+      "1 of 8": 77,
+      "2 of 8": 72,
+      "3 of 8": 67,
+      "4 of 8": 72,
+      "5 of 8": 68,
+      "6 of 8": 76,
+      "7 of 8": 80,
+      "8 of 8": 392
+    }
+  },
+  "training_sets": {
+    "SFT v1 targets, before balancing": {
+      "path": "artifacts/semisynthetic-v2/onpolicy-full/rows.parquet",
+      "rows": 35826,
+      "unstable_rows": 4011,
+      "unstable_share": 0.111957796014068,
+      "enrichment": 0.9999335094748998,
+      "a_holds": false,
+      "pairs": 2992,
+      "flipped": 2297,
+      "old_hire": 5072,
+      "old_hire_flipped": 0,
+      "old_reject": 30754,
+      "old_reject_flipped": 2297,
+      "by_side_not_preregistered": {
+        "hire": {
+          "rows": 5072,
+          "unstable_share": 0.00946372239747634,
+          "pool_share": 0.009433962264150943,
+          "enrichment": 1.003154574132492
+        },
+        "reject": {
+          "rows": 30754,
+          "unstable_share": 0.12886128633673669,
+          "pool_share": 0.12889408099688474,
+          "enrichment": 0.999745568920664
+        }
+      }
+    },
+    "DPO r1": {
+      "path": "artifacts/semisynthetic-v2/onpolicy-hire32/balanced/dpo_v2_train.parquet",
+      "rows": 2278,
+      "unstable_rows": 240,
+      "unstable_share": 0.10535557506584724,
+      "enrichment": 0.9409668077522834,
+      "a_holds": false,
+      "pairs": 665,
+      "flipped": 100,
+      "old_hire": 1139,
+      "old_hire_flipped": 0,
+      "old_reject": 1139,
+      "old_reject_flipped": 100,
+      "by_side_not_preregistered": {
+        "hire": {
+          "rows": 1139,
+          "unstable_share": 0.012291483757682178,
+          "pool_share": 0.009433962264150943,
+          "enrichment": 1.302897278314311
+        },
+        "reject": {
+          "rows": 1139,
+          "unstable_share": 0.1984196663740123,
+          "pool_share": 0.12889408099688474,
+          "enrichment": 1.5394009161585
+        }
+      }
+    },
+    "DPO r2": {
+      "path": "artifacts/semisynthetic-v2/onpolicy-hire32/margin_balanced/dpo_v2_train.parquet",
+      "rows": 1618,
+      "unstable_rows": 133,
+      "unstable_share": 0.08220024721878863,
+      "enrichment": 0.7341586259063152,
+      "a_holds": false,
+      "pairs": 581,
+      "flipped": 59,
+      "old_hire": 809,
+      "old_hire_flipped": 0,
+      "old_reject": 809,
+      "old_reject_flipped": 59,
+      "by_side_not_preregistered": {
+        "hire": {
+          "rows": 809,
+          "unstable_share": 0.011124845488257108,
+          "pool_share": 0.009433962264150943,
+          "enrichment": 1.1792336217552535
+        },
+        "reject": {
+          "rows": 809,
+          "unstable_share": 0.15327564894932014,
+          "pool_share": 0.12889408099688474,
+          "enrichment": 1.1891597175282602
+        }
+      }
+    },
+    "DPO r2em": {
+      "path": "artifacts/semisynthetic-v2/round2-error-mass/dpo_round2_train.parquet",
+      "rows": 2362,
+      "unstable_rows": 146,
+      "unstable_share": 0.06181202370872142,
+      "enrichment": 0.552064402795506,
+      "a_holds": false,
+      "pairs": 582,
+      "flipped": 49,
+      "old_hire": 1181,
+      "old_hire_flipped": 0,
+      "old_reject": 1181,
+      "old_reject_flipped": 49,
+      "by_side_not_preregistered": {
+        "hire": {
+          "rows": 1181,
+          "unstable_share": 0.011854360711261643,
+          "pool_share": 0.009433962264150943,
+          "enrichment": 1.2565622353937342
+        },
+        "reject": {
+          "rows": 1181,
+          "unstable_share": 0.1117696867061812,
+          "pool_share": 0.12889408099688474,
+          "enrichment": 0.8671436720890433
+        }
+      }
+    },
+    "DPO it2 (not trained)": {
+      "path": "artifacts/semisynthetic-v2/onpolicy-it2/dpo_v2_train.parquet",
+      "rows": 229,
+      "unstable_rows": 60,
+      "unstable_share": 0.26200873362445415,
+      "enrichment": 2.340089943296617,
+      "a_holds": true,
+      "pairs": 58,
+      "flipped": 19,
+      "old_hire": 4,
+      "old_hire_flipped": 0,
+      "old_reject": 225,
+      "old_reject_flipped": 19,
+      "by_side_not_preregistered": {
+        "hire": {
+          "rows": 4,
+          "unstable_share": 1.0,
+          "pool_share": 0.009433962264150943,
+          "enrichment": 106.0
+        },
+        "reject": {
+          "rows": 225,
+          "unstable_share": 0.24888888888888888,
+          "pool_share": 0.12889408099688474,
+          "enrichment": 1.9309566968781469
+        }
+      }
+    },
+    "GRPO grpo-02": {
+      "path": "artifacts/semisynthetic-v2/grpo-02/grpo_train.parquet",
+      "rows": 3000,
+      "unstable_rows": 262,
+      "unstable_share": 0.08733333333333333,
+      "enrichment": 0.7800039800995024,
+      "a_holds": false,
+      "pairs": 1215,
+      "flipped": 117,
+      "old_hire": 1500,
+      "old_hire_flipped": 0,
+      "old_reject": 1500,
+      "old_reject_flipped": 117,
+      "by_side_not_preregistered": {
+        "hire": {
+          "rows": 1500,
+          "unstable_share": 0.010666666666666666,
+          "pool_share": 0.009433962264150943,
+          "enrichment": 1.1306666666666667
+        },
+        "reject": {
+          "rows": 1500,
+          "unstable_share": 0.164,
+          "pool_share": 0.12889408099688474,
+          "enrichment": 1.2723625377643506
+        }
+      }
+    },
+    "RFT rft-01": {
+      "path": "artifacts/semisynthetic-v2/rft-01/rft_train.parquet",
+      "rows": 2400,
+      "unstable_rows": 113,
+      "unstable_share": 0.04708333333333333,
+      "enrichment": 0.42051741293532335,
+      "a_holds": false,
+      "pairs": 1205,
+      "flipped": 47,
+      "old_hire": 1200,
+      "old_hire_flipped": 0,
+      "old_reject": 1200,
+      "old_reject_flipped": 47,
+      "by_side_not_preregistered": {
+        "hire": {
+          "rows": 1200,
+          "unstable_share": 0.01,
+          "pool_share": 0.009433962264150943,
+          "enrichment": 1.06
+        },
+        "reject": {
+          "rows": 1200,
+          "unstable_share": 0.08416666666666667,
+          "pool_share": 0.12889408099688474,
+          "enrichment": 0.6529909365558912
+        }
+      }
+    }
+  },
+  "stability_against_control": [
+    {
+      "set": "all 391",
+      "agreement": 0.9181585677749361,
+      "pairs": 391,
+      "before_hired": 166,
+      "after_hired": 168,
+      "reject_to_hire": 17,
+      "hire_to_reject": 15,
+      "mcnemar_p": 0.860050065908581
+    },
+    {
+      "set": "target 337",
+      "agreement": 0.9050445103857567,
+      "pairs": 337,
+      "before_hired": 131,
+      "after_hired": 133,
+      "reject_to_hire": 17,
+      "hire_to_reject": 15,
+      "mcnemar_p": 0.860050065908581
+    },
+    {
+      "set": "C1 clear-hire targets",
+      "agreement": 0.8951612903225806,
+      "pairs": 124,
+      "before_hired": 65,
+      "after_hired": 66,
+      "reject_to_hire": 7,
+      "hire_to_reject": 6,
+      "mcnemar_p": 1.0
+    },
+    {
+      "set": "borderline targets (fit 3)",
+      "agreement": 0.8994413407821229,
+      "pairs": 179,
+      "before_hired": 63,
+      "after_hired": 63,
+      "reject_to_hire": 9,
+      "hire_to_reject": 9,
+      "mcnemar_p": 1.0
+    },
+    {
+      "set": "C2 clear-reject targets",
+      "agreement": 0.9705882352941176,
+      "pairs": 34,
+      "before_hired": 3,
+      "after_hired": 4,
+      "reject_to_hire": 1,
+      "hire_to_reject": 0,
+      "mcnemar_p": 1.0
+    },
+    {
+      "set": "C2 both-reject controls",
+      "agreement": 1.0,
+      "pairs": 20,
+      "before_hired": 1,
+      "after_hired": 1,
+      "reject_to_hire": 0,
+      "hire_to_reject": 0,
+      "mcnemar_p": null
+    }
+  ],
+  "single_draws_not_preregistered": {
+    "daint_draw_0_then_1": {
+      "pairs": 2992,
+      "before_hired": 634,
+      "after_hired": 646,
+      "reject_to_hire": 115,
+      "hire_to_reject": 103,
+      "mcnemar_p": 0.45634100150928214,
+      "disagreement": 0.07286096256684492
+    },
+    "v1_then_daint_draw_0": {
+      "pairs": 2992,
+      "before_hired": 424,
+      "after_hired": 634,
+      "reject_to_hire": 221,
+      "hire_to_reject": 11,
+      "mcnemar_p": 6.290652532360368e-52,
+      "disagreement": 0.07754010695187166
+    }
+  },
+  "output_format_not_preregistered": {
+    "v1 anchors, pool pairs": {
+      "outputs": 2992,
+      "fenced": 1,
+      "fenced_share": 0.00033422459893048126
+    },
+    "v1 anchors, all generated": {
+      "outputs": 3000,
+      "fenced": 1,
+      "fenced_share": 0.0003333333333333333
+    },
+    "v1 invariant targets": {
+      "outputs": 36000,
+      "fenced": 100,
+      "fenced_share": 0.002777777777777778
+    },
+    "Daint anchor draws": {
+      "outputs": 23936,
+      "fenced": 3132,
+      "fenced_share": 0.13084893048128343
+    },
+    "daint_hire_share_by_format": {
+      "fenced": 0.15676883780332057,
+      "bare": 0.22644683714670255
+    }
+  },
+  "decisions": {
+    "a_holds_for_rebuild_candidates": {
+      "DPO r2em": false,
+      "GRPO grpo-02": false
+    },
+    "training_proposal": false,
+    "sft_retrain_worth_proposing": false
+  },
+  "thresholds": {
+    "unstable_max_majority": 0.625,
+    "platform_max_gap": 0.03,
+    "enrichment_min": 2.0,
+    "sft_retrain_min_changed": 0.1
+  },
+  "draws_meta": {
+    "stage": "votes",
+    "prompt": "reference",
+    "model": "Qwen/Qwen3.5-122B-A10B-GPTQ-Int4",
+    "pairs": 2992,
+    "k": 8,
+    "decoding": {
+      "max_new_tokens": 320,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "seed": 43
+    },
+    "serving": {
+      "backend": "vllm",
+      "tensor_parallel_size": 4,
+      "gpu_memory_utilization": 0.8,
+      "max_model_len": 8192,
+      "max_num_seqs": 128,
+      "dtype": "auto",
+      "engine_kwargs": {
+        "gdn_prefill_backend": "triton"
+      }
+    },
+    "parts": 4,
+    "prompts_sha256": {
+      "reference": "86cf05ac12b107d154fcee0ab1d504de6395a752185ddc87d39d37bcbc6fadb9"
+    },
+    "generation_seconds_this_job": {
+      "part0": 562.7,
+      "part1": 258.1,
+      "part2": 256.5,
+      "part3": 259.2
+    },
+    "written": "2026-10-16T19:36:30+00:00",
+    "prereg_sha256": "7e3e35978d887134c68156c039075d2d8ade0dd76ecf9051264ca84655333e83",
+    "code": {
+      "commit": "67f4bb1b290a2eaf72307e623655787ad02843a0",
+      "uncommitted": [],
+      "untracked": [
+        "docs/SFT_V3_ANCHORS.md",
+        "scripts/cscs/sft_v3_anchors.sbatch",
+        "scripts/sft_v3_anchors.py"
+      ],
+      "script_sha256": "6ff5a9551aedf304eccb5badbc045fbb187abed73aa7f5c92499defeb68c29c5"
+    }
+  },
+  "written": "2026-10-18T08:28:12+00:00",
+  "prereg_sha256": "84af9a1d618f1d97883146e7ed97e4d2433d5553b4457b77277fcc99c170e7b1",
+  "code": {
+    "commit": "92e73ff1b8ec586b2db5a999d4668956be43453a",
+    "uncommitted": [
+      "scripts/sft_v3_anchors.py"
+    ],
+    "untracked": [],
+    "script_sha256": "7187a871b0a74a0ba78ae959850de25427d14545ac84a88d09377e367b96ad76"
+  }
+}

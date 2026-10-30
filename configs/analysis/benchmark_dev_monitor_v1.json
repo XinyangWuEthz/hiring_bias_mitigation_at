@@ -1,0 +1,231 @@
+{
+  "schema": "benchmark-dev-monitor-receipt-v1",
+  "date": "2026-10-23",
+  "status": "frozen_candidate_policy_not_validated",
+  "training_authorized": false,
+  "artifact_directory": "outputs/benchmark_dev_monitor_v1",
+  "split": {
+    "file": "outputs/benchmark_dev_monitor_v1/split.json",
+    "sha256": "b5fe8fc48ee05ab4e0ef0d2f0101c9bdbddce7e5b2f07ddcbffc993e61035d31",
+    "unit": "candidate_id",
+    "selection": "metadata_and_released_binary_labels_only",
+    "model_outcomes_used": false,
+    "dev_fraction": 0.6,
+    "seed": "20261023",
+    "dev_candidate_count": 90,
+    "remaining_candidate_count": 60,
+    "dev_pair_count": 270,
+    "remaining_pair_count": 180,
+    "dev_positive_pairs": 93,
+    "dev_positive_candidates": 50,
+    "dev_positive_prompts": 6417,
+    "shared_job_count": 123,
+    "benchmark_previously_exposed": true,
+    "remaining_partition_name": "historical_remainder",
+    "independent_test": false
+  },
+  "manifest": {
+    "file": "outputs/benchmark_dev_monitor_v1/manifest.json",
+    "sha256": "e8d073849e56ed9b35ccf8f29d370e1e333d62c47ef947187addf281e489d2f7"
+  },
+  "benchmark_source": {
+    "path": "/ritom/scratch/cscs/zhang/xw/hiring_bias_mitigation_at-dapo/data/benchmark/reference_feedback_en.csv",
+    "size_bytes": 1527826,
+    "sha256": "a3a700eda6bd91f3f43e5a6d45caf0f2a65279dd6de810e32b3bc959654130c0"
+  },
+  "monitor_rows": {
+    "file": "outputs/benchmark_dev_monitor_v1/dev_positive_rows.jsonl",
+    "sha256": "18a3160c728387617038160c79816f6a5757d96426930539861b9864e1429515",
+    "label": "hire"
+  },
+  "parent_decisions": {
+    "file": "outputs/benchmark_dev_monitor_v1/dev_positive_parent_decisions.jsonl",
+    "sha256": "e754c6e7a66b97628d4734684efb9cf30ca3a59fa5013292664491206d01ef29",
+    "hire_count": 3600,
+    "row_count": 6417,
+    "tpr_pct": 56.100981767180926
+  },
+  "parent_model": {
+    "run": "Qwen3.5-9B--en--sft--adapter--en_only_sft_v3_additional",
+    "identity_sha256": "ceb97fcd1877a1374860177b6ca89e810b76bd27ab3746ca983cc21be5f29653",
+    "sft_checkpoint": "outputs/sft/qwen3.5-9b_en_only_sft_v3_additional",
+    "checkpoint_step": 3923
+  },
+  "parent_raw": {
+    "path": "/ritom/scratch/cscs/zhang/xw/outputs/raw/Qwen3.5-9B--en--sft--adapter--en_only_sft_v3_additional.parquet",
+    "size_bytes": 751605,
+    "sha256": "15863af88ae90cf8de249a9b6d7f9bdf1de1a247bb0983af660112dfafe3a457"
+  },
+  "parent_meta": {
+    "path": "/ritom/scratch/cscs/zhang/xw/outputs/raw/Qwen3.5-9B--en--sft--adapter--en_only_sft_v3_additional.meta.json",
+    "size_bytes": 905,
+    "sha256": "cf431a9ee3e887610925b3a0ecd73ec5913ceaf33726b66143c5ff5fec09abd4"
+  },
+  "scorer": {
+    "max_new_tokens": 512,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "seed": 42,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "policy": {
+    "check_every_optimizer_steps": 25,
+    "stop_delta_tpr_pp": -8.0,
+    "stop_comparison": "<=",
+    "final_guardrail_delta_tpr_pp": -10.0,
+    "integrity_failure": "save_and_stop",
+    "bootstrap_intervals": "descriptive_only",
+    "training_authorized": false
+  },
+  "cached_results": {
+    "file": "outputs/benchmark_dev_monitor_v1/cached_split_metrics.json",
+    "sha256": "9b42b219c259bba647c5e5a95adf727eb6b2fb8f743eee0a1e06af8d9b38df7d",
+    "new_inference": false,
+    "splits": {
+      "full": {
+        "candidate_count": 150,
+        "prompt_count": 31050,
+        "positive_count": 10350,
+        "negative_count": 20700,
+        "parent_tpr_pct": 57.729468599033815,
+        "arms": {
+          "SFT-v3": {
+            "tpr_vs_gpt4o_pct": 57.729468599033815,
+            "fpr_vs_gpt4o_pct": 5.265700483091788,
+            "hire_on_positive": 5975,
+            "loss_count": 0,
+            "gain_count": 0,
+            "loss_pp": 0.0,
+            "gain_pp": 0.0,
+            "delta_tpr_pp": 0.0,
+            "at_or_below_minus8": false,
+            "below_minus10_final_guardrail": false
+          },
+          "GRPO-v3-all-step525": {
+            "tpr_vs_gpt4o_pct": 48.434782608695656,
+            "fpr_vs_gpt4o_pct": 4.4106280193236715,
+            "hire_on_positive": 5013,
+            "loss_count": 1117,
+            "gain_count": 155,
+            "loss_pp": 10.792270531400966,
+            "gain_pp": 1.497584541062802,
+            "delta_tpr_pp": -9.29468599033816,
+            "at_or_below_minus8": true,
+            "below_minus10_final_guardrail": false
+          },
+          "GRPO-v3-all-final571": {
+            "tpr_vs_gpt4o_pct": 47.6231884057971,
+            "fpr_vs_gpt4o_pct": 4.260869565217392,
+            "hire_on_positive": 4929,
+            "loss_count": 1105,
+            "gain_count": 59,
+            "loss_pp": 10.676328502415458,
+            "gain_pp": 0.5700483091787439,
+            "delta_tpr_pp": -10.106280193236714,
+            "at_or_below_minus8": true,
+            "below_minus10_final_guardrail": true
+          }
+        }
+      },
+      "dev": {
+        "candidate_count": 90,
+        "prompt_count": 18630,
+        "positive_count": 6417,
+        "negative_count": 12213,
+        "parent_tpr_pct": 56.100981767180926,
+        "arms": {
+          "SFT-v3": {
+            "tpr_vs_gpt4o_pct": 56.100981767180926,
+            "fpr_vs_gpt4o_pct": 6.337509211495947,
+            "hire_on_positive": 3600,
+            "loss_count": 0,
+            "gain_count": 0,
+            "loss_pp": 0.0,
+            "gain_pp": 0.0,
+            "delta_tpr_pp": 0.0,
+            "at_or_below_minus8": false,
+            "below_minus10_final_guardrail": false
+          },
+          "GRPO-v3-all-step525": {
+            "tpr_vs_gpt4o_pct": 49.353280349072776,
+            "fpr_vs_gpt4o_pct": 6.214689265536723,
+            "hire_on_positive": 3167,
+            "loss_count": 587,
+            "gain_count": 154,
+            "loss_pp": 9.147576749259779,
+            "gain_pp": 2.3998753311516285,
+            "delta_tpr_pp": -6.74770141810815,
+            "at_or_below_minus8": false,
+            "below_minus10_final_guardrail": false
+          },
+          "GRPO-v3-all-final571": {
+            "tpr_vs_gpt4o_pct": 48.200093501636275,
+            "fpr_vs_gpt4o_pct": 5.952673380823712,
+            "hire_on_positive": 3093,
+            "loss_count": 566,
+            "gain_count": 59,
+            "loss_pp": 8.820321022284556,
+            "gain_pp": 0.9194327567399097,
+            "delta_tpr_pp": -7.900888265544651,
+            "at_or_below_minus8": false,
+            "below_minus10_final_guardrail": false
+          }
+        }
+      },
+      "historical_remainder": {
+        "candidate_count": 60,
+        "prompt_count": 12420,
+        "positive_count": 3933,
+        "negative_count": 8487,
+        "parent_tpr_pct": 60.38647342995169,
+        "arms": {
+          "SFT-v3": {
+            "tpr_vs_gpt4o_pct": 60.38647342995169,
+            "fpr_vs_gpt4o_pct": 3.723341581241899,
+            "hire_on_positive": 2375,
+            "loss_count": 0,
+            "gain_count": 0,
+            "loss_pp": 0.0,
+            "gain_pp": 0.0,
+            "delta_tpr_pp": 0.0,
+            "at_or_below_minus8": false,
+            "below_minus10_final_guardrail": false
+          },
+          "GRPO-v3-all-step525": {
+            "tpr_vs_gpt4o_pct": 46.936181032290875,
+            "fpr_vs_gpt4o_pct": 1.8145398845292802,
+            "hire_on_positive": 1846,
+            "loss_count": 530,
+            "gain_count": 1,
+            "loss_pp": 13.475718281210272,
+            "gain_pp": 0.025425883549453344,
+            "delta_tpr_pp": -13.450292397660817,
+            "at_or_below_minus8": true,
+            "below_minus10_final_guardrail": true
+          },
+          "GRPO-v3-all-final571": {
+            "tpr_vs_gpt4o_pct": 46.681922196796336,
+            "fpr_vs_gpt4o_pct": 1.8263226110521975,
+            "hire_on_positive": 1836,
+            "loss_count": 539,
+            "gain_count": 0,
+            "loss_pp": 13.704551233155351,
+            "gain_pp": 0.0,
+            "delta_tpr_pp": -13.704551233155357,
+            "at_or_below_minus8": true,
+            "below_minus10_final_guardrail": true
+          }
+        }
+      }
+    }
+  },
+  "findings": [
+    "Both cached525 and final571 endpoints are above the frozen dev -8pp line. Final571 nevertheless fails the full -10pp guardrail.",
+    "The earlier checkpoint trajectory must determine whether an earlier irreversible dev stop would have triggered.",
+    "Checkpoint525 remains exploratory because it was selected after the final audit. TPR-only trajectory inference does not independently establish fairness improvement.",
+    "Do not alter the frozen split to remove observed dev/full differences.",
+    "Original benchmark GPT-4o labels and binary prompts are preserved; Djinni blind annotation remains a separate label-research workflow."
+  ]
+}

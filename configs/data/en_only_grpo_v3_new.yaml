@@ -1,0 +1,16 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# GRPO-v3-new prompts: grpo-v3's construction (scripts/build_grpo_prompts.py --balance signal,
+# data_kind grpo) on round 3's new pairs as SFT-v3 was sampled on them
+# (semisynthetic-v3/onpolicy-new, k=8, no hire top-up: --hire-topup none), pairs SFT-v3 never
+# trained on (docs/V3_NEW_DATA.md, round 3). Every candidate of a *validation.parquet under
+# semisynthetic-v3 is held out, round 3's sft_validation among them; 256 held-out prompts for the
+# monitors. Pre-registration: docs/GRPO_V3.md, round 2.
+name: en_only_grpo_v3_new
+artifacts_dir: artifacts/semisynthetic-v3/grpo-v3-new
+seed: 42
+protected_groups:
+- military_status
+- gender
+- religion
+languages:
+- en

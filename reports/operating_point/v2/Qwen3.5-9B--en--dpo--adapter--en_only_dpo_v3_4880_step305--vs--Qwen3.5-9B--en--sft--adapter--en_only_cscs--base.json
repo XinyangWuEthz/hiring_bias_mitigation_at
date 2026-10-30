@@ -1,0 +1,130 @@
+{
+  "standard": "op-margin-v2",
+  "run": "Qwen3.5-9B--en--dpo--adapter--en_only_dpo_v3_4880_step305",
+  "against": "Qwen3.5-9B--en--sft--adapter--en_only_cscs--base",
+  "conforms": true,
+  "issues": [],
+  "prompts": 31050,
+  "sets": 2700,
+  "grid": 0.0009765625,
+  "hire_rate_ref": 0.1443478260869565,
+  "unstable_ref": 0.08037037037037037,
+  "hire_rate_run": 0.22789049919484702,
+  "unstable_run": 0.009259259259259259,
+  "ref_threshold_matched": -0.75,
+  "ref_tie_weight": 0.11713665943600868,
+  "ref_tied_prompts": 461,
+  "hire_rate_ref_matched": 0.22789049919484702,
+  "unstable_ref_matched": 0.1178645456736563,
+  "unstable_ref_bin_excluded": 0.11777777777777777,
+  "unstable_ref_bin_included": 0.11851851851851852,
+  "delta_matched_pp": -10.860528641439704,
+  "ci_low": -12.94625612597413,
+  "ci_high": -8.656150076323614,
+  "method": {
+    "grid": 0.0009765625,
+    "run_threshold": 0.0,
+    "matching": "the reference arm hires exactly the compared arm's count; the bin tied at the cut is weighted, whole counterfactual sets at a time",
+    "bootstrap": {
+      "draws": 1000,
+      "seed": 42,
+      "unit": "candidate"
+    }
+  },
+  "code": {
+    "commit": "7199a7c25ae985b67469a0e44c5f000af605c43a",
+    "uncommitted": []
+  },
+  "inputs": {
+    "run": {
+      "run": "Qwen3.5-9B--en--dpo--adapter--en_only_dpo_v3_4880_step305",
+      "which": "adapter",
+      "config": "configs/audit/qwen3.5-9b_en_dpo_v3_4880_step305_gh200.yaml",
+      "prompts": {
+        "n": 31050,
+        "sha1": "6ecf987f91e4a15f2992d185b415a4ae4eeb0d51"
+      },
+      "decision": {
+        "prefix": "{\"decision\": \"",
+        "words": [
+          "hire",
+          "reject"
+        ],
+        "token_ids": [
+          33304,
+          45427
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "sampled_decision_token_share": 1.0
+      },
+      "model": {
+        "served": "/ritom/scratch/cscs/zhang/xw/outputs/merged/qwen3.5-9b_en_only_dpo_v3_4880--checkpoint-305",
+        "base": "Qwen/Qwen3.5-9B",
+        "base_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+        "adapters": [
+          {
+            "path": "/ritom/scratch/cscs/zhang/xw/outputs/sft/qwen3.5-9b_en_only_sft_v3_additional",
+            "sha256": "d8d63526a43dab37a1fb41a7d7a3541f6a023c4fa2a19e9409e04da331e419ee"
+          },
+          {
+            "path": "/ritom/scratch/cscs/zhang/xw/outputs/dpo/qwen3.5-9b_en_only_dpo_v3_4880/checkpoint-305",
+            "sha256": "1b8995b48fde60fff62b7f0f3945c2c4aa84a716cb1dde49b16b15923c6f440e"
+          }
+        ]
+      },
+      "software": {
+        "vllm": "0.31.0",
+        "torch": "2.13.0",
+        "transformers": "5.17.0"
+      },
+      "code": {
+        "commit": "7199a7c25ae985b67469a0e44c5f000af605c43a",
+        "uncommitted": []
+      },
+      "written": "2026-10-22T08:24:19+00:00"
+    },
+    "against": {
+      "run": "Qwen3.5-9B--en--sft--adapter--en_only_cscs",
+      "which": "base",
+      "config": "configs/audit/qwen3.5-9b_en_sft_en_only_gh200.yaml",
+      "prompts": {
+        "n": 31050,
+        "sha1": "6ecf987f91e4a15f2992d185b415a4ae4eeb0d51"
+      },
+      "decision": {
+        "prefix": "{\"decision\": \"",
+        "words": [
+          "hire",
+          "reject"
+        ],
+        "token_ids": [
+          33304,
+          45427
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "sampled_decision_token_share": 1.0
+      },
+      "model": {
+        "served": "Qwen/Qwen3.5-9B",
+        "base": "Qwen/Qwen3.5-9B",
+        "base_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+        "adapters": []
+      },
+      "software": {
+        "vllm": "0.31.0",
+        "torch": "2.13.0",
+        "transformers": "5.17.0"
+      },
+      "code": {
+        "commit": "8da77167d08462e89f5f9cbe0492484c06ada97e",
+        "uncommitted": []
+      },
+      "written": "2026-10-15T11:45:11+00:00"
+    }
+  },
+  "against_which": "base"
+}

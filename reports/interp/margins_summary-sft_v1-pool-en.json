@@ -1,0 +1,6 @@
+{
+  "spec": "sft_v1",
+  "dataset": "pool-en",
+  "rows": 20700,
+  "hire_rate_pct": 27.304347826086957
+}

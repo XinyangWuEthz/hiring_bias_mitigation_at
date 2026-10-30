@@ -1,0 +1,54 @@
+{
+  "check": "judge",
+  "inputs_sha256": {
+    "artifacts/semisynthetic-v2/onpolicy-full/raw/student_judge.parquet": "225297b642ed10dbde19d423bd4469fda59260df13455b70e57438e282e5d660",
+    "artifacts/semisynthetic-v2/onpolicy-full/raw/chosen_judge.parquet": "69e91b04d12bf7625bb4fc5e67fb3a007a962450fbea932045d63ffea574392c",
+    "artifacts/semisynthetic-v2/onpolicy-hire32/raw/student_judge.parquet": "09c43313c577bbc26ded748cbdc8ca51a64adeb18b9ac8b63e7afe0575e31d56",
+    "artifacts/semisynthetic-v2/onpolicy-hire32/raw/chosen_judge.parquet": "70c69fa3a9e60b2a2309f133487bcadda65f473d4a2f6c4aacbd6c22c97d8399"
+  },
+  "n_perm": 10,
+  "min_plausibility": 3,
+  "hedges": [
+    "however",
+    "although",
+    "but",
+    "though",
+    "despite",
+    "while",
+    "yet",
+    "may",
+    "might",
+    "could",
+    "somewhat",
+    "partially",
+    "potential",
+    "potentially"
+  ],
+  "intensity": [
+    "strong",
+    "strongly",
+    "excellent",
+    "extensive",
+    "proven",
+    "perfectly",
+    "exceeds",
+    "solid",
+    "robust",
+    "outstanding",
+    "highly",
+    "deep",
+    "impressive"
+  ],
+  "address": [
+    "you",
+    "your",
+    "yours",
+    "we",
+    "our",
+    "us"
+  ],
+  "code": {
+    "commit": "cee043391f00fd9b7a84cd422986d39bbf0ff4cf",
+    "uncommitted": []
+  }
+}

@@ -1,0 +1,4 @@
+group,explicit,implicit,split
+military_status,55,45,train
+gender,59,57,train
+religion,56,62,train

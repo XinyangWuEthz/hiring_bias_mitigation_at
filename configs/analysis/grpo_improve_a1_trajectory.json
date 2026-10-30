@@ -1,0 +1,25 @@
+{
+  "output_dir": "outputs/checkpoint_benchmark/grpo_improve_a1_bias_projection",
+  "audit_config": "configs/audit/qwen3.5-9b_en_grpo_v3_all_gh200.yaml",
+  "training_run": "outputs/grpo/grpo_improve_a1_bias_projection",
+  "parent_adapter": "outputs/sft/qwen3.5-9b_en_only_sft_v3_additional",
+  "base_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+  "expected_steps": [25,50,75,100,125,150,175,200],
+  "score_steps": [100,125,150,175,200],
+  "missing_saved_steps": [],
+  "chunk_size": 4000,
+  "workers": 4,
+  "benchmark_partition": {
+    "split": {
+      "path": "outputs/benchmark_dev_monitor_v1/split.json",
+      "sha256": "b5fe8fc48ee05ab4e0ef0d2f0101c9bdbddce7e5b2f07ddcbffc993e61035d31"
+    },
+    "manifest": {
+      "path": "outputs/benchmark_dev_monitor_v1/manifest.json",
+      "sha256": "e8d073849e56ed9b35ccf8f29d370e1e333d62c47ef947187addf281e489d2f7"
+    }
+  },
+  "cache_imports": [
+    {"step": 0, "run": "Qwen3.5-9B--en--sft--adapter--en_only_sft_v3_additional"}
+  ]
+}

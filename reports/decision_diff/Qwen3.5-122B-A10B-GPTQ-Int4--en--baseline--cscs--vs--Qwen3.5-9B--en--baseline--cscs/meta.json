@@ -1,0 +1,20 @@
+{
+  "run": "Qwen3.5-122B-A10B-GPTQ-Int4--en--baseline--cscs",
+  "against": "Qwen3.5-9B--en--baseline--cscs",
+  "inputs": {
+    "Qwen3.5-122B-A10B-GPTQ-Int4--en--baseline--cscs": {
+      "path": "outputs/raw/Qwen3.5-122B-A10B-GPTQ-Int4--en--baseline--cscs.parquet",
+      "sha256": "53ea9dc46e98d43435f49d9bdb970061f178958f9d2c45c39cb3543275ab4f7d"
+    },
+    "Qwen3.5-9B--en--baseline--cscs": {
+      "path": "outputs/raw/Qwen3.5-9B--en--baseline--cscs.parquet",
+      "sha256": "54a4283be4a8e87a7853a1006b979667927510060fdb0e799856baf5023da951"
+    }
+  },
+  "shared_prompts": 31050,
+  "changed_prompts": 4765,
+  "code": {
+    "commit": "67f4bb1b290a2eaf72307e623655787ad02843a0",
+    "uncommitted": []
+  }
+}

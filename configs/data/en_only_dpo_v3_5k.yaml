@@ -1,0 +1,17 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# Round 3's on-policy DPO set (docs/V3_NEW_DATA.md): 4,880 training and 350 validation pairs. They
+# are SFT-v3's own covert, attribute-tipped mistakes on round 1's new pairs (round 2) and on pairs
+# it never trained on (round 3's pilot and batch 2), balanced by error mass within each pool source
+# and checked against every pair's vote anchor (`scripts/v3_additional_data.py --stage dpo_v3`
+# with configs/generation/v3_new_pairs_2.yaml). No r2em_v3: on-policy pairs only (user,
+# 2026-10-21). djinni_new fails D4 at 49.5% and is included on the user's word (2026-10-22).
+# Read with `data_kind: dpo_v3_5k` (dpo_v3_5k_{train,validation}.parquet).
+name: en_only_dpo_v3_5k
+artifacts_dir: artifacts/semisynthetic-v3/new-pairs-2
+seed: 42
+protected_groups:
+- military_status
+- gender
+- religion
+languages:
+- en

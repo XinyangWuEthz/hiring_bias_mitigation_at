@@ -54,7 +54,7 @@ Balancing by decision is what makes D3 measure a shortcut and not polarity. A ra
 
 The first version split folds by document, which leaked in both directions. A near-copy pair puts its two texts in different folds, so the classifier scores the rejected copy as `chosen`. On a simulated batch with a real wording marker, that version reported 0.49 where the grouped version reports 0.80. Stacking several strategies repeats each `chosen` text, and a copy in the test fold matches its twin in the training fold, which pushed one simulated mixture to 0.94. Grouping folds by `pair_id` fixes both.
 
-D4 has two edges. Below 50%, the pairs fight what SFT already taught. Above 90%, the student already gets them right and the batch carries no gradient. The useful number is the "informative share", the fraction of pairs the student currently gets wrong.
+D4 has two edges. Below 50%, the pairs fight what SFT already taught. Above 90%, the student already ranks `chosen` first on almost every pair. That does not mean the batch carries no gradient: when the SFT model is also the DPO reference, every pair starts with the same weight, σ(0) = ½, because the loss compares the policy's preference with the reference's. A high D4 means the batch may not reach the mistakes the student still makes. The useful number is the "informative share", the fraction of pairs the student currently gets wrong. (Corrected 2026-10-21; this sentence used to say "carries no gradient".)
 
 ## Controls that make the checks believable
 

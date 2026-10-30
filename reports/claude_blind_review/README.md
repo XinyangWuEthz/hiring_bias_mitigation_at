@@ -1,72 +1,72 @@
-# Claude 盲评：模型与 4o 分歧的 113 对 + 40 对一致对照
+# Claude blind review: 113 model/4o disagreements plus 40 agreement controls
 
-日期：2026-10-15。评审者：Claude（Fable 5.1），一人一次。
-数据：`outputs/raw/*.parquet` 的 `attr_free` 行（450 对），参考为 `reference_decision`（GPT-4o）。
-逐条结果：`claude_grades_153.csv`（含我的决定、1–5 匹配分、一句理由，以及 4o 和四个模型的决定与反馈）。
+Date: 2026-10-15. Reviewer: Claude, Fable 5.1; one reviewer, one assessment per case.
+Data: `attr_free` rows from `outputs/raw/*.parquet`, covering 450 pairs, with `reference_decision` from GPT-4o as the reference.
+Per-case results: `claude_grades_153.csv`, containing my decision, 1–5 fit score, one-sentence rationale, and the decisions and feedback from 4o and the four models.
 
-## 做法
+## Method
 
-1. 取四个模型（SFT、r1-300、r2-102、r2em-100）任一与 4o 不同的 113 对，加 40 对五方全一致的对照（20 对一致录、20 对一致拒），共 153 对，打乱顺序。
-2. 盲评表只含岗位名、岗位描述、简历，不含任何人的决定或反馈。按 baseline 提示词同样的任务框架（"hire or reject"）逐条判断，并给 1–5 匹配分：1–2 明确拒，3 边界，4–5 明确录。
-3. 打分写入文件后才对照 key 揭盲。
+1. Take the 113 pairs where at least one of four models, SFT, r1-300, r2-102, or r2em-100, disagrees with 4o. Add 40 controls where all five agree, comprising 20 unanimous hires and 20 unanimous rejects, for 153 pairs total. Shuffle the order.
+2. The blind-review form contains only job title, job description, and CV, with no decisions or feedback. Judge each case using the same "hire or reject" task framing as the baseline prompt and assign a 1–5 fit score: 1–2 clear reject, 3 borderline, 4–5 clear hire.
+3. Unblind against the key only after writing scores to a file.
 
-## 结果
+## Results
 
-### 对照组（40 对，五方一致）
+### Controls: 40 pairs with five-way agreement
 
-| 指标 | 值 |
+| Metric | Value |
 |---|---|
-| 我与共识一致 | 33/40 = 82.5%，kappa 0.65 |
-| 不一致的 7 对 | 全部是我打 3 分的边界样本 |
-| 录用率 | 我 52.5%，共识 50% |
+| My agreement with consensus | 33/40 = 82.5%, kappa 0.65 |
+| The 7 disagreements | All borderline cases that I scored 3 |
+| Hire rate | Mine 52.5%, consensus 50% |
 
-读法：五方一致的地方我也基本一致；一致处"一起错"的情况有，但只出现在边界样本上。
+Interpretation: I mostly agree where all five agree. Cases where the consensus is collectively wrong according to my review occur only among borderline cases.
 
-### 分歧组（113 对）
+### Disagreement set: 113 pairs
 
-| 对象 | 与我一致 | kappa | 该组录用率 |
+| Model/reviewer | Agreement with me | kappa | Hire rate in this set |
 |---|---|---|---|
 | 4o | 74/113 = 65.5% | 0.11 | 73.5% |
 | SFT | 71/113 = 62.8% | 0.22 | 54.9% |
 | r2em-100 | 68/113 = 60.2% | 0.14 | 57.5% |
 | r2-102 | 44/113 = 38.9% | 0.07 | 18.6% |
 | r1-300 | 39/113 = 34.5% | 0.03 | 14.2% |
-| 我 | — | — | 74.3% |
+| Me | — | — | 74.3% |
 
-我的录用率与 4o 几乎相同（74% 对 73%）；r1 / r2 在这组只录 14–19%。
+My hire rate is nearly the same as 4o's, 74% versus 73%; r1 / r2 hire on only 14–19% of this set.
 
-### 分歧方向：我站哪边
+### Direction of disagreement: whom I support
 
-| 模型 | 模型拒、4o 录 | 我站模型（拒） | 我站 4o（录） | 模型录、4o 拒 | 我站模型（录） | 我站 4o（拒） |
+| Model | Model reject, 4o hire | I support model: reject | I support 4o: hire | Model hire, 4o reject | I support model: hire | I support 4o: reject |
 |---|---|---|---|---|---|---|
 | SFT | 48 | 17 | 31 | 27 | 19 | 8 |
 | r1-300 | 79 | 19 | 60 | 12 | 9 | 3 |
 | r2-102 | 76 | 19 | 57 | 14 | 11 | 3 |
 | r2em-100 | 48 | 16 | 32 | 30 | 20 | 10 |
 
-四模型全都与 4o 不同的 55 对：44 对"4o 录、模型拒"，我录 28、拒 16；11 对"4o 拒、模型录"，我录 8、拒 3。
+Among the 55 pairs where all four models disagree with 4o: 44 have 4o hire/model reject, on which I hire 28 and reject 16; 11 have 4o reject/model hire, on which I hire 8 and reject 3.
 
-读法：模型拒而 4o 录的地方，我约 2:1 站 4o；模型录而 4o 拒的地方，我约 2–3:1 站模型。也就是 4o 在拒的方向上偏严、在录的方向上偏松；而 r1 / r2 的大量额外拒绝，多数我认为是错拒。
+Interpretation: when the model rejects and 4o hires, I support 4o by about 2:1. When the model hires and 4o rejects, I support the model by about 2–3:1. Thus 4o tends to be strict when rejecting and lenient when hiring, while I judge most of r1 / r2's many additional rejections to be false rejections.
 
-### 边界还是明确
+### Borderline versus clear cases
 
-分歧组按我的匹配分拆开：
+Disagreement cases broken down by my fit score:
 
-| 我的分 | 对数 | 我站 4o | 我站模型 |
+| My score | Pairs | I support 4o | I support model |
 |---|---|---|---|
-| 2（明确拒） | 6 | 4 | 2 |
-| 3（边界） | 56 | 26 | 30 |
-| 4–5（明确录） | 51 | 44 | 7 |
+| 2, clear reject | 6 | 4 | 2 |
+| 3, borderline | 56 | 26 | 30 |
+| 4–5, clear hire | 51 | 44 | 7 |
 
-一半分歧（56/113）是边界样本，这里谁对谁错接近掷硬币。另一半是明确样本，4o 对了 48 次，模型对了 9 次。
+Half the disagreements, 56/113, are borderline; deciding which side is correct is close to a coin flip. In the other half, the clear cases, 4o is correct 48 times and the model 9 times according to this review.
 
-"模型拒、4o 录"的对子里，我打 4–5 分（明确该录）的比例：SFT 20/48 = 42%，r1-300 42/79 = 53%，r2-102 38/76 = 50%，r2em-100 21/48 = 44%。
+Among model-reject/4o-hire pairs, the shares I score 4–5, clear hire, are SFT 20/48 = 42%, r1-300 42/79 = 53%, r2-102 38/76 = 50%, and r2em-100 21/48 = 44%.
 
-### 换成我当参考，450 对上的一致率
+### Agreement across 450 pairs with me as the reference
 
-337 对五方一致的对子未全部评，按对照组的 82.5% 外推；113 对分歧用实测值。
+The 337 five-way-agreement pairs were not all reviewed; extrapolate the control agreement of 82.5% to them. Use observed results for the 113 disagreement pairs.
 
-| 模型 | 与 4o 一致（现有指标） | 与我一致（外推） |
+| Model | Agreement with 4o, existing metric | Agreement with me, extrapolated |
 |---|---|---|
 | 4o | — | 78.2% |
 | SFT | 83.3% | 77.6% |
@@ -74,26 +74,26 @@
 | r2-102 | 80.0% | 71.6% |
 | r1-300 | 79.8% | 70.4% |
 
-排序不变。SFT 与 r1 / r2 的差距从 3.5 pp 扩大到 6–7 pp：r1 / r2 比 SFT 多拒的那些人，多数是我也会录的人。
+The ranking does not change. The SFT versus r1 / r2 gap widens from 3.5 pp to 6–7 pp: most candidates whom r1 / r2 reject in addition to SFT are candidates I would also hire.
 
-## 理由里的事实错误（只看四模型全分歧的 45 对，我逐条读了）
+## Factual errors in rationales: individual review of 45 pairs with four-model disagreement
 
-- 模型拒、4o 录、我明确录（18 对）：r1-300 的理由有 6 条含可核对的错误事实（低报年限、否认简历里写明的技能，例如 I057 说"不足三年"而简历是四年，I127 说"没有 IT 行业背景"而简历列了三家 IT 公司），另有 2 条把岗位的"加分项"当成必须项（I075 的普通话、I147 的 FinTech）。其余约 10 条是严格但有依据的拒绝。
-- 模型拒、4o 录、我也拒（16 对）：4o 的理由有 4 条夸大了简历（I040 说有 CMS 经验、I135 说有两年自动化经验，简历里都没有）。
-- 模型录、4o 拒（11 对）：r2em-100 的理由有 4 条编造了资历（I059 说"5 年以上 iOS"，简历是 2.8 年；I089 说"Swift 和 Objective-C"，简历无 Objective-C）。
+- Model reject, 4o hire, and my clear hire, 18 pairs: 6 r1-300 rationales contain checkable factual errors, such as understating experience or denying skills explicitly listed in the CV. For example, I057 claims less than three years where the CV gives four, and I127 claims no IT-industry background where the CV lists three IT companies. Another 2 treat preferred qualifications as mandatory, Mandarin in I075 and FinTech in I147. The remaining roughly 10 are strict but evidence-based rejections.
+- Model reject, 4o hire, and my reject, 16 pairs: 4 of 4o's rationales overstate the CV, claiming CMS experience in I040 or two years of automation experience in I135, neither of which the CV states.
+- Model hire, 4o reject, 11 pairs: 4 r2em-100 rationales invent qualifications. I059 claims "5+ years of iOS" where the CV gives 2.8 years; I089 claims Swift and Objective-C where the CV does not mention Objective-C.
 
-这是决定一致率看不到的另一条质量轴：两个方向的 DPO 模型都会为自己的决定编造事实。
+This is a separate quality dimension that decision agreement misses: DPO models in both directions invent facts to support their decisions.
 
-## 对现有结论的影响
+## Implications for the existing conclusions
 
-- "前两轮效用下降"成立，而且在我这里更明显（差距 6–7 pp 而非 3.5 pp）。
-- "r2em 效用恢复"成立：r2em 与 SFT 在两个参考下都在 1 pp 以内。
-- 一致率指标的上限：我与 4o 在 450 对上约 78% 一致，SFT 与 4o 83%。两个独立评审之间就只有约 80%，所以一致率不可能、也不应该被推到 90%；它适合当护栏，不能当分数。
-- 约一半分歧是边界样本。人工盲评要用 1–5 分而不是二选一，否则会把掷硬币算成错误。
-- 人工盲评还应单独标"理由是否与简历相符"。
+- The conclusion that utility declined in the first two rounds holds, and is stronger under my review: a 6–7 pp gap rather than 3.5 pp.
+- The conclusion that r2em recovered utility holds: r2em stays within 1 pp of SFT under both references.
+- Agreement has a ceiling: my agreement with 4o over 450 pairs is approximately 78%, while SFT agrees with 4o on 83%. With only about 80% agreement between two independent reviewers, agreement cannot and should not be pushed to 90%; it is suitable as a guardrail, not a score.
+- About half the disagreements are borderline. Human blind review should use a 1–5 scale rather than a binary choice, or coin flips will be counted as errors.
+- Human blind review should separately label whether each rationale matches the CV.
 
-## 局限
+## Limitations
 
-- 只有一个评审者，没有评审者之间的 kappa。我也是一个 LLM，先验可能比人更接近 4o；盲评去掉了锚定，去不掉共同先验。
-- 外推到 450 对假设 337 对一致样本的行为与 40 对对照一样。
-- 组盲评表之前，我在看 benchmark CSV 结构时见过一行 4o 的判断（Data Scientist/AdTech 那对，最后不在 153 对里）。
+- There is only one reviewer, so there is no inter-reviewer kappa. I am also an LLM, and my prior may be closer to 4o's than a human's would be. Blinding removes anchoring, not shared priors.
+- Extrapolation to 450 pairs assumes the 337 agreement cases behave like the 40 controls.
+- Before constructing the blind-review form, I saw one 4o decision while inspecting the benchmark CSV structure, for the Data Scientist/AdTech pair. That pair was not among the final 153 cases.

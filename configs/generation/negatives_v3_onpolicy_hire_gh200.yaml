@@ -1,0 +1,74 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py, so it survives a regeneration.
+#
+# Top-up of V3's onpolicy-full, as onpolicy-hire32 topped up v1's: each pool source's short side
+# sampled again at k=32, both prompts (docs/V3_NEW_DATA.md, round 2).
+#   - djinni_new and kaggle_linkedin: their hire rows (user, 2026-10-20). They hire 22% and 15%,
+#     and in the full run their kept training pairs are 391 / 595 and 104 / 247 hire / reject.
+#   - RJDB: its reject rows (user, 2026-10-21, after the full run's judge). It hires 56%, and
+#     the full run kept only 58 reject-anchor training pairs against 148 hire.
+# The file and directory keep the name "hire" from the pre-registration.
+#
+# Rows that v1's invariant filter keeps: 28,707 over 2,397 pairs (djinni_new hire 11,494 and 959,
+# kaggle_linkedin hire 2,664 and 222, RJDB reject 14,549 and 1,216), so 31,104 prompts and
+# 995,328 samples. The split follows the full run's (`topup_of`), and the merge keeps the full
+# run's pair where both runs have one (onpolicy.merge_topup). Against
+# negatives_v2_onpolicy_hire_gh200.yaml only the source, the rows, the outputs, the student and
+# the split change.
+# Costs are recorded under the arm dpo_v3, with every job of V3's DPO data (docs/COST.md):
+#   HBM_COST_ARM=dpo_v3 REPO=$PWD CONFIG=configs/generation/negatives_v3_onpolicy_hire_gh200.yaml \
+#     scripts/cscs/submit.sh -p normal -t 02:30:00 scripts/cscs/onpolicy_full.sbatch sample
+#   HBM_COST_ARM=dpo_v3 REPO=$PWD CONFIG=... scripts/cscs/submit.sh -p normal -t 01:00:00 \
+#     scripts/cscs/onpolicy_full.sbatch judge
+source_artifacts_dir: artifacts/semisynthetic-v3/additional
+artifacts_dir: artifacts/semisynthetic-v3/onpolicy-hire32
+topup_of: artifacts/semisynthetic-v3/onpolicy-full
+# Each source's short side (onpolicy.filter_rows: a list of filters keeps rows matching any, a
+# list value matches any of its items).
+row_filter:
+- reference_decision: hire
+  pool_source: [djinni_new, kaggle_linkedin]
+- reference_decision: reject                   # RJDB's short side (user, 2026-10-21)
+  pool_source: rjdb
+lang: en
+seed: 42
+# SFT-v3's validation candidates, as in the full run (generate_onpolicy_full.validation_ids).
+val_fraction: 0
+
+student_base: Qwen/Qwen3.5-9B
+student_adapter: outputs/sft/qwen3.5-9b_en_only_sft_v3_additional
+samples_per_prompt: 32
+min_free_right: 0.5
+# 128 prompts x 32 samples: the same samples per chunk as the full run's 512 x 8.
+chunk_size: 128
+student_vllm:
+  gpu_memory_utilization: 0.70      # of 95.6 GiB usable; anything near 96 GB OOMs
+  max_model_len: 8192
+  max_num_seqs: 256                 # 8 prompts x 32 samples in flight
+  engine_kwargs:
+    gdn_prefill_backend: triton     # no CUDA toolkit on Daint for FlashInfer's JIT
+student_generation:
+  max_new_tokens: 200
+  temperature: 1.0
+  top_p: 1.0
+  seed: 42
+
+judge_strategies:
+- student_tipped
+max_length_delta_words: 10
+min_plausibility: 3
+n_samples: 20
+
+# The teacher, as judge only -- the same settings as onpolicy-full and batch-01.
+teacher_model: Qwen/Qwen3.5-122B-A10B-GPTQ-Int4
+backend: vllm
+dtype: auto
+max_model_len: 8192
+tensor_parallel_size: 4
+gpu_memory_utilization: 0.80
+max_num_seqs: 128
+engine_kwargs:
+  gdn_prefill_backend: triton
+judge_generation:
+  max_new_tokens: 160
+  temperature: 0.0
+  top_p: 1.0

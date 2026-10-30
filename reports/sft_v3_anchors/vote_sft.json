@@ -1,0 +1,133 @@
+{
+  "control_equals_published": {
+    "train": true,
+    "validation": true
+  },
+  "balance_v1": {
+    "balanced": true,
+    "before": {
+      "reject": 63932,
+      "hire": 7830
+    },
+    "after": {
+      "reject": 7830,
+      "hire": 7830
+    }
+  },
+  "targets": 2304,
+  "replaced_in_pool": 2297,
+  "swapped_rows": {
+    "train": 253,
+    "validation": 24
+  },
+  "balance_rebalanced": {
+    "balanced": true,
+    "before": {
+      "reject": 61635,
+      "hire": 10127
+    },
+    "after": {
+      "hire": 10127,
+      "reject": 10127
+    }
+  },
+  "variants": {
+    "swap": {
+      "path": "artifacts/semisynthetic-v3/sft_v3_swap",
+      "train": {
+        "rows": 14890,
+        "v1_rows": 14890,
+        "by_lang_and_decision": {
+          "en hire": 5073,
+          "en reject": 3346,
+          "uk hire": 2638,
+          "uk reject": 3833
+        },
+        "english_rows": 8419,
+        "english_hire_share": 0.6025656253711842,
+        "v1_english_hire_share": 0.5725145504216653,
+        "identical_to_v1": 14637,
+        "variant_in_v1_completion_changed": 253,
+        "variant_not_in_v1": 0,
+        "candidates_shared_with_v1": 2755,
+        "candidates": 2755
+      },
+      "validation": {
+        "rows": 770,
+        "v1_rows": 770,
+        "by_lang_and_decision": {
+          "en hire": 276,
+          "en reject": 179,
+          "uk hire": 120,
+          "uk reject": 195
+        },
+        "english_rows": 455,
+        "english_hire_share": 0.6065934065934065,
+        "v1_english_hire_share": 0.5538461538461539,
+        "identical_to_v1": 746,
+        "variant_in_v1_completion_changed": 24,
+        "variant_not_in_v1": 0,
+        "candidates_shared_with_v1": 145,
+        "candidates": 145
+      }
+    },
+    "rebalanced": {
+      "path": "artifacts/semisynthetic-v3/sft_v3_rebalanced",
+      "train": {
+        "rows": 19268,
+        "v1_rows": 14890,
+        "by_lang_and_decision": {
+          "en hire": 7081,
+          "en reject": 4534,
+          "uk hire": 2566,
+          "uk reject": 5087
+        },
+        "english_rows": 11615,
+        "english_hire_share": 0.6096427034007749,
+        "v1_english_hire_share": 0.5725145504216653,
+        "identical_to_v1": 8200,
+        "variant_in_v1_completion_changed": 247,
+        "variant_not_in_v1": 10821,
+        "candidates_shared_with_v1": 2593,
+        "candidates": 2825
+      },
+      "validation": {
+        "rows": 986,
+        "v1_rows": 770,
+        "by_lang_and_decision": {
+          "en hire": 288,
+          "en reject": 216,
+          "uk hire": 192,
+          "uk reject": 290
+        },
+        "english_rows": 504,
+        "english_hire_share": 0.5714285714285714,
+        "v1_english_hire_share": 0.5538461538461539,
+        "identical_to_v1": 27,
+        "variant_in_v1_completion_changed": 0,
+        "variant_not_in_v1": 959,
+        "candidates_shared_with_v1": 6,
+        "candidates": 148
+      }
+    }
+  },
+  "inputs": {
+    "v1_split": {
+      "train": "artifacts/semisynthetic-v1-hub/sft_train.parquet",
+      "validation": "artifacts/semisynthetic-v1/sft_validation.parquet"
+    },
+    "hub": {
+      "repo": "Stereotypes-in-LLMs/hiring-bias-mitigation-synthetic-data",
+      "revision": "996e555e1cf0d3b327f2280be6ef9cee36fddbbd"
+    },
+    "targets": "/private/tmp/claude-501/-Users-xinyangwu-projects-hiring-bias-mitigation-at--claude-worktrees-adoring-herschel-815980/d063d6b1-1243-42ec-85a1-6f7587a21351/scratchpad/buildroot/artifacts/semisynthetic-v3/raw/en_invariant_vote_changed_kept.parquet"
+  },
+  "written": "2026-10-20T08:35:04+00:00",
+  "prereg_sha256": "c4b4d40a7d1fbf87e88889aa3d0d163a0b4479adf1d9f1e17250d61b040172e5",
+  "code": {
+    "commit": "6f7ad8e0b5e3ca65b3494f1ce8497ea8bde513b4",
+    "uncommitted": [],
+    "untracked": [],
+    "script_sha256": "d32b8aa5ec955aa2671262f806d03de71ac67eab412ed40c2bac2d7a5a8597bf"
+  }
+}

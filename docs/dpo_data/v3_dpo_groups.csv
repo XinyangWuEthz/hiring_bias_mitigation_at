@@ -1,0 +1,7 @@
+group,rows,hire,reject,split
+military_status,1305,637,668,train
+gender,1202,599,603,train
+religion,1332,687,645,train
+military_status,163,85,78,validation
+gender,147,77,70,validation
+religion,132,69,63,validation

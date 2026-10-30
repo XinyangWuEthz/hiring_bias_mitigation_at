@@ -1,0 +1,15 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# SFT-v3 on the vote anchors, the `swap` variant (docs/SFT_V3_ANCHORS.md, fourth addendum; chosen
+# by the user on 2026-10-20): v1's published SFT split row for row, with the 277 completions of
+# the 192 pairs whose verdict the 8-draw vote changes replaced (all reject to hire). Every other
+# row, the order and the candidate split are v1's, so this view differs from en_only in those
+# rows only. Built by scripts/sft_v3_anchors.py --stage vote_sft at 6f7ad8e.
+name: en_only_sft_v3_swap
+artifacts_dir: artifacts/semisynthetic-v3/sft_v3_swap
+seed: 42
+protected_groups:
+- military_status
+- gender
+- religion
+languages:
+- en

@@ -1,0 +1,134 @@
+{
+  "standard": "op-margin-v2",
+  "run": "Qwen3.5-9B--en--grpo--adapter--en_only_grpo_improve_r3_wsd",
+  "against": "Qwen3.5-9B--en--sft--adapter--en_only_sft_v3_additional",
+  "conforms": true,
+  "issues": [],
+  "prompts": 31050,
+  "sets": 2700,
+  "grid": 0.0009765625,
+  "hire_rate_ref": 0.2251207729468599,
+  "unstable_ref": 0.01814814814814815,
+  "hire_rate_run": 0.20090177133655396,
+  "unstable_run": 0.014814814814814815,
+  "ref_threshold_matched": 1.25,
+  "ref_tie_weight": 0.7849462365591398,
+  "ref_tied_prompts": 93,
+  "hire_rate_ref_matched": 0.20090177133655396,
+  "unstable_ref_matched": 0.02187972919155715,
+  "unstable_ref_bin_excluded": 0.023333333333333334,
+  "unstable_ref_bin_included": 0.02148148148148148,
+  "delta_matched_pp": -0.7064914376742334,
+  "ci_low": -1.8923436877737954,
+  "ci_high": 0.38868976503385105,
+  "method": {
+    "grid": 0.0009765625,
+    "run_threshold": 0.0,
+    "matching": "the reference arm hires exactly the compared arm's count; the bin tied at the cut is weighted, whole counterfactual sets at a time",
+    "bootstrap": {
+      "draws": 1000,
+      "seed": 42,
+      "unit": "candidate"
+    }
+  },
+  "code": {
+    "commit": "3d89a723b5cc577a00117ad6c3a340855c9722da",
+    "uncommitted": []
+  },
+  "inputs": {
+    "run": {
+      "run": "Qwen3.5-9B--en--grpo--adapter--en_only_grpo_improve_r3_wsd",
+      "which": "adapter",
+      "config": "configs/audit/qwen3.5-9b_en_grpo_improve_r3_wsd_gh200.yaml",
+      "prompts": {
+        "n": 31050,
+        "sha1": "6ecf987f91e4a15f2992d185b415a4ae4eeb0d51"
+      },
+      "decision": {
+        "prefix": "{\"decision\": \"",
+        "words": [
+          "hire",
+          "reject"
+        ],
+        "token_ids": [
+          33304,
+          45427
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "sampled_decision_token_share": 1.0
+      },
+      "model": {
+        "served": "/ritom/scratch/cscs/zhang/xw/outputs/merged/grpo_improve_r3_wsd",
+        "base": "Qwen/Qwen3.5-9B",
+        "base_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+        "adapters": [
+          {
+            "path": "/ritom/scratch/cscs/zhang/xw/outputs/sft/qwen3.5-9b_en_only_sft_v3_additional",
+            "sha256": "d8d63526a43dab37a1fb41a7d7a3541f6a023c4fa2a19e9409e04da331e419ee"
+          },
+          {
+            "path": "/ritom/scratch/cscs/zhang/xw/outputs/grpo/grpo_improve_r3_wsd",
+            "sha256": "b5687d6919aa2edf3c508370aa826e8dbad6c69560c3fd26aa9f27a6c26638b0"
+          }
+        ]
+      },
+      "software": {
+        "vllm": "0.31.0",
+        "torch": "2.13.0",
+        "transformers": "5.17.0"
+      },
+      "code": {
+        "commit": "3d89a723b5cc577a00117ad6c3a340855c9722da",
+        "uncommitted": []
+      },
+      "written": "2026-10-26T07:35:34+00:00"
+    },
+    "against": {
+      "run": "Qwen3.5-9B--en--sft--adapter--en_only_sft_v3_additional",
+      "which": "adapter",
+      "config": "configs/audit/qwen3.5-9b_en_sft_v3_additional_gh200.yaml",
+      "prompts": {
+        "n": 31050,
+        "sha1": "6ecf987f91e4a15f2992d185b415a4ae4eeb0d51"
+      },
+      "decision": {
+        "prefix": "{\"decision\": \"",
+        "words": [
+          "hire",
+          "reject"
+        ],
+        "token_ids": [
+          33304,
+          45427
+        ],
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "sampled_decision_token_share": 1.0
+      },
+      "model": {
+        "served": "/ritom/scratch/cscs/zhang/xw/outputs/merged/qwen3.5-9b_en_only_sft_v3_additional",
+        "base": "Qwen/Qwen3.5-9B",
+        "base_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+        "adapters": [
+          {
+            "path": "/ritom/scratch/cscs/zhang/xw/outputs/sft/qwen3.5-9b_en_only_sft_v3_additional",
+            "sha256": "d8d63526a43dab37a1fb41a7d7a3541f6a023c4fa2a19e9409e04da331e419ee"
+          }
+        ]
+      },
+      "software": {
+        "vllm": "0.31.0",
+        "torch": "2.13.0",
+        "transformers": "5.17.0"
+      },
+      "code": {
+        "commit": "b1cc95fec51a122abdcac9ab8297da88779ec8e9",
+        "uncommitted": []
+      },
+      "written": "2026-10-20T20:57:59+00:00"
+    }
+  }
+}

@@ -1,0 +1,288 @@
+{
+  "anchors": {
+    "path": "/ritom/scratch/cscs/zhang/xw/artifacts/semisynthetic-v3/anchors/pool_votes_seed43_anchors.parquet",
+    "recomputed_equals_saved": true,
+    "pairs": 2992,
+    "c1": {
+      "pairs": 124,
+      "hired": 66,
+      "share": 0.532258064516129,
+      "min": 0.6,
+      "pass": false
+    },
+    "c2": {
+      "pairs": 54,
+      "rejected": 49,
+      "share": 0.9074074074074074,
+      "min": 0.9,
+      "pass": true
+    },
+    "c3": {
+      "v1_hire_share": 0.14171122994652408,
+      "new_hire_share": 0.20588235294117646,
+      "gain": 0.06417112299465239,
+      "min_gain": 0.05,
+      "pass": true
+    },
+    "passes": false,
+    "reviewed_by_set_and_fit": [
+      {
+        "set": "control_hire",
+        "fit_bucket": "3",
+        "pairs": 4,
+        "new_anchor_hire_share": 1.0
+      },
+      {
+        "set": "control_hire",
+        "fit_bucket": "4-5",
+        "pairs": 16,
+        "new_anchor_hire_share": 1.0
+      },
+      {
+        "set": "control_reject",
+        "fit_bucket": "1-2",
+        "pairs": 16,
+        "new_anchor_hire_share": 0.0
+      },
+      {
+        "set": "control_reject",
+        "fit_bucket": "3",
+        "pairs": 3,
+        "new_anchor_hire_share": 0.3333333333333333
+      },
+      {
+        "set": "control_reject",
+        "fit_bucket": "4-5",
+        "pairs": 1,
+        "new_anchor_hire_share": 0.0
+      },
+      {
+        "set": "reverse",
+        "fit_bucket": "1-2",
+        "pairs": 1,
+        "new_anchor_hire_share": 1.0
+      },
+      {
+        "set": "reverse",
+        "fit_bucket": "3",
+        "pairs": 6,
+        "new_anchor_hire_share": 1.0
+      },
+      {
+        "set": "reverse",
+        "fit_bucket": "4-5",
+        "pairs": 7,
+        "new_anchor_hire_share": 1.0
+      },
+      {
+        "set": "target",
+        "fit_bucket": "1-2",
+        "pairs": 34,
+        "new_anchor_hire_share": 0.11764705882352941
+      },
+      {
+        "set": "target",
+        "fit_bucket": "3",
+        "pairs": 179,
+        "new_anchor_hire_share": 0.35195530726256985
+      },
+      {
+        "set": "target",
+        "fit_bucket": "4-5",
+        "pairs": 124,
+        "new_anchor_hire_share": 0.532258064516129
+      }
+    ],
+    "v1_by_new": {
+      "v1 hire": {
+        "new hire": 424
+      },
+      "v1 reject": {
+        "new reject": 2376,
+        "new hire": 192
+      }
+    },
+    "changed": 192,
+    "sources": {
+      "vote": 2920,
+      "tie": 72
+    },
+    "hire_votes_when_all_decided": {
+      "0 of 8": 2088,
+      "1 of 8": 77,
+      "2 of 8": 72,
+      "3 of 8": 67,
+      "4 of 8": 72,
+      "5 of 8": 68,
+      "6 of 8": 76,
+      "7 of 8": 80,
+      "8 of 8": 392
+    },
+    "unanimous_share": 0.8288770053475936
+  },
+  "targets": {
+    "vote": {
+      "variants": 2304,
+      "kept": 2304,
+      "yield": 1.0,
+      "dropped_by_reason": {},
+      "fenced_raw": 483,
+      "within_pair_identical_rationale": 0.043876262626262624,
+      "copies_reference_feedback": 0.0859375
+    },
+    "v1_same_variants": {
+      "variants": 2304,
+      "kept": 2304,
+      "yield": 1.0,
+      "dropped_by_reason": {},
+      "fenced_raw": 0,
+      "within_pair_identical_rationale": 0.35542929292929293,
+      "copies_reference_feedback": 0.09244791666666667
+    },
+    "min_yield": 0.8,
+    "yield_floor_met": true,
+    "by_cell": [
+      {
+        "protected_group": "gender",
+        "condition": "explicit",
+        "reference_decision": "hire",
+        "variants": 384,
+        "kept": 384,
+        "yield": 1.0
+      },
+      {
+        "protected_group": "gender",
+        "condition": "implicit",
+        "reference_decision": "hire",
+        "variants": 384,
+        "kept": 384,
+        "yield": 1.0
+      },
+      {
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "reference_decision": "hire",
+        "variants": 384,
+        "kept": 384,
+        "yield": 1.0
+      },
+      {
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "reference_decision": "hire",
+        "variants": 384,
+        "kept": 384,
+        "yield": 1.0
+      },
+      {
+        "protected_group": "religion",
+        "condition": "explicit",
+        "reference_decision": "hire",
+        "variants": 384,
+        "kept": 384,
+        "yield": 1.0
+      },
+      {
+        "protected_group": "religion",
+        "condition": "implicit",
+        "reference_decision": "hire",
+        "variants": 384,
+        "kept": 384,
+        "yield": 1.0
+      }
+    ],
+    "distinct_seeds": 2304,
+    "generation": {
+      "seeding": "per_prompt_seed(42, prompt): VLLMBackend.generate since 7112197",
+      "use_v2_model_runner": true,
+      "generation_seconds": 412.5,
+      "code": {
+        "commit": "b74dcda2e571dce28088a8f56f130c7d6947285b",
+        "uncommitted": [],
+        "untracked": [],
+        "script_sha256": "e0785c9d03e19be69770bae4a285c5c86cfbe650bf68c555253958d7bfbff481"
+      },
+      "written": "2026-10-20T08:18:05+00:00"
+    }
+  },
+  "training_sets": {
+    "SFT v1 targets, before balancing": {
+      "path": "artifacts/semisynthetic-v2/onpolicy-full/rows.parquet",
+      "rows": 35826,
+      "pairs": 2992,
+      "flipped": 2297,
+      "old_hire": 5072,
+      "old_hire_flipped": 0,
+      "old_reject": 30754,
+      "old_reject_flipped": 2297
+    },
+    "DPO r1": {
+      "path": "artifacts/semisynthetic-v2/onpolicy-hire32/balanced/dpo_v2_train.parquet",
+      "rows": 2278,
+      "pairs": 665,
+      "flipped": 100,
+      "old_hire": 1139,
+      "old_hire_flipped": 0,
+      "old_reject": 1139,
+      "old_reject_flipped": 100
+    },
+    "DPO r2": {
+      "path": "artifacts/semisynthetic-v2/onpolicy-hire32/margin_balanced/dpo_v2_train.parquet",
+      "rows": 1618,
+      "pairs": 581,
+      "flipped": 59,
+      "old_hire": 809,
+      "old_hire_flipped": 0,
+      "old_reject": 809,
+      "old_reject_flipped": 59
+    },
+    "DPO r2em": {
+      "path": "artifacts/semisynthetic-v2/round2-error-mass/dpo_round2_train.parquet",
+      "rows": 2362,
+      "pairs": 582,
+      "flipped": 49,
+      "old_hire": 1181,
+      "old_hire_flipped": 0,
+      "old_reject": 1181,
+      "old_reject_flipped": 49
+    },
+    "DPO it2 (not trained)": {
+      "path": "artifacts/semisynthetic-v2/onpolicy-it2/dpo_v2_train.parquet",
+      "rows": 229,
+      "pairs": 58,
+      "flipped": 19,
+      "old_hire": 4,
+      "old_hire_flipped": 0,
+      "old_reject": 225,
+      "old_reject_flipped": 19
+    },
+    "GRPO grpo-02": {
+      "path": "artifacts/semisynthetic-v2/grpo-02/grpo_train.parquet",
+      "rows": 3000,
+      "pairs": 1215,
+      "flipped": 117,
+      "old_hire": 1500,
+      "old_hire_flipped": 0,
+      "old_reject": 1500,
+      "old_reject_flipped": 117
+    },
+    "RFT rft-01": {
+      "path": "artifacts/semisynthetic-v2/rft-01/rft_train.parquet",
+      "rows": 2400,
+      "pairs": 1205,
+      "flipped": 47,
+      "old_hire": 1200,
+      "old_hire_flipped": 0,
+      "old_reject": 1200,
+      "old_reject_flipped": 47
+    }
+  },
+  "written": "2026-10-20T08:18:10+00:00",
+  "prereg_sha256": "030bbbb2c1fab4115accef081ec63dc36dbd95e88f0df32b985ea9fcd18506c3",
+  "code": {
+    "commit": "b74dcda2e571dce28088a8f56f130c7d6947285b",
+    "uncommitted": [],
+    "untracked": [],
+    "script_sha256": "e0785c9d03e19be69770bae4a285c5c86cfbe650bf68c555253958d7bfbff481"
+  }
+}

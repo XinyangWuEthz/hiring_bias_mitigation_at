@@ -1,0 +1,55 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py, so it survives a regeneration.
+#
+# SFT-v3 on all the new data, one epoch (user, 2026-10-20: "use all new data train 1 epoch"). DPO
+# for V3 starts from this run: its on-policy pairs are sampled from it
+# (configs/generation/negatives_v3_onpolicy_full_gh200.yaml), and its final adapter is the
+# reference model (docs/V3_NEW_DATA.md, round 2).
+#
+# The recipe is SFT v1's (configs/mitigation/sft/qwen3.5-9b_en_only.yaml) as the swap arm carries
+# it on xinyang/sft-v3-vote-anchors (qwen3.5-9b_en_only_sft_v3_swap_gh200.yaml): LoRA r 32 /
+# alpha 64, lr 1e-4 cosine, effective batch 16 as 4 GPUs x 1 x 4. Against that arm:
+#   data       configs/data/en_only_sft_v3_additional.yaml: the swap set's 8,419 English training
+#              rows, then 54,342 new ones; 62,761 train and 3,527 validation, 3,923 steps
+#   epochs     1, the user's choice; no early stopping and no best-checkpoint reload, so the
+#              final adapter is the one-epoch model, chosen in advance
+#   max_seq_len 3072: at 2048, 629 training rows would be cut, 624 of them Kaggle x LinkedIn
+#              (longest 2,543 tokens; reports/v3_new_data/sft_token_lengths.json). Batch 1 has no
+#              padding, so rows that fit 2048 train exactly as before
+#   eval       a seeded 1,000 of the 3,527 validation rows every 250 steps, and greedy decisions
+#              on 64 of them; a full pass every 100 steps, as v1, would add about 2.7 hours
+#   resume     a checkpoint every 250 steps, all kept (686 MB each), so a cut job resumes
+# Warmup is v1's warmup_ratio 0.03, converted to 118 of the 3,923 steps. That needs
+# training_common to count all four ranks; job 5107507, before that fix, warmed up for 471.
+# The job's cost is recorded under the arm sft_v3 (docs/COST.md):
+#   HBM_COST_ARM=sft_v3 REPO=$PWD \
+#   CONFIG=configs/mitigation/sft/qwen3.5-9b_en_only_sft_v3_additional_gh200.yaml \
+#     scripts/cscs/submit.sh -p normal -t 10:00:00 scripts/cscs/train_sft.sbatch
+stage: sft
+base_model: Qwen/Qwen3.5-9B
+data_config: configs/data/en_only_sft_v3_additional.yaml
+output_dir: outputs/sft/qwen3.5-9b_en_only_sft_v3_additional
+use_lora: true
+lora_r: 32
+lora_alpha: 64
+max_seq_len: 3072
+num_train_epochs: 1
+learning_rate: 0.0001
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 4        # x 4 GPUs x batch 1 = 16, as v1's 1 x 1 x 16
+gradient_checkpointing: false
+ddp_find_unused_parameters: false
+dtype: bfloat16
+seed: 42
+logging_steps: 10
+eval_steps: 250
+eval_limit_rows: 1000
+decision_eval_rows: 64
+save_steps: 250
+save_total_limit: 20
+load_best_model_at_end: false
+early_stopping_patience: 0
+resume: true
+memory_floor_gb: 12
+wandb_project: hiring-bias-mitigation
+wandb_run_name: sft-qwen3.5-9b_en_only_sft_v3_additional

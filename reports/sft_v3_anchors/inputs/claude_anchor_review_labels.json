@@ -1,0 +1,33 @@
+{
+  "source": "/ritom/scratch/cscs/zhang/xw/hiring_bias_mitigation_at/reports/claude_anchor_review/graded_cases.csv",
+  "source_sha256": "27a01f8f42aac8ada8c9247fdaba92c4990bb94373e48d6f107fae1348a0e13b",
+  "columns": [
+    "item",
+    "pair_id",
+    "set",
+    "anchor",
+    "student_majority",
+    "decision",
+    "fit",
+    "fit_bucket"
+  ],
+  "counts": {
+    "rows": 391,
+    "clear_hire_targets": 124,
+    "clear_reject_targets": 34,
+    "control_reject": 20
+  },
+  "note": "decision and fit are the blind reviewer's; anchor and student_majority are the v1 anchor and the SFT student's attribute-free majority on the pair",
+  "written": "2026-10-16T17:57:07+00:00",
+  "prereg_sha256": "edc86ae972cb28a39fe25c838ff6f20a8f869d8dc3f4e6c694ea4da7370c4348",
+  "code": {
+    "commit": "67f4bb1b290a2eaf72307e623655787ad02843a0",
+    "uncommitted": [],
+    "untracked": [
+      "docs/SFT_V3_ANCHORS.md",
+      "scripts/cscs/sft_v3_anchors.sbatch",
+      "scripts/sft_v3_anchors.py"
+    ],
+    "script_sha256": "3c8c10110d5a9726d130b9d06b8ff3f42408819539f861dea920187955ee3527"
+  }
+}

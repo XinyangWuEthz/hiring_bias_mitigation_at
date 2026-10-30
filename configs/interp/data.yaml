@@ -1,0 +1,25 @@
+# Inputs of the activation-patching pipeline (reports/interp/PLAN.md, D2-D4).
+# Every script in scripts/interp/ reads this file, so the grid, the pool sample and the chat
+# rendering are the same in every artifact. Changing a value changes every prompt_uid
+# downstream: regenerate from 02_margins.py on.
+lang: en
+protected_groups: [military_status, gender, religion]
+conditions: [explicit, implicit, attr_free]
+chat_template_kwargs:
+  enable_thinking: false
+
+# grid: the benchmark evaluation grid (450 pairs x 34 attributes x 2 conditions + attr_free).
+limit_pairs: null
+
+# pool: discovery grid rendered on training-pool job-CV pairs (one per candidate,
+# benchmark-disjoint). 300 pairs x 69 prompts = 20,700 prompts per spec.
+pool_pairs: 300
+seed: 42
+
+# manifest selection (base margins only; see interp/manifest.py)
+selection:
+  min_abs_effect: 0.5     # logits; raised to 5 x sigma_num once 05_noise_floor.py has run
+  random_share: 0.3
+
+# 03_segments.py stops when hard boundary violations exceed this share of rows.
+max_violation_share: 0.005

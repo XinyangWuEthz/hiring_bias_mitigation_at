@@ -337,6 +337,25 @@ def test_warmup_ratio_is_translated_when_transformers_dropped_it():
         assert kwargs == {"warmup_steps": 32}
 
 
+def test_warmup_steps_count_every_rank_under_torchrun(monkeypatch):
+    """One optimizer step under torchrun takes a batch from every rank. Counting one rank, the
+    4-GPU SFT-v3 run warmed up for 471 of its 3,923 steps, not 3% of them (job 5107507)."""
+    import inspect
+
+    from transformers import TrainingArguments
+
+    from hiring_bias_mitigation.mitigation.training_common import _warmup_kwargs
+
+    if "warmup_ratio" in inspect.signature(TrainingArguments.__init__).parameters:
+        pytest.skip("this transformers takes warmup_ratio itself")
+    cfg = {"warmup_ratio": 0.03, "per_device_train_batch_size": 1,
+           "gradient_accumulation_steps": 4, "num_train_epochs": 1}
+    monkeypatch.setenv("WORLD_SIZE", "4")
+    assert _warmup_kwargs(cfg, n_train=62761) == {"warmup_steps": 118}
+    monkeypatch.delenv("WORLD_SIZE")
+    assert _warmup_kwargs(cfg, n_train=62761) == {"warmup_steps": 471}
+
+
 def test_training_arguments_construct_for_every_enabled_training_config():
     """Build the real TrainingArguments for each config, without training anything.
 

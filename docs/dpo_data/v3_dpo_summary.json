@@ -1,0 +1,212 @@
+{
+  "train": {
+    "preference_pairs": 3839,
+    "cv_job_pairs": 1066,
+    "candidates": 985,
+    "jobs": 1057,
+    "reference_decision": {
+      "hire": 1923,
+      "reject": 1916
+    },
+    "chosen_hire_share": 0.5009,
+    "by_group": {
+      "religion": 1332,
+      "military_status": 1305,
+      "gender": 1202
+    },
+    "by_condition": {
+      "implicit": 1967,
+      "explicit": 1872
+    },
+    "by_source": {
+      "djinni": {
+        "hire": 1620,
+        "reject": 1613
+      },
+      "kaggle_linkedin": {
+        "hire": 167,
+        "reject": 167
+      },
+      "rjdb": {
+        "reject": 136,
+        "hire": 136
+      }
+    },
+    "chosen_words": {
+      "mean": 19.97,
+      "min": 10.0,
+      "p25": 18.0,
+      "median": 20.0,
+      "p75": 22.0,
+      "max": 29.0
+    },
+    "rejected_words": {
+      "mean": 20.22,
+      "min": 9.0,
+      "p25": 18.0,
+      "median": 20.0,
+      "p75": 22.0,
+      "max": 32.0
+    },
+    "rejected_minus_chosen_words": {
+      "mean": 0.24,
+      "min": -10.0,
+      "p25": -2.0,
+      "median": 0.0,
+      "p75": 3.0,
+      "max": 10.0
+    },
+    "student_margin": {
+      "mean": -0.1,
+      "min": -9.875,
+      "p25": -2.875,
+      "median": -0.125,
+      "p75": 2.875,
+      "max": 8.875
+    },
+    "p_wrong": {
+      "mean": 0.07,
+      "min": 5.144221374220898e-05,
+      "p25": 0.02931223075135632,
+      "median": 0.05340332979982423,
+      "p75": 0.10669059394565118,
+      "max": 0.29421497216298875
+    },
+    "columns": [
+      "prompt",
+      "chosen",
+      "rejected",
+      "decision",
+      "rejected_decision",
+      "lang",
+      "protected_group",
+      "protected_attr",
+      "condition",
+      "candidate_id",
+      "job_id",
+      "pair_id",
+      "r2em_pool",
+      "split",
+      "prompt_sha1",
+      "pair_sha1",
+      "sft_v1_margin",
+      "sft_v1_p_wrong",
+      "reference_decision",
+      "anchor_hire_votes",
+      "anchor_decided",
+      "anchor_unstable",
+      "anchor_changed",
+      "anchor_source",
+      "pool_source",
+      "source",
+      "dpo_v3_part",
+      "student_margin",
+      "p_wrong"
+    ]
+  },
+  "validation": {
+    "preference_pairs": 442,
+    "cv_job_pairs": 158,
+    "candidates": 141,
+    "jobs": 158,
+    "reference_decision": {
+      "hire": 231,
+      "reject": 211
+    },
+    "chosen_hire_share": 0.5226,
+    "by_group": {
+      "military_status": 163,
+      "gender": 147,
+      "religion": 132
+    },
+    "by_condition": {
+      "explicit": 228,
+      "implicit": 214
+    },
+    "by_source": {
+      "djinni": {
+        "hire": 173,
+        "reject": 153
+      },
+      "kaggle_linkedin": {
+        "reject": 12,
+        "hire": 12
+      },
+      "rjdb": {
+        "hire": 46,
+        "reject": 46
+      }
+    },
+    "chosen_words": {
+      "mean": 19.76,
+      "min": 10.0,
+      "p25": 18.0,
+      "median": 20.0,
+      "p75": 21.0,
+      "max": 27.0
+    },
+    "rejected_words": {
+      "mean": 20.35,
+      "min": 11.0,
+      "p25": 19.0,
+      "median": 21.0,
+      "p75": 22.0,
+      "max": 30.0
+    },
+    "rejected_minus_chosen_words": {
+      "mean": 0.59,
+      "min": -8.0,
+      "p25": -2.0,
+      "median": 1.0,
+      "p75": 3.0,
+      "max": 10.0
+    },
+    "student_margin": {
+      "mean": -0.31,
+      "min": -5.625,
+      "p25": -3.0,
+      "median": -0.625,
+      "p75": 2.0,
+      "max": 9.875
+    },
+    "columns": [
+      "prompt",
+      "chosen",
+      "rejected",
+      "decision",
+      "rejected_decision",
+      "lang",
+      "protected_group",
+      "protected_attr",
+      "condition",
+      "candidate_id",
+      "job_id",
+      "pair_id",
+      "r2em_pool",
+      "split",
+      "prompt_sha1",
+      "pair_sha1",
+      "sft_v1_margin",
+      "reference_decision",
+      "anchor_hire_votes",
+      "anchor_decided",
+      "anchor_unstable",
+      "anchor_changed",
+      "anchor_source",
+      "pool_source",
+      "source",
+      "dpo_v3_part",
+      "student_margin"
+    ]
+  },
+  "source_files": {
+    "train": {
+      "file": "dpo_v3_train.parquet",
+      "sha256": "f1088eadcde01bfcacfa17d386b5bcf4688325c62334fab740c329a2865fd276"
+    },
+    "validation": {
+      "file": "dpo_v3_validation.parquet",
+      "sha256": "16023771218fbe4505933bca40d042e99c9e07e4420ff1f12cb308d677f18b50"
+    }
+  }
+}

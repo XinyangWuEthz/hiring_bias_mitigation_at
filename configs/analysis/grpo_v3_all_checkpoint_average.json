@@ -1,0 +1,36 @@
+{
+  "output_dir": "outputs/checkpoint_average/grpo_v3_all_delta_avg_425_571_20261023",
+  "source_trajectory_dir": "outputs/checkpoint_benchmark/grpo_v3_all_20261023",
+  "source_trajectory_binding_sha256": "d66a7315927d9b7b079a0529396b73b76d7aed61982f6f8f897c2f6ea326ce58",
+  "steps": [
+    425,
+    450,
+    475,
+    500,
+    525,
+    550,
+    571
+  ],
+  "aggregation": "equal_effective_delta_W",
+  "weight_numerator": 1,
+  "weight_denominator": 7,
+  "expected_output_lora_r": 224,
+  "expected_output_lora_alpha": 64,
+  "expected_rows": 31050,
+  "chunk_size": 4000,
+  "tensor_parallel_size": 1,
+  "minimum_merge_retention": 0.8,
+  "analysis": {
+    "average_label": "mean7",
+    "bootstrap_replicates": 10000,
+    "seed": 20261023
+  },
+  "expected_runtime_minutes": [
+    20,
+    40
+  ],
+  "time_limit_minutes": 60,
+  "training_authorized": false,
+  "new_model_inference_count": 1,
+  "no_extra_margin_pass": true
+}

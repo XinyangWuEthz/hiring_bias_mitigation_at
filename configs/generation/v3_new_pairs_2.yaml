@@ -1,0 +1,114 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py, so it survives a regeneration.
+#
+# V3 round 3, batch 2 (docs/V3_NEW_DATA.md): v3_new_pairs.yaml on four more djinni_new parts
+# (user, 2026-10-21: "Use 4 djinni_new parts for the rest"). Its own directory, so the pilot's
+# outputs, which GRPO-v3-new reads, stay as built; round 1 and the pilot are both earlier rounds,
+# so their parts and candidates are refused. Everything else is v3_new_pairs.yaml's:
+#   HBM_COST_ARM=dpo_v3_5k REPO=$PWD CFG=configs/generation/v3_new_pairs_2.yaml \
+#   PASSES="votes invariant" scripts/cscs/submit.sh -t 03:00:00 \
+#     scripts/cscs/v3_additional_data.sbatch djinni_new-004 djinni_new-005 djinni_new-006 djinni_new-007
+#   python scripts/v3_additional_data.py --config configs/generation/v3_new_pairs_2.yaml --stage assemble
+artifacts_dir: artifacts/semisynthetic-v3/new-pairs-2
+pool_dir: artifacts/semisynthetic-v3/additional/pool
+earlier_rounds:
+- artifacts/semisynthetic-v3/additional
+- artifacts/semisynthetic-v3/new-pairs
+lang: en
+seed: 42
+
+pool:
+  # V1's English pairs: not generated; new pairs must not repeat their candidates or texts.
+  v1_reference: artifacts/semisynthetic-v1/raw/en_reference.parquet
+  djinni_new:
+    n_pairs: 200000         # more than exist: every candidate V1 did not use, one job each
+    seed: 4242              # not V1's 42, so the order is not V1's continued
+  external:
+    seed: 42
+    jobs_per_candidate: 2   # kaggle_linkedin: two LinkedIn JDs per Kaggle CV
+    rjdb_include_weakened: false
+    pairs_per_source:       # more than exist: every eligible pair
+      rjdb: 60000
+      kaggle_linkedin: 4000
+  # max_model_len 8192 minus 320 new tokens and a chat-template margin. The invariant prompt
+  # adds the injected attribute, the quoted anchor and its instructions to the reference prompt.
+  max_prompt_tokens: 7600
+  invariant_overhead_tokens: 300
+
+# v1's variant grid (configs/generation/teacher.yaml): 3 groups x 2 attributes x 2 conditions.
+protected_groups: [military_status, gender, religion]
+conditions: [explicit, implicit]
+attributes_per_pair: 2
+
+generate:
+  part_size: 1500           # about 9 min of votes and 13 min per variant pass at Daint's rates
+
+vote_draws: 8
+passes:
+  votes:                    # v1's anchor decoding; base seed 43, as the Djinni vote (job 5073453)
+    max_new_tokens: 320
+    temperature: 0.7
+    top_p: 0.9
+    seed: 43
+  invariant:                # v1's decoding; per-prompt seed 42, as the vote targets (job 5103710)
+    max_new_tokens: 320
+    temperature: 0.7
+    top_p: 0.9
+    seed: 42
+  biased:
+    max_new_tokens: 320
+    temperature: 0.7
+    top_p: 0.9
+    seed: 42
+
+# docs/V3_NEW_DATA.md's stop conditions, read on each source's first part in a job; a source that
+# crosses one gets no further part in that job.
+stop:
+  max_undecided_draw_share: 0.05
+  max_unanchored_share: 0.10
+  min_invariant_yield: 0.80
+  min_biased_yield: 0.20
+
+split:
+  val_fraction: 0.05        # of each source's candidates; none of them is a V1 candidate
+
+assemble:
+  # The new SFT rows are appended to this set, which stays exactly as built.
+  sft_v3_dir: artifacts/semisynthetic-v3/sft_v3_swap
+  # Teacher-biased DPO (v1's negatives, D3 = 1.000) is ruled out for training (user,
+  # 2026-10-20); true writes it as teacher_biased_* for comparison only. DPO for training is
+  # r2em (r2em: below) plus on-policy pairs from scripts/generate_onpolicy_full.py, which reads
+  # this directory's raw/en_invariant.parquet.
+  teacher_biased_dpo: false
+  # The teacher-biased views: at most this many rows per pool pair, and the same with hire and
+  # reject equal within each pool source.
+  dpo_cap_per_pair: 2
+  # Pairs dropped at assembly on their CV (scripts/v3_additional_data.py quality_exclusions).
+  exclude:
+    djinni_new_extra_markers: true   # names, pronouns, maternity leave: V1's list misses them
+    rjdb_template_residue: true      # "Details not provided", "[insert ...]"
+
+teacher_model: Qwen/Qwen3.5-122B-A10B-GPTQ-Int4
+serving:                    # the vote and judge runs' serving on a GH200 node
+  backend: vllm
+  tensor_parallel_size: 4
+  gpu_memory_utilization: 0.80
+  max_model_len: 8192
+  max_num_seqs: 128
+  dtype: auto
+  engine_kwargs:
+    gdn_prefill_backend: triton
+
+dpo_v3:
+  # Round 3's on-policy set (docs/V3_NEW_DATA.md): build_balanced_dpo.py's error-mass build of
+  # round 2's, the pilot's and this batch's on-policy pairs (dpo_v3_onpolicy5k), without r2em_v3
+  # (on-policy pairs only; user, 2026-10-21). `--stage dpo_v3` with this config checks every row
+  # against its pair's vote anchor, wherever that pair was drawn, and writes dpo_v3_5k_*,
+  # dpo_v3_5k_report.json and dpo_v3_5k_checks/<pool source>/pairs.parquet here.
+  onpolicy_dir: artifacts/semisynthetic-v3/onpolicy-error-mass
+  onpolicy_name: dpo_v3_onpolicy5k
+  r2em: false
+  name: dpo_v3_5k
+  anchors_from:
+  - artifacts/semisynthetic-v3/additional
+  - artifacts/semisynthetic-v3/new-pairs
+  - artifacts/semisynthetic-v3/new-pairs-2

@@ -1,0 +1,37 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# SFT-v3 on all the new data, one epoch (configs/mitigation/sft/qwen3.5-9b_en_only_sft_v3_additional_gh200.yaml,
+# job 5107673): the final adapter, step 3,923, declared before any audit (docs/V3_NEW_DATA.md,
+# round 2). Everything but run_suffix and lora_path is the SFT v1 control's GH200 config
+# (qwen3.5-9b_en_sft_en_only_gh200.yaml), so the two run on the same stack. Served merged.
+#   HBM_COST_ARM=sft_v3 REPO=$PWD AUDIT=configs/audit/qwen3.5-9b_en_sft_v3_additional_gh200.yaml \
+#   AGAINST=configs/audit/qwen3.5-9b_en_sft_en_only_gh200.yaml \
+#     scripts/cscs/submit.sh -p normal -t 01:30:00 scripts/cscs/evaluate_arm.sbatch
+backend: vllm
+max_model_len: 8192
+gpu_memory_utilization: 0.8
+seed: 42
+engine_kwargs:
+  gdn_prefill_backend: triton     # no CUDA toolkit on Daint for FlashInfer's JIT
+raw_dir: outputs/raw
+conditions:
+- explicit
+- implicit
+- attr_free
+chat_template_kwargs:
+  enable_thinking: false
+max_intersection_cells: null
+generation:
+  max_new_tokens: 512
+  temperature: 0.0
+  top_p: 1.0
+  seed: 42
+model: Qwen/Qwen3.5-9B
+lang: en
+protected_groups:
+- military_status
+- gender
+- religion
+run_suffix: en_only_sft_v3_additional
+mitigation:
+  family: sft
+  lora_path: outputs/sft/qwen3.5-9b_en_only_sft_v3_additional

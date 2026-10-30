@@ -1,0 +1,16 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# The on-policy part of V3's DPO set alone, without r2em_v3: 1,568 training and 170 validation pairs
+# drawn from SFT-v3 on the new pairs and balanced by error mass within each pool source
+# (scripts/build_balanced_dpo.py --balance-by pool_source; docs/V3_NEW_DATA.md, round 2). They
+# are the same rows as dpo_v3's `onpolicy_v3` part. Read with `data_kind: dpo_v3_onpolicy`
+# (dpo_v3_onpolicy_{train,validation}.parquet). For the check of whether r2em_v3 is what made
+# DPO-v3 worse than SFT-v3 (user, 2026-10-21).
+name: en_only_dpo_v3_onpolicy
+artifacts_dir: artifacts/semisynthetic-v3/onpolicy-error-mass
+seed: 42
+protected_groups:
+- military_status
+- gender
+- religion
+languages:
+- en

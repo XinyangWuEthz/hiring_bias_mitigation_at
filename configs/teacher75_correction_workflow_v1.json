@@ -1,0 +1,32 @@
+{
+  "workflow_id": "hiring-evidence-v1-application-1",
+  "review_prompt_id": "hiring-evidence-v1-frozen-review-1",
+  "policy": "hiring_decision_standard_v1.json",
+  "source_audit_dir": "/ritom/scratch/cscs/zhang/xw/outputs/paired_probe/20261022-dapo-final-sft-v3-k16/teacher75_v1_full",
+  "expected_counts": {
+    "pairs": 40,
+    "rows": 75
+  },
+  "provenance": {
+    "expected_policy_id": "hiring-evidence-v1",
+    "expected_policy_sha256": "37dda6072e102f04274bb94fdce75bdd6063de0792c50e3ef6907202fc70ff53",
+    "standard_commit": "323d4f5e44cbda9da3ae5f75fa05f1ca98776a52",
+    "expected_source_file_sha256": {
+      "source_cases.json": "84cd8ed5add2f1c3cd90d056b7a644a563bc664a1b5f707dc9fd01de3a2d97e3",
+      "frozen_job_rubrics.json": "08da3a9b0b6cfe602a993c6ae76211d998a927e98ed951aceeeafd7a23ff7056",
+      "legacy_audit_rows_75.json": "3ea7a4a21a661b0db9fb6ca394b5df8490471c91e79ee33e4b962d0cf2e9de3e",
+      "pair_metadata.json": "6dcf8766db2fa240e84c69b17270b76302fc305b1a3935bd5751e751cde6de09",
+      "audit_rows_75.json": "b84482cdd595a34c1fbe8e5f40011a7a01cb20ce6fee4c68e89b4ca5bd048bf7",
+      "teacher_correction_candidates.json": "759ffa726df0c40b58fa05c32eabc2da010e4c38dc472f39d0d3342d4e647ca9",
+      "audit_prompt.txt": "02cb62b5e3c01e9c731d26d0ab584649d98bc7ed6798081ff239e83c1cde7533",
+      "reviews/batch_1_a.json": "9a651d1e78f1f1bb39cce30341368bed87d0dce8b94600a262f54baf4e7258c0",
+      "reviews/batch_1_b.json": "1f93dcb68d719a3c8f1e54efc6bf1597429a925087c03e2ba89794a99d9fe605",
+      "reviews/batch_2_a.json": "c9ee9e863dc6e6a5ec3ca568bef18ab455cbc1a6586d0b4589926f97b56906a4",
+      "reviews/batch_2_b.json": "f08fb8b25a49fad1685f9aa1043003fdc069bf6bedfe97039f00a19a9ddba5ba",
+      "reviews/batch_3_a.json": "4377635202ab3f1aa413ef19bfa71e6fece3665e7408e2dd1c1cf486e6f5c43a",
+      "reviews/batch_3_b.json": "c3217a8749483286f0c83af3d65975c0c3cb5ca7fcaa2c01f22c5d3ff4f85f40",
+      "reviews/batch_4_a.json": "d2c23fb5bc4b7b55f5f98a7a6c8fc5d55767e73c71739129c6876071b24de212",
+      "reviews/batch_4_b.json": "05950f2f68c7eb30f480e7e4b5a08e0aadda5c32b6ea7779bfb93baef9cfea5b"
+    }
+  }
+}

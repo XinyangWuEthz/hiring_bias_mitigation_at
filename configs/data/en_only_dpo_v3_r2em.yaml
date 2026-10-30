@@ -1,0 +1,18 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# r2em on the vote anchors, the first part of V3's DPO set (docs/V3_NEW_DATA.md, addendum: DPO
+# is r2em plus on-policy pairs). r2em (configs/data/en_only_v2_r2em.yaml) without the rows whose
+# chosen verdict the 8-draw vote overturns (49 train, 20 validation) and without its legacy pool
+# of v1 biased-teacher negatives (42, 3): 2,271 train and 272 validation rows, contrasts still
+# symmetric. Read with `data_kind: r2em_v3` (r2em_v3_{train,validation}.parquet). Built by
+# scripts/v3_additional_data.py --stage r2em. Its negatives were sampled from SFT v1, so for a DPO
+# run from SFT-v3 they are off-policy; the on-policy part for the new pairs is drawn from SFT-v3
+# with scripts/generate_onpolicy_full.py (source_artifacts_dir artifacts/semisynthetic-v3/additional).
+name: en_only_dpo_v3_r2em
+artifacts_dir: artifacts/semisynthetic-v3/additional
+seed: 42
+protected_groups:
+- military_status
+- gender
+- religion
+languages:
+- en

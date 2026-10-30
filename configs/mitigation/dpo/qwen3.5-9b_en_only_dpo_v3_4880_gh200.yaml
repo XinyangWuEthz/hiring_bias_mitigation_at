@@ -1,0 +1,63 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py, so it survives a regeneration.
+#
+# DPO_V3_4880 (user, 2026-10-22: "DPO_V3_4800 on the new pairs from sftv3", then "rename 4880"):
+# SFT-v3 -> DPO on round 3's on-policy set, the 4,880 pairs the user accepted. The run on round 2's
+# 1,568 on-policy pairs (qwen3.5-9b_en_only_dpo_v3_onpolicy_gh200.yaml) was not better than SFT-v3:
+# +0.13 pp unstable sets at matched hire rate, [-0.64, +0.96] (job 5114592). This run keeps its
+# settings and changes the data only:
+#   data   configs/data/en_only_dpo_v3_5k.yaml: 4,880 training and 350 validation pairs, SFT-v3's
+#          own covert, attribute-tipped mistakes, mostly on pairs it never trained on, balanced
+#          by error mass within each pool source; no r2em_v3. 305 steps at effective batch 16
+#   output and W&B run name
+# The final checkpoint, step 305, is the one audited, declared before training
+# (docs/V3_NEW_DATA.md, round 3). A checkpoint is saved every 25 steps, so a cut job resumes.
+# The cost arm is round 3's, whose jobs built the data:
+#   HBM_COST_ARM=dpo_v3_5k REPO=$PWD \
+#   CONFIG=configs/mitigation/dpo/qwen3.5-9b_en_only_dpo_v3_4880_gh200.yaml \
+#     scripts/cscs/submit.sh -p normal -t 02:00:00 scripts/cscs/train_dpo.sbatch
+stage: dpo
+objective: dpo
+data_kind: dpo_v3_5k
+base_model: Qwen/Qwen3.5-9B
+sft_checkpoint: outputs/sft/qwen3.5-9b_en_only_sft_v3_additional
+data_config: configs/data/en_only_dpo_v3_5k.yaml
+output_dir: outputs/dpo/qwen3.5-9b_en_only_dpo_v3_4880
+use_lora: true
+lora_r: 32
+lora_alpha: 64
+lora_dropout: 0.05
+beta: 0.3                      # as r2em
+loss_type:
+- sigmoid
+- sft
+loss_weights:
+- 1.0
+- 0.2
+precompute_ref_log_probs: false
+max_seq_len: 3072
+max_prompt_len: 2944           # read only by a TRL that still has max_prompt_length
+num_train_epochs: 1
+max_steps: -1                  # one epoch
+warmup_steps: 10
+learning_rate: 5.0e-05
+per_device_train_batch_size: 1
+per_device_eval_batch_size: 1
+gradient_accumulation_steps: 4        # x 4 GPUs x batch 1 = 16
+gradient_checkpointing: true
+weight_decay: 0.01
+dtype: bfloat16
+seed: 42
+eval_steps: 25
+eval_limit_rows: 200
+early_stopping_patience: 0
+memory_floor_gb: 12
+wandb_project: hiring-bias-mitigation
+wandb_run_name: dpo-qwen3.5-9b_en_only_dpo_v3_4880
+decision_eval_rows: 64
+resume: true
+save_steps: 25
+save_total_limit: 20
+load_best_model_at_end: false
+ddp_find_unused_parameters: false
+gradient_checkpointing_kwargs:
+  use_reentrant: false

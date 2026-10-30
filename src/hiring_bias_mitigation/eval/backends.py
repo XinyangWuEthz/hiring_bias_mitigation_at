@@ -248,11 +248,13 @@ class VLLMBackend:
         every prompt the same noise at each step. The check of 2026-10-19 found no
         equal-length replay in v1 or batch-01 (batch-01: no duplicate text in 720), but the v1
         anchors look like one noise draw shared by all 3,000 prompts: they hire none of the
-        288 pairs that eight independent Daint draws (job 5073453) hire 1-4 times. That is
-        what the classic runner would do; the Spark's vLLM version and runner were not
-        recorded, so it is not confirmed. `generation.shared_seed: true` sends the old request
-        again. A byte-identical replay also needs the vLLM version and model runner the run
-        used.
+        288 pairs that eight independent Daint draws (job 5073453) hire 1-4 times. Job 5103584
+        (2026-10-20, scripts/anchor_seed_check.py on branch xinyang/anchor-seed-check)
+        confirmed it: on the classic runner (VLLM_USE_V2_MODEL_RUNNER=0) the shared seed 42
+        redrew v1's 3,000 anchors on Daint with the same decision for 98.9% of pairs and
+        byte-identical text for 40.3% (two independent draws: 0.56%), while per-prompt seeds
+        on the same runner matched the eight-draw vote. `generation.shared_seed: true` sends
+        the old request again; a replay of v1 also needs the classic runner.
         """
         self._load()
         params = self._sampling_params(prompts, n=1)

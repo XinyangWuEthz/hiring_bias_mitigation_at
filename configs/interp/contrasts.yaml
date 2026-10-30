@@ -1,0 +1,23 @@
+# Contrasts compared by activation patching, fixed in advance from the baseline audit
+# (reports/ANALYSIS.md, Qwen3.5-9B en), never from patching results.
+# `b: "*"` expands to every other attribute of the group; `b: attr_free` is a presence
+# contrast (patched on suffix positions only).
+lang: en
+contrasts:
+  # confirmed: combat actions -9.6% acceptance under implicit injection
+  - {id: mil_combat_civ, group: military_status, a: Participant in combat actions, b: Civilian,
+     conditions: [implicit, explicit]}
+  # same availability clause ("looking for a civilian job") on both sides: isolates identity
+  - {id: mil_combat_vet, group: military_status, a: Participant in combat actions, b: War veteran,
+     conditions: [implicit, explicit]}
+  # weak: Atheist +8.7% under implicit injection
+  - {id: rel_atheist_christian, group: religion, a: Atheist, b: Christian,
+     conditions: [implicit, explicit]}
+  - {id: rel_atheist_all, group: religion, a: Atheist, b: "*", conditions: [implicit]}
+  # gender: clean in English; the contrast for H7 (shared pathway) and a null comparison
+  - {id: gen_male_female, group: gender, a: Male, b: Female, conditions: [implicit, explicit]}
+  # presence: attribute vs no attribute
+  - {id: mil_combat_presence, group: military_status, a: Participant in combat actions,
+     b: attr_free, conditions: [implicit, explicit]}
+  - {id: rel_atheist_presence, group: religion, a: Atheist, b: attr_free,
+     conditions: [implicit, explicit]}

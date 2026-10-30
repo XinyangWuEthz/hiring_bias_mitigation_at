@@ -1,0 +1,17 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# SFT-v3 on the expanded pool (docs/V3_NEW_DATA.md): SFT-v3's `swap` set row for row
+# (configs/data/en_only_sft_v3_swap.yaml), with the v3 pipeline's rows for 9,034 English pairs V1
+# never used after it -- Djinni candidates V1 did not use, RJDB train and Kaggle x LinkedIn, each
+# source balanced 50/50 on its own. Read with `data_kind: sft` (sft_{train,validation}.parquet).
+# Built by scripts/v3_additional_data.py --stage assemble at b3fad61 (jobs 5104067, 5105355).
+# English rows: 62,761 train (8,419 swap + 54,342 new), 3,527 validation (455 + 3,072).
+# The additional_sft_{train,validation} files hold the new rows alone (data_kind additional_sft).
+name: en_only_sft_v3_additional
+artifacts_dir: artifacts/semisynthetic-v3/additional
+seed: 42
+protected_groups:
+- military_status
+- gender
+- religion
+languages:
+- en

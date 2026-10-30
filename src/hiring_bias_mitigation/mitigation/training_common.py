@@ -444,6 +444,7 @@ def _warmup_kwargs(cfg: dict, n_train: int | None) -> dict:
     """
     import inspect
     import math
+    import os
 
     from transformers import TrainingArguments
 
@@ -464,15 +465,21 @@ def _warmup_kwargs(cfg: dict, n_train: int | None) -> dict:
         )
         return {}
 
+    # Under torchrun each of WORLD_SIZE ranks takes its own batch, so one optimizer step uses
+    # per-device batch x accumulation x ranks rows. Counting one rank, a 4-GPU run warmed up
+    # for four times the intended steps (job 5107507: 471 of its 3,923, not 118).
+    ranks = max(1, int(os.environ.get("WORLD_SIZE", "1")))
     effective_batch = max(
         1,
         int(cfg.get("per_device_train_batch_size", 2))
-        * int(cfg.get("gradient_accumulation_steps", 8)),
+        * int(cfg.get("gradient_accumulation_steps", 8))
+        * ranks,
     )
     steps_per_epoch = math.ceil(n_train / effective_batch)
     total = max(1, steps_per_epoch * int(cfg.get("num_train_epochs", 2)))
     steps = max(1, round(ratio * total))
-    log.info("warmup_ratio %.3f -> warmup_steps %d (of %d total)", ratio, steps, total)
+    log.info("warmup_ratio %.3f -> warmup_steps %d (of %d total, %d rank(s))",
+             ratio, steps, total, ranks)
     return {"warmup_steps": steps}
 
 
@@ -724,7 +731,8 @@ def training_arguments(cfg: dict, output_dir: Path, has_eval: bool, n_train: int
     # DDP with LoRA: unused-parameter search off, non-reentrant checkpointing. Passed only when
     # a config sets them, so single-GPU configs keep transformers' defaults.
     kwargs.update({key: cfg[key] for key in ("ddp_find_unused_parameters",
-                                              "gradient_checkpointing_kwargs") if key in cfg})
+                                              "gradient_checkpointing_kwargs",
+                                              "lr_scheduler_kwargs") if key in cfg})
     return TrainingArguments(
         output_dir=str(output_dir),
         num_train_epochs=cfg.get("num_train_epochs", 2),

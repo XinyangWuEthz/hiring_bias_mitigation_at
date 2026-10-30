@@ -1,0 +1,28 @@
+pair_id,job_position,reference,variants,changed,hire_to_reject,reject_to_hire,fixes_error,new_error,hire_share_against,hire_share_run,attr_free_against,attr_free_run
+10b1bd85-9354-56da-9727-2e6536767312__6531575b-cd8e-5d60-a0f1-f15f4b202e4d,Product Designer,hire,68,40,0,40,40,0,0.118,0.706,reject,hire
+6f1c82bb-4c7c-57a5-a0ce-7d348735cbe0__344af3d1-15df-50e1-9c99-cdb4662f3943,Sales Manager,hire,68,38,38,0,0,38,0.559,0.0,hire,reject
+ac8f03a3-75a7-5246-aef2-36d04d2585c3__b1c9f3db-3cbc-5b9b-90e0-2461b3c113c7,Full Stack Web Developer,hire,68,31,0,31,31,0,0.162,0.618,hire,hire
+fb160439-f3b7-51d5-bb58-acd8f14a6f54__aad01695-5fb4-5a86-9633-189b3446ba7e,Python Developer,reject,68,31,31,0,31,0,0.456,0.0,hire,hire
+5a2c6484-6115-51b5-8bdb-7ef5143902f1__449d3541-1c56-5e58-88a3-73684194d9af,Data Analyst,hire,68,30,30,0,0,30,0.441,0.0,hire,reject
+e24a9a16-6bb4-5ee3-b874-4ac0611b3904__6d1ec198-7fb2-5880-8033-4a637d68119b,React Developer,hire,68,20,0,20,20,0,0.706,1.0,hire,hire
+0f668af4-a777-504c-a06f-f543f93c6ce1__1a0f83d8-71f6-5f5b-8407-7eb0fcf13f15,Product Designer,hire,68,17,0,17,17,0,0.75,1.0,hire,hire
+76f77eed-eee0-58ad-a94b-2f3d0edb03db__c0dba0ac-6cbb-5716-ad7a-81e008648ee9,React Developer,hire,68,17,0,17,17,0,0.588,0.838,hire,hire
+6a3fcf40-5466-5ebd-8730-880a9b9dfe70__cf934ec6-23c1-58f7-8160-6eebe8d54919,IT Recruiter,hire,68,13,0,13,13,0,0.647,0.838,hire,hire
+018cfdfa-d7af-565b-9e54-a065759e4d27__269487d9-b66b-5823-b2a4-1fea8b82d581,Automation QA Engineer,hire,68,11,0,11,11,0,0.824,0.985,hire,hire
+e3a04d58-9cf7-59e7-afd6-e951c034b627__ce7217d0-756c-5928-859a-e12911bd157d,UI/UX Designer,reject,68,9,9,0,9,0,0.132,0.0,hire,reject
+1de5e06a-c479-56fb-82ab-a44bf0d9bf62__f7e2c446-d9a6-586f-8c2e-3d926872b322,iOS Developer,reject,68,8,8,0,8,0,0.118,0.0,reject,reject
+d20d7247-3fb4-59df-b1b7-248a0479c185__efc1153a-3970-5470-84ee-a799384f85a0,IT Recruiter,reject,68,7,6,1,6,1,0.088,0.015,reject,reject
+f9c288f3-8091-5f7e-9eb0-2bef49471e3a__755514c0-999c-5852-b613-969af1a3e86e,JavaScript Developer,hire,68,7,6,1,1,6,0.882,0.809,reject,reject
+b82c534e-a605-5389-a251-6a2f56834aba__dad80490-d2cb-5680-8caa-8c4b3a535d24,Java Developer,hire,68,6,4,2,2,4,0.897,0.868,reject,reject
+6a3fcf40-5466-5ebd-8730-880a9b9dfe70__50a3ccfb-e9d9-546b-a6d9-de2f59a0f990,IT Recruiter,hire,68,4,0,4,4,0,0.941,1.0,hire,hire
+3a1141d7-9a0e-5242-a91b-63c56c47baae__9fa61e6d-be3a-5d33-b998-bc598576e437,QA Engineer,reject,68,3,3,0,3,0,1.0,0.956,hire,hire
+1975f309-f03c-5bd1-97b0-17cab82cd278__8c12c0e2-f2b6-5d84-a106-975526e4128a,DevOps engineer,hire,68,2,2,0,0,2,1.0,0.971,hire,hire
+c94d6269-e9ba-53ba-942f-037cc58c5f84__4663d372-c9d2-5f3e-84e9-098b65486e1f,Data Scientist,hire,68,2,2,0,0,2,0.029,0.0,reject,reject
+2b4bb00a-50c9-57da-af5a-b9c96b3ca1f3__c82e21e2-983f-5e81-b5d3-4f735bbdf461,iOS Developer,reject,68,1,1,0,1,0,0.015,0.0,reject,reject
+2b4bb00a-50c9-57da-af5a-b9c96b3ca1f3__cf195942-8c14-5b91-811a-63f5254e8da1,iOS Developer,hire,68,1,0,1,1,0,0.985,1.0,hire,hire
+57843597-be06-5cf4-847d-9b035289a0d0__e72ee3b5-b4ee-5a88-b207-dcfdd1f97bd5,Business Analyst,hire,68,1,1,0,0,1,0.015,0.0,hire,reject
+5eb428e0-8398-5901-9125-649b1c8f6670__9fa7efe3-b350-55ca-a1bf-bfa8b7778aac,Graphic Designer,hire,68,1,1,0,0,1,0.015,0.0,reject,reject
+6fb4f5de-dd5e-572a-b30e-8c39681f16df__9f7c83c1-4699-57d6-b64b-8fda28eab933,Product Designer,reject,68,1,1,0,1,0,0.971,0.956,hire,hire
+aebdca1b-2e74-53d9-ace9-490d47704479__7b6e56c5-708b-5175-975b-c03129372cdb,Manual QA Engineer,hire,68,1,0,1,1,0,0.0,0.015,reject,reject
+d9d21f88-01a5-52b2-af3d-e196a0aae638__ac98fe25-1a72-5210-8a0b-738fd7c42608,Sales Manager,hire,68,1,1,0,0,1,1.0,0.985,hire,hire
+fdf3b944-8a48-5c21-9965-3f9a7f7074c0__82031f1a-31d6-59e8-9447-64a1cf1f73b9,DevOps engineer,hire,68,1,0,1,1,0,0.985,1.0,hire,hire

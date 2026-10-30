@@ -1,0 +1,97 @@
+{
+  "config": "configs/mitigation/dpo/qwen3.5-9b_en_only_dpo_v3_4880_gh200.yaml",
+  "base_model": "Qwen/Qwen3.5-9B",
+  "data_config": "configs/data/en_only_dpo_v3_5k.yaml",
+  "max_seq_len": 3072,
+  "by": "pool_source",
+  "splits": {
+    "train": {
+      "all": {
+        "rows": 4880,
+        "tokens": 3839250,
+        "mean": 786.7,
+        "p50": 703,
+        "p99": 1964,
+        "max": 2466,
+        "over_2048": 21,
+        "over_3072": 0
+      },
+      "by": {
+        "djinni_new": {
+          "rows": 3790,
+          "tokens": 2870956,
+          "mean": 757.5,
+          "p50": 726,
+          "p99": 1417,
+          "max": 1745,
+          "over_2048": 0,
+          "over_3072": 0
+        },
+        "kaggle_linkedin": {
+          "rows": 334,
+          "tokens": 526840,
+          "mean": 1577.4,
+          "p50": 1538,
+          "p99": 2313,
+          "max": 2466,
+          "over_2048": 21,
+          "over_3072": 0
+        },
+        "rjdb": {
+          "rows": 756,
+          "tokens": 441454,
+          "mean": 583.9,
+          "p50": 580,
+          "p99": 773,
+          "max": 849,
+          "over_2048": 0,
+          "over_3072": 0
+        }
+      }
+    },
+    "validation": {
+      "all": {
+        "rows": 350,
+        "tokens": 263603,
+        "mean": 753.2,
+        "p50": 652,
+        "p99": 2085,
+        "max": 2100,
+        "over_2048": 10,
+        "over_3072": 0
+      },
+      "by": {
+        "djinni_new": {
+          "rows": 210,
+          "tokens": 152632,
+          "mean": 726.8,
+          "p50": 711,
+          "p99": 1121,
+          "max": 1134,
+          "over_2048": 0,
+          "over_3072": 0
+        },
+        "kaggle_linkedin": {
+          "rows": 24,
+          "tokens": 41408,
+          "mean": 1725.3,
+          "p50": 1692,
+          "p99": 2099,
+          "max": 2100,
+          "over_2048": 10,
+          "over_3072": 0
+        },
+        "rjdb": {
+          "rows": 116,
+          "tokens": 69563,
+          "mean": 599.7,
+          "p50": 594,
+          "p99": 791,
+          "max": 803,
+          "over_2048": 0,
+          "over_3072": 0
+        }
+      }
+    }
+  }
+}

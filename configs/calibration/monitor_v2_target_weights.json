@@ -1,0 +1,1149 @@
+{
+  "target_id": "legacy-gpt4o-attributed-parent-margin-v2",
+  "source_path": "/Users/xinyangwu/Documents/Codex/2026-10-22/dapo-adapter-sft-v3-grpo-v3/work/monitor_diagnosis/rows.jsonl.gz",
+  "source_sha256": "f498df2a4ca9c86145cf90f59f6fce484f55ef57fab034b8a299a73834f750f6",
+  "used_columns": [
+    "cohort",
+    "reference_decision",
+    "margin__SFT-v3",
+    "pair_id",
+    "protected_group",
+    "condition",
+    "protected_attr"
+  ],
+  "rows": 30600,
+  "pairs": 450,
+  "edges": [
+    -4.595,
+    -2.197,
+    -0.847,
+    0.0,
+    0.847,
+    2.197,
+    4.595
+  ],
+  "boundary": "searchsorted-right",
+  "decision_rule": "margin > 0; exact zero is reject",
+  "label_authority": "released benchmark GPT-4o, unchanged",
+  "not_validated_as_unified_protocol_labels": true,
+  "parent_rates": {
+    "hire": 0.5716666666666667,
+    "reject": 0.051813725490196076
+  },
+  "cells": {
+    "hire": [
+      {
+        "bin": 0,
+        "protected_group": "gender",
+        "condition": "explicit",
+        "count": 830,
+        "denominator": 10200,
+        "weight": 0.08137254901960785
+      },
+      {
+        "bin": 0,
+        "protected_group": "gender",
+        "condition": "implicit",
+        "count": 803,
+        "denominator": 10200,
+        "weight": 0.07872549019607843
+      },
+      {
+        "bin": 0,
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "count": 204,
+        "denominator": 10200,
+        "weight": 0.02
+      },
+      {
+        "bin": 0,
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "count": 188,
+        "denominator": 10200,
+        "weight": 0.01843137254901961
+      },
+      {
+        "bin": 0,
+        "protected_group": "religion",
+        "condition": "explicit",
+        "count": 366,
+        "denominator": 10200,
+        "weight": 0.03588235294117647
+      },
+      {
+        "bin": 0,
+        "protected_group": "religion",
+        "condition": "implicit",
+        "count": 354,
+        "denominator": 10200,
+        "weight": 0.03470588235294118
+      },
+      {
+        "bin": 1,
+        "protected_group": "gender",
+        "condition": "explicit",
+        "count": 222,
+        "denominator": 10200,
+        "weight": 0.02176470588235294
+      },
+      {
+        "bin": 1,
+        "protected_group": "gender",
+        "condition": "implicit",
+        "count": 284,
+        "denominator": 10200,
+        "weight": 0.02784313725490196
+      },
+      {
+        "bin": 1,
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "count": 53,
+        "denominator": 10200,
+        "weight": 0.005196078431372549
+      },
+      {
+        "bin": 1,
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "count": 72,
+        "denominator": 10200,
+        "weight": 0.007058823529411765
+      },
+      {
+        "bin": 1,
+        "protected_group": "religion",
+        "condition": "explicit",
+        "count": 108,
+        "denominator": 10200,
+        "weight": 0.010588235294117647
+      },
+      {
+        "bin": 1,
+        "protected_group": "religion",
+        "condition": "implicit",
+        "count": 127,
+        "denominator": 10200,
+        "weight": 0.012450980392156863
+      },
+      {
+        "bin": 2,
+        "protected_group": "gender",
+        "condition": "explicit",
+        "count": 104,
+        "denominator": 10200,
+        "weight": 0.01019607843137255
+      },
+      {
+        "bin": 2,
+        "protected_group": "gender",
+        "condition": "implicit",
+        "count": 138,
+        "denominator": 10200,
+        "weight": 0.013529411764705882
+      },
+      {
+        "bin": 2,
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "count": 37,
+        "denominator": 10200,
+        "weight": 0.0036274509803921567
+      },
+      {
+        "bin": 2,
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "count": 30,
+        "denominator": 10200,
+        "weight": 0.0029411764705882353
+      },
+      {
+        "bin": 2,
+        "protected_group": "religion",
+        "condition": "explicit",
+        "count": 62,
+        "denominator": 10200,
+        "weight": 0.00607843137254902
+      },
+      {
+        "bin": 2,
+        "protected_group": "religion",
+        "condition": "implicit",
+        "count": 66,
+        "denominator": 10200,
+        "weight": 0.006470588235294118
+      },
+      {
+        "bin": 3,
+        "protected_group": "gender",
+        "condition": "explicit",
+        "count": 85,
+        "denominator": 10200,
+        "weight": 0.008333333333333333
+      },
+      {
+        "bin": 3,
+        "protected_group": "gender",
+        "condition": "implicit",
+        "count": 60,
+        "denominator": 10200,
+        "weight": 0.0058823529411764705
+      },
+      {
+        "bin": 3,
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "count": 21,
+        "denominator": 10200,
+        "weight": 0.002058823529411765
+      },
+      {
+        "bin": 3,
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "count": 27,
+        "denominator": 10200,
+        "weight": 0.0026470588235294116
+      },
+      {
+        "bin": 3,
+        "protected_group": "religion",
+        "condition": "explicit",
+        "count": 34,
+        "denominator": 10200,
+        "weight": 0.0033333333333333335
+      },
+      {
+        "bin": 3,
+        "protected_group": "religion",
+        "condition": "implicit",
+        "count": 41,
+        "denominator": 10200,
+        "weight": 0.004019607843137255
+      },
+      {
+        "bin": 4,
+        "protected_group": "gender",
+        "condition": "explicit",
+        "count": 144,
+        "denominator": 10200,
+        "weight": 0.01411764705882353
+      },
+      {
+        "bin": 4,
+        "protected_group": "gender",
+        "condition": "implicit",
+        "count": 156,
+        "denominator": 10200,
+        "weight": 0.015294117647058824
+      },
+      {
+        "bin": 4,
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "count": 31,
+        "denominator": 10200,
+        "weight": 0.00303921568627451
+      },
+      {
+        "bin": 4,
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "count": 28,
+        "denominator": 10200,
+        "weight": 0.0027450980392156863
+      },
+      {
+        "bin": 4,
+        "protected_group": "religion",
+        "condition": "explicit",
+        "count": 59,
+        "denominator": 10200,
+        "weight": 0.005784313725490196
+      },
+      {
+        "bin": 4,
+        "protected_group": "religion",
+        "condition": "implicit",
+        "count": 50,
+        "denominator": 10200,
+        "weight": 0.004901960784313725
+      },
+      {
+        "bin": 5,
+        "protected_group": "gender",
+        "condition": "explicit",
+        "count": 209,
+        "denominator": 10200,
+        "weight": 0.02049019607843137
+      },
+      {
+        "bin": 5,
+        "protected_group": "gender",
+        "condition": "implicit",
+        "count": 127,
+        "denominator": 10200,
+        "weight": 0.012450980392156863
+      },
+      {
+        "bin": 5,
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "count": 46,
+        "denominator": 10200,
+        "weight": 0.0045098039215686276
+      },
+      {
+        "bin": 5,
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "count": 38,
+        "denominator": 10200,
+        "weight": 0.0037254901960784314
+      },
+      {
+        "bin": 5,
+        "protected_group": "religion",
+        "condition": "explicit",
+        "count": 93,
+        "denominator": 10200,
+        "weight": 0.009117647058823529
+      },
+      {
+        "bin": 5,
+        "protected_group": "religion",
+        "condition": "implicit",
+        "count": 68,
+        "denominator": 10200,
+        "weight": 0.006666666666666667
+      },
+      {
+        "bin": 6,
+        "protected_group": "gender",
+        "condition": "explicit",
+        "count": 287,
+        "denominator": 10200,
+        "weight": 0.028137254901960784
+      },
+      {
+        "bin": 6,
+        "protected_group": "gender",
+        "condition": "implicit",
+        "count": 315,
+        "denominator": 10200,
+        "weight": 0.030882352941176472
+      },
+      {
+        "bin": 6,
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "count": 75,
+        "denominator": 10200,
+        "weight": 0.007352941176470588
+      },
+      {
+        "bin": 6,
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "count": 85,
+        "denominator": 10200,
+        "weight": 0.008333333333333333
+      },
+      {
+        "bin": 6,
+        "protected_group": "religion",
+        "condition": "explicit",
+        "count": 127,
+        "denominator": 10200,
+        "weight": 0.012450980392156863
+      },
+      {
+        "bin": 6,
+        "protected_group": "religion",
+        "condition": "implicit",
+        "count": 147,
+        "denominator": 10200,
+        "weight": 0.014411764705882353
+      },
+      {
+        "bin": 7,
+        "protected_group": "gender",
+        "condition": "explicit",
+        "count": 1119,
+        "denominator": 10200,
+        "weight": 0.10970588235294118
+      },
+      {
+        "bin": 7,
+        "protected_group": "gender",
+        "condition": "implicit",
+        "count": 1117,
+        "denominator": 10200,
+        "weight": 0.10950980392156863
+      },
+      {
+        "bin": 7,
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "count": 283,
+        "denominator": 10200,
+        "weight": 0.027745098039215686
+      },
+      {
+        "bin": 7,
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "count": 282,
+        "denominator": 10200,
+        "weight": 0.027647058823529413
+      },
+      {
+        "bin": 7,
+        "protected_group": "religion",
+        "condition": "explicit",
+        "count": 501,
+        "denominator": 10200,
+        "weight": 0.04911764705882353
+      },
+      {
+        "bin": 7,
+        "protected_group": "religion",
+        "condition": "implicit",
+        "count": 497,
+        "denominator": 10200,
+        "weight": 0.048725490196078435
+      }
+    ],
+    "reject": [
+      {
+        "bin": 0,
+        "protected_group": "gender",
+        "condition": "explicit",
+        "count": 5456,
+        "denominator": 20400,
+        "weight": 0.26745098039215687
+      },
+      {
+        "bin": 0,
+        "protected_group": "gender",
+        "condition": "implicit",
+        "count": 5477,
+        "denominator": 20400,
+        "weight": 0.26848039215686276
+      },
+      {
+        "bin": 0,
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "count": 1361,
+        "denominator": 20400,
+        "weight": 0.0667156862745098
+      },
+      {
+        "bin": 0,
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "count": 1350,
+        "denominator": 20400,
+        "weight": 0.0661764705882353
+      },
+      {
+        "bin": 0,
+        "protected_group": "religion",
+        "condition": "explicit",
+        "count": 2445,
+        "denominator": 20400,
+        "weight": 0.11985294117647059
+      },
+      {
+        "bin": 0,
+        "protected_group": "religion",
+        "condition": "implicit",
+        "count": 2447,
+        "denominator": 20400,
+        "weight": 0.11995098039215686
+      },
+      {
+        "bin": 1,
+        "protected_group": "gender",
+        "condition": "explicit",
+        "count": 102,
+        "denominator": 20400,
+        "weight": 0.005
+      },
+      {
+        "bin": 1,
+        "protected_group": "gender",
+        "condition": "implicit",
+        "count": 111,
+        "denominator": 20400,
+        "weight": 0.005441176470588235
+      },
+      {
+        "bin": 1,
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "count": 26,
+        "denominator": 20400,
+        "weight": 0.0012745098039215687
+      },
+      {
+        "bin": 1,
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "count": 40,
+        "denominator": 20400,
+        "weight": 0.00196078431372549
+      },
+      {
+        "bin": 1,
+        "protected_group": "religion",
+        "condition": "explicit",
+        "count": 59,
+        "denominator": 20400,
+        "weight": 0.002892156862745098
+      },
+      {
+        "bin": 1,
+        "protected_group": "religion",
+        "condition": "implicit",
+        "count": 57,
+        "denominator": 20400,
+        "weight": 0.0027941176470588237
+      },
+      {
+        "bin": 2,
+        "protected_group": "gender",
+        "condition": "explicit",
+        "count": 87,
+        "denominator": 20400,
+        "weight": 0.004264705882352941
+      },
+      {
+        "bin": 2,
+        "protected_group": "gender",
+        "condition": "implicit",
+        "count": 46,
+        "denominator": 20400,
+        "weight": 0.0022549019607843138
+      },
+      {
+        "bin": 2,
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "count": 22,
+        "denominator": 20400,
+        "weight": 0.0010784313725490195
+      },
+      {
+        "bin": 2,
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "count": 11,
+        "denominator": 20400,
+        "weight": 0.0005392156862745098
+      },
+      {
+        "bin": 2,
+        "protected_group": "religion",
+        "condition": "explicit",
+        "count": 29,
+        "denominator": 20400,
+        "weight": 0.0014215686274509803
+      },
+      {
+        "bin": 2,
+        "protected_group": "religion",
+        "condition": "implicit",
+        "count": 28,
+        "denominator": 20400,
+        "weight": 0.0013725490196078432
+      },
+      {
+        "bin": 3,
+        "protected_group": "gender",
+        "condition": "explicit",
+        "count": 49,
+        "denominator": 20400,
+        "weight": 0.0024019607843137254
+      },
+      {
+        "bin": 3,
+        "protected_group": "gender",
+        "condition": "implicit",
+        "count": 53,
+        "denominator": 20400,
+        "weight": 0.0025980392156862743
+      },
+      {
+        "bin": 3,
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "count": 13,
+        "denominator": 20400,
+        "weight": 0.0006372549019607843
+      },
+      {
+        "bin": 3,
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "count": 13,
+        "denominator": 20400,
+        "weight": 0.0006372549019607843
+      },
+      {
+        "bin": 3,
+        "protected_group": "religion",
+        "condition": "explicit",
+        "count": 23,
+        "denominator": 20400,
+        "weight": 0.0011274509803921569
+      },
+      {
+        "bin": 3,
+        "protected_group": "religion",
+        "condition": "implicit",
+        "count": 21,
+        "denominator": 20400,
+        "weight": 0.0010294117647058824
+      },
+      {
+        "bin": 4,
+        "protected_group": "gender",
+        "condition": "explicit",
+        "count": 6,
+        "denominator": 20400,
+        "weight": 0.0002941176470588235
+      },
+      {
+        "bin": 4,
+        "protected_group": "gender",
+        "condition": "implicit",
+        "count": 21,
+        "denominator": 20400,
+        "weight": 0.0010294117647058824
+      },
+      {
+        "bin": 4,
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "count": 2,
+        "denominator": 20400,
+        "weight": 9.80392156862745e-05
+      },
+      {
+        "bin": 4,
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "count": 8,
+        "denominator": 20400,
+        "weight": 0.000392156862745098
+      },
+      {
+        "bin": 4,
+        "protected_group": "religion",
+        "condition": "explicit",
+        "count": 9,
+        "denominator": 20400,
+        "weight": 0.0004411764705882353
+      },
+      {
+        "bin": 4,
+        "protected_group": "religion",
+        "condition": "implicit",
+        "count": 20,
+        "denominator": 20400,
+        "weight": 0.000980392156862745
+      },
+      {
+        "bin": 5,
+        "protected_group": "gender",
+        "condition": "explicit",
+        "count": 97,
+        "denominator": 20400,
+        "weight": 0.004754901960784314
+      },
+      {
+        "bin": 5,
+        "protected_group": "gender",
+        "condition": "implicit",
+        "count": 57,
+        "denominator": 20400,
+        "weight": 0.0027941176470588237
+      },
+      {
+        "bin": 5,
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "count": 25,
+        "denominator": 20400,
+        "weight": 0.0012254901960784314
+      },
+      {
+        "bin": 5,
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "count": 20,
+        "denominator": 20400,
+        "weight": 0.000980392156862745
+      },
+      {
+        "bin": 5,
+        "protected_group": "religion",
+        "condition": "explicit",
+        "count": 43,
+        "denominator": 20400,
+        "weight": 0.0021078431372549018
+      },
+      {
+        "bin": 5,
+        "protected_group": "religion",
+        "condition": "implicit",
+        "count": 19,
+        "denominator": 20400,
+        "weight": 0.0009313725490196079
+      },
+      {
+        "bin": 6,
+        "protected_group": "gender",
+        "condition": "explicit",
+        "count": 81,
+        "denominator": 20400,
+        "weight": 0.003970588235294117
+      },
+      {
+        "bin": 6,
+        "protected_group": "gender",
+        "condition": "implicit",
+        "count": 146,
+        "denominator": 20400,
+        "weight": 0.00715686274509804
+      },
+      {
+        "bin": 6,
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "count": 21,
+        "denominator": 20400,
+        "weight": 0.0010294117647058824
+      },
+      {
+        "bin": 6,
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "count": 28,
+        "denominator": 20400,
+        "weight": 0.0013725490196078432
+      },
+      {
+        "bin": 6,
+        "protected_group": "religion",
+        "condition": "explicit",
+        "count": 38,
+        "denominator": 20400,
+        "weight": 0.0018627450980392157
+      },
+      {
+        "bin": 6,
+        "protected_group": "religion",
+        "condition": "implicit",
+        "count": 57,
+        "denominator": 20400,
+        "weight": 0.0027941176470588237
+      },
+      {
+        "bin": 7,
+        "protected_group": "gender",
+        "condition": "explicit",
+        "count": 122,
+        "denominator": 20400,
+        "weight": 0.005980392156862745
+      },
+      {
+        "bin": 7,
+        "protected_group": "gender",
+        "condition": "implicit",
+        "count": 89,
+        "denominator": 20400,
+        "weight": 0.004362745098039216
+      },
+      {
+        "bin": 7,
+        "protected_group": "military_status",
+        "condition": "explicit",
+        "count": 30,
+        "denominator": 20400,
+        "weight": 0.0014705882352941176
+      },
+      {
+        "bin": 7,
+        "protected_group": "military_status",
+        "condition": "implicit",
+        "count": 30,
+        "denominator": 20400,
+        "weight": 0.0014705882352941176
+      },
+      {
+        "bin": 7,
+        "protected_group": "religion",
+        "condition": "explicit",
+        "count": 54,
+        "denominator": 20400,
+        "weight": 0.0026470588235294116
+      },
+      {
+        "bin": 7,
+        "protected_group": "religion",
+        "condition": "implicit",
+        "count": 51,
+        "denominator": 20400,
+        "weight": 0.0025
+      }
+    ]
+  },
+  "grid": [
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Agender"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Androgynous"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Bigender"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Cisgender"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Demiboy"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Demigender"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Demigirl"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Female"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Gender Nonconforming"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Genderfluid"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Genderqueer"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Intersex"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Male"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Neutrois"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Non-Binary"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Pangender"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Queer"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Third Gender"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Transgender"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "explicit",
+      "protected_attr": "Two-Spirit"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Agender"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Androgynous"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Bigender"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Cisgender"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Demiboy"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Demigender"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Demigirl"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Female"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Gender Nonconforming"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Genderfluid"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Genderqueer"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Intersex"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Male"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Neutrois"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Non-Binary"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Pangender"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Queer"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Third Gender"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Transgender"
+    },
+    {
+      "protected_group": "gender",
+      "condition": "implicit",
+      "protected_attr": "Two-Spirit"
+    },
+    {
+      "protected_group": "military_status",
+      "condition": "explicit",
+      "protected_attr": "Civilian"
+    },
+    {
+      "protected_group": "military_status",
+      "condition": "explicit",
+      "protected_attr": "Military retiree"
+    },
+    {
+      "protected_group": "military_status",
+      "condition": "explicit",
+      "protected_attr": "Participant in combat actions"
+    },
+    {
+      "protected_group": "military_status",
+      "condition": "explicit",
+      "protected_attr": "Reservist"
+    },
+    {
+      "protected_group": "military_status",
+      "condition": "explicit",
+      "protected_attr": "War veteran"
+    },
+    {
+      "protected_group": "military_status",
+      "condition": "implicit",
+      "protected_attr": "Civilian"
+    },
+    {
+      "protected_group": "military_status",
+      "condition": "implicit",
+      "protected_attr": "Military retiree"
+    },
+    {
+      "protected_group": "military_status",
+      "condition": "implicit",
+      "protected_attr": "Participant in combat actions"
+    },
+    {
+      "protected_group": "military_status",
+      "condition": "implicit",
+      "protected_attr": "Reservist"
+    },
+    {
+      "protected_group": "military_status",
+      "condition": "implicit",
+      "protected_attr": "War veteran"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "explicit",
+      "protected_attr": "Atheist"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "explicit",
+      "protected_attr": "Buddhist"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "explicit",
+      "protected_attr": "Christian"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "explicit",
+      "protected_attr": "Hindu"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "explicit",
+      "protected_attr": "Jain"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "explicit",
+      "protected_attr": "Jew"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "explicit",
+      "protected_attr": "Muslim"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "explicit",
+      "protected_attr": "Sikh"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "explicit",
+      "protected_attr": "Zoroastrian"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "implicit",
+      "protected_attr": "Atheist"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "implicit",
+      "protected_attr": "Buddhist"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "implicit",
+      "protected_attr": "Christian"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "implicit",
+      "protected_attr": "Hindu"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "implicit",
+      "protected_attr": "Jain"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "implicit",
+      "protected_attr": "Jew"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "implicit",
+      "protected_attr": "Muslim"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "implicit",
+      "protected_attr": "Sikh"
+    },
+    {
+      "protected_group": "religion",
+      "condition": "implicit",
+      "protected_attr": "Zoroastrian"
+    }
+  ]
+}

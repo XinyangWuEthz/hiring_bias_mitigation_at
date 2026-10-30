@@ -1,7 +1,7 @@
 # Semi-synthetic data v2 — covert negatives for preference optimisation
 
 *Design and data specification. Written 2026-10-13 for the GTC 2027 "SFT → DPO (covert
-pairs)" arm (Notion: 方案 B). Status: first small batch not yet generated; nothing in this
+pairs)" arm (Notion: Plan B). Status: first small batch not yet generated; nothing in this
 document is a result.*
 
 ## 1. Goal and scope

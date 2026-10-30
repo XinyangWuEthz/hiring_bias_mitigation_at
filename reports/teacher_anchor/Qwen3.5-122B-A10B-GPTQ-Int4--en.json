@@ -1,0 +1,134 @@
+{
+  "pairs": 450,
+  "samples_per_pair": 8,
+  "reference_reject_share": 0.6666666666666666,
+  "single": {
+    "n": 450,
+    "n_decided": 450,
+    "reject_share": 0.7911111111111111,
+    "agreement": 0.8222222222222222,
+    "agreement_on_reference_hire": 0.5466666666666666,
+    "agreement_on_reference_reject": 0.96,
+    "confusion": {
+      "reference hire": {
+        "hire": 82,
+        "reject": 68
+      },
+      "reference reject": {
+        "reject": 288,
+        "hire": 12
+      }
+    }
+  },
+  "greedy": {
+    "n": 450,
+    "n_decided": 450,
+    "reject_share": 0.78,
+    "agreement": 0.8466666666666667,
+    "agreement_on_reference_hire": 0.6,
+    "agreement_on_reference_reject": 0.97,
+    "confusion": {
+      "reference hire": {
+        "hire": 90,
+        "reject": 60
+      },
+      "reference reject": {
+        "reject": 291,
+        "hire": 9
+      }
+    }
+  },
+  "sampled_per_draw": {
+    "n": 3600,
+    "n_decided": 3600,
+    "reject_share": 0.7875,
+    "agreement": 0.8280555555555555,
+    "agreement_on_reference_hire": 0.5608333333333333,
+    "agreement_on_reference_reject": 0.9616666666666667,
+    "confusion": {
+      "reference hire": {
+        "hire": 673,
+        "reject": 527
+      },
+      "reference reject": {
+        "reject": 2308,
+        "hire": 92
+      }
+    }
+  },
+  "majority": {
+    "n": 450,
+    "n_decided": 439,
+    "reject_share": 0.8018223234624146,
+    "agreement": 0.8428246013667426,
+    "agreement_on_reference_hire": 0.5642857142857143,
+    "agreement_on_reference_reject": 0.9732441471571907,
+    "confusion": {
+      "reference hire": {
+        "hire": 79,
+        "reject": 61
+      },
+      "reference reject": {
+        "reject": 291,
+        "hire": 8
+      }
+    },
+    "ties": 11
+  },
+  "vote_split": {
+    "0 of 8 hire": 298,
+    "1 of 8 hire": 18,
+    "2 of 8 hire": 19,
+    "3 of 8 hire": 17,
+    "4 of 8 hire": 11,
+    "5 of 8 hire": 13,
+    "6 of 8 hire": 15,
+    "7 of 8 hire": 13,
+    "8 of 8 hire": 46
+  },
+  "unanimous_share": 0.7644444444444445,
+  "single_matches_majority": 0.9544419134396356,
+  "undecided_share_by_mode": {
+    "single": 0.0,
+    "sampled": 0.0,
+    "greedy": 0.0
+  },
+  "generation_meta": {
+    "model": "Qwen/Qwen3.5-122B-A10B-GPTQ-Int4",
+    "lang": "en",
+    "pairs": 450,
+    "k": 8,
+    "decoding": {
+      "max_new_tokens": 320,
+      "temperature": 0.7,
+      "top_p": 0.9,
+      "seed": 42
+    },
+    "greedy": {
+      "max_new_tokens": 320,
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "seed": 42
+    },
+    "serving": {
+      "backend": "vllm",
+      "tensor_parallel_size": 4,
+      "gpu_memory_utilization": 0.8,
+      "max_model_len": 8192,
+      "max_num_seqs": 128,
+      "dtype": "auto",
+      "engine_kwargs": {
+        "gdn_prefill_backend": "triton"
+      }
+    },
+    "prompt_sha256": "115553c3e071a1ffe7f94deca8ad6ec9ee3505a008cb84e6be846c27bed41e13",
+    "code": {
+      "commit": "67f4bb1b290a2eaf72307e623655787ad02843a0",
+      "uncommitted": []
+    }
+  },
+  "summary_code": {
+    "commit": "67f4bb1b290a2eaf72307e623655787ad02843a0",
+    "uncommitted": []
+  }
+}

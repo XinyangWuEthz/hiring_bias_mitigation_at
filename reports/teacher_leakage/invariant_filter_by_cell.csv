@@ -1,0 +1,13 @@
+protected_group,condition,reference_decision,n,kept,yield,drop_invariant_meta_commentary,drop_invariant_attribute_leak
+gender,explicit,hire,850,844,0.9929,4,2
+gender,explicit,reject,5150,5116,0.9934,16,18
+gender,implicit,hire,850,845,0.9941,4,1
+gender,implicit,reject,5150,5113,0.9928,16,21
+military_status,explicit,hire,850,845,0.9941,4,1
+military_status,explicit,reject,5150,5129,0.9959,17,4
+military_status,implicit,hire,850,845,0.9941,4,1
+military_status,implicit,reject,5150,5131,0.9963,16,3
+religion,explicit,hire,850,846,0.9953,4,0
+religion,explicit,reject,5150,5130,0.9961,20,0
+religion,implicit,hire,850,847,0.9965,3,0
+religion,implicit,reject,5150,5135,0.9971,15,0

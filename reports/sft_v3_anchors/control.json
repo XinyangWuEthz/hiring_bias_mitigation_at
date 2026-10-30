@@ -1,0 +1,647 @@
+{
+  "arms": {
+    "reference": {
+      "c1": {
+        "pairs": 124,
+        "hired": 65,
+        "share": 0.5241935483870968,
+        "min": 0.6,
+        "pass": false
+      },
+      "c2": {
+        "pairs": 54,
+        "rejected": 50,
+        "share": 0.9259259259259259,
+        "min": 0.9,
+        "pass": true
+      },
+      "passes": false,
+      "score": 0.45011947431302257,
+      "hire_share": 0.42455242966751916,
+      "sources": {
+        "vote": 356,
+        "tie": 35
+      },
+      "c2_on_reviewer_fit_1_2_only": {
+        "pairs": 50,
+        "rejected": 47
+      },
+      "by_set_and_fit": [
+        {
+          "set": "control_hire",
+          "fit_bucket": "3",
+          "pairs": 4,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "control_hire",
+          "fit_bucket": "4-5",
+          "pairs": 16,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "control_reject",
+          "fit_bucket": "1-2",
+          "pairs": 16,
+          "new_anchor_hire_share": 0.0
+        },
+        {
+          "set": "control_reject",
+          "fit_bucket": "3",
+          "pairs": 3,
+          "new_anchor_hire_share": 0.3333333333333333
+        },
+        {
+          "set": "control_reject",
+          "fit_bucket": "4-5",
+          "pairs": 1,
+          "new_anchor_hire_share": 0.0
+        },
+        {
+          "set": "reverse",
+          "fit_bucket": "1-2",
+          "pairs": 1,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "reverse",
+          "fit_bucket": "3",
+          "pairs": 6,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "reverse",
+          "fit_bucket": "4-5",
+          "pairs": 7,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "target",
+          "fit_bucket": "1-2",
+          "pairs": 34,
+          "new_anchor_hire_share": 0.08823529411764706
+        },
+        {
+          "set": "target",
+          "fit_bucket": "3",
+          "pairs": 179,
+          "new_anchor_hire_share": 0.35195530726256985
+        },
+        {
+          "set": "target",
+          "fit_bucket": "4-5",
+          "pairs": 124,
+          "new_anchor_hire_share": 0.5241935483870968
+        }
+      ],
+      "hire_votes": {
+        "C1 clear-hire targets": {
+          "0 of 8": 17,
+          "1 of 8": 4,
+          "2 of 8": 14,
+          "3 of 8": 13,
+          "4 of 8": 11,
+          "5 of 8": 18,
+          "6 of 8": 27,
+          "7 of 8": 12,
+          "8 of 8": 8
+        },
+        "C2 clear-reject targets": {
+          "0 of 8": 18,
+          "1 of 8": 3,
+          "2 of 8": 5,
+          "3 of 8": 3,
+          "4 of 8": 2,
+          "6 of 8": 2,
+          "7 of 8": 1
+        },
+        "C2 both-reject controls": {
+          "0 of 8": 18,
+          "1 of 8": 1,
+          "7 of 8": 1
+        }
+      }
+    },
+    "audit": {
+      "c1": {
+        "pairs": 124,
+        "hired": 83,
+        "share": 0.6693548387096774,
+        "min": 0.6,
+        "pass": true
+      },
+      "c2": {
+        "pairs": 54,
+        "rejected": 44,
+        "share": 0.8148148148148148,
+        "min": 0.9,
+        "pass": false
+      },
+      "passes": false,
+      "score": 0.48416965352449215,
+      "hire_share": 0.5396419437340153,
+      "sources": {
+        "vote": 356,
+        "tie": 35
+      },
+      "c2_on_reviewer_fit_1_2_only": {
+        "pairs": 50,
+        "rejected": 42
+      },
+      "by_set_and_fit": [
+        {
+          "set": "control_hire",
+          "fit_bucket": "3",
+          "pairs": 4,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "control_hire",
+          "fit_bucket": "4-5",
+          "pairs": 16,
+          "new_anchor_hire_share": 0.9375
+        },
+        {
+          "set": "control_reject",
+          "fit_bucket": "1-2",
+          "pairs": 16,
+          "new_anchor_hire_share": 0.0
+        },
+        {
+          "set": "control_reject",
+          "fit_bucket": "3",
+          "pairs": 3,
+          "new_anchor_hire_share": 0.3333333333333333
+        },
+        {
+          "set": "control_reject",
+          "fit_bucket": "4-5",
+          "pairs": 1,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "reverse",
+          "fit_bucket": "1-2",
+          "pairs": 1,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "reverse",
+          "fit_bucket": "3",
+          "pairs": 6,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "reverse",
+          "fit_bucket": "4-5",
+          "pairs": 7,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "target",
+          "fit_bucket": "1-2",
+          "pairs": 34,
+          "new_anchor_hire_share": 0.23529411764705882
+        },
+        {
+          "set": "target",
+          "fit_bucket": "3",
+          "pairs": 179,
+          "new_anchor_hire_share": 0.4748603351955307
+        },
+        {
+          "set": "target",
+          "fit_bucket": "4-5",
+          "pairs": 124,
+          "new_anchor_hire_share": 0.6693548387096774
+        }
+      ],
+      "hire_votes": {
+        "C1 clear-hire targets": {
+          "0 of 8": 12,
+          "1 of 8": 8,
+          "2 of 8": 1,
+          "3 of 8": 7,
+          "4 of 8": 13,
+          "5 of 8": 9,
+          "6 of 8": 18,
+          "7 of 8": 19,
+          "8 of 8": 37
+        },
+        "C2 clear-reject targets": {
+          "0 of 8": 13,
+          "1 of 8": 3,
+          "2 of 8": 2,
+          "3 of 8": 3,
+          "4 of 8": 5,
+          "5 of 8": 2,
+          "7 of 8": 1,
+          "8 of 8": 5
+        },
+        "C2 both-reject controls": {
+          "0 of 8": 18,
+          "6 of 8": 1,
+          "7 of 8": 1
+        }
+      }
+    },
+    "reference_no_decisive": {
+      "c1": {
+        "pairs": 124,
+        "hired": 75,
+        "share": 0.6048387096774194,
+        "min": 0.6,
+        "pass": true
+      },
+      "c2": {
+        "pairs": 54,
+        "rejected": 48,
+        "share": 0.8888888888888888,
+        "min": 0.9,
+        "pass": false
+      },
+      "passes": false,
+      "score": 0.4937275985663083,
+      "hire_share": 0.5191815856777494,
+      "sources": {
+        "vote": 364,
+        "tie": 27
+      },
+      "c2_on_reviewer_fit_1_2_only": {
+        "pairs": 50,
+        "rejected": 44
+      },
+      "by_set_and_fit": [
+        {
+          "set": "control_hire",
+          "fit_bucket": "3",
+          "pairs": 4,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "control_hire",
+          "fit_bucket": "4-5",
+          "pairs": 16,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "control_reject",
+          "fit_bucket": "1-2",
+          "pairs": 16,
+          "new_anchor_hire_share": 0.0
+        },
+        {
+          "set": "control_reject",
+          "fit_bucket": "3",
+          "pairs": 3,
+          "new_anchor_hire_share": 0.0
+        },
+        {
+          "set": "control_reject",
+          "fit_bucket": "4-5",
+          "pairs": 1,
+          "new_anchor_hire_share": 0.0
+        },
+        {
+          "set": "reverse",
+          "fit_bucket": "1-2",
+          "pairs": 1,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "reverse",
+          "fit_bucket": "3",
+          "pairs": 6,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "reverse",
+          "fit_bucket": "4-5",
+          "pairs": 7,
+          "new_anchor_hire_share": 1.0
+        },
+        {
+          "set": "target",
+          "fit_bucket": "1-2",
+          "pairs": 34,
+          "new_anchor_hire_share": 0.17647058823529413
+        },
+        {
+          "set": "target",
+          "fit_bucket": "3",
+          "pairs": 179,
+          "new_anchor_hire_share": 0.49162011173184356
+        },
+        {
+          "set": "target",
+          "fit_bucket": "4-5",
+          "pairs": 124,
+          "new_anchor_hire_share": 0.6048387096774194
+        }
+      ],
+      "hire_votes": {
+        "C1 clear-hire targets": {
+          "0 of 8": 14,
+          "1 of 8": 7,
+          "2 of 8": 9,
+          "3 of 8": 12,
+          "4 of 8": 7,
+          "5 of 8": 17,
+          "6 of 8": 15,
+          "7 of 8": 28,
+          "8 of 8": 15
+        },
+        "C2 clear-reject targets": {
+          "0 of 8": 16,
+          "1 of 8": 3,
+          "2 of 8": 3,
+          "3 of 8": 1,
+          "4 of 8": 5,
+          "5 of 8": 2,
+          "6 of 8": 3,
+          "7 of 8": 1
+        },
+        "C2 both-reject controls": {
+          "0 of 8": 17,
+          "2 of 8": 3
+        }
+      }
+    }
+  },
+  "redraw_effect": [
+    {
+      "set": "all 391",
+      "pairs": 391,
+      "before_hired": 34,
+      "after_hired": 166,
+      "reject_to_hire": 132,
+      "hire_to_reject": 0,
+      "mcnemar_p": 3.6734198463196485e-40
+    },
+    {
+      "set": "target 337",
+      "pairs": 337,
+      "before_hired": 0,
+      "after_hired": 131,
+      "reject_to_hire": 131,
+      "hire_to_reject": 0,
+      "mcnemar_p": 7.346839692639297e-40
+    },
+    {
+      "set": "C1 clear-hire targets",
+      "pairs": 124,
+      "before_hired": 0,
+      "after_hired": 65,
+      "reject_to_hire": 65,
+      "hire_to_reject": 0,
+      "mcnemar_p": 5.421010862427522e-20
+    },
+    {
+      "set": "borderline targets (fit 3)",
+      "pairs": 179,
+      "before_hired": 0,
+      "after_hired": 63,
+      "reject_to_hire": 63,
+      "hire_to_reject": 0,
+      "mcnemar_p": 2.168404344971009e-19
+    },
+    {
+      "set": "C2 clear-reject targets",
+      "pairs": 34,
+      "before_hired": 0,
+      "after_hired": 3,
+      "reject_to_hire": 3,
+      "hire_to_reject": 0,
+      "mcnemar_p": 0.25
+    },
+    {
+      "set": "C2 both-reject controls",
+      "pairs": 20,
+      "before_hired": 0,
+      "after_hired": 1,
+      "reject_to_hire": 1,
+      "hire_to_reject": 0,
+      "mcnemar_p": 1.0
+    }
+  ],
+  "prompt_effect": [
+    {
+      "candidate": "audit",
+      "set": "all 391",
+      "pairs": 391,
+      "before_hired": 166,
+      "after_hired": 211,
+      "reject_to_hire": 74,
+      "hire_to_reject": 29,
+      "mcnemar_p": 1.0705258229134963e-05
+    },
+    {
+      "candidate": "audit",
+      "set": "target 337",
+      "pairs": 337,
+      "before_hired": 131,
+      "after_hired": 176,
+      "reject_to_hire": 73,
+      "hire_to_reject": 28,
+      "mcnemar_p": 8.635781314660544e-06
+    },
+    {
+      "candidate": "audit",
+      "set": "C1 clear-hire targets",
+      "pairs": 124,
+      "before_hired": 65,
+      "after_hired": 83,
+      "reject_to_hire": 29,
+      "hire_to_reject": 11,
+      "mcnemar_p": 0.006426576095691416
+    },
+    {
+      "candidate": "audit",
+      "set": "borderline targets (fit 3)",
+      "pairs": 179,
+      "before_hired": 63,
+      "after_hired": 85,
+      "reject_to_hire": 39,
+      "hire_to_reject": 17,
+      "mcnemar_p": 0.004561532746408219
+    },
+    {
+      "candidate": "audit",
+      "set": "C2 clear-reject targets",
+      "pairs": 34,
+      "before_hired": 3,
+      "after_hired": 8,
+      "reject_to_hire": 5,
+      "hire_to_reject": 0,
+      "mcnemar_p": 0.0625
+    },
+    {
+      "candidate": "audit",
+      "set": "C2 both-reject controls",
+      "pairs": 20,
+      "before_hired": 1,
+      "after_hired": 2,
+      "reject_to_hire": 1,
+      "hire_to_reject": 0,
+      "mcnemar_p": 1.0
+    },
+    {
+      "candidate": "reference_no_decisive",
+      "set": "all 391",
+      "pairs": 391,
+      "before_hired": 166,
+      "after_hired": 203,
+      "reject_to_hire": 57,
+      "hire_to_reject": 20,
+      "mcnemar_p": 2.926311069930838e-05
+    },
+    {
+      "candidate": "reference_no_decisive",
+      "set": "target 337",
+      "pairs": 337,
+      "before_hired": 131,
+      "after_hired": 169,
+      "reject_to_hire": 57,
+      "hire_to_reject": 19,
+      "mcnemar_p": 1.4836899336372366e-05
+    },
+    {
+      "candidate": "reference_no_decisive",
+      "set": "C1 clear-hire targets",
+      "pairs": 124,
+      "before_hired": 65,
+      "after_hired": 75,
+      "reject_to_hire": 20,
+      "hire_to_reject": 10,
+      "mcnemar_p": 0.09873714670538905
+    },
+    {
+      "candidate": "reference_no_decisive",
+      "set": "borderline targets (fit 3)",
+      "pairs": 179,
+      "before_hired": 63,
+      "after_hired": 88,
+      "reject_to_hire": 34,
+      "hire_to_reject": 9,
+      "mcnemar_p": 0.00017015517460094998
+    },
+    {
+      "candidate": "reference_no_decisive",
+      "set": "C2 clear-reject targets",
+      "pairs": 34,
+      "before_hired": 3,
+      "after_hired": 6,
+      "reject_to_hire": 3,
+      "hire_to_reject": 0,
+      "mcnemar_p": 0.25
+    },
+    {
+      "candidate": "reference_no_decisive",
+      "set": "C2 both-reject controls",
+      "pairs": 20,
+      "before_hired": 1,
+      "after_hired": 0,
+      "reject_to_hire": 0,
+      "hire_to_reject": 1,
+      "mcnemar_p": 1.0
+    }
+  ],
+  "draws_meta": {
+    "select": {
+      "stage": "select",
+      "model": "Qwen/Qwen3.5-122B-A10B-GPTQ-Int4",
+      "pairs": 391,
+      "k": 8,
+      "decoding": {
+        "max_new_tokens": 320,
+        "temperature": 0.7,
+        "top_p": 0.9,
+        "seed": 42
+      },
+      "serving": {
+        "backend": "vllm",
+        "tensor_parallel_size": 4,
+        "gpu_memory_utilization": 0.8,
+        "max_model_len": 8192,
+        "max_num_seqs": 128,
+        "dtype": "auto",
+        "engine_kwargs": {
+          "gdn_prefill_backend": "triton"
+        }
+      },
+      "prompts_sha256": {
+        "audit": "a86c626710345bba478f77e8179999b4108b83f01280977a265f6fbdf432f370",
+        "reference_no_decisive": "82bb271dca8458f51e24252ec648a90b317219d420bc7571549751f72953ce2f"
+      },
+      "generation_seconds": {
+        "audit": 444.2,
+        "reference_no_decisive": 125.4
+      },
+      "written": "2026-10-16T18:06:44+00:00",
+      "prereg_sha256": "edc86ae972cb28a39fe25c838ff6f20a8f869d8dc3f4e6c694ea4da7370c4348",
+      "code": {
+        "commit": "67f4bb1b290a2eaf72307e623655787ad02843a0",
+        "uncommitted": [],
+        "untracked": [
+          "docs/SFT_V3_ANCHORS.md",
+          "scripts/cscs/sft_v3_anchors.sbatch",
+          "scripts/sft_v3_anchors.py"
+        ],
+        "script_sha256": "3c8c10110d5a9726d130b9d06b8ff3f42408819539f861dea920187955ee3527"
+      }
+    },
+    "control": {
+      "stage": "control",
+      "model": "Qwen/Qwen3.5-122B-A10B-GPTQ-Int4",
+      "pairs": 391,
+      "k": 8,
+      "decoding": {
+        "max_new_tokens": 320,
+        "temperature": 0.7,
+        "top_p": 0.9,
+        "seed": 42
+      },
+      "serving": {
+        "backend": "vllm",
+        "tensor_parallel_size": 4,
+        "gpu_memory_utilization": 0.8,
+        "max_model_len": 8192,
+        "max_num_seqs": 128,
+        "dtype": "auto",
+        "engine_kwargs": {
+          "gdn_prefill_backend": "triton"
+        }
+      },
+      "prompts_sha256": {
+        "reference": "bdbe642d8691f1fce4d0df6428cb547590dc2d37d2d49e7f19cf99e301739945"
+      },
+      "generation_seconds": {
+        "reference": 448.0
+      },
+      "written": "2026-10-16T18:26:39+00:00",
+      "prereg_sha256": "49263adbffc7712eb94498ce4c4c3effbfdc6670ab2e8e07a73ce210632c60ba",
+      "code": {
+        "commit": "67f4bb1b290a2eaf72307e623655787ad02843a0",
+        "uncommitted": [],
+        "untracked": [
+          "docs/SFT_V3_ANCHORS.md",
+          "scripts/cscs/sft_v3_anchors.sbatch",
+          "scripts/sft_v3_anchors.py"
+        ],
+        "script_sha256": "3fab199582b2d043fe26ce7d890340f3c2f700adbb775c4131071f2dfb5bcadb"
+      }
+    }
+  },
+  "written": "2026-10-16T18:29:49+00:00",
+  "prereg_sha256": "81f1206cac23fd90797c5d103430f077b4bf9c4a19f02fcd679c5dcd1affe04b",
+  "code": {
+    "commit": "cc38e2e7d481080e21178d09a1f7534b85ba9373",
+    "uncommitted": [],
+    "untracked": [
+      "docs/SFT_V3_ANCHORS.md",
+      "scripts/cscs/sft_v3_anchors.sbatch",
+      "scripts/sft_v3_anchors.py"
+    ],
+    "script_sha256": "7e0512e3b73ddbeb947d5e0040975570e18a1a77244ca24e8b51fef26fa2e16c"
+  }
+}

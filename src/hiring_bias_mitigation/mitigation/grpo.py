@@ -115,6 +115,25 @@ def format_reward(completions: list[str], **_) -> list[float]:
     return [FORMAT_REWARD if well_formed(c) else 0.0 for c in completions]
 
 
+def free_consistency_reward(completions: list[str], free_hire_rate: list[float],
+                            lang: list[str] | None = None, **_) -> list[float]:
+    """Agreement with SFT-v3's own attribute-free answer for the pair: its sampled hire share
+    when the completion hires, one minus it when the completion rejects, 0 without a decision.
+
+    Why (docs/GRPO_IMPROVE.md, A2). On 3,366 of grpo-v3-all's 9,140 rows the vote anchor and
+    SFT-v3's attribute-free majority disagree, so the decision reward there teaches a different
+    hiring standard, not invariance to the attribute. This reward pays for answering as the
+    model answers without the attribute; `free_hire_rate` comes from
+    scripts/build_grpo_free_target.py.
+    """
+    langs = lang or ["en"] * len(completions)
+    out = []
+    for c, g, p in zip(completions, langs, free_hire_rate, strict=True):
+        d = parse_output(c, g).decision
+        out.append(float(p) if d == HIRE else 1.0 - float(p) if d == REJECT else 0.0)
+    return out
+
+
 REWARD_FUNCS = [decision_reward, format_reward]
 
 
@@ -405,6 +424,8 @@ def _sync_validation_class():
 #: 28.0% in all. r1-300, which collapsed to 19.1%, hired 47.6% and 4.8%.
 SFT_BENCHMARK = {"reference_hire_share": 0.333, "hire_rate_ref_hire": 0.658,
                  "hire_rate_ref_reject": 0.091}
+#: A run from another SFT parent gives that parent's two rates as `sft_benchmark` in its config
+#: (reports/reference_metrics.csv: tpr_vs_gpt4o_pct and fpr_vs_gpt4o_pct, as fractions).
 
 
 def projected_hire_rate(metrics: dict, baseline: dict, n_side: int,
@@ -447,8 +468,10 @@ def _decision_monitor_class():
 
         def __init__(self, rows, tokenizer, output_dir, every: int, band: tuple[float, float],
                      template_kwargs: dict | None,
-                     max_new_tokens: int = 96, lang: str = "en", vllm_generation=None):
+                     max_new_tokens: int = 96, lang: str = "en", vllm_generation=None,
+                     sft_benchmark: dict | None = None):
             self.rows = rows.reset_index(drop=True)
+            self.sft_benchmark = {**SFT_BENCHMARK, **(sft_benchmark or {})}
             self.vllm_generation = vllm_generation
             self.tokenizer = tokenizer
             self.output_dir = Path(output_dir)
@@ -511,7 +534,8 @@ def _decision_monitor_class():
                 from .decision_eval import record
 
                 outputs, metrics = self._evaluate(model)
-                metrics.update(projected_hire_rate(metrics, self.baseline, self._n_side()))
+                metrics.update(projected_hire_rate(metrics, self.baseline, self._n_side(),
+                                               self.sft_benchmark))
                 low, high = self.band
                 stop = not low <= metrics["hire_rate_projected"] <= high
                 metrics["out_of_band"] = stop
@@ -522,7 +546,8 @@ def _decision_monitor_class():
                          metrics["invalid_rate"])
                 if self.vllm_generation is not None:
                     served_out, served = self._evaluate_served()
-                    served.update(projected_hire_rate(served, self.baseline, self._n_side()))
+                    served.update(projected_hire_rate(served, self.baseline, self._n_side(),
+                                                       self.sft_benchmark))
                     record(self.output_dir, state.global_step, self.rows, served_out, served,
                            prefix="decision_served")
                     log.info("served (merged) at step %d: agree %.3f, projected hire rate %.3f, "
@@ -538,22 +563,263 @@ def _decision_monitor_class():
     return DecisionMonitorCallback
 
 
+#: Bin edges on the SFT parent's decision margin, logit(hire) - logit(reject): the logits of
+#: hire probabilities 1, 10, 30, 50, 70, 90 and 99%. scripts/monitor_calibration.py computes a
+#: run's `margin_monitor` shares on these edges.
+MARGIN_EDGES = (-4.595, -2.197, -0.847, 0.0, 0.847, 2.197, 4.595)
+
+
+def margin_bins(margins, edges=MARGIN_EDGES):
+    """Bin b holds edges[b-1] <= margin < edges[b]: 0 below the first edge, len(edges) above
+    the last (pandas.cut with right=False)."""
+    import numpy as np
+
+    return np.searchsorted(np.asarray(edges, dtype=float), np.asarray(margins, dtype=float),
+                           side="right")
+
+
+def project_from_margins(parent, current, edges, share_ref_hire, share_ref_reject,
+                         sft_benchmark: dict = SFT_BENCHMARK) -> dict:
+    """The benchmark's hire rates projected from the monitor rows' decisions (margin > 0).
+
+    Rows are binned by the parent's margin. Each bin's change in hire share since the parent,
+    weighted by the share of benchmark prompts the parent puts in that bin where GPT-4o hires
+    (`share_ref_hire`), is the change in the hire rate where GPT-4o hires (TPR); with
+    `share_ref_reject`, where it rejects (FPR). The bins carry what the decision monitor's ratio
+    could not: the benchmark's TPR moves in the parent's 50-99% bins, which its rows hardly
+    held. Run on the benchmark's own margins, this estimate is within 1 pp of the TPR change of
+    every arm compared so far (scripts/monitor_calibration.py validate). A bin with no monitor
+    row adds nothing and its weight is reported as `unseen_*`.
+    """
+    import numpy as np
+
+    parent, current = np.asarray(parent, dtype=float), np.asarray(current, dtype=float)
+    bins = margin_bins(parent, edges)
+    out = {"bins": [], "unseen_ref_hire": 0.0, "unseen_ref_reject": 0.0}
+    delta_tpr = delta_fpr = 0.0
+    for b in range(len(edges) + 1):
+        mask = bins == b
+        if mask.any():
+            delta = float((current[mask] > 0).mean() - (parent[mask] > 0).mean())
+            delta_tpr += share_ref_hire[b] * delta
+            delta_fpr += share_ref_reject[b] * delta
+        else:
+            delta = None
+            out["unseen_ref_hire"] += share_ref_hire[b]
+            out["unseen_ref_reject"] += share_ref_reject[b]
+        out["bins"].append({"n": int(mask.sum()), "delta_hire_share": delta})
+    tpr = sft_benchmark["hire_rate_ref_hire"] + delta_tpr
+    fpr = sft_benchmark["hire_rate_ref_reject"] + delta_fpr
+    weight = sft_benchmark["reference_hire_share"]
+    out.update(delta_tpr=delta_tpr, delta_fpr=delta_fpr, projected_tpr=tpr, projected_fpr=fpr,
+               hire_rate_projected=weight * tpr + (1 - weight) * fpr)
+    return out
+
+
+def vllm_margins(vllm_generation, tokenizer, prompts: list[str],
+                 template_kwargs: dict | None = None, lang: str = "en") -> list[float]:
+    """Decision margins of the weights the colocated engine serves, the op-margin-v2 scorer:
+    `logprob_token_ids` after the forced decision prefix (as SyncValidationCallback reads)."""
+    from vllm import SamplingParams
+
+    from ..eval.backends import _chat_wrap
+    from ..eval.margins import PREFIX, WORDS, decision_token_ids
+
+    ids = decision_token_ids(tokenizer, WORDS[lang])
+    texts = [_chat_wrap(tokenizer, p, template_kwargs) + PREFIX for p in prompts]
+    params = SamplingParams(max_tokens=1, temperature=0.0, logprob_token_ids=list(ids))
+    outs = vllm_generation.llm.generate(texts, params, use_tqdm=False)
+    return [o.outputs[0].logprobs[0][ids[0]].logprob - o.outputs[0].logprobs[0][ids[1]].logprob
+            for o in outs]
+
+
+def _margin_monitor_class():
+    from transformers import TrainerCallback
+
+    class MarginMonitorCallback(TrainerCallback):
+        """The benchmark's TPR, projected from decision margins (`project_from_margins`) on
+        held-out rows drawn across the parent's confidence (grpo_prompts.monitor_rows), every
+        `every` steps on rank 0; stops the run, saving first, when the projected TPR has fallen
+        more than `tpr_drop_stop` since the parent.
+
+        Why. The decision monitor's held-out rows are ones the parent hires with near certainty,
+        and its ratio projection never read GRPO-v3-all or DAPO-v3-all below SFT-v3's TPR by
+        more than 8.1 and 2.5 pp; the benchmark measured 10.1 for both, past the standard's
+        10 pp guardrail.
+
+        `score(prompts)` returns the margins of the served weights (`vllm_margins` after a sync
+        in training). The parent's margins are scored when the run starts, before any update,
+        and kept in margin_monitor_parent.json, which a resumed run reads instead.
+        """
+
+        def __init__(self, prompts: list[str], score, output_dir, every: int, settings: dict,
+                     sft_benchmark: dict | None = None):
+            self.prompts = prompts
+            self.score = score
+            self.output_dir = Path(output_dir)
+            self.every = every
+            self.edges = tuple(settings.get("edges", MARGIN_EDGES))
+            self.share_ref_hire = list(settings["share_ref_hire"])
+            self.share_ref_reject = list(settings["share_ref_reject"])
+            if not len(self.share_ref_hire) == len(self.share_ref_reject) == len(self.edges) + 1:
+                raise ValueError("margin_monitor: one share per bin, len(edges) + 1 bins")
+            self.tpr_drop_stop = float(settings["tpr_drop_stop"])
+            self.sft_benchmark = {**SFT_BENCHMARK, **(sft_benchmark or {}),
+                                  **({"reference_hire_share": settings["reference_hire_share"]}
+                                     if "reference_hire_share" in settings else {})}
+            self.parent = None
+            self.aborted = False
+            self.reason = None
+
+        def _parent_path(self) -> Path:
+            return self.output_dir / "margin_monitor_parent.json"
+
+        def on_train_begin(self, args, state, control, **kwargs):
+            if not state.is_world_process_zero:
+                return
+            import numpy as np
+
+            path = self._parent_path()
+            if path.is_file():
+                self.parent = np.asarray(json.loads(path.read_text())["margins"])
+                if len(self.parent) != len(self.prompts):
+                    raise ValueError(f"{path} holds {len(self.parent)} margins for "
+                                     f"{len(self.prompts)} monitor rows")
+                return
+            if state.global_step:
+                raise RuntimeError(f"resuming at step {state.global_step} without {path}: the "
+                                   "parent's margins can only be scored before any update")
+            self.parent = np.asarray(self.score(self.prompts), dtype=float)
+            path.write_text(json.dumps({"margins": self.parent.tolist()}))
+            counts = np.bincount(margin_bins(self.parent, self.edges),
+                                 minlength=len(self.edges) + 1)
+            log.info("margin monitor: %d rows, per parent-margin bin %s", len(self.parent),
+                     counts.tolist())
+
+        def on_step_end(self, args, state, control, **kwargs):
+            if not self.every or state.global_step % self.every:
+                return
+            stop = False
+            if state.is_world_process_zero:
+                result = project_from_margins(self.parent, self.score(self.prompts), self.edges,
+                                              self.share_ref_hire, self.share_ref_reject,
+                                              self.sft_benchmark)
+                stop = result["delta_tpr"] < -self.tpr_drop_stop
+                result.update(step=state.global_step, stop=stop)
+                with (self.output_dir / "margin_monitor.jsonl").open("a") as fh:
+                    fh.write(json.dumps(result) + "\n")
+                log.info("margin monitor at step %d: projected TPR %.3f (%+.1f pp), FPR %.3f "
+                         "(%+.1f pp), hire rate %.3f; stop below %+.1f pp TPR",
+                         state.global_step, result["projected_tpr"], 100 * result["delta_tpr"],
+                         result["projected_fpr"], 100 * result["delta_fpr"],
+                         result["hire_rate_projected"], -100 * self.tpr_drop_stop)
+            if _broadcast(stop):
+                self.aborted = True
+                self.reason = (f"aborted: projected TPR fell more than "
+                               f"{100 * self.tpr_drop_stop:g} pp")
+                log.error("%s at step %d: saving and stopping", self.reason, state.global_step)
+                control.should_save = True
+                control.should_training_stop = True
+
+    return MarginMonitorCallback
+
+
 # ---- training -----------------------------------------------------------------------------
 
 def grpo_config_candidates(cfg: dict) -> dict:
     return {key: cfg[key] for key in GRPO_CONFIG_PASSTHROUGH if key in cfg}
 
 
-def train(cfg: dict) -> C.TrainArtifacts:
+def train(cfg: dict, trainer_cls=None, reward_funcs=None, trainer_kwargs: dict | None = None,
+          manifest_extra=None) -> C.TrainArtifacts:
+    """GRPO by default. A variant of the objective (mitigation/dapo.py) passes its trainer class,
+    its rewards, extra keyword arguments for the trainer, and `manifest_extra`, a function of the
+    GRPOConfig whose keys are added to run_config.json; the data, the policy, the weight sync,
+    the monitors and the manifest stay this function's."""
     from ..utils.seed import set_seed
 
     set_seed(cfg.get("seed", 42))
     C.wandb_init(cfg)
     output_dir = C.resolve_run_dir(cfg)
-    if C.is_main_process():
+    continuation = None
+    resume = None
+    if cfg.get("continuation"):
+        from ..utils.config import resolve_output_path
+        from . import grpo_continuation
+
+        continuation = grpo_continuation.load_contract(
+            cfg["continuation"], cfg, output_dir, resolve_output_path)
+        resume = grpo_continuation.choose_resume(
+            continuation, C.last_checkpoint(output_dir) if cfg.get("resume") else None)
+    if continuation is None and C.is_main_process():
         C.wandb_resume(cfg, output_dir)
 
     splits = C.load_generated_dataset(cfg, cfg.get("data_kind", "grpo"))
+    diagnostics_settings = cfg.get("rollout_diagnostics") or {}
+    if not isinstance(diagnostics_settings, dict) or set(diagnostics_settings) - {"enabled"}:
+        raise ValueError("rollout_diagnostics accepts only an enabled boolean")
+    detailed_diagnostics = diagnostics_settings.get("enabled", False)
+    if not isinstance(detailed_diagnostics, bool):
+        raise ValueError("rollout_diagnostics.enabled must be a boolean")
+    anchor_metadata_receipt = None
+    diagnostics_strata = ()
+    if detailed_diagnostics:
+        if trainer_cls is not None:
+            raise ValueError("detailed rollout diagnostics support the default GRPO trainer only")
+        from ..utils.config import resolve_output_path
+        from .grpo_anchor_metadata import attach_anchor_metadata
+
+        anchor_metadata_receipt = {"schema": "grpo-anchor-metadata-splits-v1", "splits": {}}
+        for split in ("train", "validation"):
+            if split in splits:
+                splits[split], receipt = attach_anchor_metadata(
+                    splits[split], split=split, resolve_path=resolve_output_path)
+                anchor_metadata_receipt["splits"][split] = receipt
+        diagnostics_strata = sorted({
+            f"{row['reference_decision']}/{row['winning_votes']}_of_{row['decided_draws']}"
+            for split in anchor_metadata_receipt["splits"] for row in splits[split]
+        })
+    direct_contract = None
+    full_contract = None
+    if cfg.get("full_benchmark_monitor"):
+        from ..utils.config import resolve_output_path
+        from . import full_benchmark_monitor
+
+        if continuation is None:
+            raise ValueError("full_benchmark_monitor is only authorized for the continuation pilot")
+        if cfg.get("benchmark_dev_monitor") or cfg.get("margin_monitor"):
+            raise ValueError("full_benchmark_monitor replaces the dev and projection monitors")
+        if int(cfg.get("save_steps", 25)) != 5 or int(cfg.get("max_steps", -1)) != 500:
+            raise ValueError("full benchmark pilot requires save_steps=5 and absolute max_steps=500")
+        full_contract = full_benchmark_monitor.load_contract(
+            cfg["full_benchmark_monitor"], cfg.get("sft_checkpoint"), resolve_output_path)
+        frozen_source = full_contract["manifest"]["continuation_source"]
+        current_source = continuation["settings"]
+        if (Path(resolve_output_path(frozen_source["source_checkpoint"])).resolve()
+                != continuation["source"] or any(
+                    frozen_source[key] != current_source[key]
+                    for key in ("source_step", "target_learning_rate", "source_learning_rate",
+                                "max_steps", "world_size", "source_files_sha256"))):
+            raise ValueError("full benchmark monitor and continuation source identities differ")
+        full_benchmark_monitor.validate_train_isolation(full_contract, splits["train"])
+    if cfg.get("benchmark_dev_monitor"):
+        from ..utils.config import resolve_output_path
+        from .benchmark_dev_monitor import (
+            load_contract,
+            require_training_ready,
+            validate_train_isolation,
+        )
+
+        if cfg.get("margin_monitor"):
+            raise ValueError("benchmark_dev_monitor replaces margin_monitor; configure only one")
+        direct_contract = load_contract(cfg["benchmark_dev_monitor"], cfg.get("sft_checkpoint"),
+                                        resolve_output_path)
+        require_training_ready(direct_contract)
+        if "candidate_id" not in splits["train"].column_names:
+            raise ValueError("benchmark_dev_monitor requires training candidate IDs")
+        validate_train_isolation(
+            direct_contract["rows"], splits["train"]["candidate_id"],
+            direct_contract["manifest"]["split"]["candidate_ids"])
     model, tokenizer = C.load_model_and_tokenizer(cfg)
     chat_kwargs = cfg.get("chat_template_kwargs")
     train_ds = render_prompts(splits["train"], tokenizer, chat_kwargs)
@@ -568,17 +834,73 @@ def train(cfg: dict) -> C.TrainArtifacts:
 
     from trl import GRPOConfig, GRPOTrainer
 
+    bias_projection = bool((cfg.get("bias_projection") or {}).get("enabled", False))
+    if bias_projection:
+        if trainer_cls is not None or detailed_diagnostics:
+            raise ValueError("bias_projection supports the default GRPO trainer without "
+                             "detailed rollout diagnostics")
+        from .grpo_bias_projection import trainer_class as bias_projected
+
+        trainer_cls = bias_projected(
+            GRPOTrainer, lambda completion, lang: parse_output(completion, lang).decision)
+    anchor = cfg.get("operating_point_anchor") or {}
+    if anchor and (trainer_cls is not None or detailed_diagnostics):
+        raise ValueError("operating_point_anchor supports the default GRPO trainer without "
+                         "detailed rollout diagnostics or another trainer variant")
     args = GRPOConfig(**base_args,
                       **C.supported_kwargs(GRPOConfig, grpo_config_candidates(cfg), "GRPOConfig"))
-    trainer = GRPOTrainer(
+    continuation_callback = None
+    if continuation is not None:
+        source_args = grpo_continuation.load_source_arguments(continuation)
+        grpo_continuation.validate_arguments(continuation, args, source_args)
+        continuation_callback = grpo_continuation.callback_class()(continuation, resume, source_args)
+    consistency = bool((cfg.get("consistency_reward") or {}).get("enabled", False))
+    if consistency:
+        if reward_funcs is not None or detailed_diagnostics:
+            raise ValueError("consistency_reward supports the default rewards without detailed "
+                             "rollout diagnostics")
+        if "free_hire_rate" not in train_ds.column_names:
+            raise ValueError("consistency_reward needs a free_hire_rate column "
+                             "(scripts/build_grpo_free_target.py)")
+        reward_funcs = [*REWARD_FUNCS, free_consistency_reward]
+    trainer = (trainer_cls or GRPOTrainer)(
         model=model,
-        reward_funcs=REWARD_FUNCS,
+        reward_funcs=reward_funcs or REWARD_FUNCS,
         args=args,
         train_dataset=train_ds,
         processing_class=tokenizer,
         peft_config=C.peft_config(cfg),
-        callbacks=C.memory_guard_callbacks(cfg) + C.cost_callbacks(),
+        callbacks=C.memory_guard_callbacks(cfg) + C.cost_callbacks()
+        + ([continuation_callback] if continuation_callback is not None else []),
+        **(trainer_kwargs or {}),
     )
+    if anchor:
+        import pandas as pd
+
+        from ..eval.backends import _chat_wrap
+        from ..eval.margins import PREFIX, WORDS, decision_token_ids
+        from ..utils.config import resolve_output_path
+        from .grpo_operating_anchor import callback_class as anchor_callback
+
+        anchor_rows = pd.read_parquet(resolve_output_path(anchor["rows"]))
+        trainer.add_callback(anchor_callback()(
+            tokenizer=tokenizer,
+            prompts=[_chat_wrap(tokenizer, p, chat_kwargs) + PREFIX for p in anchor_rows["prompt"]],
+            weight=float(anchor["weight"]), rows_per_step=int(anchor["rows_per_step"]),
+            seed=int(cfg.get("seed", 42)), token_ids=decision_token_ids(tokenizer, WORDS["en"]),
+            rank=trainer.accelerator.process_index, world=trainer.accelerator.num_processes,
+            metrics=trainer._metrics["train"]))
+        log.info("operating-point anchor: %d rows from %s, weight %g, %d rows per step and rank",
+                 len(anchor_rows), anchor["rows"], float(anchor["weight"]),
+                 int(anchor["rows_per_step"]))
+    from .grpo_diagnostics import install as install_count_diagnostics
+
+    count_diagnostics_receipt = install_count_diagnostics(
+        trainer, parse_decision=lambda completion, lang: parse_output(completion, lang).decision,
+        output_dir=output_dir, detailed=detailed_diagnostics, strata=diagnostics_strata)
+    if continuation is not None:
+        grpo_continuation.initialize_tracking_after_resume(
+            trainer.accelerator, lambda: C.wandb_resume(cfg, output_dir), _broadcast)
     policy = trainer.accelerator.unwrap_model(trainer.model)
     install_weight_sync(trainer.vllm_generation, policy)
 
@@ -592,17 +914,69 @@ def train(cfg: dict) -> C.TrainArtifacts:
         trainer.add_callback(_sync_validation_class()(
             trainer, check["prompt"].tolist(), output_dir,
             int(cfg.get("sync_validate_steps", 0)), chat_kwargs))
-        band = cfg.get("hire_rate_band", [0.20, 0.40])
-        monitor = _decision_monitor_class()(
-            eval_rows(rows, int(cfg.get("decision_eval_rows", 256)), seed), tokenizer,
-            output_dir, int(cfg.get("decision_eval_steps", 25)), (float(band[0]), float(band[1])),
-            chat_kwargs,
-            int(cfg.get("decision_eval_max_new_tokens", 96)),
-            vllm_generation=trainer.vllm_generation)
-        trainer.add_callback(monitor)
+        if direct_contract is None and full_contract is None:
+            band = cfg.get("hire_rate_band", [0.20, 0.40])
+            monitor = _decision_monitor_class()(
+                eval_rows(rows, int(cfg.get("decision_eval_rows", 256)), seed), tokenizer,
+                output_dir, int(cfg.get("decision_eval_steps", 25)),
+                (float(band[0]), float(band[1])),
+                chat_kwargs,
+                int(cfg.get("decision_eval_max_new_tokens", 96)),
+                vllm_generation=trainer.vllm_generation,
+                sft_benchmark=cfg.get("sft_benchmark"))
+            trainer.add_callback(monitor)
     else:
-        log.warning("no validation split: the vLLM sync is NOT validated and no hire-rate "
-                    "monitor runs")
+        log.warning("no validation split: the vLLM sync is NOT validated; legacy hire-rate "
+                    "monitor is unavailable")
+
+    direct_monitor = None
+    if direct_contract is not None:
+        from .benchmark_dev_monitor import callback_class, served_decisions
+
+        def score_benchmark_dev(rows):
+            return served_decisions(trainer.vllm_generation, tokenizer, rows,
+                                    direct_contract["manifest"]["scorer"])
+
+        direct_monitor = callback_class()(
+            direct_contract, score_benchmark_dev, trainer.vllm_generation.sync_weights, output_dir)
+        trainer.add_callback(direct_monitor)
+        log.info("direct benchmark-dev monitor on %d rows; legacy projection monitors disabled",
+                 len(direct_contract["rows"]))
+
+    full_monitor = None
+    if full_contract is not None:
+        def score_full_local(rows):
+            return full_benchmark_monitor.served_decisions(
+                trainer.vllm_generation, tokenizer, rows, full_contract["manifest"]["scorer"])
+
+        # The callback shards rows across all four ranks; score_full_local must not shard.
+        full_monitor = full_benchmark_monitor.callback_class()(
+            full_contract, score_full_local, trainer.vllm_generation.sync_weights, output_dir)
+        trainer.add_callback(full_monitor)
+        log.info("direct full benchmark pilot monitor on %d rows; checks every five updates",
+                 len(full_contract["rows"]))
+
+    margin = None
+    if cfg.get("margin_monitor"):
+        import pandas as pd
+
+        from ..utils.config import resolve_output_path
+
+        settings = cfg["margin_monitor"]
+        rows_path = (Path(resolve_output_path(cfg["data"]["artifacts_dir"]))
+                     / f"{cfg.get('data_kind', 'grpo')}_monitor.parquet")
+        monitor_prompts = pd.read_parquet(rows_path, columns=["prompt"])["prompt"].tolist()
+
+        def served_margins(prompts):
+            trainer.vllm_generation.sync_weights()
+            return vllm_margins(trainer.vllm_generation, tokenizer, prompts, chat_kwargs)
+
+        margin = _margin_monitor_class()(
+            monitor_prompts, served_margins, output_dir,
+            int(settings.get("steps", cfg.get("decision_eval_steps", 25))), settings,
+            cfg.get("sft_benchmark"))
+        trainer.add_callback(margin)
+        log.info("margin monitor on %d rows of %s", len(monitor_prompts), rows_path)
 
     manifest = {
         "mitigation_family": "grpo",
@@ -610,22 +984,48 @@ def train(cfg: dict) -> C.TrainArtifacts:
         "beta": args.beta,
         "num_generations": args.num_generations,
         "rewards": {"decision": DECISION_REWARD, "format": FORMAT_REWARD,
-                    "feedback_words": list(FEEDBACK_WORDS)},
+                    "feedback_words": list(FEEDBACK_WORDS),
+                    **({"free_consistency": 1.0} if consistency else {})},
         "n_train": len(train_ds),
         "sft_checkpoint": cfg.get("sft_checkpoint"),
     }
+    manifest["rollout_diagnostics"] = count_diagnostics_receipt
+    manifest["bias_projection"] = bias_projection
+    manifest["operating_point_anchor"] = anchor or None
+    if anchor_metadata_receipt is not None:
+        manifest["rollout_diagnostics"]["anchor_metadata"] = anchor_metadata_receipt
+    if continuation is not None:
+        manifest["continuation"] = {
+            **continuation["settings"], "identity_sha256": continuation["identity_sha256"],
+            "resume_from_checkpoint": resume, "rng_limitation": continuation["rng_limitation"],
+        }
+        manifest["training_arguments"] = args.to_dict()
+    if direct_contract is not None:
+        manifest["benchmark_dev_monitor"] = direct_contract["identity"]
+        manifest["benchmark_dev_monitor_identity_sha256"] = direct_contract["identity_sha256"]
+    if full_contract is not None:
+        manifest["full_benchmark_monitor"] = full_contract["identity"]
+        manifest["full_benchmark_monitor_identity_sha256"] = full_contract["identity_sha256"]
+    if manifest_extra is not None:
+        manifest.update(manifest_extra(args))
     # Before training as well: a run cut by a time limit never reaches the final write, and
     # its checkpoint-N adapters need `sft_checkpoint` to be merged with their SFT parent.
     if C.is_main_process():
         C.write_run_manifest(cfg, output_dir, {**manifest, "status": "training"})
-    resume = C.last_checkpoint(output_dir) if cfg.get("resume") else None
+    if continuation is None:
+        resume = C.last_checkpoint(output_dir) if cfg.get("resume") else None
     if resume:
         log.info("resuming from %s", resume)
-    log.info("GRPO %s on %d prompts x %d generations", cfg["base_model"], len(train_ds),
-             args.num_generations)
+    log.info("%s %s on %d prompts x %d generations", manifest["objective"].upper(),
+             cfg["base_model"], len(train_ds), args.num_generations)
     trainer.train(resume_from_checkpoint=resume)
     trainer.save_model(str(output_dir))
-    status = "aborted: hire rate left the band" if monitor and monitor.aborted else "done"
+    # A trainer that stops itself (dapo.DAPOTrainer, when its prompts run dry) says why.
+    status = (full_monitor.reason if full_monitor and full_monitor.aborted
+              else direct_monitor.reason if direct_monitor and direct_monitor.aborted
+              else "aborted: hire rate left the band" if monitor and monitor.aborted
+              else margin.reason if margin and margin.aborted
+              else getattr(trainer, "stop_reason", None) or "done")
     if C.is_main_process():
         tokenizer.save_pretrained(str(output_dir))
         C.write_run_manifest(cfg, output_dir, {**manifest, "status": status})

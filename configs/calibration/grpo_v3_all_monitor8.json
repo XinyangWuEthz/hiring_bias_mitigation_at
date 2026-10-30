@@ -1,0 +1,73 @@
+{
+  "experiment_id": "grpo_v3_all_monitor8_20261022",
+  "output_root": "/ritom/scratch/cscs/zhang/xw",
+  "parent": {
+    "label": "SFT-v3",
+    "run": "Qwen3.5-9B--en--sft--adapter--en_only_sft_v3_additional",
+    "model": "outputs/merged/qwen3.5-9b_en_only_sft_v3_additional"
+  },
+  "arms": [
+    {
+      "label": "DAPO-v3-all",
+      "run": "Qwen3.5-9B--en--grpo--adapter--en_only_dapo_v3_all",
+      "model": "outputs/merged/qwen3.5-9b_en_only_dapo_v3_all"
+    },
+    {
+      "label": "GRPO-v3-all",
+      "run": "Qwen3.5-9B--en--grpo--adapter--en_only_grpo_v3_all",
+      "model": "outputs/merged/qwen3.5-9b_en_only_grpo_v3_all"
+    },
+    {
+      "label": "GRPO-v3-all-step525",
+      "run": "Qwen3.5-9B--en--grpo--adapter--en_only_grpo_v3_all_step525",
+      "model": "outputs/merged/qwen3.5-9b_en_only_grpo_v3_all--checkpoint-525"
+    },
+    {
+      "label": "GRPO-v3",
+      "run": "Qwen3.5-9B--en--grpo--adapter--en_only_grpo_v3",
+      "model": "outputs/merged/qwen3.5-9b_en_only_grpo_v3"
+    },
+    {
+      "label": "DPO-v3",
+      "run": "Qwen3.5-9B--en--dpo--adapter--en_only_dpo_v3_step240",
+      "model": "outputs/merged/qwen3.5-9b_en_only_dpo_v3--checkpoint-240"
+    },
+    {
+      "label": "DPO-v3-onpolicy",
+      "run": "Qwen3.5-9B--en--dpo--adapter--en_only_dpo_v3_onpolicy_step98",
+      "model": "outputs/merged/qwen3.5-9b_en_only_dpo_v3_onpolicy--checkpoint-98"
+    },
+    {
+      "label": "DPO-v3-4880",
+      "run": "Qwen3.5-9B--en--dpo--adapter--en_only_dpo_v3_4880_step305",
+      "model": "outputs/merged/qwen3.5-9b_en_only_dpo_v3_4880--checkpoint-305"
+    }
+  ],
+  "rows": "artifacts/semisynthetic-v3/grpo-v3-all/grpo_monitor.parquet",
+  "train": "artifacts/semisynthetic-v3/grpo-v3-all/grpo_train.parquet",
+  "validation": "artifacts/semisynthetic-v3/grpo-v3-all/grpo_validation.parquet",
+  "expected_monitor_rows": 696,
+  "expected_monitor_candidates": 222,
+  "expected_train_rows": 9140,
+  "reference_metrics": "/ritom/scratch/cscs/zhang/xw/hiring_bias_mitigation_at-dapo/reports/reference_metrics.csv",
+  "limits": {
+    "max_abs_tpr_margin_error_pp": 2,
+    "max_optimism_generated_tpr_pp": 2,
+    "tpr_stop_pp": 8
+  },
+  "source_sha256": {
+    "artifacts/semisynthetic-v3/grpo-v3-all/grpo_monitor.parquet": "5c6066fcbd897e5a16fd992347f75caa00a5e18042142de74f8907b3e8923c83",
+    "artifacts/semisynthetic-v3/grpo-v3-all/grpo_train.parquet": "a2204df3c0ba784b5205b3bc27757a1396c4da125cf509949594ec5f89a69e5c",
+    "artifacts/semisynthetic-v3/grpo-v3-all/grpo_validation.parquet": "873cc509527544d17211e8c6928a4fde6041a4ae2cc9f070df00c69bbeb48a8c",
+    "outputs/raw/Qwen3.5-9B--en--sft--adapter--en_only_sft_v3_additional.parquet": "15863af88ae90cf8de249a9b6d7f9bdf1de1a247bb0983af660112dfafe3a457",
+    "outputs/operating_point/v2/Qwen3.5-9B--en--sft--adapter--en_only_sft_v3_additional--adapter.parquet": "ab9c84c76a0b3394483df1e18782cb61375a8a5c398374b95a5f5f519068fc48",
+    "outputs/operating_point/v2/Qwen3.5-9B--en--grpo--adapter--en_only_dapo_v3_all--adapter.parquet": "11b8de96abadd8f9e0f267c81e6b8128d6cfdb1d9a48e12fa6c8b21ed7aa1e38",
+    "outputs/operating_point/v2/Qwen3.5-9B--en--grpo--adapter--en_only_grpo_v3_all--adapter.parquet": "a0e99e784bdf2db6e5f56c46fec132dcf939459ddeb82c39613643d0ef135f4b",
+    "outputs/operating_point/v2/Qwen3.5-9B--en--grpo--adapter--en_only_grpo_v3_all_step525--adapter.parquet": "b0a8630e33fe59ac74777187e3b4393fc4092cc80913d242b3b4162a647563b3",
+    "outputs/operating_point/v2/Qwen3.5-9B--en--grpo--adapter--en_only_grpo_v3--adapter.parquet": "bae84c70751412176e2d94b22004a052cafc5bd2732e8cb106145a73433d8f0e",
+    "outputs/operating_point/v2/Qwen3.5-9B--en--dpo--adapter--en_only_dpo_v3_step240--adapter.parquet": "4ff6ac7fecdb82501b9d5a5febb0e48b38a9b532e0bfefa8a14c4a44c4e04875",
+    "outputs/operating_point/v2/Qwen3.5-9B--en--dpo--adapter--en_only_dpo_v3_onpolicy_step98--adapter.parquet": "feb4f96481c2a67fb10ed50ebf4994097cb05cf2929f31504fde2f6aff4fbea1",
+    "outputs/operating_point/v2/Qwen3.5-9B--en--dpo--adapter--en_only_dpo_v3_4880_step305--adapter.parquet": "576dcbdd8d1a68eb191fdd2c9338d661c906aad755ee4a8738bd4b7e0f5cfb80",
+    "hiring_bias_mitigation_at-dapo/reports/reference_metrics.csv": "4e1da22df22656608b58b5ebd7df5cc8c2508bcd780a6acefebe766c1471d7c3"
+  }
+}

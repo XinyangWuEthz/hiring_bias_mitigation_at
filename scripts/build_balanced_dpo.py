@@ -26,6 +26,9 @@ Output, next to the other splits so a training config reads it with `data_kind: 
 
 What each stage keeps and drops, and why the balance is on error mass rather than on count
 alone: `src/hiring_bias_mitigation/generation/balanced_dpo.py`.
+
+V3 balances each pool source on its own (`build --balance-by pool_source`, docs/V3_NEW_DATA.md
+round 2); its pools carry `pool_source`, which `normalise_pairs` keeps.
 """
 
 from __future__ import annotations
@@ -284,24 +287,31 @@ def cmd_build(args, paths: dict[str, Path]) -> None:
 
     train, validation, report = BD.assemble(
         candidates, scores, judge, tolerance=args.tolerance, min_keep=args.min_keep,
-        seed=args.seed, require_judge=not args.skip_judge,
+        seed=args.seed, require_judge=not args.skip_judge, balance_by=args.balance_by,
     )
     train.to_parquet(paths["train"], index=False)
     validation.to_parquet(paths["validation"], index=False)
     report["parameters"] = {"tolerance": args.tolerance, "min_keep": args.min_keep,
-                            "seed": args.seed, "students": sorted(set(scores["student"]))}
+                            "seed": args.seed, "balance_by": args.balance_by,
+                            "students": sorted(set(scores["student"]))}
     paths["report"].write_text(_json(report), encoding="utf-8")
 
     balance = report["balance"]
-    print("\n            pairs   error mass   student wrong")
-    for stage in ("before", "after"):
-        for side, row in balance[stage].items():
-            print(f"{stage:>7} {side:<7} {row['pairs']:>6,}   {row['error_mass']:>9.1f}"
-                  f"   {row['student_wrong']:>8,}")
-    trimmed = balance["trimmed_most_confidently_wrong"]
-    print(f"\ntrimmed {trimmed['pairs']} {trimmed['side']}-side pairs the student was most "
-          f"confidently wrong on (p_wrong >= {trimmed['p_wrong_at_least']})")
-    print(f"train {len(train):,} pairs ({report['steps_per_epoch_at_effective_batch_16']} "
+    groups = balance["groups"] if args.balance_by else {"all": balance}
+    for name, group in groups.items():
+        print(f"\n{args.balance_by or 'pairs'} {name}")
+        if "left_out" in group:
+            print(f"  LEFT OUT: {group['left_out']}")
+            continue
+        print("            pairs   error mass   student wrong")
+        for stage in ("before", "after"):
+            for side, row in group[stage].items():
+                print(f"{stage:>7} {side:<7} {row['pairs']:>6,}   {row['error_mass']:>9.1f}"
+                      f"   {row['student_wrong']:>8,}")
+        trimmed = group["trimmed_most_confidently_wrong"]
+        print(f"trimmed {trimmed['pairs']} {trimmed['side']}-side pairs the student was most "
+              f"confidently wrong on (p_wrong >= {trimmed['p_wrong_at_least']})")
+    print(f"\ntrain {len(train):,} pairs ({report['steps_per_epoch_at_effective_batch_16']} "
           f"steps per epoch at batch 16), validation {len(validation):,}")
     print(f"wrote {paths['train']}, {paths['validation']}, {paths['report']}")
 
@@ -360,6 +370,9 @@ def main() -> None:
                    help="fail rather than keep less than this share of the smaller side")
     b.add_argument("--skip-judge", action="store_true",
                    help="build without LLM-judge verdicts on the legacy pairs")
+    b.add_argument("--balance-by",
+                   help="balance within each value of this column, e.g. V3's pool_source; "
+                        "validation is then balanced by count per value and protected group")
 
     args = parser.parse_args()
     require_output_root()

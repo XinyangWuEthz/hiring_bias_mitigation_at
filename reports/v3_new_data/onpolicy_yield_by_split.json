@@ -1,0 +1,193 @@
+{
+  "run": "artifacts/semisynthetic-v3/onpolicy-full",
+  "validation": "artifacts/semisynthetic-v3/additional/sft_validation.parquet",
+  "sft_train": "artifacts/semisynthetic-v3/additional/additional_sft_train.parquet",
+  "by_pool_source": {
+    "djinni_new": {
+      "sft_train_row_left_out": {
+        "all": {
+          "rows": 26781,
+          "candidates": 3142,
+          "tipped": 541,
+          "tipped_per_row_pct": 2.02
+        },
+        "by_anchor": {
+          "reject": {
+            "rows": 26781,
+            "candidates": 3142,
+            "tipped": 541,
+            "tipped_per_row_pct": 2.02
+          }
+        }
+      },
+      "sft_train_row_trained": {
+        "all": {
+          "rows": 21705,
+          "candidates": 3995,
+          "tipped": 698,
+          "tipped_per_row_pct": 3.22
+        },
+        "by_anchor": {
+          "hire": {
+            "rows": 10822,
+            "candidates": 903,
+            "tipped": 525,
+            "tipped_per_row_pct": 4.85
+          },
+          "reject": {
+            "rows": 10883,
+            "candidates": 3092,
+            "tipped": 173,
+            "tipped_per_row_pct": 1.59
+          }
+        }
+      },
+      "sft_validation": {
+        "all": {
+          "rows": 2664,
+          "candidates": 222,
+          "tipped": 98,
+          "tipped_per_row_pct": 3.68
+        },
+        "by_anchor": {
+          "hire": {
+            "rows": 672,
+            "candidates": 56,
+            "tipped": 54,
+            "tipped_per_row_pct": 8.04
+          },
+          "reject": {
+            "rows": 1992,
+            "candidates": 166,
+            "tipped": 44,
+            "tipped_per_row_pct": 2.21
+          }
+        }
+      }
+    },
+    "kaggle_linkedin": {
+      "sft_train_row_left_out": {
+        "all": {
+          "rows": 12127,
+          "candidates": 680,
+          "tipped": 261,
+          "tipped_per_row_pct": 2.15
+        },
+        "by_anchor": {
+          "reject": {
+            "rows": 12127,
+            "candidates": 680,
+            "tipped": 261,
+            "tipped_per_row_pct": 2.15
+          }
+        }
+      },
+      "sft_train_row_trained": {
+        "all": {
+          "rows": 5017,
+          "candidates": 722,
+          "tipped": 169,
+          "tipped_per_row_pct": 3.37
+        },
+        "by_anchor": {
+          "hire": {
+            "rows": 2508,
+            "candidates": 168,
+            "tipped": 133,
+            "tipped_per_row_pct": 5.3
+          },
+          "reject": {
+            "rows": 2509,
+            "candidates": 653,
+            "tipped": 36,
+            "tipped_per_row_pct": 1.43
+          }
+        }
+      },
+      "sft_validation": {
+        "all": {
+          "rows": 888,
+          "candidates": 37,
+          "tipped": 45,
+          "tipped_per_row_pct": 5.07
+        },
+        "by_anchor": {
+          "hire": {
+            "rows": 156,
+            "candidates": 10,
+            "tipped": 32,
+            "tipped_per_row_pct": 20.51
+          },
+          "reject": {
+            "rows": 732,
+            "candidates": 34,
+            "tipped": 13,
+            "tipped_per_row_pct": 1.78
+          }
+        }
+      }
+    },
+    "rjdb": {
+      "sft_train_row_left_out": {
+        "all": {
+          "rows": 3959,
+          "candidates": 1404,
+          "tipped": 70,
+          "tipped_per_row_pct": 1.77
+        },
+        "by_anchor": {
+          "hire": {
+            "rows": 3959,
+            "candidates": 1404,
+            "tipped": 70,
+            "tipped_per_row_pct": 1.77
+          }
+        }
+      },
+      "sft_train_row_trained": {
+        "all": {
+          "rows": 27620,
+          "candidates": 2636,
+          "tipped": 380,
+          "tipped_per_row_pct": 1.38
+        },
+        "by_anchor": {
+          "hire": {
+            "rows": 13779,
+            "candidates": 1479,
+            "tipped": 230,
+            "tipped_per_row_pct": 1.67
+          },
+          "reject": {
+            "rows": 13841,
+            "candidates": 1157,
+            "tipped": 150,
+            "tipped_per_row_pct": 1.08
+          }
+        }
+      },
+      "sft_validation": {
+        "all": {
+          "rows": 1704,
+          "candidates": 142,
+          "tipped": 139,
+          "tipped_per_row_pct": 8.16
+        },
+        "by_anchor": {
+          "hire": {
+            "rows": 996,
+            "candidates": 83,
+            "tipped": 75,
+            "tipped_per_row_pct": 7.53
+          },
+          "reject": {
+            "rows": 708,
+            "candidates": 59,
+            "tipped": 64,
+            "tipped_per_row_pct": 9.04
+          }
+        }
+      }
+    }
+  }
+}

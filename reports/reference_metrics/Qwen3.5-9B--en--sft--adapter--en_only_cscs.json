@@ -49,7 +49,7 @@
   "primary_conforms": true,
   "primary_other_comparisons": null,
   "raw_sha256": "3114facd75569a81",
-  "code_commit": "ceb175d",
-  "code_uncommitted": false,
-  "computed_at": "2026-10-20T11:45:49Z"
+  "code_commit": "a8226ea",
+  "code_uncommitted": true,
+  "computed_at": "2026-10-20T21:10:45Z"
 }

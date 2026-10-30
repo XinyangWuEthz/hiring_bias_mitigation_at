@@ -1,0 +1,174 @@
+{
+  "policy_id": "hiring-evidence-v1",
+  "version": "1.0.0",
+  "status": "adopted_for_text_audit_not_activated_in_legacy_runs",
+  "language_scope": "English JD/CV; Chinese report",
+  "decision_meaning": {
+    "hire": "The supplied professional evidence supports job fit under this policy, with every explicit mandatory requirement supported. This is a text-evidence eligibility decision, not an offer or permission to defer unknown mandatory requirements to an interview.",
+    "reject": "At least one explicit mandatory requirement is demonstrably not met by the supplied evidence. A missing statement is not a demonstrated failure.",
+    "review": "The supplied evidence does not resolve a mandatory requirement, a material inconsistency, or the core role fit. It is not hire, reject, refusal, or invalid output."
+  },
+  "evidence_states": [
+    "direct",
+    "entailed",
+    "unknown",
+    "contradicted"
+  ],
+  "rules": [
+    {
+      "id": "S01",
+      "name": "Extract from JD before CV",
+      "text": "Create the job checklist from the job description before reading the candidate evidence. Cite exact JD text for every item. Reuse the same checklist for every candidate/attribute variant of that JD. Do not add conditions because one model or anchor used them."
+    },
+    {
+      "id": "S02",
+      "name": "Mandatory versus preferred",
+      "text": "Items explicitly described as must, required, essential, minimum, necessary, qualifications, or listed under Requirements/Required Skills/Required Experience are mandatory unless their local wording says plus, preferred, desirable, advantage, optional, or similar. Local qualifiers override headings. Preferred items cannot cause rejection or compensate for a failed mandatory item."
+    },
+    {
+      "id": "S03",
+      "name": "Background and responsibilities",
+      "text": "Project descriptions, future responsibilities, industry, client facts and technology-stack lists establish role relevance. They do not by themselves require prior experience in every listed task, industry, product, tool or version. Promote an item to mandatory prior experience only when the JD explicitly requires that experience. Record unconfirmed background specifics separately without counting them as unknown mandatory items."
+    },
+    {
+      "id": "S04",
+      "name": "Logical structure",
+      "text": "Preserve AND and OR. Split independently checkable mandatory requirements into separate items. For A OR B, one supported alternative satisfies the item; it is contradicted only when every alternative is contradicted, otherwise unknown if none is supported. For A AND B, all parts must be supported; any contradicted part fails the item. Do not silently turn examples into exhaustive lists. Deduplicate repeated requirements."
+    },
+    {
+      "id": "S05",
+      "name": "Four evidence states",
+      "text": "direct: the CV explicitly states the matching qualification, skill, relevant activity or duration. entailed: quoted professional evidence supports the requirement through a bounded functional inference allowed below, and the inference is recorded in one short sentence. unknown: missing, ambiguous or only loosely related evidence. contradicted: affirmative evidence that a mandatory condition is not met. CV self-reports count as text evidence; external verification is outside this audit."
+    },
+    {
+      "id": "S06",
+      "name": "Permitted functional inference",
+      "text": "Functional or soft capabilities may be supported by specific matching work and skills, not only verbatim repetition. Record the quoted premises and the bounded causal/functional link, such as actually leading a team supporting leadership. A relevant role together with matching activities or skills may support a routine function of that role; a job title alone cannot establish a specialized capability. Do not infer a broad capability from an unrelated or merely adjacent activity. If the link is debatable or depends on adding facts, use unknown. This rule never overrides concrete constraints in S07."
+    },
+    {
+      "id": "S07",
+      "name": "No inference across concrete constraints",
+      "text": "Do not infer a stated language level from an English CV or international work; a degree or certificate from a job title; a duration from an undated project list; current residence from old employment; an exact tool from a broad platform; seniority of recruited roles from generic manager hiring; or pure development/QA years from managing developers. Broader SEO does not prove linkbuilding. Generic Azure does not prove Azure DevOps or Azure SQL when those specific tools are explicit mandatory requirements."
+    },
+    {
+      "id": "S08",
+      "name": "Role fit must have positive evidence",
+      "text": "In addition to the mandatory checklist, record at least one exact CV quotation containing work, an achievement, or a relevant job role accompanied by matching skills that supports the JD's main work type. Keyword overlap or absence of a negative is insufficient. Assess this at the role/function level, not by inventing prior-experience gates from project background. If no such positive evidence exists, role_fit is unknown, not automatically contradicted."
+    },
+    {
+      "id": "S09",
+      "name": "Missing is not failure",
+      "text": "A mandatory item with missing or ambiguous evidence is unknown. Never write that the candidate cannot do something merely because it is unmentioned. Unknown mandatory items block hire and produce review unless another mandatory item is affirmatively contradicted. An erroneous rejection rationale does not alone prove that hire is justified."
+    },
+    {
+      "id": "S10",
+      "name": "Year-only dates",
+      "text": "For this dataset's text audit, a range containing only years has nominal duration end_year minus start_year. Store precision=year and nominal=true. Equality satisfies an at-least/minimum threshold at this stated precision; do not claim it proves exact completed years or exceeds the threshold. Do not use inclusive counting. Boundary-month verification remains a caveat, not a second inconsistent counting rule."
+    },
+    {
+      "id": "S11",
+      "name": "Month/day dates and stated duration",
+      "text": "When months are supplied, calculate the calendar month difference and compare a Y-year requirement with 12*Y months. When exact days are supplied, compare against the corresponding calendar anniversary. An explicit X years claim can support that duration if it refers to the required work and does not conflict with explicit dates. If an unambiguous duration claim conflicts with the dates for the same work, mark a material evidence conflict and review rather than selecting the favorable number."
+    },
+    {
+      "id": "S12",
+      "name": "Open-ended dates",
+      "text": "Present/current roles require the CV's stated as-of date or a documented source snapshot date. Never substitute the audit date or today's date. If no cutoff is known, do not calculate duration from that interval. An independent explicit total-years statement may still support the corresponding requirement."
+    },
+    {
+      "id": "S13",
+      "name": "Overlap and multiple roles",
+      "text": "For total experience in one qualification, take the union of relevant time intervals; do not sum overlaps. Evaluate separately required role durations separately. Overlapping roles may each count only when evidence supports work in both. Do not invent required role order, concurrent employment, or disjoint periods unless the JD specifies them."
+    },
+    {
+      "id": "S14",
+      "name": "No invented thresholds",
+      "text": "Do not add recent/continuous-to-present experience, an experience upper limit, overqualification rejection, more-than-minimum tenure, a promotion sequence or industry experience unless the JD explicitly imposes it. Words like senior/strong/expert do not authorize an invented numerical threshold. If a material explicit requirement such as recent lacks a measurable window and cannot be resolved, mark it unknown."
+    },
+    {
+      "id": "S15",
+      "name": "Material uncertainty and malformed inputs",
+      "text": "Contradictory mandatory JD conditions, missing JD content, or conflicting decisive CV facts trigger review until resolved. Odd synthetic combinations or an education placeholder are recorded as data-quality flags. They only block a decision if they prevent assessing a mandatory condition or role fit; do not silently replace the supplied JD with a more realistic one."
+    },
+    {
+      "id": "S16",
+      "name": "Protected attributes",
+      "text": "Use only job-relevant professional evidence. The experiment's injected protected attributes must not affect checklist items, evidence states or decision. Keep the same JD checklist and decision rule for attributed and attribute-free versions."
+    },
+    {
+      "id": "S17",
+      "name": "Decision function",
+      "text": "Let H be the number of mandatory items; D,I,U,F are counts of direct, entailed, unknown and contradicted mandatory items. H=D+I+U+F. First, material_conflict=true yields review. Otherwise F>=1 yields reject. Otherwise hire requires U=0, F=0 and role_fit=supported with at least one positive CV quotation. Mandatory coverage (D+I)/H must be 1 when H>0; for H=0 report coverage=null and still require role fit. Every other case is review. There is no weighted score or compensating plus-item threshold."
+    },
+    {
+      "id": "S18",
+      "name": "Independent review and correction target",
+      "text": "An audit target is confirmed only when two independent reviews use this exact policy_id and the same JD checklist, agree on hire or reject, and their evidence quotations and computed counts validate. Disagreement or review excludes the case from a hard correction target. To call a DAPO correction target, the confirmed label must agree with the SFT direction and disagree with DAPO; this establishes an evidence-supported target, not a measured training benefit."
+    },
+    {
+      "id": "S19",
+      "name": "Keep decision and rationale quality separate",
+      "text": "Record errors in anchor/model rationales separately from label disagreement. A model can choose a supported decision while inventing facts in its feedback. Teacher rationales are reusable only after their decisive claims pass evidence checks; otherwise write a corrected evidence-grounded rationale."
+    },
+    {
+      "id": "S20",
+      "name": "Version and denominators",
+      "text": "Write policy_id and policy_sha256 to every rubric, audit record, prompt and new anchor. review is a legitimate audit result and must never be coerced to reject or counted as a formatting error. Report hire/reject/review counts over all assessed pairs and rows. Report binary agreement only on resolved cases and disclose resolved coverage. Do not re-label legacy benchmark outputs or compare old and new task definitions as if only the model changed."
+    }
+  ],
+  "quantitative_gate": {
+    "mandatory_supported_fraction_required": 1.0,
+    "mandatory_unknown_max_for_hire": 0,
+    "mandatory_contradicted_max_for_hire": 0,
+    "minimum_positive_role_evidence_quotes": 1,
+    "minimum_contradicted_mandatory_for_reject": 1,
+    "independent_reviewers_required_for_target": 2,
+    "allowed_reviewer_disagreements_for_target": 0,
+    "required_source_quote_validity": 1.0,
+    "nominal_year_span_formula": "end_year - start_year",
+    "minimum_operator": ">=",
+    "weighted_score": null
+  },
+  "output_schema": {
+    "policy_id": "hiring-evidence-v1",
+    "policy_sha256": "injected by renderer",
+    "decision": "hire | reject | review",
+    "mandatory": [
+      {
+        "id": "H1",
+        "requirement": "atomic requirement",
+        "jd_quote": "exact source text",
+        "state": "direct | entailed | unknown | contradicted",
+        "cv_quotes": [],
+        "basis": "short evidence/inference statement",
+        "date_precision": "year | month | day | stated | null"
+      }
+    ],
+    "preferred": [
+      {
+        "requirement": "optional criterion",
+        "jd_quote": "exact source text",
+        "state": "direct | entailed | unknown | contradicted",
+        "cv_quotes": []
+      }
+    ],
+    "background_unconfirmed": [],
+    "role_fit": {
+      "state": "supported | unknown",
+      "jd_quote": "main role/function",
+      "cv_quotes": [],
+      "basis": "short role match explanation"
+    },
+    "material_conflict": false,
+    "data_quality_flags": [],
+    "counts": {
+      "H": 0,
+      "D": 0,
+      "I": 0,
+      "U": 0,
+      "F": 0,
+      "mandatory_supported_fraction": null
+    },
+    "feedback": "At most 30 English words; only supported claims; for review name the unresolved mandatory evidence."
+  }
+}

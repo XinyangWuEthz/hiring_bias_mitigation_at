@@ -7,6 +7,9 @@
 #   CONFIGS="configs/audit/a.yaml configs/audit/b.yaml" \
 #     scripts/cscs/submit.sh -p debug -t 00:30:00 scripts/cscs/run_audits.sbatch
 #
+# A model too large for one GPU takes several: GPUS_PER_CONFIG=4 gives one config all four,
+# for a config with tensor_parallel_size: 4 (the 122B teacher).
+#
 #SBATCH --job-name=xw-audit
 #SBATCH --account=lp193
 #SBATCH --partition=normal
@@ -24,16 +27,19 @@ type cost > /dev/null 2>&1 || cost() { shift 2; "$@"; }
 [ -x "$PY" ] || { echo "FATAL: no venv at $XW/venv -- run scripts/cscs/build_env.sbatch first"; exit 3; }
 export HF_HUB_OFFLINE=1
 read -r -a configs <<< "${CONFIGS:?set CONFIGS to up to four audit configs}"
-[ ${#configs[@]} -le 4 ] || { echo "FATAL: at most four configs, one per GPU"; exit 2; }
+GPC=${GPUS_PER_CONFIG:-1}
+[ $(( ${#configs[@]} * GPC )) -le 4 ] \
+  || { echo "FATAL: ${#configs[@]} configs x $GPC GPUs each do not fit on four GPUs"; exit 2; }
 cd "$REPO"
 echo "host $(hostname) | job ${SLURM_JOB_ID:-none} | commit $(git rev-parse --short HEAD 2>/dev/null || echo n/a)"
 
-step "audits: ${configs[*]}"
+step "audits: ${configs[*]} ($GPC GPU per config)"
 pids=(); fail=0
-for g in "${!configs[@]}"; do
-  name=$(basename "${configs[$g]}" .yaml)
-  CUDA_VISIBLE_DEVICES=$g cost eval audit \
-    $PY scripts/run_audit.py --config "${configs[$g]}" --no-similarity \
+for i in "${!configs[@]}"; do
+  name=$(basename "${configs[$i]}" .yaml)
+  devices=$(seq $(( i * GPC )) $(( i * GPC + GPC - 1 )) | paste -sd, -)
+  CUDA_VISIBLE_DEVICES=$devices cost eval audit \
+    $PY scripts/run_audit.py --config "${configs[$i]}" --no-similarity \
     > "$XW/logs/xw-audit-${SLURM_JOB_ID:-local}-$name.log" 2>&1 &
   pids+=($!)
 done

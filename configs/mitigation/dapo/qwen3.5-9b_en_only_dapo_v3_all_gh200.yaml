@@ -1,0 +1,100 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+#
+# DAPO-v3-all: GRPO-v3-all (configs/mitigation/grpo/qwen3.5-9b_en_only_grpo_v3_all_gh200.yaml) with
+# DAPO's changes and a strict balance of the reference verdicts in what trains
+# (mitigation/dapo.py), on the same prompts. Pre-registration: docs/DAPO_V3.md.
+#   dynamic sampling      a group whose 16 decisions are all right or all wrong is dropped and more
+#                         prompts are probed, up to 8 rounds; up to 4 groups per verdict per rank
+#                         and rollout. Not DAPO: each verdict then trains as many groups as the
+#                         scarcer one kept, over all ranks. Stops when the share of the quota that
+#                         trains averages under half over 25 rollouts (50 optimizer steps).
+#   beta 0                no KL term (GRPO-v3-all: 0.04 toward SFT-v3)
+#   epsilon_high 0.28     clip-higher, epsilon 0.2 below
+#   steps_per_generation  16 with accumulation 8: a rollout of 32 prompts trains two optimizer steps,
+#                         so the second is off the rollout's policy and the clip can bind
+#                         (GRPO-v3-all: 16 prompts, one step; its clip_ratio stayed 0)
+#   save_steps 24         a whole number of rollouts: a checkpoint inside one resumes onto a fresh
+#                         rollout of its prompts (GRPO-v3-all: 25)
+#   overlong_buffer 16    soft overlong punishment from 80 of 96 tokens (GRPO-v3-all: longest
+#                         untruncated answer 67 tokens, one of ~146k completions cut at 96)
+#   loss_type dapo        TRL's default, which GRPO-v3-all also used; set explicitly
+# Unchanged: SFT-v3 as the start, LoRA r 32, lr 3e-5, 16 generations, 16 prompts per optimizer
+# step, one epoch of the main sampler (~570 steps), the monitor on SFT-v3's benchmark rates with
+# the band 15-35%. The audited checkpoint is the final adapter.
+#   HBM_COST_ARM=dapo_v3_all REPO=$PWD \
+#   CONFIG=configs/mitigation/dapo/qwen3.5-9b_en_only_dapo_v3_all_gh200.yaml \
+#     scripts/cscs/submit.sh -p normal -t 11:15:00 scripts/cscs/train_dapo.sbatch
+stage: dapo
+objective: dapo
+data_kind: grpo
+base_model: Qwen/Qwen3.5-9B
+sft_checkpoint: outputs/sft/qwen3.5-9b_en_only_sft_v3_additional
+data_config: configs/data/en_only_grpo_v3_all.yaml
+output_dir: outputs/dapo/qwen3.5-9b_en_only_dapo_v3_all
+chat_template_kwargs:
+  enable_thinking: false
+use_lora: true
+lora_r: 32
+lora_alpha: 64
+lora_dropout: 0.0              # dropout makes the policy's log-probs noisy against vLLM's
+disable_dropout: true
+# DAPO
+loss_type: dapo                # token-level: every completion token of the batch weighs the same
+beta: 0.0                      # no KL term, no reference forward pass
+epsilon: 0.2
+epsilon_high: 0.28
+dynamic_sampling: true
+dynamic_sampling_balance: true       # each verdict trains as many groups as the scarcer one kept
+dynamic_sampling_max_rounds: 8       # probe batches per rollout, the first included
+dynamic_sampling_min_fill: 0.5
+dynamic_sampling_patience: 25        # rollouts (50 optimizer steps) over which the mean fill is read
+overlong_buffer: 16
+overlong_penalty: 1.0
+mask_truncated_completions: false    # the paper's best run did without overlong filtering
+# Rollouts, as GRPO-v3-all
+num_generations: 16
+temperature: 1.0
+top_p: 1.0
+max_completion_length: 96      # SFT answers are ~40 tokens of JSON
+use_vllm: true
+vllm_mode: colocate
+vllm_gpu_memory_utilization: 0.30   # of 95.6 GiB; the policy and its optimizer take ~30 GB
+vllm_max_model_length: 4096         # longest prompt ~2.5k tokens, plus 96
+vllm_engine_kwargs:
+  gdn_prefill_backend: triton       # no CUDA toolkit on Daint for FlashInfer's JIT
+  language_model_only: true         # text prompts only: no vision-encoder profiling (job 5065963)
+log_completions: false
+# Optimisation: 8 completions per GPU per micro-step x 4 GPUs x 8 accumulation = 256 completions
+# = 16 prompts x 16 per optimizer step, as GRPO-v3-all. A rollout is 16 micro-steps per GPU: 128
+# completions per rank (8 groups), 512 in all (32 prompts), for two optimizer steps.
+num_train_epochs: 1
+max_steps: -1
+learning_rate: 3.0e-05
+lr_scheduler_type: constant_with_warmup
+warmup_steps: 5
+per_device_train_batch_size: 8
+gradient_accumulation_steps: 8
+steps_per_generation: 16
+gradient_checkpointing: true
+weight_decay: 0.0
+dtype: bfloat16
+seed: 42
+logging_steps: 1
+memory_floor_gb: 12
+wandb_project: hiring-bias-mitigation
+wandb_run_name: dapo-qwen3.5-9b_en_only_dapo_v3_all
+# Monitors, as GRPO-v3-all (mitigation/grpo.py: SyncValidationCallback, DecisionMonitorCallback).
+sync_validate_rows: 256
+sync_validate_steps: 50
+decision_eval_rows: 256
+decision_eval_steps: 25
+hire_rate_band: [0.15, 0.35]
+sft_benchmark:
+  hire_rate_ref_hire: 0.5773
+  hire_rate_ref_reject: 0.05266
+resume: true
+save_steps: 24
+save_total_limit: 20
+ddp_find_unused_parameters: false
+gradient_checkpointing_kwargs:
+  use_reentrant: false

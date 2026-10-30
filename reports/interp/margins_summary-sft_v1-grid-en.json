@@ -1,0 +1,17 @@
+{
+  "spec": "sft_v1",
+  "dataset": "grid-en",
+  "rows": 31050,
+  "hire_rate_pct": 27.61030595813205,
+  "audit": {
+    "audit_run": "Qwen3.5-9B--en--sft--adapter--en_only",
+    "available": true,
+    "rows_matched": 31050,
+    "agreement_pct": 99.4074074074074,
+    "hire_rate_hf_pct": 27.61030595813205,
+    "hire_rate_audit_pct": 28.048309178743963,
+    "unstable_sets_hf_pct": 7.333333333333333,
+    "unstable_sets_audit_pct": 7.222222222222221,
+    "margin_bf16_minus_fp32_abs_mean": 0.04185927286744118
+  }
+}

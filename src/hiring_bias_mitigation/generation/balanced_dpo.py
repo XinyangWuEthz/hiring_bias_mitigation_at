@@ -77,6 +77,9 @@ COLUMNS = (
     "protected_group", "protected_attr", "condition", "candidate_id", "job_id", "pair_id",
     "source", "split",
 )
+#: Kept from a pool that carries them. V3's pairs are balanced per `pool_source`
+#: (`assemble(balance_by=...)`), and a column the schema dropped could not be balanced by.
+PASSTHROUGH = ("pool_source",)
 
 
 # ---------------------------------------------------------------------------------------
@@ -177,7 +180,8 @@ def normalise_pairs(
     for reason, n in report.items():
         if reason.startswith("dropped") and n:
             log.warning("%s (%s): %s = %d", source, split, reason, n)
-    return df[list(COLUMNS)].reset_index(drop=True), report
+    kept = list(COLUMNS) + [c for c in PASSTHROUGH if c in df.columns]
+    return df[kept].reset_index(drop=True), report
 
 
 @cache
@@ -469,6 +473,57 @@ def balance_error_mass(
     return selected.reset_index(drop=True), report
 
 
+def balance_error_mass_by(
+    df: pd.DataFrame, by: str, tolerance: float = 0.05, min_keep: float = 0.5, seed: int = 42
+) -> tuple[pd.DataFrame, dict]:
+    """`balance_error_mass` within each value of `by`, each value on its own.
+
+    V3's pool sources differ in hire share (22%, 56% and 15% of anchors), so a pooled balance
+    would let one source supply a side for another; each source is balanced by count and by
+    error mass on its own. A value that cannot be balanced -- one side missing, or too few hard
+    pairs on the lighter side to keep `min_keep` -- stays out, with the reason in the report,
+    rather than failing the whole build.
+    """
+    if df[by].isna().any():
+        raise ValueError(f"{int(df[by].isna().sum())} pairs have no {by}; a per-{by} balance "
+                         "needs it on every pair")
+    parts, groups = [], {}
+    for value, part in df.groupby(by, sort=True):
+        try:
+            kept, groups[str(value)] = balance_error_mass(part, tolerance, min_keep, seed)
+        except ValueError as exc:
+            groups[str(value)] = {"left_out": str(exc), "before": side_summary(
+                part if "p_wrong" in part else with_student_error(part))}
+            log.warning("%s=%s left out: %s", by, value, exc)
+            continue
+        parts.append(kept)
+    if not parts:
+        raise ValueError(f"no {by} could be balanced: {groups}")
+    report = {"by": by, "groups": groups,
+              "left_out": sorted(k for k, v in groups.items() if "left_out" in v),
+              "after": side_summary(pd.concat(parts, ignore_index=True))}
+    return pd.concat(parts, ignore_index=True), report
+
+
+def balance_count_by(df: pd.DataFrame, by: list[str], seed: int = 42) -> tuple[pd.DataFrame, dict]:
+    """Equal hire and reject pairs within each cell of `by`: every pair of the scarcer verdict
+    and a seeded sample of the same size from the other. A cell lacking one verdict drops out.
+
+    How r1's validation was balanced (`onpolicy.balance_by_reference`, per protected group),
+    which r2em kept; V3 does it within each pool source as well.
+    """
+    parts, cells = [], {}
+    for key, part in df.groupby(by, sort=True):
+        hire, reject = part[part["decision"] == HIRE], part[part["decision"] == REJECT]
+        n = min(len(hire), len(reject))
+        parts += [hire.sample(n=n, random_state=seed), reject.sample(n=n, random_state=seed)]
+        name = " / ".join(map(str, key)) if isinstance(key, tuple) else str(key)
+        cells[name] = {"hire": n, "reject": n, "dropped": len(part) - 2 * n}
+    kept = pd.concat(parts).sort_index() if parts else df.iloc[:0]
+    return kept.reset_index(drop=True), {"by": list(by), "seed": seed, "n_input": len(df),
+                                         "n_kept": len(kept), "cells": cells}
+
+
 # ---------------------------------------------------------------------------------------
 # The whole build
 # ---------------------------------------------------------------------------------------
@@ -481,11 +536,17 @@ def assemble(
     min_keep: float = 0.5,
     seed: int = 42,
     require_judge: bool = True,
+    balance_by: str | None = None,
 ) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
     """Judge filter -> duplicates -> anchors -> candidate split -> leakage -> balance.
 
-    Returns (train, validation, report). Only the training split is balanced: validation
-    is a measurement, and its pairs never reach the gradient.
+    Returns (train, validation, report). Only the training split is balanced by error mass:
+    validation is a measurement, and its pairs never reach the gradient.
+
+    With `balance_by` (V3: `pool_source`), training is balanced within each value of that
+    column (`balance_error_mass_by`), and validation by count within each value and protected
+    group (`balance_count_by`), as r1's validation was before r2em kept it. A value left out of
+    training is left out of validation too.
     """
     report: dict = {"candidates": candidates["source"].value_counts().to_dict()}
     df = candidates
@@ -529,9 +590,18 @@ def assemble(
         )
     validation = validation.merge(score_cols, on="prompt_sha1", how="left")
 
-    train, report["balance"] = balance_error_mass(
-        with_student_error(train), tolerance=tolerance, min_keep=min_keep, seed=seed
-    )
+    if balance_by:
+        train, report["balance"] = balance_error_mass_by(
+            with_student_error(train), balance_by, tolerance=tolerance, min_keep=min_keep,
+            seed=seed)
+        left_out = validation[balance_by].astype(str).isin(report["balance"]["left_out"])
+        validation, report["validation_balance"] = balance_count_by(
+            validation[~left_out], [balance_by, "protected_group"], seed=seed)
+        report["validation_balance"]["left_out_with_training"] = int(left_out.sum())
+    else:
+        train, report["balance"] = balance_error_mass(
+            with_student_error(train), tolerance=tolerance, min_keep=min_keep, seed=seed
+        )
     train = train.sample(frac=1.0, random_state=seed).reset_index(drop=True)
 
     scored_val = validation.dropna(subset=["student_margin"])

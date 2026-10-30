@@ -1,0 +1,30 @@
+{
+  "merged": "Stereotypes-in-LLMs/qwen3.5-9b-hiring-debias-sft-v3-en",
+  "revision": "b6e5f2b361f19e07fa14f1f7fd7c7864b4eb97f1",
+  "spec": "sft",
+  "rows": 256,
+  "seed": 42,
+  "hire_rate_merged_pct": 23.828125,
+  "against_merged": {
+    "base": {
+      "mean_abs_diff": 8.360766410827637,
+      "max_abs_diff": 18.2037410736084,
+      "decision_agreement_pct": 87.109375
+    },
+    "sft": {
+      "mean_abs_diff": 0.10536466538906097,
+      "max_abs_diff": 0.6643118858337402,
+      "decision_agreement_pct": 100.0
+    },
+    "sft_v1": {
+      "mean_abs_diff": 6.5701375007629395,
+      "max_abs_diff": 15.346321105957031,
+      "decision_agreement_pct": 92.1875
+    }
+  },
+  "criteria": {
+    "max_disagree_pct": 1.0,
+    "max_mean_abs": 0.1
+  },
+  "passed": false
+}

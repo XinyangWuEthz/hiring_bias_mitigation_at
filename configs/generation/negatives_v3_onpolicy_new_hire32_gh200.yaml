@@ -1,0 +1,61 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py, so it survives a regeneration.
+#
+# k=32 hire top-up of round 3's pilot (djinni_new-003, rjdb-002), for GRPO-v3-all (docs/GRPO_V3.md, round 3): every hire-anchor row
+# of onpolicy-new sampled again by SFT-v3 at k=32, both prompts, as onpolicy-hire32 topped up
+# onpolicy-full. The hire side is GRPO's short side: on the pilot at k=8, 1,551 hire rows have a
+# sampled error against 1,677 reject rows, and on round 1's pool the k=32 top-up doubled the
+# tipped hire rows (958 to 1,964). Only the sample stage is run; the judge settings below are
+# onpolicy-full's and unused. The split follows onpolicy-new's (`topup_of`).
+#   HBM_COST_ARM=grpo_v3_all REPO=$PWD \
+#   CONFIG=configs/generation/negatives_v3_onpolicy_new_hire32_gh200.yaml \
+#     scripts/cscs/submit.sh -p normal -t 02:00:00 scripts/cscs/onpolicy_full.sbatch sample
+source_artifacts_dir: artifacts/semisynthetic-v3/new-pairs
+artifacts_dir: artifacts/semisynthetic-v3/onpolicy-new-hire32
+topup_of: artifacts/semisynthetic-v3/onpolicy-new
+# Each source's short side (onpolicy.filter_rows: a list of filters keeps rows matching any, a
+# list value matches any of its items).
+row_filter:
+- reference_decision: hire                     # every source's hire rows
+lang: en
+seed: 42
+# SFT-v3's validation candidates, as in the full run (generate_onpolicy_full.validation_ids).
+val_fraction: 0
+
+student_base: Qwen/Qwen3.5-9B
+student_adapter: outputs/sft/qwen3.5-9b_en_only_sft_v3_additional
+samples_per_prompt: 32
+min_free_right: 0.5
+# 128 prompts x 32 samples: the same samples per chunk as the full run's 512 x 8.
+chunk_size: 128
+student_vllm:
+  gpu_memory_utilization: 0.70      # of 95.6 GiB usable; anything near 96 GB OOMs
+  max_model_len: 8192
+  max_num_seqs: 256                 # 8 prompts x 32 samples in flight
+  engine_kwargs:
+    gdn_prefill_backend: triton     # no CUDA toolkit on Daint for FlashInfer's JIT
+student_generation:
+  max_new_tokens: 200
+  temperature: 1.0
+  top_p: 1.0
+  seed: 42
+
+judge_strategies:
+- student_tipped
+max_length_delta_words: 10
+min_plausibility: 3
+n_samples: 20
+
+# The teacher, as judge only -- the same settings as onpolicy-full and batch-01.
+teacher_model: Qwen/Qwen3.5-122B-A10B-GPTQ-Int4
+backend: vllm
+dtype: auto
+max_model_len: 8192
+tensor_parallel_size: 4
+gpu_memory_utilization: 0.80
+max_num_seqs: 128
+engine_kwargs:
+  gdn_prefill_backend: triton
+judge_generation:
+  max_new_tokens: 160
+  temperature: 0.0
+  top_p: 1.0

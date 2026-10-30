@@ -1,0 +1,105 @@
+{
+  "train": {
+    "preference_pairs": 272,
+    "cv_job_pairs": 149,
+    "candidates": 149,
+    "jobs": 149,
+    "reference_decision": {
+      "reject": 136,
+      "hire": 136
+    },
+    "chosen_hire_share": 0.5,
+    "by_group": {
+      "religion": 93,
+      "military_status": 91,
+      "gender": 88
+    },
+    "by_condition": {
+      "implicit": 154,
+      "explicit": 118
+    },
+    "by_source": {
+      "rjdb": {
+        "reject": 136,
+        "hire": 136
+      }
+    },
+    "chosen_words": {
+      "mean": 20.1,
+      "min": 10.0,
+      "p25": 18.0,
+      "median": 20.0,
+      "p75": 22.0,
+      "max": 28.0
+    },
+    "rejected_words": {
+      "mean": 20.5,
+      "min": 13.0,
+      "p25": 19.0,
+      "median": 20.0,
+      "p75": 23.0,
+      "max": 28.0
+    },
+    "rejected_minus_chosen_words": {
+      "mean": 0.4,
+      "min": -8.0,
+      "p25": -2.0,
+      "median": 0.5,
+      "p75": 3.0,
+      "max": 10.0
+    },
+    "student_margin": {
+      "mean": 0.09,
+      "min": -5.75,
+      "p25": -4.0,
+      "median": 0.3125,
+      "p75": 3.75,
+      "max": 8.875
+    },
+    "p_wrong": {
+      "mean": 0.04,
+      "min": 0.00013982207564732912,
+      "p25": 0.007577241267860811,
+      "median": 0.020332353342658753,
+      "p75": 0.05340332979982423,
+      "max": 0.24508501313237172
+    },
+    "columns": [
+      "prompt",
+      "chosen",
+      "rejected",
+      "decision",
+      "rejected_decision",
+      "lang",
+      "protected_group",
+      "protected_attr",
+      "condition",
+      "candidate_id",
+      "job_id",
+      "pair_id",
+      "r2em_pool",
+      "split",
+      "prompt_sha1",
+      "pair_sha1",
+      "sft_v1_margin",
+      "sft_v1_p_wrong",
+      "reference_decision",
+      "anchor_hire_votes",
+      "anchor_decided",
+      "anchor_unstable",
+      "anchor_changed",
+      "anchor_source",
+      "pool_source",
+      "source",
+      "dpo_v3_part",
+      "student_margin",
+      "p_wrong"
+    ]
+  },
+  "source_files": {
+    "train": {
+      "file": "pairs.parquet",
+      "sha256": "faf3a412778f1013626c52938dbf2364beae125a41d6160a1cb130e3d6999722"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+group,attribute,rows,hire,reject,split
+military_status,Participant in combat actions,264,109,155,train
+military_status,War veteran,248,123,125,train
+military_status,Reservist,267,128,139,train
+military_status,Military retiree,270,139,131,train
+military_status,Civilian,256,138,118,train
+gender,Male,65,32,33,train
+gender,Female,47,29,18,train
+gender,Non-Binary,61,27,34,train
+gender,Genderqueer,54,25,29,train
+gender,Genderfluid,60,27,33,train
+gender,Agender,63,33,30,train
+gender,Bigender,72,37,35,train
+gender,Two-Spirit,61,36,25,train
+gender,Androgynous,71,31,40,train
+gender,Transgender,65,31,34,train
+gender,Cisgender,75,41,34,train
+gender,Demigender,53,26,27,train
+gender,Neutrois,66,33,33,train
+gender,Pangender,56,28,28,train
+gender,Queer,62,32,30,train
+gender,Gender Nonconforming,69,26,43,train
+gender,Intersex,38,18,20,train
+gender,Third Gender,45,32,13,train
+gender,Demiboy,61,30,31,train
+gender,Demigirl,58,25,33,train
+religion,Christian,156,91,65,train
+religion,Muslim,143,72,71,train
+religion,Atheist,135,75,60,train
+religion,Hindu,159,74,85,train
+religion,Jew,143,81,62,train
+religion,Sikh,141,65,76,train
+religion,Jain,146,72,74,train
+religion,Buddhist,153,79,74,train
+religion,Zoroastrian,156,78,78,train
+military_status,Participant in combat actions,25,17,8,validation
+military_status,War veteran,41,21,20,validation
+military_status,Reservist,40,19,21,validation
+military_status,Military retiree,26,16,10,validation
+military_status,Civilian,31,12,19,validation
+gender,Male,5,2,3,validation
+gender,Female,4,2,2,validation
+gender,Non-Binary,8,4,4,validation
+gender,Genderqueer,6,5,1,validation
+gender,Genderfluid,14,6,8,validation
+gender,Agender,11,5,6,validation
+gender,Bigender,8,5,3,validation
+gender,Two-Spirit,8,4,4,validation
+gender,Androgynous,4,3,1,validation
+gender,Transgender,7,4,3,validation
+gender,Cisgender,7,3,4,validation
+gender,Demigender,10,8,2,validation
+gender,Neutrois,5,3,2,validation
+gender,Pangender,10,6,4,validation
+gender,Queer,11,8,3,validation
+gender,Gender Nonconforming,8,4,4,validation
+gender,Intersex,3,2,1,validation
+gender,Third Gender,6,2,4,validation
+gender,Demiboy,3,1,2,validation
+gender,Demigirl,9,0,9,validation
+religion,Christian,9,5,4,validation
+religion,Muslim,15,7,8,validation
+religion,Atheist,22,14,8,validation
+religion,Hindu,12,6,6,validation
+religion,Jew,19,10,9,validation
+religion,Sikh,15,7,8,validation
+religion,Jain,17,7,10,validation
+religion,Buddhist,13,9,4,validation
+religion,Zoroastrian,10,4,6,validation

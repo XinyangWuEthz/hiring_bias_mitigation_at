@@ -1,0 +1,15 @@
+{
+  "dataset": "pool",
+  "rows": 20700,
+  "rows_with_hard_violations": 0,
+  "rows_with_whitespace_merges": 13179,
+  "attribute_sets": 1800,
+  "attribute_sets_not_ok": 0,
+  "presence_suffix_aligned_share": 1.0,
+  "presence_prefix_aligned_share": 0.5266666666666666,
+  "n_tokens_p50_p95_max": [
+    695.0,
+    1183.4999999999927,
+    2369.0
+  ]
+}

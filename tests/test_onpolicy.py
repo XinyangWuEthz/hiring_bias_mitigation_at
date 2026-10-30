@@ -163,6 +163,17 @@ def test_row_filter_keeps_matching_rows_and_none_keeps_all():
     assert OP.filter_rows(rows, None) is rows
 
 
+def test_a_row_filter_list_matches_any_of_its_values():
+    """V3's top-up takes the hire rows of djinni_new and kaggle_linkedin, not RJDB's."""
+    rows = pd.DataFrame({"pair_id": ["a", "b", "c", "d"],
+                         "pool_source": ["djinni_new", "rjdb", "kaggle_linkedin", "djinni_new"],
+                         "reference_decision": ["hire", "hire", "hire", "reject"]})
+    kept = OP.filter_rows(rows, {"reference_decision": "hire",
+                                 "pool_source": ["djinni_new", "kaggle_linkedin"]})
+    assert kept["pair_id"].tolist() == ["a", "c"]
+    assert kept.index.tolist() == [0, 1]
+
+
 def _cands(keys: list[tuple[str, str, str]], tag: str) -> pd.DataFrame:
     return pd.DataFrame([{"pair_id": p, "protected_attr": a, "condition": c, "rejected": tag}
                          for p, a, c in keys])
@@ -291,7 +302,7 @@ def test_gendered_texts_are_never_reused_and_the_leak_filter_runs_on_the_new_att
     assert report["yield_by_attribute"]["Androgynous"] < 1.0
 
 
-def test_the_split_comes_from_split_of_then_topup_of_then_the_run_itself(tmp_path, monkeypatch):
+def _onpolicy_full_script():
     import importlib.util
     from pathlib import Path
 
@@ -300,6 +311,11 @@ def test_the_split_comes_from_split_of_then_topup_of_then_the_run_itself(tmp_pat
         Path(__file__).resolve().parents[1] / "scripts" / "generate_onpolicy_full.py")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
+    return module
+
+
+def test_the_split_comes_from_split_of_then_topup_of_then_the_run_itself(tmp_path, monkeypatch):
+    module = _onpolicy_full_script()
     monkeypatch.setenv("HBM_OUTPUT_ROOT", str(tmp_path))
     for name in ("pool", "base"):
         (tmp_path / name).mkdir()
@@ -309,3 +325,182 @@ def test_the_split_comes_from_split_of_then_topup_of_then_the_run_itself(tmp_pat
     assert module._split_rows(both, own)["candidate_id"][0] == "pool"
     assert module._split_rows({"topup_of": "base"}, own)["candidate_id"][0] == "base"
     assert module._split_rows({}, own) is own
+
+
+def test_val_fraction_0_holds_out_exactly_the_sources_validation_candidates(tmp_path,
+                                                                            monkeypatch):
+    """V3's new pairs were split per pool source, so a seeded draw on top of the candidates its
+    sft_validation.parquet holds out would also hold out ~5% of the candidates SFT-v3 trained
+    on (docs/V3_NEW_DATA.md). On v1's pool the draw was v1's own split and added nothing."""
+    import pytest
+
+    module = _onpolicy_full_script()
+    monkeypatch.setenv("HBM_OUTPUT_ROOT", str(tmp_path))
+    (tmp_path / "source").mkdir()
+    pinned = tmp_path / "source" / "sft_validation.parquet"
+    pd.DataFrame({"candidate_id": ["c0", "c1"]}).to_parquet(pinned)
+    rows = pd.DataFrame({"candidate_id": [f"c{i}" for i in range(100)]})
+    cfg = {"source_artifacts_dir": "source", "seed": 42}
+    assert module.validation_ids({**cfg, "val_fraction": 0}, rows) == {"c0", "c1"}
+    drawn = module.validation_ids({**cfg, "val_fraction": 0.05}, rows)
+    assert {"c0", "c1"} < drawn and len(drawn) >= 5
+    pinned.unlink()
+    with pytest.raises(ValueError, match="no candidate would be held out"):
+        module.validation_ids({**cfg, "val_fraction": 0}, rows)
+
+
+def test_judged_pairs_keep_the_rows_pool_source():
+    """build_pairs writes a fixed set of columns; V3's pairs are balanced and checked per pool
+    source, so the judge stage carries `pool_source` over from the rows it judged."""
+    module = _onpolicy_full_script()
+    pairs = pd.DataFrame({"prompt": ["a", "b"]})
+    kept = pd.DataFrame({"pool_source": ["rjdb", "djinni_new"], "free_right_rate": [1.0, 0.75],
+                         "protected_attr": ["x", "y"]})
+    module.carry_row_columns(pairs, kept)
+    assert pairs["pool_source"].tolist() == ["rjdb", "djinni_new"]
+    assert pairs["free_right_rate"].tolist() == [1.0, 0.75]
+    assert "protected_attr" not in pairs
+    v1_pairs = module.carry_row_columns(pd.DataFrame({"prompt": ["a"]}),
+                                        pd.DataFrame({"free_right_rate": [1.0]}))
+    assert "pool_source" not in v1_pairs
+
+
+def test_merge_keeps_every_pair_of_both_runs_unbalanced(tmp_path, monkeypatch):
+    """V3 balances by error mass afterwards, over every merged pair as r2em did over r1 and its
+    surplus; the merge itself drops only the top-up's pairs for rows the base run has."""
+    import json
+
+    module = _onpolicy_full_script()
+    monkeypatch.setenv("HBM_OUTPUT_ROOT", str(tmp_path))
+    monkeypatch.setenv("HBM_ALLOW_LOCAL_OUTPUT", "1")
+
+    def pairs(keys, source):
+        return pd.DataFrame({"pair_id": [k[0] for k in keys], "protected_attr": "Female",
+                             "condition": [k[1] for k in keys], "prompt": "p",
+                             "reference_decision": "reject" if source == "base" else "hire",
+                             "pool_source": "djinni_new", "run": source})
+
+    for name in ("base", "topup"):
+        (tmp_path / name).mkdir()
+    pairs([("a", "explicit"), ("b", "explicit")], "base").to_parquet(
+        tmp_path / "base" / "dpo_v2_train.parquet")
+    pairs([("v", "explicit")], "base").to_parquet(tmp_path / "base" / "dpo_v2_validation.parquet")
+    pairs([("b", "explicit"), ("c", "implicit"), ("c", "explicit")], "topup").to_parquet(
+        tmp_path / "topup" / "dpo_v2_train.parquet")
+    pairs([], "topup").to_parquet(tmp_path / "topup" / "dpo_v2_validation.parquet")
+
+    module.stage_merge({"topup_of": "base"}, tmp_path / "topup")
+
+    merged = pd.read_parquet(tmp_path / "topup" / "merged" / "dpo_v2_train.parquet")
+    assert list(zip(merged["pair_id"], merged["run"])) == [
+        ("a", "base"), ("b", "base"), ("c", "topup"), ("c", "topup")]
+    info = json.loads((tmp_path / "topup" / "merged" / "merge.json").read_text())
+    assert info["train"]["n_already_in_base"] == 1 and info["train"]["n_merged"] == 4
+    assert info["train"]["by_pool_source_and_reference"] == {"djinni_new hire": 2,
+                                                             "djinni_new reject": 2}
+    assert len(pd.read_parquet(tmp_path / "topup" / "merged" / "dpo_v2_validation.parquet")) == 1
+
+
+def test_merge_needs_a_topup_run(tmp_path):
+    import pytest
+
+    module = _onpolicy_full_script()
+    with pytest.raises(SystemExit, match="topup_of"):
+        module.stage_merge({}, tmp_path)
+
+
+def test_merge_with_joins_a_run_on_new_rows_of_the_same_student(tmp_path, monkeypatch):
+    """Round 3: the new pairs' run joins round 2's merged pairs; the union keeps both."""
+    import json
+
+    import pytest
+
+    module = _onpolicy_full_script()
+    monkeypatch.setenv("HBM_OUTPUT_ROOT", str(tmp_path))
+    monkeypatch.setenv("HBM_ALLOW_LOCAL_OUTPUT", "1")
+
+    def pairs(ids, run):
+        return pd.DataFrame({"pair_id": ids, "candidate_id": [f"c-{i}" for i in ids],
+                             "protected_attr": "Female", "condition": "explicit", "prompt": "p",
+                             "reference_decision": "hire", "pool_source": "rjdb", "run": run})
+
+    old, new = tmp_path / "hire32" / "merged", tmp_path / "new"
+    old.mkdir(parents=True)
+    new.mkdir()
+    for run, student in ((tmp_path / "hire32", "sft_v3"), (new, "sft_v3")):
+        (run / "prepare.json").write_text(json.dumps({"merged_checkpoint": student}))
+    pairs(["a", "b"], "old").to_parquet(old / "dpo_v2_train.parquet")
+    pairs(["v"], "old").to_parquet(old / "dpo_v2_validation.parquet")
+    pairs(["c"], "new").to_parquet(new / "dpo_v2_train.parquet")
+    pairs(["w"], "new").to_parquet(new / "dpo_v2_validation.parquet")
+
+    with pytest.raises(SystemExit, match="not both"):
+        module.stage_merge({"merge_with": "hire32/merged", "topup_of": "x"}, new)
+    module.stage_merge({"merge_with": "hire32/merged"}, new)
+    train = pd.read_parquet(new / "merged" / "dpo_v2_train.parquet")
+    assert list(zip(train["pair_id"], train["run"])) == [("a", "old"), ("b", "old"),
+                                                         ("c", "new")]
+    assert len(pd.read_parquet(new / "merged" / "dpo_v2_validation.parquet")) == 2
+
+    # Another student's pairs are refused.
+    (new / "prepare.json").write_text(json.dumps({"merged_checkpoint": "sft_v1"}))
+    with pytest.raises(SystemExit, match="two students"):
+        module.stage_merge({"merge_with": "hire32/merged"}, new)
+    # A candidate in round 2's training split and the new run's validation is refused.
+    (new / "prepare.json").write_text(json.dumps({"merged_checkpoint": "sft_v3"}))
+    pairs(["a"], "new").to_parquet(new / "dpo_v2_validation.parquet")
+    with pytest.raises(SystemExit, match="both sides"):
+        module.stage_merge({"merge_with": "hire32/merged"}, new)
+
+
+def test_selection_by_pool_source_reads_each_sources_operating_point():
+    """Which side a student errs on follows from its hire rate, so V3 reads each source's
+    attribute-free hire rate beside its negatives (docs/V3_NEW_DATA.md, round 2)."""
+    def says(decision, n):
+        return [json.dumps({"decision": decision, "feedback": "f"})] * n
+
+    rows = pd.DataFrame({"pair_id": ["a", "a", "b"], "pool_source": ["rjdb", "rjdb", "kaggle"],
+                         "reference_decision": ["hire", "hire", "reject"]})
+    attributed = [says("hire", 3) + says("reject", 1), says("hire", 4), says("reject", 4)]
+    free_by_pair = {"a": says("hire", 2) + says("reject", 2), "b": says("reject", 4)}
+    selected = pd.DataFrame({"pool_source": ["rjdb"], "rejected_strategy": [OP.TIPPED],
+                             "reference_decision": ["hire"]})
+
+    by = OP.selection_by(rows, attributed, free_by_pair, selected, "pool_source")
+
+    assert by["rjdb"]["rows"] == 2 and by["rjdb"]["pairs"] == 1
+    assert by["rjdb"]["student_hire_rate_attr_free"] == 0.5
+    assert by["rjdb"]["student_right_rate_with_attribute"] == 0.875
+    assert by["rjdb"]["student_right_rate_with_attribute_by_reference"] == {"hire": 0.875,
+                                                                            "reject": None}
+    assert by["rjdb"]["selected"] == {OP.TIPPED: 1} and by["rjdb"]["tipped_per_row"] == 0.5
+    assert by["kaggle"]["student_hire_rate_attr_free"] == 0.0
+    assert by["kaggle"]["selected"] == {} and by["kaggle"]["tipped_per_row"] == 0.0
+    assert by["rjdb"]["tipped_by_reference"] == {"hire": 1, "reject": 0}
+    assert by["kaggle"]["tipped_by_reference"] == {"hire": 0, "reject": 0}
+
+
+def test_the_judge_stage_reports_each_pool_source():
+    module = _onpolicy_full_script()
+    selected = pd.DataFrame({"pool_source": ["rjdb", "rjdb", "rjdb", "kaggle"]})
+    candidates = pd.DataFrame({"pool_source": ["rjdb", "rjdb"],
+                               "reference_decision": ["hire", "reject"]})
+    by = module.judged_by(selected, candidates, pd.Series([False, True]), "pool_source")
+    assert by["rjdb"] == {"selected": 3, "kept": 2, "keep_rate": 0.6667,
+                          "kept_reference_hire_share": 0.5, "train": 1, "validation": 1}
+    assert by["kaggle"]["kept"] == 0 and by["kaggle"]["kept_reference_hire_share"] is None
+
+
+def test_a_list_of_row_filters_keeps_rows_matching_any_of_them():
+    """V3's top-up samples each source's short side: hire rows of djinni_new and kaggle_linkedin,
+    reject rows of RJDB (docs/V3_NEW_DATA.md, round 2)."""
+    rows = pd.DataFrame({"pair_id": list("abcdef"),
+                         "pool_source": ["djinni_new", "rjdb", "kaggle_linkedin", "djinni_new",
+                                         "rjdb", "kaggle_linkedin"],
+                         "reference_decision": ["hire", "hire", "hire", "reject", "reject",
+                                                "reject"]})
+    kept = OP.filter_rows(rows, [
+        {"reference_decision": "hire", "pool_source": ["djinni_new", "kaggle_linkedin"]},
+        {"reference_decision": "reject", "pool_source": "rjdb"}])
+    assert kept["pair_id"].tolist() == ["a", "c", "e"]
+    assert kept.index.tolist() == [0, 1, 2]

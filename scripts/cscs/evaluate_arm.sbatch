@@ -6,12 +6,13 @@
 #      recorded yet (scripts/merge_adapter.py --ensure-retention)
 #   2. at once: the benchmark audit (GPU 0) and the arm's op-margin-v2 margin pass (GPU 1);
 #      VALIDATE=1 adds the scorer check against HuggingFace (GPU 2, needed once per vLLM
-#      version); AGAINST=base adds the base model's margin pass (GPU 3)
+#      version); AGAINST=base adds the base model's margin pass (GPU 3). Before they start,
+#      each vLLM GPU waits up to GPU_WAIT seconds (600) for its memory share to be free
 #   3. the matched comparison: compare-arms against the reference arm, or compare for base
 #   4. the arm's reference row, with the standard's verdict printed
 #
 #   AUDIT=configs/audit/<arm>_gh200.yaml \
-#   AGAINST=configs/audit/qwen3.5-9b_en_sft_en_only_gh200.yaml \
+#   AGAINST=configs/audit/qwen3.5-9b_en_sft_v3_additional_gh200.yaml \
 #     scripts/cscs/submit.sh scripts/cscs/evaluate_arm.sbatch
 #
 # AGAINST=base compares an adapter with its own base (SFT against the base model). For any other
@@ -50,7 +51,37 @@ cost eval merge \
   || { tail -n 20 "$L-merge.log"; echo "FATAL: merge failed"; exit 1; }
 grep -E "merge kept|wrote|already merged" "$L-merge.log" | tail -n 4 || true
 
+# vLLM refuses to start on a GPU whose free memory is under the share it is set to take. On
+# 2026-10-22 GPUs 0, 2 and 3 of nid005821 held 16 to 19 GiB that no process owned when stage 2
+# began, and the audit (0.8 of 95 GiB) failed at once (job 5119285); within minutes the memory
+# was free again. So before stage 2, wait up to GPU_WAIT seconds (default 600) until each vLLM
+# GPU has its share free. The test is vLLM's own: free >= share x total, by mem_get_info.
+wait_for_gpus() {  # <gpu>:<config key>:<the key's default in the code> ...
+  $PY - "$AUDIT" "${GPU_WAIT:-600}" "$@" <<'EOF'
+import sys, time
+import torch, yaml
+config, wait, *checks = sys.argv[1:]
+cfg = yaml.safe_load(open(config)) or {}
+start = time.monotonic()
+for check in checks:
+    gpu, key, default = check.split(":")
+    share = float(cfg.get(key, default))
+    while True:
+        free, total = (x / 2**30 for x in torch.cuda.mem_get_info(int(gpu)))
+        if free >= share * total:
+            break
+        note = f"GPU {gpu}: {free:.2f} of {total:.2f} GiB free, under {key} {share} ({share * total:.2f} GiB)"
+        if time.monotonic() - start >= float(wait):
+            sys.exit(f"FATAL: {note} after {time.monotonic() - start:.0f} s")
+        print(f"{note}; waiting", flush=True)
+        time.sleep(30)
+EOF
+}
+
 step "2. audit (GPU 0) and margin pass (GPU 1)"
+gpus=(0:gpu_memory_utilization:0.90 1:op_control_gpu_memory_utilization:0.55)
+[ "$AGAINST" = base ] && gpus+=(3:op_control_gpu_memory_utilization:0.55)
+wait_for_gpus "${gpus[@]}" || exit 1
 pids=()
 CUDA_VISIBLE_DEVICES=0 cost eval audit $PY scripts/run_audit.py --config "$AUDIT" --no-similarity \
   > "$L-audit.log" 2>&1 & pids+=($!)

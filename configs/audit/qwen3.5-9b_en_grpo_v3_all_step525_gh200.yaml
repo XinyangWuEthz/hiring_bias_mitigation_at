@@ -1,0 +1,38 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# EXPLORATORY (docs/EVAL_STANDARD.md, rule 3): GRPO-v3-all's checkpoint-525, chosen after the
+# final adapter's audit (job 5118907) was read. The rule used only the held-out monitor: the
+# checkpoint whose served projected hire rate is closest to SFT-v3's 22.7% (step 525: 23.5%).
+# It asks whether GRPO-v3-all's stability holds at SFT-v3's operating point; it is not the arm's
+# result, which stays the final adapter's (docs/GRPO_V3.md, round 3). Judged against SFT-v3:
+#   HBM_COST_ARM=grpo_v3_all REPO=$PWD AUDIT=configs/audit/qwen3.5-9b_en_grpo_v3_all_step525_gh200.yaml \
+#   AGAINST=configs/audit/qwen3.5-9b_en_sft_v3_additional_gh200.yaml \
+#     scripts/cscs/submit.sh -p debug -t 00:30:00 scripts/cscs/evaluate_arm.sbatch
+backend: vllm
+max_model_len: 8192
+gpu_memory_utilization: 0.8
+seed: 42
+engine_kwargs:
+  gdn_prefill_backend: triton     # no CUDA toolkit on Daint for FlashInfer's JIT
+raw_dir: outputs/raw
+conditions:
+- explicit
+- implicit
+- attr_free
+chat_template_kwargs:
+  enable_thinking: false
+max_intersection_cells: null
+generation:
+  max_new_tokens: 512
+  temperature: 0.0
+  top_p: 1.0
+  seed: 42
+model: Qwen/Qwen3.5-9B
+lang: en
+protected_groups:
+- military_status
+- gender
+- religion
+run_suffix: en_only_grpo_v3_all_step525
+mitigation:
+  family: grpo
+  lora_path: outputs/grpo/qwen3.5-9b_en_only_grpo_v3_all/checkpoint-525

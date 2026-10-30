@@ -24,11 +24,21 @@ A method is better only when the upper end of the 95% interval is below 0.
 
 | Method | Reference arm | Comparison |
 |---|---|---|
-| anything trained after SFT (DPO, GRPO, RFT, later arms) | `Qwen3.5-9B--en--sft--adapter--en_only_cscs` | `compare-arms --config <arm> --against <sft config>` |
+| anything trained after SFT (DPO, GRPO, RFT, later arms) | SFT-v3, `Qwen3.5-9B--en--sft--adapter--en_only_sft_v3_additional` | `compare-arms --config <arm> --against configs/audit/qwen3.5-9b_en_sft_v3_additional_gh200.yaml` |
 | that SFT run itself | the base model | `compare --config <sft config>` |
 
 `compare` reports no interval yet, so the SFT run's verdict reads "undecided: no interval"
 until it does.
+
+**The reference arm changed on 2026-10-20** (user: "V3 as new SFT comparison"). SFT-v3 replaced
+SFT v1 (`…en_only_cscs`), after it beat SFT v1 under this standard (`docs/V3_NEW_DATA.md`,
+round 2). The runs judged before keep the comparison they were judged by (`JUDGED_BEFORE` in
+`eval_standard.py`):
+
+- every arm trained from SFT v1 (DPO r1, r2 and r2em, the GRPO pilot, RFT) is judged against
+  SFT v1, since it is an ablation against the SFT it continues from;
+- SFT v1 is judged against its base;
+- SFT-v3 is judged against SFT v1, the comparison by which it became the reference.
 
 Why this number. It answers the fairness question directly. It removes the operating-point
 confound: round-1 DPO looked better until its stricter threshold was matched. It does not depend
@@ -72,7 +82,7 @@ One job evaluates one arm on one GH200 node, every stage in order:
 
 ```bash
 AUDIT=configs/audit/<arm>_gh200.yaml \
-AGAINST=configs/audit/qwen3.5-9b_en_sft_en_only_gh200.yaml \
+AGAINST=configs/audit/qwen3.5-9b_en_sft_v3_additional_gh200.yaml \
   scripts/cscs/submit.sh scripts/cscs/evaluate_arm.sbatch
 ```
 
@@ -106,8 +116,8 @@ and treating availability-bearing military values apart from the rest of the gro
 
 ## The arms so far
 
-Rows exist for the GH200 baseline, SFT and DPO r2em checkpoint 100 only; the other past arms are
-not backfilled (user, 2026-10-20). Read from `reports/reference_metrics.csv` and
+Rows exist for the GH200 baseline, SFT v1, DPO r2em checkpoint 100 and SFT-v3 only; the other
+past arms are not backfilled (user, 2026-10-20). Read from `reports/reference_metrics.csv` and
 `reports/comparisons.csv`.
 
 | Arm | Decision, pp [95% CI] | TPR vs reference | Agreement vs reference | Undecided | Merge kept | Verdict |
@@ -115,6 +125,13 @@ not backfilled (user, 2026-10-20). Read from `reports/reference_metrics.csv` and
 | Base vs SFT v1 | -9.23, no interval | +24.10 | +3.71 | 0% | 99.68% | undecided: no interval |
 | Base vs SFT v1 →DPO r2em-100 | -10.23 [-12.39, -8.08] | +24.75 | +3.78 | 0% | 90.56% | better |
 | SFT vs SFT v1 →DPO r2em-100 | -0.96 [-1.96, +0.04] | +0.66 | +0.06 | 0% | 90.56% | not better: the interval reaches 0 |
+| SFT v1 vs SFT-v3 | -1.93 [-3.21, -0.65] | -8.10 | -0.15 | 0% | 100.0% | better |
+| Base vs SFT-v3 | -9.95 [-12.07, -7.83] | +16.00 | +3.57 | 0% | 100.0% | better (context row) |
+
+SFT-v3 is the reference arm from here on. Its own verdict is the one against SFT v1 (job
+5108977). Its hire rate where GPT-4o hires is 8.10 pp below SFT v1's, inside the 10 pp
+guardrail. A method trained from SFT-v3 meets that guardrail against SFT-v3's 57.73%, not SFT
+v1's 65.83%.
 
 The standard decides a method trained after SFT against SFT; the row against the base model only
 shows how far the whole SFT + DPO chain moved from where it started. It comes from

@@ -1,0 +1,17 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# GRPO-v3-all prompts: every new pair of round 3 that SFT-v3 never trained on, the pilot
+# (onpolicy-new) and the second batch (onpolicy-new2), with each pool's hire rows topped up at
+# k=32 (onpolicy-new-hire32, onpolicy-new2-hire32). scripts/build_grpo_prompts.py --balance
+# signal --fill pull --n-train auto: half per vote-anchor verdict, both halves the same summed
+# pull, each half as large as both verdicts' rows with a sampled error allow, filled with those
+# rows first. Every candidate of a *validation.parquet under semisynthetic-v3 is held out; 256
+# held-out prompts for the monitors. Pre-registration: docs/GRPO_V3.md, round 3.
+name: en_only_grpo_v3_all
+artifacts_dir: artifacts/semisynthetic-v3/grpo-v3-all
+seed: 42
+protected_groups:
+- military_status
+- gender
+- religion
+languages:
+- en

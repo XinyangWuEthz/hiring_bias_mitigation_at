@@ -491,3 +491,127 @@ def test_a_repeated_verdict_does_not_duplicate_the_pair():
     single, _, _ = BD.assemble(candidates, scores, once)
     double, _, _ = BD.assemble(candidates, scores, pd.concat([once, once]))
     assert len(double) == len(single)
+
+
+# ---- V3: each pool source on its own -------------------------------------------------------
+
+def _sourced(source, i, decision, split="train", group_attr=("military_status", "War veteran")):
+    group, attr = group_attr
+    row = _variant("explicit" if i % 3 else "implicit", attr=attr, group=group,
+                   decision=decision, candidate=f"{source}-{split}-{i}",
+                   job=f"job-{source}-{split}-{i}")
+    return {**row, "pool_source": source}
+
+
+def test_normalising_keeps_the_pool_source_v3_balances_by():
+    row = _sourced("rjdb", 0, "hire")
+    kept, _ = BD.normalise_pairs(pd.DataFrame([row]), BD.ROUND1, "train", "en")
+    assert kept["pool_source"].tolist() == ["rjdb"]
+    plain, _ = BD.normalise_pairs(pd.DataFrame([_variant("explicit")]), BD.ROUND1, "train", "en")
+    assert "pool_source" not in plain
+
+
+def test_each_pool_source_is_balanced_on_its_own():
+    """V3's sources hire at 22%, 56% and 15%; a pooled balance would let one source supply a
+    side for another (docs/V3_NEW_DATA.md, round 2). A source without one side stays out."""
+    djinni = _pool(list(np.linspace(6.0, 2.0, 10)), n_easy_reject=40, n_hard_hire=4,
+                   n_easy_hire=46).assign(pool_source="djinni_new")
+    rjdb = _pool([], n_easy_reject=10, n_hard_hire=10, n_easy_hire=30).assign(pool_source="rjdb")
+    kaggle = pd.DataFrame([_row(500 + i, "reject", -4.0) for i in range(5)]).assign(
+        pool_source="kaggle_linkedin")
+    pool = BD.with_student_error(pd.concat([djinni, rjdb, kaggle], ignore_index=True))
+
+    selected, report = BD.balance_error_mass_by(pool, "pool_source")
+
+    assert report["left_out"] == ["kaggle_linkedin"]
+    assert "no hire-side pairs" in report["groups"]["kaggle_linkedin"]["left_out"]
+    assert report["groups"]["rjdb"]["heavier_side"] == "hire"
+    assert report["groups"]["djinni_new"]["heavier_side"] == "reject"
+    for source, part in selected.groupby("pool_source"):
+        assert (part["decision"] == "hire").sum() == (part["decision"] == "reject").sum()
+        assert report["groups"][source]["error_mass_ratio"] <= 1.05
+    # Exactly the pairs that balancing the source alone keeps.
+    alone, _ = BD.balance_error_mass(pool[pool["pool_source"] == "djinni_new"])
+    assert (sorted(selected.loc[selected["pool_source"] == "djinni_new", "prompt"])
+            == sorted(alone["prompt"]))
+
+
+def test_a_per_source_balance_needs_the_source_on_every_pair():
+    pool = BD.with_student_error(_pool([3.0], 3, 1, 3).assign(pool_source=None))
+    with pytest.raises(ValueError, match="no pool_source"):
+        BD.balance_error_mass_by(pool, "pool_source")
+
+
+def test_validation_is_balanced_by_count_within_each_source_and_group():
+    rows = []
+    for source, n_hire, n_reject in (("djinni_new", 2, 5), ("rjdb", 4, 1),
+                                     ("kaggle_linkedin", 0, 3)):
+        rows += [{**_row(f"{source}-h{i}", "hire", 0.0), "pool_source": source,
+                  "protected_group": "gender"} for i in range(n_hire)]
+        rows += [{**_row(f"{source}-r{i}", "reject", 0.0), "pool_source": source,
+                  "protected_group": "gender"} for i in range(n_reject)]
+    kept, report = BD.balance_count_by(pd.DataFrame(rows), ["pool_source", "protected_group"],
+                                       seed=1)
+    assert report["cells"]["djinni_new / gender"] == {"hire": 2, "reject": 2, "dropped": 3}
+    assert report["cells"]["rjdb / gender"] == {"hire": 1, "reject": 1, "dropped": 3}
+    assert report["cells"]["kaggle_linkedin / gender"] == {"hire": 0, "reject": 0, "dropped": 3}
+    assert len(kept) == 6
+
+
+def _sourced_candidates():
+    rows = []
+    for source in ("djinni_new", "rjdb"):
+        rows += [(_sourced(source, i, "hire" if i % 2 else "reject"), "train") for i in range(8)]
+        rows += [(_sourced(source, i, d, split="validation"), "validation")
+                 for i, d in enumerate(("hire", "reject", "reject"))]
+    rows += [(_sourced("kaggle_linkedin", i, "reject"), "train") for i in range(3)]
+    rows += [(_sourced("kaggle_linkedin", 0, "reject", split="validation"), "validation")]
+    frames = [BD.normalise_pairs(pd.DataFrame([r]), BD.ROUND1, split, "en")[0]
+              for r, split in rows]
+    return BD.add_keys(pd.concat(frames, ignore_index=True)).assign(needs_judge=False)
+
+
+def test_assemble_balances_per_source_and_drops_a_left_out_sources_validation():
+    candidates = _sourced_candidates()
+    scores = pd.DataFrame({"prompt_sha1": candidates["prompt_sha1"], "student_margin": 0.0})
+
+    train, validation, report = BD.assemble(candidates, scores, None, balance_by="pool_source")
+
+    assert report["balance"]["left_out"] == ["kaggle_linkedin"]
+    assert set(train["pool_source"]) == {"djinni_new", "rjdb"}
+    for _, part in train.groupby("pool_source"):
+        assert (part["decision"] == "hire").sum() == (part["decision"] == "reject").sum() == 4
+    # Validation: one hire and one reject per source and group; kaggle_linkedin's goes with
+    # its training pairs.
+    assert sorted(validation.groupby(["pool_source", "decision"]).size().tolist()) == [1] * 4
+    assert report["validation_balance"]["left_out_with_training"] == 1
+    assert (validation["reference_decision"] == validation["decision"]).all()
+
+
+def test_the_cli_balances_per_source(tmp_path):
+    candidates = _sourced_candidates()
+    columns = [*BD.REQUIRED, "pool_source"]
+    for split in ("train", "validation"):
+        candidates[candidates["split"] == split][columns].to_parquet(tmp_path / f"{split}.parquet")
+    env = {**__import__("os").environ, "HBM_OUTPUT_ROOT": str(tmp_path),
+           "HBM_ALLOW_LOCAL_OUTPUT": "1"}
+    script = [sys.executable, "scripts/build_balanced_dpo.py"]
+    common = ["--artifacts-dir", "art", "--name", "dpo_v3_onpolicy"]
+    subprocess.run([*script, "candidates", *common, "--no-legacy",
+                    "--round1-train", str(tmp_path / "train.parquet"),
+                    "--round1-validation", str(tmp_path / "validation.parquet")],
+                   cwd=ROOT, env=env, check=True, capture_output=True, text=True)
+    art = tmp_path / "art"
+    built = pd.read_parquet(art / "dpo_v3_onpolicy_candidates.parquet")
+    pd.DataFrame({"prompt_sha1": built["prompt_sha1"], "student_margin": 0.0,
+                  "student": "stub"}).to_parquet(art / "dpo_v3_onpolicy_scores.parquet")
+
+    run = subprocess.run([*script, "build", *common, "--balance-by", "pool_source"], cwd=ROOT,
+                         env=env, check=True, capture_output=True, text=True)
+
+    assert "LEFT OUT" in run.stdout
+    report = json.loads((tmp_path / "art" / "dpo_v3_onpolicy_report.json").read_text())
+    assert report["parameters"]["balance_by"] == "pool_source"
+    assert report["balance"]["left_out"] == ["kaggle_linkedin"]
+    train = pd.read_parquet(tmp_path / "art" / "dpo_v3_onpolicy_train.parquet")
+    assert set(train["pool_source"]) == {"djinni_new", "rjdb"}

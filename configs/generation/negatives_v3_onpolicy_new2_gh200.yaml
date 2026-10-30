@@ -1,0 +1,64 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py, so it survives a regeneration.
+#
+# V3 round 3, batch 2's on-policy pairs (docs/V3_NEW_DATA.md): negatives_v3_onpolicy_new_gh200.yaml
+# on configs/generation/v3_new_pairs_2.yaml's four djinni_new parts. Its merge joins its pairs to
+# the pilot's merged union (round 2's 2,379 + 252 pairs and the pilot's 1,114 + 56), from the same
+# merged student; build_balanced_dpo.py balances the whole union as dpo_v3_onpolicy5k.
+#   HBM_COST_ARM=dpo_v3_5k REPO=$PWD CONFIG=configs/generation/negatives_v3_onpolicy_new2_gh200.yaml \
+#     scripts/cscs/submit.sh -p normal -t 01:30:00 scripts/cscs/onpolicy_full.sbatch sample
+#   HBM_COST_ARM=dpo_v3_5k REPO=$PWD CONFIG=... scripts/cscs/submit.sh -p normal -t 01:00:00 \
+#     scripts/cscs/onpolicy_full.sbatch judge
+#   python scripts/generate_onpolicy_full.py --config <this> --stage merge
+source_artifacts_dir: artifacts/semisynthetic-v3/new-pairs-2
+artifacts_dir: artifacts/semisynthetic-v3/onpolicy-new2
+# The pilot's merged union; this run's rows are new, so the merge is their union.
+merge_with: artifacts/semisynthetic-v3/onpolicy-new/merged
+lang: en
+seed: 42
+# Hold out exactly the candidates sft_validation.parquet holds out: SFT-v3's validation
+# (generate_onpolicy_full.validation_ids). v1's 0.05 would also hold out a seeded 5% of the
+# candidates SFT-v3 trained on.
+val_fraction: 0
+
+student_base: Qwen/Qwen3.5-9B
+# SFT-v3 on all new data, one epoch, its final adapter
+# (configs/mitigation/sft/qwen3.5-9b_en_only_sft_v3_additional_gh200.yaml); merged into the base
+# for vLLM under outputs/merged/.
+student_adapter: outputs/sft/qwen3.5-9b_en_only_sft_v3_additional
+samples_per_prompt: 8
+min_free_right: 0.5
+# 512 prompts x 8 samples is about a minute and a half per GPU: the most a job cut by the
+# time limit can lose.
+chunk_size: 512
+student_vllm:
+  gpu_memory_utilization: 0.70      # of 95.6 GiB usable; anything near 96 GB OOMs
+  max_model_len: 8192
+  max_num_seqs: 256                 # 32 prompts x 8 samples in flight
+  engine_kwargs:
+    gdn_prefill_backend: triton     # no CUDA toolkit on Daint for FlashInfer's JIT
+student_generation:
+  max_new_tokens: 200
+  temperature: 1.0
+  top_p: 1.0
+  seed: 42
+
+judge_strategies:
+- student_tipped
+max_length_delta_words: 10
+min_plausibility: 3
+n_samples: 20
+
+# The teacher, as judge only -- the same settings as onpolicy-full and batch-01.
+teacher_model: Qwen/Qwen3.5-122B-A10B-GPTQ-Int4
+backend: vllm
+dtype: auto
+max_model_len: 8192
+tensor_parallel_size: 4
+gpu_memory_utilization: 0.80
+max_num_seqs: 128
+engine_kwargs:
+  gdn_prefill_backend: triton
+judge_generation:
+  max_new_tokens: 160
+  temperature: 0.0
+  top_p: 1.0

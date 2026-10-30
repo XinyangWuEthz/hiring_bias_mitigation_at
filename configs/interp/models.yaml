@@ -1,0 +1,23 @@
+# Model specs for the patching pipeline (interp/spec.py). All specs share one base model and
+# are switched by activating LoRA adapters, never by reloading weights.
+base_model: Qwen/Qwen3.5-9B
+
+adapters:
+  # SFT-v3 (Stereotypes-in-LLMs/qwen3.5-9b-hiring-debias-sft-v3-en), the parent of the DPO-v3
+  # and GRPO releases. It is published merged only, so this is the rank-32 adapter recovered
+  # from merged - base by scripts/interp/01b_extract_adapter.py, which also checks it against
+  # the merged release.
+  sft: outputs/interp/adapters/sft-v3-svd32
+  # SFT v1, the adapter the first round of this analysis ran on; kept for comparison.
+  sft_v1: Stereotypes-in-LLMs/qwen3.5-9b-hiring-debias-sft-en
+  # Delivered by the DPO team; pass --adapter dpo=PATH or export HBM_DPO_ADAPTER.
+  dpo: ${HBM_DPO_ADAPTER}
+
+specs:
+  base: {adapters: []}
+  sft: {adapters: [sft]}
+  sft_v1: {adapters: [sft_v1]}
+  # Assumes the DPO LoRA was trained on top of the SFT model (merged SFT + new adapter), which
+  # equals stacking the two adapters. If the DPO run instead continued training the SFT
+  # adapter itself, change this to `adapters: [dpo]`. Confirm with the DPO team before S11.
+  dpo: {adapters: [sft, dpo], reference: sft}

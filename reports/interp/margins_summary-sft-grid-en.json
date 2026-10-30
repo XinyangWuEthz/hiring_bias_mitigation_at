@@ -1,0 +1,17 @@
+{
+  "spec": "sft",
+  "dataset": "grid-en",
+  "rows": 31050,
+  "hire_rate_pct": 22.60547504025765,
+  "audit": {
+    "audit_run": "Qwen3.5-9B--en--sft--adapter--en_only_sft_v3_additional",
+    "available": false,
+    "summary_source": "Stereotypes-in-LLMs/qwen3.5-9b-hiring-debias-sft-v3-en@b6e5f2b/evaluation.json",
+    "summary_run": "Qwen3.5-9B--en--sft--adapter--en_only_sft_v3_additional",
+    "hire_rate_hf_pct": 22.60547504025765,
+    "hire_rate_audit_pct": 22.753623188405797,
+    "unstable_within_group_hf_pct": 1.7037037037037037,
+    "unstable_within_group_audit_pct": 1.8518518518518516,
+    "margin_bf16_minus_fp32_abs_mean": 0.06161283701658249
+  }
+}

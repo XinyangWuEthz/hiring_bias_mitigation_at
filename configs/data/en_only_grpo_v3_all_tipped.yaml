@@ -1,0 +1,13 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# grpo-v3-all's tipped rows only, balanced by anchor verdict: all 2,077 tipped reject rows and
+# 2,077 of the 2,985 tipped hire rows (seed 42); validation and monitor unchanged
+# (scripts/build_grpo_tipped_subset.py; docs/GRPO_IMPROVE.md, R4).
+name: en_only_grpo_v3_all_tipped
+artifacts_dir: artifacts/semisynthetic-v3/grpo-v3-all-tipped
+seed: 42
+protected_groups:
+- military_status
+- gender
+- religion
+languages:
+- en

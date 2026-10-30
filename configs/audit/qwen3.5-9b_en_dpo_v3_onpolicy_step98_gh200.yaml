@@ -1,0 +1,36 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# DPO on V3's on-policy pairs alone (configs/mitigation/dpo/qwen3.5-9b_en_only_dpo_v3_onpolicy_gh200.yaml,
+# job 5114249): the final checkpoint, step 98, declared before training (docs/V3_NEW_DATA.md,
+# round 2). Served merged, SFT-v3 first. Judged against SFT-v3, the reference arm:
+#   HBM_COST_ARM=dpo_v3 REPO=$PWD AUDIT=configs/audit/qwen3.5-9b_en_dpo_v3_onpolicy_step98_gh200.yaml \
+#   AGAINST=configs/audit/qwen3.5-9b_en_sft_v3_additional_gh200.yaml \
+#     scripts/cscs/submit.sh scripts/cscs/evaluate_arm.sbatch
+backend: vllm
+max_model_len: 8192
+gpu_memory_utilization: 0.8
+seed: 42
+engine_kwargs:
+  gdn_prefill_backend: triton     # no CUDA toolkit on Daint for FlashInfer's JIT
+raw_dir: outputs/raw
+conditions:
+- explicit
+- implicit
+- attr_free
+chat_template_kwargs:
+  enable_thinking: false
+max_intersection_cells: null
+generation:
+  max_new_tokens: 512
+  temperature: 0.0
+  top_p: 1.0
+  seed: 42
+model: Qwen/Qwen3.5-9B
+lang: en
+protected_groups:
+- military_status
+- gender
+- religion
+run_suffix: en_only_dpo_v3_onpolicy_step98
+mitigation:
+  family: dpo
+  lora_path: outputs/dpo/qwen3.5-9b_en_only_dpo_v3_onpolicy/checkpoint-98

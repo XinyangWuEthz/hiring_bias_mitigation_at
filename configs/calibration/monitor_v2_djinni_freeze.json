@@ -1,0 +1,297 @@
+{
+  "experiment_id": "monitor-v2-djinni-intake-20261023-v1",
+  "stage": "first_lock_sources_procedures_and_intake",
+  "base_commit": "2aa747636248991677f507f8dfcd2e41a81cc46c",
+  "inputs": {
+    "inventory": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/inventory.json",
+      "sha256": "76798a09792a191ff3f66dae8aea933db9ef635237586de2d16fdd0a5bb58f50"
+    },
+    "eligible_registry": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/eligible_registry.jsonl",
+      "sha256": "dfc081ef057aff6850cd0633a80732f88aa64692900131ebd4583158acb2ae43"
+    },
+    "intake_batch": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/eligible_candidates.jsonl",
+      "sha256": "95e6eeec044f0f4309e7de9d23e8ba2692bfbbc07b1e8cea2aa1ab0608873132"
+    },
+    "excluded_candidates": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/excluded_candidates_union.json",
+      "sha256": "70d8b962f2f37e2e495531aabcac5b95df9222aff708c00a259fe4b2c0793d1c"
+    },
+    "source_evidence": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/source_evidence.json",
+      "sha256": "eb47c85bb3750e275c1620ee8653638360224684115d3f3bf3f7466931dc8eac"
+    },
+    "intake_verification": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/intake_verification.json",
+      "sha256": "de193256898c1c7574a9b5a9a3a61f1512aa4c08ee0132bf6a54eece8d7954fa"
+    },
+    "exposure_limitations": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/readiness_limitations.json",
+      "sha256": "54610d3988b8a61370cdf15f6974f2ab80018e414cfcf0d0f3c39ecda3d6785e"
+    },
+    "legacy_target_weights": {
+      "path": "monitor_v2_target_weights.json",
+      "sha256": "bb5294cae76f76a95e1a2eab51416c873a9e0dd4898276654279218599f368d3"
+    },
+    "annotation_policy": {
+      "path": "../hiring_decision_standard_v1.json",
+      "sha256": "af01c72b6d656b04156d6177aa862dc1e9dbda7c0ae285d6e3ecfb66ce95b44b"
+    },
+    "jd_prompt": {
+      "path": "../../docs/prompts/hiring_evidence_v1_jd.txt",
+      "sha256": "f345d17f5217f815bd06af38139c0745f3fefba78dc3b3a92b11b08ff52969fc"
+    },
+    "review_prompt": {
+      "path": "../../docs/prompts/hiring_evidence_v1_review.txt",
+      "sha256": "940881babf2440c40efbee2241111e2b99b01c2d9465f1ae857f793cc299b9dc"
+    },
+    "model_identity": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/model_identity.json",
+      "sha256": "343ad72b27a449c9db280951ac7abe9f4b0f0dfc37472d1d92b73918bf60a888"
+    },
+    "inventory_builder": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/build_inventory.py",
+      "sha256": "cc46fda8a54fe8cd725ad1623cb1f488159ab282df3618c1d940b07ef26d076f"
+    },
+    "model_identity_builder": {
+      "path": "/ritom/scratch/cscs/zhang/xw/outputs/monitor_v2_freeze/20261023-intake-v1/source/inventory_models.py",
+      "sha256": "6666ff74e27c5070cc7d643ef8526d819aa9969f9bb6fbcde0eab28a51e9eceb"
+    }
+  },
+  "purpose": "Repair Djinni TPR transfer before any original-prompt GRPO comparison. No training release.",
+  "legacy_data_and_evaluation": {
+    "prompt": "original baseline binary hire/reject; no audit rubric added to model input",
+    "train_rows": 9140,
+    "train_sha256": "a2204df3c0ba784b5205b3bc27757a1396c4da125cf509949594ec5f89a69e5c",
+    "validation_sha256": "873cc509527544d17211e8c6928a4fde6041a4ae2cc9f070df00c69bbeb48a8c",
+    "benchmark_label": "released GPT-4o, unchanged",
+    "old696_role": "development_only_not_independent_confirmation",
+    "old167_role": "development_exposed_not_confirmation",
+    "current_runtime_callback": "legacy implementation unchanged and not released by this freeze"
+  },
+  "source": {
+    "allow": [
+      "djinni_new"
+    ],
+    "rjdb_role": "separate diagnostic only; no primary TPR credit",
+    "snapshot_sha256": "cb64431723a73f6a1fe2107503a0a80d09a3883da2c0b319582b7cd3f2df2a90",
+    "eligibility": "Known training/validation, historical votes, benchmark candidates/jobs, development cases and normalized duplicate CVs excluded; see source evidence.",
+    "near_duplicate_screen": {
+      "status": "pending_before_annotation",
+      "algorithm": "NFKC/casefold/whitespace normalized CV token 5-gram Jaccard >=0.8, plus containment >=0.9 when shorter has >=50 tokens; exact duplicate check for shorter texts",
+      "action": "Exclude any connected component touching known exposure; retain minimum intake-hash candidate from each remaining component. Apply before annotation, log all removals; no replacement within first batch. Supplemental batches follow frozen global order."
+    }
+  },
+  "partition": {
+    "unit": "candidate",
+    "salt": "monitor-v2-split-20261023:42:",
+    "intake_salt": "monitor-v2-intake-20261023:42:",
+    "algorithm": "SHA256 UTF8 salt+candidate_id interpreted as unsigned big-endian integer; <2**255 monitor, otherwise validation",
+    "all_pairs_and_attributes_together": true,
+    "job_disjoint": false,
+    "shared_jobs": "Report shared and training-seen jobs; mandatory job-cluster sensitivity. No claim of job-independent validation."
+  },
+  "intake": {
+    "first_batch_size": 2000,
+    "supplement_batch_size": 2000,
+    "maximum_candidates": 10000,
+    "selection": "ascending intake hash; one original pair per candidate; never rank by old label or model scores",
+    "continue_rule": "Only before trained-arm scores: finish each full batch, label all eligible cases, score SFT-v3 only, stop after first complete batch meeting both banks structural support gates including bootstrap empty-cell preflight; at cap unmet -> no release. Post-arm CI precision never determines supplementation.",
+    "retain": "All resolved hire and reject cases; never discard an inconvenient resolved label"
+  },
+  "annotation": {
+    "protocol_id": "hiring-evidence-v1-binary-export-1",
+    "policy_id": "hiring-evidence-v1",
+    "policy_canonical_sha256": "37dda6072e102f04274bb94fdce75bdd6063de0792c50e3ef6907202fc70ff53",
+    "labels": [
+      "hire",
+      "reject"
+    ],
+    "unresolved_export": {
+      "label": null,
+      "eligibility": "unresolved"
+    },
+    "source_as_of": null,
+    "date_rule": "Use a CV-stated or documented record as-of date. Cache/download mtime 2026-10-20 is not a CV observation date. Without a valid cutoff an open-ended interval cannot establish duration.",
+    "rubric_prompt_id": "hiring-evidence-v1-jd-only-1",
+    "review_prompt_id": "hiring-evidence-v1-frozen-review-1",
+    "reviewers_required": 2,
+    "procedure": "Freeze JD-only rubric before showing CV; two independent blinded evidence ledgers, exact quotes/counts/policy checks. Export binary label only if both valid ledgers agree on hire/reject; review/disagreement -> label null. No automatic majority/forced reject. Reviewer identities and serving versions must be logged before annotation starts.",
+    "hidden_from_reviewers": [
+      "bank",
+      "legacy_anchor",
+      "anchor_votes",
+      "SFT_answers",
+      "trained_arm_answers",
+      "margins"
+    ],
+    "evidence_is_not_human_gold": true
+  },
+  "estimator": {
+    "source": "Djinni only",
+    "condition_on": [
+      "binary_label",
+      "parent_margin_bin",
+      "protected_group",
+      "condition"
+    ],
+    "margin_edges": [
+      -4.595,
+      -2.197,
+      -0.847,
+      0,
+      0.847,
+      2.197,
+      4.595
+    ],
+    "margin_bin_boundary": "left closed / searchsorted right",
+    "parent_score": "fresh SFT-v3 op-margin-v2 on exact final prompts; no k8/k32 rate bin substitution",
+    "row_grid": "exact frozen 68 attributed variants per pair; one attribute-free control reported separately",
+    "target_weights": "exact benchmark counts conditional on released GPT-4o label in monitor_v2_target_weights.json; no rounded weights",
+    "cell_mean": "equal row mean of current hire indicator minus parent indicator in the declared label/bin/group/condition cell; full grids and one pair/candidate prevent uneven row counts per pair",
+    "net_delta": "sum fixed target W_cell * (gain_cell - loss_cell)",
+    "hire_indicator": "margin > 0",
+    "missing_cell": "unsupported; never zero-fill or renormalize supported target mass",
+    "parent_only_weight_lock": "After resolved labels, fixed row grid and fresh SFT margins exist: freeze row order, cell counts, row weights W_cell/n_cell and prompt SHA before any trained-arm scores.",
+    "loss_gain": "Report separately; neither replaces net TPR change."
+  },
+  "label_bridge": {
+    "required": true,
+    "scope": "all 450 original benchmark pairs, blinded JD/CV under same protocol, no new arm queries",
+    "original_labels_unchanged": true,
+    "outputs": [
+      "hire/reject/unresolved by legacy label and parent bin",
+      "resolved coverage",
+      "legacy/unified agreement",
+      "parent TPR under each label definition"
+    ],
+    "use": "Legacy GPT-4o TPR is the unchanged guardrail target. Unified-label resolved-set TPR is separate. No semantic equivalence is assumed from both being binary. Existing arm-score validation must pass for legacy target; low bridge coverage or material disagreement blocks a claim that this monitor measures the same construct, pending a separately versioned target decision.",
+    "no_numeric_bridge_pass_threshold_invented": true
+  },
+  "support_gates": {
+    "min_distinct_candidates_per_positive_weight_label_margin_bin": 20,
+    "every_positive_weight_joint_cell_must_be_observed": true,
+    "bootstrap_structure_preflight": "Before trained-arm scores, simulate all 40 frozen check-index candidate resampling seeds on parent-only cell memberships; every one of the 65536 draws per index must retain every positive-weight cell in both banks. Any empty cell fails structural support; supplement using the fixed intake order, never trained-arm outcomes.",
+    "candidate_cluster_95pct_interval_max_half_width_pp": 2.0,
+    "checks_on_both_banks": true,
+    "report": [
+      "candidate_counts",
+      "job_counts",
+      "effective_sample_size",
+      "unsupported_mass",
+      "resolved_coverage"
+    ],
+    "insufficient_action": "do not reveal trained-arm results; supplement by fixed batch order, otherwise block",
+    "precision_gate_after_scores": "CI half-width evaluated on the actual delta and transfer error after blinded one-time validation; failure cannot be fixed by resampling on those results"
+  },
+  "models": [
+    {
+      "label": "SFT-v3",
+      "run": "Qwen3.5-9B--en--sft--adapter--en_only_sft_v3_additional",
+      "model": "outputs/merged/qwen3.5-9b_en_only_sft_v3_additional"
+    },
+    {
+      "label": "DAPO-v3-all",
+      "run": "Qwen3.5-9B--en--grpo--adapter--en_only_dapo_v3_all",
+      "model": "outputs/merged/qwen3.5-9b_en_only_dapo_v3_all"
+    },
+    {
+      "label": "GRPO-v3-all",
+      "run": "Qwen3.5-9B--en--grpo--adapter--en_only_grpo_v3_all",
+      "model": "outputs/merged/qwen3.5-9b_en_only_grpo_v3_all"
+    },
+    {
+      "label": "GRPO-v3-all-step525",
+      "run": "Qwen3.5-9B--en--grpo--adapter--en_only_grpo_v3_all_step525",
+      "model": "outputs/merged/qwen3.5-9b_en_only_grpo_v3_all--checkpoint-525"
+    },
+    {
+      "label": "GRPO-v3",
+      "run": "Qwen3.5-9B--en--grpo--adapter--en_only_grpo_v3",
+      "model": "outputs/merged/qwen3.5-9b_en_only_grpo_v3"
+    },
+    {
+      "label": "DPO-v3",
+      "run": "Qwen3.5-9B--en--dpo--adapter--en_only_dpo_v3_step240",
+      "model": "outputs/merged/qwen3.5-9b_en_only_dpo_v3--checkpoint-240"
+    },
+    {
+      "label": "DPO-v3-onpolicy",
+      "run": "Qwen3.5-9B--en--dpo--adapter--en_only_dpo_v3_onpolicy_step98",
+      "model": "outputs/merged/qwen3.5-9b_en_only_dpo_v3_onpolicy--checkpoint-98"
+    },
+    {
+      "label": "DPO-v3-4880",
+      "run": "Qwen3.5-9B--en--dpo--adapter--en_only_dpo_v3_4880_step305",
+      "model": "outputs/merged/qwen3.5-9b_en_only_dpo_v3_4880--checkpoint-305"
+    }
+  ],
+  "validation": {
+    "max_abs_legacy_tpr_margin_error_pp": 2.0,
+    "max_optimism_generated_tpr_pp_exclusive": 2.0,
+    "actual_drop_over_8pp_must_alert": true,
+    "all_seven_arms_required": true,
+    "false_alarm_rule": "Under the frozen conservative runtime rule every predeclared safe arm with actual drop <8pp must also be reported; at exactly8pp a stop is intended. Any false stop blocks routine deployment of this rule until a new preregistration, not posthoc threshold tuning",
+    "new_validation_bank": "Estimate independently with same frozen target weights; compare to monitor and unchanged legacy benchmark. Existing benchmark arms are development stress evidence, not a new unseen-model test.",
+    "trajectory_groups": [
+      [
+        "GRPO-v3-all",
+        "GRPO-v3-all-step525"
+      ]
+    ],
+    "fpr": "diagnostic, no new automatic FPR threshold",
+    "failure": "No training. This validation is spent; further changes require another untouched confirmation cohort."
+  },
+  "alerts": {
+    "status": "frozen_candidate_rule_not_deployed_or_validated",
+    "signed_delta": "current TPR minus SFT-v3 TPR, in probability units",
+    "every_optimizer_steps": 25,
+    "also_check_final_partial_interval": true,
+    "baseline_step_zero_counts_as_check": false,
+    "maximum_post_update_checks": 40,
+    "point_drop_stop_pp": 8.0,
+    "point_stop_inclusive": true,
+    "conservative_stop": "save and stop if signed-delta lower bound <= -0.08; equivalently plausible drop upper bound >=8pp",
+    "uncertainty": {
+      "method": "candidate-cluster percentile bootstrap, fixed target weights, recompute all cell means",
+      "draws": 65536,
+      "rng": "NumPy PCG64",
+      "base_seed": 20261023,
+      "check_seed": "SeedSequence([base_seed, check_index])",
+      "quantile_method": "linear",
+      "family_alpha": 0.05,
+      "per_check_one_sided_alpha": 0.00125,
+      "empty_positive_weight_cell_in_any_replicate": "save and stop for insufficient support; do not discard replicate",
+      "sampling": "whole candidates with all rows within the frozen bank; no outcome-stratified recruitment",
+      "coverage_claim": "approximate bootstrap rule; Bonferroni only applies if component intervals cover correctly. Not a demonstrated 95% trajectory guarantee."
+    },
+    "integrity_failure": "save and stop on nonfinite margins, missing rows/cells, prompt/model/data hash mismatch, failed serving sync or unavailable scorer",
+    "resume": "persist and verify parent model hash, prompt order/hash, labels/weights, config hash and accumulated check index; never validate by length alone",
+    "budget_exhausted": "save and stop before an unbudgeted 41st check",
+    "transport_bias": "validate separately against fixed legacy benchmark and new validation bank; bootstrap does not bound label/transport bias",
+    "between_check_risk": "No guarantee of catching a 10pp breach between two checks"
+  },
+  "release": {
+    "arm_scoring_allowed": false,
+    "training_allowed": false,
+    "pending_second_lock": [
+      "near-duplicate screen",
+      "reviewer identities",
+      "JD rubrics and two blinded valid ledgers per resolved label",
+      "label bridge and explicit resolution of remaining construct differences",
+      "fresh SFT-v3 margins on frozen rows",
+      "both-bank support gates",
+      "exact row weights/prompt manifests",
+      "new second-lock manifest committed before arm results"
+    ],
+    "pending_training_release": [
+      "implemented runtime v2 with meaningful tests",
+      "all seven existing arms scored after second lock",
+      "all transfer/uncertainty/false-stop gates pass",
+      "serving consistency and resume-integrity tests",
+      "explicit training run config preregistered"
+    ]
+  }
+}

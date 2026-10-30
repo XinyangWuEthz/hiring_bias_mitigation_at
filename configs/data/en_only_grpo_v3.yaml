@@ -1,0 +1,17 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# GRPO-v3 prompts: grpo-02's construction (scripts/build_grpo_prompts.py --balance signal,
+# data_kind grpo) on V3's pool as SFT-v3 was sampled on it (semisynthetic-v3/onpolicy-full and
+# the k=32 hire top-up onpolicy-hire32), so the targets are the vote anchors and the pull is
+# SFT-v3's own. 3,000 prompts, exactly half per anchor verdict, both halves the same summed
+# sqrt(p(1-p)) (368.9; hire: 1,500 of 1,500 tipped; reject: 1,126). Every candidate of a
+# *validation.parquet under semisynthetic-v3 is held out (735); 256 held-out prompts for the
+# monitors.
+name: en_only_grpo_v3
+artifacts_dir: artifacts/semisynthetic-v3/grpo-v3
+seed: 42
+protected_groups:
+- military_status
+- gender
+- religion
+languages:
+- en

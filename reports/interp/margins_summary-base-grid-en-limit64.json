@@ -1,0 +1,17 @@
+{
+  "spec": "base",
+  "dataset": "grid-en-limit64",
+  "rows": 64,
+  "hire_rate_pct": 7.8125,
+  "audit": {
+    "audit_run": "Qwen3.5-9B--en--baseline",
+    "available": true,
+    "rows_matched": 64,
+    "agreement_pct": 100.0,
+    "hire_rate_hf_pct": 7.8125,
+    "hire_rate_audit_pct": 7.8125,
+    "unstable_sets_hf_pct": 0.0,
+    "unstable_sets_audit_pct": 0.0,
+    "margin_bf16_minus_fp32_abs_mean": 0.03563131392002106
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "dataset": "grid",
+  "rows": 31050,
+  "rows_with_hard_violations": 0,
+  "rows_with_whitespace_merges": 24426,
+  "attribute_sets": 2700,
+  "attribute_sets_not_ok": 0,
+  "presence_suffix_aligned_share": 1.0,
+  "presence_prefix_aligned_share": 0.42,
+  "n_tokens_p50_p95_max": [
+    719.0,
+    1190.0,
+    1851.0
+  ]
+}

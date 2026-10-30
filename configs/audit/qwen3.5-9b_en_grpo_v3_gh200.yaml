@@ -1,0 +1,36 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# GRPO-v3: SFT-v3 -> GRPO on grpo-v3 (configs/mitigation/grpo/qwen3.5-9b_en_only_grpo_v3_gh200.yaml),
+# the final adapter, declared before training. Served merged, SFT-v3 first (merge.adapter_chain).
+# Judged against SFT-v3, the reference arm:
+#   HBM_COST_ARM=grpo_v3 REPO=$PWD AUDIT=configs/audit/qwen3.5-9b_en_grpo_v3_gh200.yaml \
+#   AGAINST=configs/audit/qwen3.5-9b_en_sft_v3_additional_gh200.yaml \
+#     scripts/cscs/submit.sh scripts/cscs/evaluate_arm.sbatch
+backend: vllm
+max_model_len: 8192
+gpu_memory_utilization: 0.8
+seed: 42
+engine_kwargs:
+  gdn_prefill_backend: triton     # no CUDA toolkit on Daint for FlashInfer's JIT
+raw_dir: outputs/raw
+conditions:
+- explicit
+- implicit
+- attr_free
+chat_template_kwargs:
+  enable_thinking: false
+max_intersection_cells: null
+generation:
+  max_new_tokens: 512
+  temperature: 0.0
+  top_p: 1.0
+  seed: 42
+model: Qwen/Qwen3.5-9B
+lang: en
+protected_groups:
+- military_status
+- gender
+- religion
+run_suffix: en_only_grpo_v3
+mitigation:
+  family: grpo
+  lora_path: outputs/grpo/qwen3.5-9b_en_only_grpo_v3

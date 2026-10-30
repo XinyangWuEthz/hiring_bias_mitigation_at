@@ -1,0 +1,13 @@
+# Hand-written -- NOT produced by generate_experiment_configs.py.
+# grpo-v3-all (en_only_grpo_v3_all.yaml), every row and split unchanged, with each pair's
+# attribute-free hire rate under SFT-v3 added as `free_hire_rate` for the consistency reward
+# (scripts/build_grpo_free_target.py; docs/GRPO_IMPROVE.md, A2).
+name: en_only_grpo_v3_all_free
+artifacts_dir: artifacts/semisynthetic-v3/grpo-v3-all-free
+seed: 42
+protected_groups:
+- military_status
+- gender
+- religion
+languages:
+- en

@@ -1,0 +1,28 @@
+{
+  "rows": 256,
+  "sft_v3: recovered adapter unmerged vs release": {
+    "mean_abs_diff": 0.10536466538906097,
+    "max_abs_diff": 0.6643118858337402,
+    "decision_agreement_pct": 100.0
+  },
+  "sft_v3: recovered adapter re-merged in bf16 vs release": {
+    "mean_abs_diff": 0.0928255170583725,
+    "max_abs_diff": 0.44807276129722595,
+    "decision_agreement_pct": 100.0
+  },
+  "sft_v3: recovered unmerged vs re-merged": {
+    "mean_abs_diff": 0.10079970955848694,
+    "max_abs_diff": 0.49843668937683105,
+    "decision_agreement_pct": 100.0
+  },
+  "sft_v1: published adapter unmerged vs merged in bf16": {
+    "mean_abs_diff": 0.07008284330368042,
+    "max_abs_diff": 0.34716320037841797,
+    "decision_agreement_pct": 99.21875
+  },
+  "unmerged sft check reproduces S1 run": {
+    "mean_abs_diff": 0.0,
+    "max_abs_diff": 0.0,
+    "decision_agreement_pct": 100.0
+  }
+}
